@@ -1,0 +1,21 @@
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import schemaLocation="BasicTypes.xsd"/>
+
+	<xs:import schemaLocation="CommProfile.xsd"/>
+
+	<xs:import schemaLocation="AgentProfile.xsd"/>
+	
+	<xs:import schemaLocation="ClassificationProfile.xsd"/>
+
+	<xs:complexType name="AgentStartupConfiguration">
+		<xs:sequence>
+			<xs:element name="id" type="id" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="commProfile"	type="CommProfileDTO" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="agentProfile"	type="AgentProfileDTO" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="ClassificationProfile" type="classificationProfileType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="registrationId" type="id" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>	
+
+</xs:schema>

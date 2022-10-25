@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basictypes SYSTEM "types/BasicTypes.dtd">
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+<!ENTITY % agentupdateacknowledgementdata SYSTEM "types/AgentUpdateAcknowledgementData.dtd">
+%basictypes;
+%basicfaults;
+%agentupdateacknowledgementdata;
+<!--element and attribute declarations-->
+<!ELEMENT AcknowledgeUpdates (acknowledgeUpdatesRequest | acknowledgeUpdatesResponse)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT acknowledgementData (profileStatus?, policyAssemblyStatus?)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ELEMENT acknowledgeUpdatesRequest (id, acknowledgementData)>
+<!ELEMENT acknowledgeUpdatesResponse ((fault)?)>

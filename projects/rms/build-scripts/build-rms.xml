@@ -1,0 +1,494 @@
+<project name="build_compile_rms" default="all" basedir=".">
+
+	<property name="nlbuildroot" value="${basedir}/../../.." />
+	<property name="war.dir" value="${basedir}/build/run/server/apps"/>
+	<!-- Propery files -->
+	<property environment="env" />
+	<!--property file="${basedir}/build.properties" />
+	<property file="${basedir}/build-scripts.properties" /-->
+	<property file="${basedir}/build-rms.properties" />
+
+	<!-- Global properties -->
+	<property name="package_dir" value="${build_dir}/${package_name}" />
+
+	<property name="dist_SC_zip_file_name" value="${package_RMS}-WAR-${version_rms_str}-${version_build_short}-${build_date_long}.zip" />
+
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<echo message="INFO: Dump properties completed" />
+
+	<!-- Sanity checks -->
+	<fail message="rms.root is not set" unless="rms.root" />
+	<fail message="rms.root is empty">
+		<condition>
+			<equals arg1="${rms.root}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${rms.root}" type="dir" property="local.rms.root_exists" />
+	<fail message="rms.root directory does not exist - ${rms.root}" unless="local.rms.root_exists" />
+
+	<echo message="INFO: Sanity check completed (no error)" />
+
+	<path id="classpath.httpclient">
+		<fileset dir="${httpclientlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.servlet">
+		<fileset dir="${servletlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.commons">
+		<fileset dir="${commonslibdir}" includes="*.jar"/>
+	</path>
+    <path id="classpath.cxf">
+        <fileset dir="${cxflibdir}" includes="*.jar"/>
+    </path>
+	<path id="classpath.RMS">
+		<fileset dir="${build_dir}" includes="${package_name}.jar"/>
+	</path>
+	<path id="classpath.perceptive">
+		<fileset dir="${perceptivelibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.keyMgmt">
+		<fileset dir="${keyMgmtLibDir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.dropbox">
+		<fileset dir="${dropboxlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.box">
+		<fileset dir="${boxlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.hsql">
+		<fileset dir="${hsqllibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.spring">
+		<fileset dir="${springlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.nlsdk">
+		<fileset dir="${nlsdklibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.sharepoint">
+		<fileset dir="${splibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.teamcenter">
+		<fileset dir="${tclibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.log4j">
+		<fileset dir="${log4jdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.javamail">
+		<fileset dir="${javamaillibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.ehcache">
+		<fileset dir="${ehcachelibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.gson">
+		<fileset dir="${gsonlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.axis">
+		<fileset dir="${axislibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.restlet">
+		<fileset dir="${restletlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.xmlbeans">
+		<fileset dir="${xmlbeanslibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.onelogin">
+		<fileset dir="${oneloginlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.platform">
+		<fileset dir="${platformlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.pdfbox">
+		<fileset dir="${pdfboxlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.slf4j">
+		<fileset dir="${slf4jlibdir}" includes="*.jar"/>
+	</path>	
+	<path id="classpath.rmjavasdk">
+		<fileset dir="${rmjavasdklibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.iptocountry">
+		<fileset dir="${iptocountrydir}" includes="*.jar"/>
+		</path>
+	<path id="yuicompressor.classpath">
+	    <fileset dir="${yuicompressordir}">
+	       <include name="**/*.jar"/>
+	    </fileset>
+	</path>
+	<path id="classpath.javaluator">
+		<fileset dir="${javaluatorlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.license">
+			<fileset dir="${licenselibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.googledrive">
+			<fileset dir="${googledrivelibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.hibernate">
+			<fileset dir="${hibernatelibdir}" includes="*.jar"/>
+    </path>
+	<path id="classpath.jackson">
+			<fileset dir="${jacksonlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.infinispan">
+			<fileset dir="${infinispanlibdir}" includes="*.jar"/>
+	</path>
+	<!--
+	<target name="compress">
+        <taskdef name="yuicompressor"
+                 classname="com.metrosix.yuicompressor.anttask.YuiCompressorTask"
+                 classpathref="yuicompressor.classpath"/>
+        <mkdir dir="${min_js_dir}" />
+        <yuicompressor todir="${js_dir}">
+            <fileset dir="${js_dir}">
+                <include name="**/*.js"/>
+            </fileset>
+            <mapper type="glob" from="*.js" to="*-min.js"/>
+        </yuicompressor>
+    </target>
+	-->
+	<!-- Global tasks -->
+	<tstamp>
+		<format property="local.now" pattern="EEE, d MMM yyyy HH:mm:ss Z" />
+	</tstamp>
+
+	<echo message="version_str = ${version_str}" />
+	<echo message="time = ${local.now}" />
+
+	<!-- Targets -->
+	<target name="all" description="Default for all" depends="clean, compile, installer-lib, precompileAngularHandlebars, war, package, copy-artifacts-to-staging" /><!--prepare-grunt-all, uglify, concat, copyJS, deleteMinJS-->
+	
+	<target name="shared-util" description="Default for all" depends="clean, compile-shared-util, copy-artifacts-to-staging" />
+
+	<target name="clean" description="Delete all build artifacts" depends="">
+		<delete includeemptydirs="true" dir="${build_dir}"/>
+	</target>
+
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" >
+		<classpath>
+	    	<path refid="classpath.xmlbeans"/>
+		</classpath>
+	</taskdef>
+
+	<target name="xmlbeans">
+		<echo>Compiling xml schemas</echo>
+		<echo message="${xmlbeans_schemas_dir}   ${rms.root}     ${basedir}" />
+    	<xmlbean destfile="${build_dir}/${package_name}_xmlbeans.jar" srcgendir="${build_dir}/xmlbeans_src">
+            <classpath>
+                <path refid="classpath.xmlbeans"/>
+            </classpath>
+            <fileset dir="${xmlbeans_schemas_dir}" includes="**/*.xsd"/>
+		</xmlbean>
+		<copy todir="${xmlbeanslibdir}" overwrite="true">
+			<fileset file="${build_dir}/${package_name}_xmlbeans.jar" />
+		</copy>
+	</target>
+
+	<target name="copy-kms-xml-beans-from-staging">
+		<copy todir="${xmlbeanslibdir}" overwrite="true">
+			<fileset file="${staging.dir}/KMS_xmlbeans.jar" />
+		</copy>
+	</target>
+	
+	<target name="copy-artifacts-from-staging" depends="copy-kms-xml-beans-from-staging">
+		<copy todir="${build_dir}" overwrite="true">
+			<fileset file="${staging.dir}/RMSUtil.jar" />
+		</copy>
+	</target>	
+	
+	<target name="compile" description="Compile the project" depends="clean, xmlbeans, copy-artifacts-from-staging">
+		<mkdir dir="${classes_dir}" />
+		<javac srcdir="${src_dir}" destdir="${classes_dir}" debug="${env.RMS_DEV_BUILD}" encoding="UTF-8">
+			<classpath refid="classpath.servlet"/>
+        	<classpath refid="classpath.commons"/>
+            <classpath refid="classpath.cxf"/>
+        	<classpath refid="classpath.perceptive"/>
+        	<classpath refid="classpath.keyMgmt"/>
+        	<classpath refid="classpath.dropbox"/>
+			<classpath refid="classpath.box"/>
+			<classpath refid="classpath.hsql"/>
+        	<classpath refid="classpath.spring"/>
+        	<classpath refid="classpath.nlsdk"/>
+        	<classpath refid="classpath.sharepoint"/>
+			<classpath refid="classpath.teamcenter"/>
+        	<classpath refid="classpath.log4j"/>
+        	<classpath refid="classpath.httpclient"/>
+        	<classpath refid="classpath.ehcache"/>
+        	<classpath refid="classpath.javamail"/>
+        	<classpath refid="classpath.gson"/>
+        	<classpath refid="classpath.axis"/>
+        	<classpath refid="classpath.restlet"/>
+			<classpath refid="classpath.xmlbeans"/>
+			<classpath refid="classpath.onelogin"/>
+			<classpath refid="classpath.platform"/>
+			<classpath refid="classpath.pdfbox"/>
+			<classpath refid="classpath.slf4j"/>
+			<classpath refid="classpath.iptocountry"/>
+			<classpath refid="classpath.rmjavasdk"/>
+			<classpath refid="classpath.javaluator"/>
+			<classpath refid="classpath.license"/>
+			<classpath refid="classpath.googledrive"/>
+			<classpath refid="classpath.hibernate"/>
+			<classpath refid="classpath.jackson"/>
+			<classpath refid="classpath.infinispan"/>			
+			<include name="**/*.java" />				
+        </javac>		
+
+    	<echo>Copying language resource files...</echo>
+        <copy todir="${langresource.target}">
+              <fileset dir="${langresource.src}" casesensitive="yes">
+                   <include name="**/*.properties"/>
+              </fileset>
+        </copy>
+         <echo>End of Copying language resource files...</echo>
+		<echo>Copying version resource files...</echo>
+        <copy todir="${versionresource.target}">
+              <fileset dir="${versionresource.src}" casesensitive="yes">
+                   <include name="**/*.properties"/>
+              </fileset>
+        </copy>
+		
+		<copy todir="${classes_dir}/com/nextlabs/rms/config">
+          <fileset dir="${nlbuildroot}/conf" casesensitive="yes">
+               <include name="RMSVersion.properties"/>
+          </fileset>
+    	</copy>
+		
+        <echo>End of Copying version files...</echo>
+		<jar destfile="${build_dir}/${package_name}.jar" ><!--excludes="com/nl/**/*.class"-->
+        	<fileset dir="${classes_dir}">
+        		<exclude name="**/sharedutil/**"/>
+        		<exclude name="com/nextlabs/rms/conversion/MemoryStream*"/>
+        	</fileset>
+        	<manifest>
+				<attribute name="Java-Version" value="${java.version}"/>
+				<attribute name="Implementation-Vendor" value="NextLabs, Inc."/>
+				<attribute name="Implementation-Title" value="${product_name}"/>
+				<attribute name="Implementation-Version" value="${version_str} (${build_number})"/>
+				<attribute name="Implementation-Time" value="${local.now}"/>
+			</manifest>
+			<metainf dir="${rms.root}/conf/persistence/"  includes="persistence.xml" />
+		</jar>
+		<jar destfile="${build_dir}/RMS-Perceptive-Lib.jar" >
+        	<fileset dir="${classes_dir}">
+        		<include name="com/nextlabs/rms/conversion/MemoryStream*"/>
+        	</fileset>
+        	<manifest>
+				<attribute name="Java-Version" value="${java.version}"/>
+				<attribute name="Implementation-Vendor" value="NextLabs, Inc."/>
+				<attribute name="Implementation-Title" value="${perceptive_doc}"/>
+				<attribute name="Implementation-Version" value="${version_str} (${build_number})"/>
+				<attribute name="Implementation-Time" value="${local.now}"/>
+			</manifest>
+		</jar>
+	</target>	
+	
+	<target name="compile-shared-util" description="Utility classes to be shared across components" depends="copy-kms-xml-beans-from-staging">
+		<mkdir dir="${classes_dir}" />
+		<javac srcdir="${sharedutil_src_dir}" destdir="${classes_dir}" debug="${env.RMS_DEV_BUILD}" encoding="UTF-8">
+			<classpath refid="classpath.commons"/>
+			<classpath refid="classpath.restlet"/>
+			<classpath refid="classpath.xmlbeans"/>
+			<classpath refid="classpath.log4j"/>
+			<include name="**/*.java" />			
+		</javac>
+		<jar destfile="${build_dir}/RMSUtil.jar">
+			<fileset dir="${classes_dir}" />
+		</jar>		
+	</target>
+	
+	<target name="installer-lib" description="Copies the necessary libraries for installer" depends="compile">		
+		<copy file="${commonslibdir}/commons-codec-1.10.jar" todir="${build_dir}"/>		
+		<copy file="${mssqllibdir}/sqljdbc41.jar" todir="${build_dir}"/>
+		<copy file="${oraclelibdir}/ojdbc7.jar" todir="${build_dir}"/>
+		<copy file="${mysqllibdir}/mysql-connector-java-5.1.38.jar" todir="${build_dir}"/>
+	</target>
+	
+	
+	<target name="prepare-grunt" depends="checkDevBuild" if="isNotDevBuild">
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="npm"/>
+			<arg value="install"/>
+			<arg value="grunt"/>
+		</exec>
+	</target>
+
+	<target name="prepare-grunt-cli" depends="checkDevBuild" if="isNotDevBuild">
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="npm"/>
+			<arg value="install"/>
+			<arg value="-g"/>
+			<arg value="grunt-cli"/>
+		</exec>
+	</target>
+
+	<target name="prepare-grunt-handlebars-compiler" depends="checkDevBuild" if="isNotDevBuild">
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="npm"/>
+			<arg value="install"/>
+			<arg value="grunt-handlebars-compiler"/>
+		</exec>
+	</target>
+
+	<target name="prepare-grunt-contrib-uglify" depends="checkDevBuild" if="isNotDevBuild">
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="npm"/>
+			<arg value="install"/>
+			<arg value="grunt-contrib-uglify"/>
+		</exec>
+	</target>
+
+	<target name="prepare-grunt-all" depends="prepare-grunt, prepare-grunt-cli, prepare-grunt-contrib-uglify" />
+
+	<target name="checkDevBuild">
+		<condition property="isNotDevBuild" value="false">
+			<not>
+				<istrue value="${env.RMS_DEV_BUILD}"/>
+			</not>
+		</condition>
+	</target>
+	
+	<!-- Angular -->
+	<target name="prepare-angular-grunt-cli" depends="checkDevBuild" if="isNotDevBuild">
+		<exec executable="cmd" dir="${web_dir}/ui">
+			<arg value="/c"/>
+			<arg value="npm" />
+			<arg value="install" />
+			<arg value="grunt-cli" />
+			<arg value="--save-dev" />
+		</exec>
+	</target>
+	<target name="prepare-angular-npm-install" depends="checkDevBuild" if="isNotDevBuild">
+		<exec executable="cmd" dir="${web_dir}/ui">
+			<arg value="/c"/>
+			<arg value="npm" />
+			<arg value="install" />
+		</exec>
+	</target>
+	<target name="prepare-angular-grunt-all" depends="prepare-angular-grunt-cli, prepare-angular-npm-install" />
+	<target name="precompileAngularHandlebars" description="PreCompile Angular Handlebar templates" depends="clean, prepare-angular-grunt-all">
+		<exec-node module="grunt">
+			<arg value="--gruntfile" />
+			<arg value="${web_dir}/ui/Gruntfile.js" />
+    	    <arg value="default" />
+		</exec-node>
+	</target>	
+   
+	<target name="war" depends="compile">
+	        <delete includeEmptyDirs="true" >
+	            <fileset dir="${build_dir}">
+	                <include name="${package_name}.war" />
+	    	        </fileset>
+	        </delete>
+			<delete includeEmptyDirs="true" failonerror="false">
+			            <fileset dir="${rms.root}/web/ui">
+						</fileset>
+			        </delete>
+			<copy todir="${rms.root}/web/" overwrite="true" verbose="true">
+				<fileset dir="${web_dir}/ui/deploy" includes="**" />
+			</copy>
+	    	<echo>Creating ${package_name}.war</echo>
+	        <war destfile="${build_dir}/${package_name}.war" basedir="${rms.root}/web" webxml="${rms.root}/web/WEB-INF/web.xml" duplicate="preserve">
+	        	<lib dir="${build_dir}" includes="${package_name}Crypt.jar" />
+	        	<lib dir="${build_dir}" includes="${package_name}.jar" />
+	        	<lib dir="${build_dir}" includes="RMSUtil.jar" />
+	        	<lib dir="${commonslibdir}" includes="*.jar" excludes="commons-logging-1.1.1.jar" />
+	        	<lib dir="${dropboxlibdir}" includes="dropbox-core-sdk-3.0.3.jar"/>
+				<lib dir="${boxlibdir}" includes="*.jar"/>
+	        	<lib dir="${cxflibdir}" includes="*.jar" excludes="mail-1.4.jar, geronimo-servlet_*.jar" />
+	        	<lib dir="${springlibdir}" includes="*.jar"/>
+	        	<lib dir="${hsqllibdir}" includes="*.jar"/>
+	        	<lib dir="${keyMgmtLibDir}" includes="*.jar"/>
+	        	<lib dir="${nlsdklibdir}" includes="*.jar"/>
+	        	<lib dir="${splibdir}" includes="*.jar,*.wsdl"/>
+	        	<lib dir="${tclibdir}" includes="*.jar"/>
+	        	<lib dir="${log4jdir}" includes="*.jar"/>
+	        	<lib dir="${javamaillibdir}" includes="*.jar"/>
+	        	<lib dir="${ehcachelibdir}" includes="*.jar"/>
+	        	<lib dir="${gsonlibdir}" includes="*.jar"/>
+	        	<lib dir="${httpclientlibdir}" includes="*.jar"/>
+	        	<lib dir="${axislibdir}" includes="*.jar" excludes="neethi-*.jar, wsdl4j-*.jar" />
+	        	<lib dir="${restletlibdir}" includes="*.jar"/>
+	        	<lib dir="${xmlbeanslibdir}" includes="*.jar"/>
+	        	<lib dir="${pdfboxlibdir}" includes="*.jar"/>
+	        	<lib dir="${oneloginlibdir}" includes="*.jar"/>
+	        	<lib dir="${platformlibdir}" includes="*.jar" excludes="agent-controlmanager-embeddedapi.jar" />
+	        	<lib dir="${iptocountrydir}" includes="*.jar"/>
+	        	<lib dir="${slf4jlibdir}" includes="*.jar"/>
+	        	<lib dir="${rmjavasdklibdir}" includes="*.jar"/>
+	        	<lib dir="${javaluatorlibdir}" includes="*.jar"/>
+	        	<lib dir="${licenselibdir}" includes="bcprov-jdk15on-151.jar, jakarta-regexp-1.2.jar"/>
+	        	<lib dir="${googledrivelibdir}" includes="*.jar"/>
+	        	<lib dir="${hibernatelibdir}" includes="*.jar"/>
+	        	<lib dir="${mssqllibdir}" includes="*.jar"/>
+	        	<lib dir="${mysqllibdir}" includes="*.jar"/>
+	        	<lib dir="${oraclelibdir}" includes="*.jar"/>
+	        	<lib dir="${c3p0libdir}" includes="*.jar"/>
+	        	<lib dir="${jacksonlibdir}" includes="*.jar"/>
+	        	<lib dir="${infinispanlibdir}" includes="*.jar"/>
+	        	<metainf dir="${rms.root}/conf/"  includes="context.xml" />
+	        </war>
+	</target>
+
+	<target name="package" description="builds each module">	
+		<mkdir dir="${package_dir}" />							
+		<copy todir="${package_dir}" overwrite="true">
+			<fileset file="${build_dir}/*.war" />
+			<fileset file="${odrm.root}/docs/RightsManagementServer_8_0_AdminGuide.pdf" />
+			<fileset file="${odrm.root}/docs/RightsManagementServer_8_0_ReleaseNotes.pdf" />
+		</copy>
+		<mkdir dir="${package_dir}/sharepoint" />
+		<copy todir="${package_dir}/sharepoint" overwrite="true">
+			<fileset file="${odrm.root}/app/Nextlabs.SCApp.app" />
+		</copy>
+		<zip destfile="${build_dir}/${dist_SC_zip_file_name}" encoding="UTF-8">
+			<fileset dir="${build_dir}/${package_name}/">
+				<include name="*.*" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="copy-artifacts-to-staging" depends="package">
+		<copy todir="${staging.dir}" overwrite="true">
+			<fileset file="${build_dir}/*.jar" />
+			<fileset file="${build_dir}/*.war" />
+			<fileset file="${build_dir}/*.zip" />
+			<fileset file="${rmjavasdklibdir}/RMEncryptionUtil.jar" />
+		</copy>
+	</target>
+	
+	<target name="deploy">
+		<copy file="${build_dir}/${package_name}.war" todir="${war.dir}"/>
+	</target>
+
+	<macrodef name="exec-node">
+	    <attribute name="module" description="The name of the NodeJS module to execute"/>
+	    <attribute name="failonerror" default="true" description="Fail if the exit code is not 0"/>
+	    <element name="args" implicit="yes" description="Argument to pass to the exec task"/>
+	    <sequential>
+	        <exec executable="cmd.exe" failonerror="@{failonerror}" osfamily="winnt">
+	            <arg line="/c  @{module}" />
+	            <args/>
+	
+	            <!-- Forces node's stderror and stdout to a temporary file -->
+	            <arg line=" &gt; _tempfile.out 2&lt;&amp;1"/>
+	
+	            <!-- If command exits with an error, then output the temporary file        -->
+	            <!-- to stdout delete the temporary file and finally exit with error level 1  -->
+	            <!-- so that the apply task can catch the error if @failonerror="true"        -->
+	            <arg line=" || (type _tempfile.out &amp; del _tempfile.out &amp; exit /b 1)"/>
+	
+	        	<!-- Otherwise, just type the temporary file and delete it-->
+	            <arg line=" &amp; type _tempfile.out &amp; del _tempfile.out &amp;"/>
+	        </exec>
+	        <exec executable="@{module}" failonerror="@{failonerror}" osfamily="unix">
+	            <args/>
+	        </exec>
+	    </sequential>
+	</macrodef>
+</project>

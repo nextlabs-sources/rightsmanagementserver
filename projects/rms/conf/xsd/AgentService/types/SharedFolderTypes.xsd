@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            
+    <!--
+        Type representing shared folder information that
+        is returned on heartbeats
+    -->
+    <xs:complexType name="SharedFolderData">
+        <xs:sequence>
+            <xs:element name="aliasList" type="SharedFolderAliasList"/>
+            <xs:element name="cookie" type="SharedFolderDataCookie"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--
+        Type representing a collection of aliases.
+    -->
+    <xs:complexType name="SharedFolderAliasList">
+        <xs:sequence>
+            <xs:element name="aliases" type="SharedFolderAliases" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SharedFolderAliases">
+        <xs:sequence>
+            <xs:element name="alias" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required"/>
+                </xs:complexType>
+           </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--
+        Type representing the cookie that corresponds to
+        some specific shared folder information.
+    -->
+    <xs:complexType name="SharedFolderDataCookie">
+        <xs:sequence>
+            <xs:element name="timestamp" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+        
+</xs:schema>

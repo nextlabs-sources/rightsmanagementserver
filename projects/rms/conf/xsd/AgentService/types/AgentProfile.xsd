@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+	<xs:include schemaLocation="BaseProfile.xsd"/>
+	
+	<xs:complexType name="AgentProfileDTO">
+		<xs:annotation>
+			<xs:documentation>
+				Agent Profile Data Transfer Object.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BaseProfileDTO"><!--remove this and keep only the sequenece elements below in the AgentProfile-->
+				<xs:sequence>
+					<!--whitelist - this is not present now, but will be used in future-->
+					<!--group id-->
+					<!--group name-->
+					<xs:element name="logViewingEnabled" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="trayIconEnabled" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>

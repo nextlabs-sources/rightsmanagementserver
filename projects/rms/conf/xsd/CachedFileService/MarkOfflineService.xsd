@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nextlabs.com/rms/rmc" xmlns:rms-rmc-type="http://nextlabs.com/rms/rmc/types">
+
+	<xs:import schemaLocation="../types/rms-rmc-integration-types.xsd"
+		namespace="http://nextlabs.com/rms/rmc/types" />
+		
+	<xs:element name="markOfflineRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cachedFileList" type="rms-rmc-type:CachedFileListInputType"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="rms-rmc-type:RequestAttributes"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="markOfflineResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cachedFileResultList" type="rms-rmc-type:CachedFileListType" minOccurs="0"/>
+				<xs:element name="status" type="rms-rmc-type:StatusType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ODRM"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/junit/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/junit/junit-4.11.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/xmlbeans/RMS_xmlbeans.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/xmlbeans/xbean.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/xmlbeans/xmlpublic.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/commons/commons-io-2.4.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/commons/commons-codec-1.10.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/httpclient/httpclient-4.3.1.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/httpclient/httpcore-4.3.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/httpclient/httpmime-4.3.1.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/DevTests/lib/JavaMail/javax.mail.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/kms"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

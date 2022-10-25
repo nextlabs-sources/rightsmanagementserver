@@ -1,0 +1,138 @@
+<!-- build_xlib.xml
+
+Description:
+	This ANT script constructs <project root>/xlib.
+
+	To use this script, you must update properties is <project root>/scripts/build.properties or overide 
+	them from commandline (using -D option). For example:
+		
+		set PATH=C:\depot\external\apache-ant\apache-ant-1.8.4\bin;%PATH%
+		ant -XX:MaxPermSize=512m -Dexternal.dir=c:/depot/external -f scripts/build_xlib.xml
+		
+	or
+		
+		set PATH=C:\depot\external\apache-ant\apache-ant-1.8.4\bin;%PATH%
+		set ANT_OPTS=-XX:MaxPermSize=512m -Dexternal.dir=%NLEXTERNALDIR2% 
+		ant -f scripts/build_xlib.xml -v	
+-->
+
+<project name="build_xlib" default="all" basedir="..">
+
+
+	<!-- Properties -->
+
+	<property name="nlbuildroot" location="${basedir}"/>
+
+	<property file="${nlbuildroot}/scripts/build.properties" />
+	<property file="${nlbuildroot}/scripts/build-scripts.properties" />
+
+	<property name="xlib_kms_jaxb" value ="${xlib_kms_dir}/jaxb" />
+	<property name="xlib_kms_c3p0" value ="${xlib_kms_dir}/c3p0" />
+	<property name="xlib_kms_commons" value ="${xlib_kms_dir}/commons" />
+	<property name="xlib_kms_hibernate" value ="${xlib_kms_dir}/hibernate" />
+	<property name="xlib_kms_jdbc" value ="${xlib_kms_dir}/jdbc" />
+	<property name="xlib_kms_log4j" value ="${xlib_kms_dir}/log4j" />
+	<property name="xlib_kms_restlet" value ="${xlib_kms_dir}/restlet" />
+	<property name="xlib_kms_servlet" value ="${xlib_kms_dir}/servlet" />
+	<property name="xlib_kms_slf4j" value ="${xlib_kms_dir}/slf4j" />
+	<property name="xlib_kms_spring" value ="${xlib_kms_dir}/spring" />
+	<property name="xlib_kms_sharedutil" value ="${xlib_kms_dir}/sharedUtil" />
+
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<echo message="INFO: Dump properties completed" />
+
+	<!-- Sanity checks -->
+	<fail message="external.dir is not set" unless="external.dir" />
+	<fail message="external.dir is empty">
+		<condition>
+			<equals arg1="${external.dir}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${external.dir}" type="dir" property="local.external.dir_exists" />
+	<fail message="external.dir directory does not exist - ${external.dir}" unless="local.external.dir_exists" />
+
+	<echo message="INFO: Sanity check completed (no error)" />
+
+	<!-- Targets-->
+	<target name="all" depends="clean, prepare_kms_externals" />
+
+	<target name="prepare_kms_externals">
+		<mkdir dir="${xlib_kms_jaxb}" />
+		<mkdir dir="${xlib_kms_c3p0}" />
+		<mkdir dir="${xlib_kms_commons}" />
+		<mkdir dir="${xlib_kms_hibernate}" />
+		<mkdir dir="${xlib_kms_jdbc}" />
+		<mkdir dir="${xlib_kms_log4j}" />
+		<mkdir dir="${xlib_kms_restlet}" />
+		<mkdir dir="${xlib_kms_servlet}" />
+		<mkdir dir="${xlib_kms_slf4j}" />
+		<mkdir dir="${xlib_kms_spring}" />
+		<mkdir dir="${xlib_kms_sharedutil}" />
+
+		<unzip src="${xlib_rmjavasdk_build_artifacts_bin_zip_file}" dest="${xlib_kms_sharedutil}" overwrite="false">
+			<patternset>
+				<include name="RMEncryptionUtil.jar" />
+			</patternset>
+			<mapper type="flatten" />
+		</unzip>
+
+		<!--  kms libs -->
+		<copy file="${external.dir}/jaxb/jaxb-2.2.11/jaxb-core-2.2.11.jar"						todir="${xlib_kms_jaxb}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/jaxb/jaxb-2.2.11/jaxb-xjc-2.2.11.jar"						todir="${xlib_kms_jaxb}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/c3p0/c3p0-0.9.5.2/lib/c3p0-0.9.5.2.jar"							todir="${xlib_kms_c3p0}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/c3p0/c3p0-0.9.5.2/lib/mchange-commons-java-0.2.11.jar"			todir="${xlib_kms_c3p0}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/commons-codec/commons-codec-1.10/commons-codec-1.10.jar"		todir="${xlib_kms_commons}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/commons-io/commons-io-2.4/commons-io-2.4.jar"					todir="${xlib_kms_commons}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/commons-logging/commons-logging-1.2/commons-logging-1.2.jar"	todir="${xlib_kms_commons}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/antlr-2.7.7.jar"									todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/dom4j-1.6.1.jar"									todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/hibernate-commons-annotations-5.0.1.Final.jar"	todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/hibernate-core-5.0.8.Final.jar"					todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/hibernate-jpa-2.1-api-1.0.0.Final.jar"			todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/jandex-2.0.0.Final.jar"							todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/javassist-3.18.1-GA.jar"							todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/jboss-logging-3.3.0.Final.jar"					todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hibernate/hibernate-5.0.8/geronimo-jta_1.1_spec-1.1.1.jar"										todir="${xlib_kms_hibernate}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/mysql-connector-java/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38.jar"	todir="${xlib_mysql}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/oracle/ojdbc7/ojdbc7.jar"															todir="${xlib_oracle}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/hsql/hsqldb-2.3.3/hsqldb-2.3.3.jar"													todir="${xlib_kms_jdbc}/hsql" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/sqlserver/sqljdbc_4.1/enu/sqljdbc41.jar"											todir="${xlib_kms_jdbc}/mssql" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/mysql-connector-java/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38.jar"	todir="${xlib_kms_jdbc}/mysql" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/oracle/ojdbc7/ojdbc7.jar"															todir="${xlib_kms_jdbc}/oracle" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/log4j/apache-log4j-1.2.17/log4j-1.2.17.jar"											todir="${xlib_kms_log4j}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/restlet/restlet-2.3.5/org.restlet.ext.servlet-2.3.5.jar"							todir="${xlib_kms_restlet}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/restlet/restlet-2.3.5/org.restlet.ext.spring-2.3.5.jar"								todir="${xlib_kms_restlet}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/restlet/restlet-2.3.5/org.restlet-2.3.5.jar"										todir="${xlib_kms_restlet}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/restlet/restlet-2.3.5/org.restlet.ext.jaxb-2.3.5.jar"								todir="${xlib_kms_restlet}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/servlet/javax.servlet-api-3.1.0/javax.servlet-api-3.1.0.jar"						todir="${xlib_kms_servlet}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/slf4j/slf4j-1.7.13/slf4j-api-1.7.13.jar"						todir="${xlib_kms_slf4j}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/slf4j/slf4j-1.7.13/slf4j-log4j12-1.7.13.jar"					todir="${xlib_kms_slf4j}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+		<copy file="${external.dir}/spring/spring-4.2.4/aopalliance-1.0.jar"						todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-aop-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-beans-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-context-4.2.4.RELEASE.jar"			todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-core-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-expression-4.2.4.RELEASE.jar"		todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-jdbc-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-orm-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-tx-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-web-4.2.4.RELEASE.jar"				todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+		<copy file="${external.dir}/spring/spring-4.2.4/spring-webmvc-4.2.4.RELEASE.jar"			todir="${xlib_kms_spring}" preservelastmodified="true" overwrite="false" verbose="true" />
+
+	</target>
+
+	<target name="clean">
+		<delete dir="${xlib_kms_dir}" />
+	</target>
+</project>

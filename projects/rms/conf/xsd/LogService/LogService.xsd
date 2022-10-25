@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:import schemaLocation="types/LogTypes.xsd"/>
+    <xs:import schemaLocation="../AgentService/types/CommonFaults.xsd"/>
+
+    <xs:element name="logService" type="logServiceType"/>
+
+    <xs:complexType name="logRequestType">
+        <xs:sequence>
+            <xs:element name="logs" type="logsType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="logsType">
+        <xs:sequence>
+            <xs:element name="log" type="logType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="logType">
+        <xs:sequence>
+            <xs:element name="Rights" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Operation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Environment" type="environmentType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="User" type="userType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Host" type="hostType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Application" type="applicationType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Resource" type="resourceType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="HitPolicies" type="policiesType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="uid" type="xs:long" use="required"/>
+        <xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+        <xs:attribute name="type" type="logTypeEnum" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="logTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Evaluation"/>
+            <xs:enumeration value="Operation"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="environmentType">
+        <xs:sequence>
+            <xs:element name="SecondsSinceLastHeartbeat" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="SessionType" type="sessionTypeEnum" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="sessionTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Console"/>
+            <xs:enumeration value="Remote"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="userType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Sid" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Context" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Attributes" type="userAttributes" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="userAttributes">
+        <xs:sequence>
+            <xs:element name="Attribute" type="item" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="item">
+        <xs:attribute name="Name" type="xs:string" use="required"/>
+        <xs:attribute name="Value" type="xs:string" use="required"/>
+        <xs:attribute name="Type" type="xs:string" use="optional" default="String"/>
+    </xs:complexType>
+
+    <xs:complexType name="hostType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="ipv4" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="applicationType">
+        <xs:sequence>
+            <xs:element name="Image" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Publisher" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="resourceType">
+        <xs:sequence>
+            <xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Tags" type="tagsType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tagsType">
+        <xs:sequence>
+            <xs:element name="Tag" type="item" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="policiesType">
+        <xs:sequence>
+            <xs:element name="Policy" type="policyType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="policyType">
+        <xs:attribute name="Id" type="xs:int" use="required"/>
+        <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="logResponseType">
+        <xs:sequence>
+            <xs:element name="response" type="responseEnum" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="fault" type="commonFault" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="responseEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Success"/>
+            <xs:enumeration value="Failed"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="faultType">
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="ServiceNotReadyFault" type="xs:string"/>
+            <xs:element name="UnauthorizedCallerFault " type="xs:string"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="logServiceType">
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="logRequest" type="logRequestType"/>
+            <xs:element name="logResponse" type="logResponseType"/>
+        </xs:choice>
+        <xs:attribute name="tenantId" type="xs:string" use="required"/>
+        <xs:attribute name="agentId" type="xs:string" use="required"/>
+        <xs:attribute name="version" type="xs:int" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

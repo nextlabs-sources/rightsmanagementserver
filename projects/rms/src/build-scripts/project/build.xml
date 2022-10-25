@@ -1,0 +1,894 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE project [
+	<!ENTITY classpaths SYSTEM "../etc/classpath.skel">
+<!ENTITY taskdefs SYSTEM "../etc/build-tasks.skel">
+]>
+
+<project name="Destiny" default="build" basedir=".">
+
+	<!-- Notes: nlbuildroot must be defined before build-scripts/etc/build.properties and
+		build-scripts/etc/build_external.properties
+	-->
+	<property name="nlbuildroot" location="${basedir}/../../.." />
+
+	<property environment="env"/>
+        <property name="env.HOSTNAME" value="${env.COMPUTERNAME}"/>
+	<property name="junit.haltonfailure" value="false"/>
+	<property name="qa.patch.dir" value="${build.root.dir}/qa_patch"/>
+	<property file="${nlbuildroot}/src/build-scripts/etc/build.properties"/>
+	<property file="${nlbuildroot}/src/build-scripts/etc/build_external.properties"/>
+	<property name="std.edition.build.dir" value="${build.root.dir}/StandardEdition"/>
+	<property name="package.build.dir" value="C:/builds/package_QA"/>
+	<property environment="env"/>
+
+	&classpaths;
+	&taskdefs;
+
+    <property name="common.build.script.dir" value="${nlbuildroot}/build_scripts" />
+	<import file="${common.build.script.dir}/native_make_build.xml" />
+
+	<target name="generate-test-report">
+		<junitreport todir="${log.dir}/tests/" tofile="TESTS_Aggregation.xml">
+			<fileset dir="${log.dir}/tests">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			<fileset dir="${build.root.dir}/report">
+				<include name="**/TEST-*.xml"/>
+			</fileset> 
+			<report format="frames" todir="${log.dir}/tests/report"/>
+		</junitreport>
+	</target>
+
+	<target name="build-schema" description="Builds database schemas">
+		<ant dir="${src.root.dir}/server/tools/dbinit/src" target="build-schemas" inheritRefs="true"/>
+	</target>
+
+	<target name="build" depends="
+		pre-build
+		, wsdl
+        , build-dbInit-misc
+		, build-pf
+		, build-ind
+		, build-dcsf
+		, build-dms
+		, build-dkms
+		, build-dabs
+		, build-ddac
+		, client-security-config
+		, build-appFramework
+		, build-webFramework
+		, build-dac
+		, build-dem
+		, build-mgmtConsole
+		, build-inquiryCenter
+		, build-agent-common
+		, build-agentcontrolmanager
+		, build-odrmConsole
+		, build-rest-api
+		, build-agenttools
+		, build-agenttest
+		, build-dpc
+		, build-policyutil
+		, build-appdiscovery
+		, build-dps
+		, build-help
+		, build-policymanager
+		, build-dbInit
+		, setup-tools
+		, build-custom-report-sdk
+		, setup-test-automation
+		" description="Build all components"/>
+
+	<target name="build-odrmConsole-only" depends="
+		pre-build
+		, check-wsdl
+		, wsdl
+		, build-dbInit-misc
+		, build-pf
+		, build-ind
+		, server-pf
+		, build-server-shared
+		, build-dcsf
+		, build-dabs
+		, build-appFramework
+		, build-webFramework
+		, build-dac
+		, build-agentcontrolmanager
+		, build-odrmConsole
+		" description="Build ODRM component only"/>
+
+
+	<target name="build-agent-common" description="Agent Common." depends="build-client-common">
+		<ant dir="${src.root.dir}/common/agent" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-agentcontrolmanager" description="Agent Control Manager." depends="build-agent-common">
+		<ant dir="${src.root.dir}/client/agent/controlmanager" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-agentcontrolmanager-tests" description="Agent Control Manager Tests." depends="build-agentcontrolmanager, client-pf">
+		<ant dir="${src.root.dir}/client/agent/controlmanager" target="build-tests" inheritRefs="true"/>
+	</target>
+
+	<target name="build-agenttools" description="Agent Tools" depends="build-agent-common">
+		<ant dir="${src.root.dir}/client/agent/tools" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-client-common" description="Client common">
+		<ant dir="${src.root.dir}/client/common" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-policymanager" description="Policy Manager." depends="build-client-common, build-pf, build-help">
+		<ant dir="${src.root.dir}/client/policymanager" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-appdiscovery" description="Application Exporter.">
+		<ant dir="${src.root.dir}/client/appdiscovery" target="build" inheritRefs="true"/>
+	</target>
+
+    <target name="build-ind" description="IND Component" depends="wsdl">
+        <ant dir="${src.root.dir}/server/ind" target="build" inheritRefs="true"/>
+    </target>
+
+	<target name="run-policymanager" description="Run Policy Manager.">
+		<ant dir="${src.root.dir}/client/policymanager" target="run" inheritRefs="true"/>
+	</target>
+
+	<target name="run-appdiscovery" description="Run Application Exporter.">
+		<ant dir="${src.root.dir}/client/appdiscovery" target="run" inheritRefs="true"/>
+	</target>
+
+	<target name="build-agenttest" description="Agent Test." depends="build-agentcontrolmanager-tests">
+		<ant dir="${src.root.dir}/client/agent" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dabs" depends="build-server-shared, build-dcsf" description="Build DABS component">
+		<ant dir="${src.root.dir}/server/container/dabs" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dpc" depends="build-server-shared, build-dcsf, build-agentcontrolmanager" description="Build DPC component">
+		<ant dir="${src.root.dir}/server/container/dpc" target="build" inheritRefs="true"/>
+    </target>
+
+	<target name="build-ddac" depends="build-server-shared, build-dcsf" description="Build DDAC component">
+		<ant dir="${src.root.dir}/server/container/ddac" target="build" inheritRefs="true"/>
+    </target>
+
+	<target name="build-dac" depends="build-server-shared, build-dcsf" description="Build DAC components">
+		<ant dir="${src.root.dir}/server/container/dac" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dem" depends="build-server-shared, build-dcsf" description="Build DAC components">
+		<ant dir="${src.root.dir}/server/container/dem" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dcsf" depends="build-server-shared" description="Build DCSF components">
+		<ant dir="${src.root.dir}/server/container/dcsf" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dps" depends="build-server-shared, build-pf" description="Build DPS components">
+		<ant dir="${src.root.dir}/server/container/dps" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dms" depends="build-configuration-file-parser, build-server-shared, build-dcsf" description="Build DMS component">
+		<ant dir="${src.root.dir}/server/container/dms" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-dkms" depends="build-server-shared, build-dcsf" description="Build DKMS component">
+		<ant dir="${src.root.dir}/server/container/dkms" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-inquiryCenter" depends="build-dac" description="Build the inquiry Center">
+		<ant dir="${src.root.dir}/server/apps/inquiryCenter/src" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="rebuild-inquiryCenter" depends="build-dac" description="Build the inquiry Center">
+		<ant dir="${src.root.dir}/server/apps/inquiryCenter/src" target="cleanup" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/apps/inquiryCenter/src" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-custom-report-sdk">
+		<ant dir="${src.root.dir}/server/sdk/custom_report" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-mgmtConsole" depends="build-dac" description="Build the management console">
+		<ant dir="${src.root.dir}/server/apps/mgmtConsole/src" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-odrmConsole" depends="build-dac" description="Build the On Demand Rights Management console">
+		<ant dir="${src.root.dir}/" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-rest-api" depends="pre-build" description="Build the REST-API Connector">
+		<ant dir="${src.root.dir}/server/apps/rest-api-connector/src" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-pf" depends="server-pf, client-pf" description="Build policy framework.">
+	</target>
+
+	<target name="build-appFramework" depends="client-security-config" description="Build App Framework">
+		<ant dir="${src.root.dir}/server/apps/appFramework/src" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="setup-tools" depends="build-server-tools" description="build all standalone tools">
+		<ant dir="${src.root.dir}/server/tools" target="setup-tools" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-webFramework" depends="build-dcsf, client-security-config" description="Build Web Framework">
+		<ant dir="${src.root.dir}/server/apps/webFramework/src" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-help" depends="pre-build" description="Build the Help application">
+		<ant dir="${src.root.dir}/server/apps/help/src" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="setup-test-automation" depends="build-server-tools">
+		<ant dir="${src.root.dir}/server/tools" target="build-automation" inheritRefs="true"/>
+		<mkdir dir="${build.root.dir}/Automation"/>
+		<copy todir="${build.root.dir}/Automation/reporterdata/">
+			<fileset dir="${build.root.dir}/tools/reporterdata/"/>
+		</copy>
+		<copy file="${build.root.dir}/batchdeployer.jar" todir="${build.root.dir}/Automation"/>
+		<copy file="${build.root.dir}/logremover.jar" todir="${build.root.dir}/Automation"/>
+		<copy file="${src.root.dir}/server/tools/reporterData/etc/command_line.txt" todir="${build.root.dir}/Automation"/>
+		<copy file="${src.root.dir}/server/tools/reporterData/etc/resource.pql" todir="${build.root.dir}/Automation"/>
+		<zip destfile="${build.root.dir}/tools/Automation.zip">
+			<fileset dir="${build.root.dir}/Automation"/>
+		</zip>
+	</target>
+
+	<target name="check-style" depends="pre-build">
+		<jcsc rules="${src.root.dir}/etc/style-rules.jcsc.xml" destdir="${log.dir}/jcsc" worstcount="100" copyassociatedfiles="true" jcschome="${jcsc.home}">
+			<fileset dir="${src.root.dir}/server/apps/odrmConsole/src/java/main" includes="**/*.java"/>
+		</jcsc>
+	</target>
+
+	<target name="check-style2">
+		<checkstyle config="${src.root.dir}/etc/style-rules.checkstyle.xml" failureProperty="checkstyle.failure" failOnViolation="false">
+			<formatter type="plain" tofile="${log.dir}/checkstyle_report.txt"/>
+			<fileset dir="${src.root.dir}" includes="**/*.java"/>
+		</checkstyle>
+	</target>
+
+	<target name="check-wsdl">
+		<!-- this is a wholesale check.  If even one xsd or wsdl is out of date with one of the
+	     wsld-jars, all wsdl gets rebuilt.
+	-->
+		<uptodate property="wsdlBuild.notRequired" targetfile="${build.root.dir}/policy-services.jar">
+			<srcfiles dir="${nlbuildroot}/src" includes="**/*.xsd, **/*.wsdl"/>
+		</uptodate>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.root.dir}" verbose="false"/>
+	</target>
+
+	<target name="clean-java">
+		<delete includeEmptyDirs="true" verbose="false">
+			<fileset dir="${build.root.dir}" excludes="platform/**"/>
+		</delete>
+	</target>
+
+	<target name="client-pf" depends="build-agent-common, build-appFramework, build-webFramework" description="Build client policy framework.">
+		<ant dir="${src.root.dir}/client/pf" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="client-security-config" description="Build client security configuration.">
+		<ant dir="${src.root.dir}/client/security" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="all-QA-patches" description="Common resources" depends="DCC-QA-patch, DesktopAgent-QA-patch, FileServerAgent-QA-patch, PolicyAuthor-QA-patch"/>
+
+	<target name="DCC-QA-patch">
+		<mkdir dir="${qa.patch.dir}/DCC_Root"/>		
+		<copy file="${war.dir}/inquiryCenter.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/mgmtConsole.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/inquiryCenter.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/dabs.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/dms.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/dem.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/dcsf.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/dps.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/dac.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy file="${war.dir}/help.war" todir="${qa.patch.dir}/DCC_Root/server/apps" overwrite="false"/>
+		<copy todir="${qa.patch.dir}/DCC_Root/server/tomcat/shared/lib" overwrite="false" failonerror="true">
+			<fileset dir="${tomcat.run.home}/shared/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>	
+		<copy todir="${qa.patch.dir}/DCC_Root/server/tomcat/lib" overwrite="false" failonerror="true">
+			<fileset dir="${tomcat.run.home}/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>		
+		<zip destfile="${qa.patch.dir}/DCC.zip" basedir="${qa.patch.dir}/DCC_Root"/>		
+	</target>
+	
+	<target name="DesktopAgent-QA-patch">
+		<mkdir dir="${qa.patch.dir}/DesktopAgent_Root"/>
+		<copy todir="${qa.patch.dir}/DesktopAgent_Root" overwrite="false" failonerror="true">
+			<fileset dir="${build.root.dir}/agent/" />
+		</copy>
+		<copy todir="${qa.patch.dir}/DesktopAgent_Root/bin" overwrite="false" failonerror="true">
+			<fileset dir="${build.root.dir}/platform/win32/release/bin/" />
+		</copy>
+		<zip destfile="${qa.patch.dir}/DesktopAgent.zip" basedir="${qa.patch.dir}/DesktopAgent_Root"/>	
+	</target>
+
+	<target name="FileServerAgent-QA-patch">
+		<mkdir dir="${qa.patch.dir}/FileServerAgent_Root"/>
+		<copy todir="${qa.patch.dir}/FileServerAgent_Root" overwrite="false" failonerror="true">
+			<fileset dir="${build.root.dir}/agent/" />
+		</copy>
+		<copy todir="${qa.patch.dir}/FileServerAgent_Root/bin" overwrite="false" failonerror="true">
+			<fileset dir="${build.root.dir}/platform/win32/release/bin/" />
+		</copy>
+		<zip destfile="${qa.patch.dir}/FileServerAgent.zip" basedir="${qa.patch.dir}/FileServerAgent_Root"/>	
+	</target>
+
+	<target name="PolicyAuthor-QA-patch">
+		<mkdir dir="${qa.patch.dir}/PolicyAuthor_Root"/>
+		<copy todir="${qa.patch.dir}/PolicyAuthor_Root" overwrite="false" failonerror="true">
+			<fileset dir="${build.root.dir}/policymanager"
+					 excludes="**/config/**"/>
+			<!--	<exclude name="${build.root.dir}/policymanager/plugins/com.bluejungle.destiny.policymanager_1.0.0/config/*.*"/>
+			</fileset>-->
+		</copy>
+		<copy file="${xlib_bin32_dir}/NetworkUtils32.dll"
+		      tofile="${qa.patch.dir}/PolicyAuthor_Root/plugins/com.bluejungle.destiny.policymanager_1.0.0/bin/NetworkUtils.dll" overwrite="false"/>
+		<zip destfile="${qa.patch.dir}/PolicyAuthor.zip" basedir="${qa.patch.dir}/PolicyAuthor_Root"/>
+	</target>
+
+	<target name="doc" description="Generates javadoc for each module separately">
+		<ant dir="${src.root.dir}/common/framework" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/pf" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/common/pf" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/client/pf" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/common/dictionary" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/dictionary" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/framework" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/security" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/base" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dabs" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dms" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dcsf" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/client/agent/ipc" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/client/agent/controlmanager" target="doc" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/client/security" target="doc" inheritRefs="true"/>
+	</target>
+
+	<target name="pre-build">
+		<mkdir dir="${gen.dir}"/>
+		<mkdir dir="${public.gen.dir}"/>
+		<mkdir dir="${log.dir}/jcsc"/>
+		<mkdir dir="${log.dir}/tests"/>
+		<mkdir dir="${build.root.dir}/work"/>
+		<mkdir dir="${build.root.dir}/webapps"/>
+		<mkdir dir="${log.dir}/tomcat"/>
+		<mkdir dir="${javadocs.dir}"/>
+	</target>
+
+	<!-- These are the tests that run outside of a tomcat instance -->
+	<target name="run-standalone-tests">
+		<antfetch target="test-standalone-dms"	inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-standalone-dabs"	inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-standalone-dcsf"	inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-standalone-server-shared"	inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-standalone-dac"	inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-standalone-web-framework"	inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-policyutil" inheritrefs="true" return="junit.fail"/>
+		<ant target="rebuild-env" inheritrefs="true"/>
+		<antfetch target="test-pf" inheritrefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="run-tests-agentcontrolmanager" description="Run Agent ControlManager tests." depends="build-agenttest">
+		<ant dir="${src.root.dir}/client/agent/controlmanager" target="tests" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/client/agent" target="tests" inheritRefs="true"/>
+	</target>
+
+	<target name="run-tests-pf" depends="build-pf" description="Policy Framework Tests">
+		<ant dir="${src.root.dir}/server/pf" target="run-tests-ui" inheritRefs="true"/>			
+		<ant dir="${src.root.dir}/client/pf" target="run-tests-ui" inheritRefs="true"/>
+	</target>
+
+	<target name="server-pf" description="Build server policy framework.">
+		<ant dir="${src.root.dir}/server/pf" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="package-location-importer" depends="server-pf">
+		<ant dir="${src.root.dir}/server/pf" target="package-location-importer" inheritRefs="true"/>
+	</target>	
+
+	<target name="package-batch-deployer" depends="server-pf">
+		<ant dir="${src.root.dir}/server/pf" target="package-batch-deployer" inheritRefs="true"/>
+	</target>	
+	
+	<target name="build-server-shared" depends="build-ind, server-pf">
+		<ant dir="${src.root.dir}/server/container/shared/src" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-configuration-file-parser">
+ 		<ant dir="${src.root.dir}/server/container/shared/src/java/main" target="build-configuration-file-parser" inheritRefs="true"/>
+ 	</target>
+   
+ 	<target name="build-dbInit-misc" depends="build-configuration-file-parser">
+   		<ant dir="${src.root.dir}/server/tools" target="build-dbinit-misc" inheritRefs="true"/>
+   	</target>
+
+ 	<target name="build-dbInit" depends="build-configuration-file-parser">
+   		<ant dir="${src.root.dir}/server/tools" target="build-dbinit" inheritRefs="true"/>
+   	</target>
+	
+	<target name="build-server-tools">
+		<ant dir="${src.root.dir}/server/tools" target="build-datasync-cli" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/tools" target="build-reporterData" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-importexport-cli" depends="client-pf, build-appFramework">
+		<ant dir="${src.root.dir}/server/tools" target="build-importexport-cli" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-policyutil" depends="server-pf" description="Build policy utilities.">
+		<ant dir="${src.root.dir}/client/policyutil/" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-datasync-cli" depends="client-pf, build-appFramework">
+		<ant dir="${src.root.dir}/server/tools" target="build-datasync-cli" inheritRefs="true"/>
+	</target>
+	
+	<target name="build-integration-test" depends="build-dms, build-policyutil, build-server-shared, build-policymanager" description="Build policy utilities.">
+		<ant dir="${src.root.dir}/test/integration/" target="build" inheritRefs="true"/>
+	</target>
+
+	<target name="build-installers-debug" description="Builds the various installer projects - Debug versions">
+		<property name="bin.ver" value="debug"/>
+		<property name="preserve.timestamps" value="true"/>
+		<ant dir="${src.root.dir}/installer" target="build" inheritrefs="true"/>
+	</target>
+	<target name="build-installers" description="Builds the various installer projects">
+		<property name="bin.ver" value="release"/>
+		<property name="preserve.timestamps" value="false"/>
+		<ant dir="${src.root.dir}/installer" target="build" inheritrefs="true"/>
+	</target>
+	
+	<target name="build-installers64" description="Builds the various installer projects">
+		<property name="bin.ver" value="release"/>
+		<property name="preserve.timestamps" value="false"/>
+		<ant dir="${src.root.dir}/installer" target="build-64" inheritrefs="true"/>
+	</target>
+	
+	<target name="build-upgrade-installers" description="Builds the various upgrade installer projects">
+		<property name="bin.ver" value="release"/>
+		<property name="preserve.timestamps" value="false"/>
+		<ant dir="${src.root.dir}/installer" target="build-upgrade-installers" inheritrefs="true"/>
+	</target>
+		
+	<target name="rebuild-installers" description="Rebuild the installers">
+		<property name="bin.ver" value="release"/>
+		<property name="preserve.timestamps" value="false"/>
+		<ant dir="${src.root.dir}/installer" target="rebuild" inheritrefs="true"/>
+	</target>
+ 		
+   	<target name="get_installer" description="Extract the installers">
+   		<copy file="${installer.output.dir}/complianceagent/Configurations/exe/DiskImages/DISK1/WindowsDesktopEnforcer-setup.exe" tofile="C:\builds\QA_installer\WindowsDesktopEnforcer-setup.exe" failonerror="true"/>
+   		<copy file="${installer.output.dir}/complianceagent/Configurations/msi/DiskImages/DISK1/WindowsDesktopEnforcer-setup.msi" tofile="C:\builds\QA_installer\WindowsDesktopEnforcer-setup.msi" failonerror="true"/>
+   		<copy file="${installer.output.dir}/controlcenter/Configurations/exe/DiskImages/DISK1/ControlCenter-setup.exe" tofile="C:\builds\QA_installer\ControlCenter-setup.exe" failonerror="true"/>
+   		<copy file="${installer.output.dir}/controlcenter/Configurations/msi/DiskImages/DISK1/ControlCenter-setup.msi" tofile="C:\builds\QA_installer\ControlCenter-setup.msi" failonerror="true"/>
+   		<copy file="${installer.output.dir}/enforceragent/Configurations/exe/DiskImages/DISK1/WindowsFileServerEnforcer-setup.exe" tofile="C:\builds\QA_installer\WindowsFileServerEnforcer-setup.exe" failonerror="true"/>
+   		<copy file="${installer.output.dir}/enforceragent/Configurations/msi/DiskImages/DISK1/WindowsFileServerEnforcer-setup.msi" tofile="C:\builds\QA_installer\WindowsFileServerEnforcer-setup.msi" failonerror="true"/>
+   		<copy file="${installer.output.dir}/policyauthor/Configurations/exe/DiskImages/DISK1/PolicyAuthor-setup.exe" tofile="C:\builds\QA_installer\PolicyAuthor-setup.exe" failonerror="true"/>
+   		<copy file="${installer.output.dir}/policyauthor/Configurations/msi/DiskImages/DISK1/PolicyAuthor-setup.msi" tofile="C:\builds\QA_installer\PolicyAuthor-setup.msi" failonerror="true"/>
+   	</target>
+
+ 	<target name="get_license" description="Extract the license">
+ 		<copy file="C:/builds/Destiny/run/server/license/license.dat" tofile="C:\builds\QA_license\license.dat" failonerror="true"/>
+ 	</target>
+	
+	<target name="package_QA_build" description="Package the build for QA">
+		<copy todir="${build.root.dir}/packaged_qa_build/Tools/appdiscovery">
+			<fileset dir="${build.root.dir}/tools/appdiscovery"/>
+		</copy>
+		<copy todir="${build.root.dir}/packaged_qa_build/Tools/appdiscovery/" file="${build.root.dir}/platform/win32/release/bin/IPCJNI.dll"/>
+		<copy todir="${build.root.dir}/packaged_qa_build/Tools/appdiscovery/jre">
+			<fileset dir="${java.jre.root}" defaultexcludes="false"/>
+		</copy>
+		<copy todir="${build.root.dir}/packaged_qa_build/Tools/" file="${build.root.dir}/Tools/Automation.zip"/>
+		<copy todir="${build.root.dir}/packaged_qa_build/Tools/setattribute/" file="${build.root.dir}/platform/win32/release/bin/customAttrSetter.exe"/>
+	</target>
+	
+	<target name="prepare-platform-buildenv" description="Prepare Build Environment for Platform.">
+		<exec dir="${src.root.dir}/etc/" executable="cmd.exe">
+			<arg line="/c buildenv.bat ${external.dir} ${build.root.dir}"/>
+		</exec>
+	</target>
+
+	<target name="build-native_for_targetenv">
+	  <!-- targetenv hard coded -->
+        <echo message="ENVIRONMENT enforcers.dir: ${enforcers.dir}" />
+	  <make dir="${src.root.dir}\platform\win32\util\NetworkUtils\NetworkUtils" targetenv="${targetenv}"/>
+	  <make dir="${src.root.dir}\platform\win32\agent\IPC" targetenv="${targetenv}"/>
+	  <make dir="${src.root.dir}\platform\win32\agent\FileServerTestTools\GetDupDirs" targetenv="${targetenv}"/>
+	</target>
+
+ 	<!-- also contains 64bit components -->
+	<target name="build-native" depends="prepare-platform-buildenv, native_make_build.init" description="Build win32 Platform">
+	  	<foreach list="${targetenv.list}" 
+			 target="build-native_for_targetenv" 
+			 param="targetenv" 
+			 delimiter=";" 
+			 inheritall="true" 
+			 inheritrefs="true"/>
+							
+		<exec dir="${src.root.dir}\platform\win32\installer" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild release installers.sln"/>
+		</exec>
+		<exec dir="${src.root.dir}\platform\win32\installer" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild debug installers.sln"/>
+		</exec>
+		<exec dir="${src.root.dir}\platform\win32\installer\Installer_CA" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild release Installer_CA.sln"/>
+		</exec> 
+	</target>
+	
+	<target name="build-drivers" description="Build Drivers">
+
+		<exec dir="${src.root.dir}\platform\drivers\CORE" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild Release DSCORE.sln"/>
+		</exec>
+		<copy todir="${build.root.dir}\platform\win32\drivers\CORE\release">
+			<fileset dir="${src.root.dir}\platform\drivers\core\Release"/>
+		</copy>
+
+		<exec dir="${src.root.dir}\platform\drivers\CORE" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild Debug DSCORE.sln"/>
+		</exec>
+		<copy todir="${build.root.dir}\platform\win32\drivers\CORE\Debug">
+			<fileset dir="${src.root.dir}\platform\drivers\core\Debug"/>
+		</copy>
+
+		
+		<exec dir="${src.root.dir}\platform\drivers\COREPOLICY\COREIPCTEST" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild Release COREIPCTEST.sln"/>
+		</exec>
+		<exec dir="${src.root.dir}\platform\drivers\COREPOLICY\COREIPCTEST" executable="cmd.exe" failonerror="true">
+			<arg line="/c &quot;${vs2k8.compiler}&quot; /rebuild Debug COREIPCTEST.sln"/>
+		</exec>
+		
+	</target>
+
+	<!-- These are some utilities to start the Tomcat Server -->
+	<target name="start-tomcat-servers">
+		<parallel>
+		    <daemons>
+			     <sequential>
+				      <echo message="Starting first Tomcat.  Next will start in 30 seconds"/>
+				      <exec executable="cmd.exe" spawn="false">
+					       <env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+						   <env key="JAVA_OPTS" value="-Djava.util.logging.config.file=${run.dir}/logging.properties -XX:MaxPermSize=256m -Dsun.lang.ClassLoader.allowArraySyntax=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=20001" />
+						   <arg line="/c ${run.dir}/server/tomcat/bin/startup.bat -config ${run.dir}/server.xml"/>
+					  </exec>
+			    </sequential>
+			    <sequential>
+				      <sleep seconds="120" />
+				      <echo message="Starting second Tomcat.  Next will start in 30 seconds"/>
+					  <exec executable="cmd.exe" spawn="true">
+				           <env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+						   <env key="JAVA_OPTS" value="-Djava.util.logging.config.file=${run.dir}/logging-1.properties -XX:MaxPermSize=256m -Dsun.lang.ClassLoader.allowArraySyntax=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=20002" />
+					       <arg line="/c ${run.dir}/server/tomcat/bin/startup.bat -config ${run.dir}/server-2.xml"/>
+					  </exec>
+			    </sequential>
+			    <sequential>
+			         <sleep seconds="180" />
+					 <echo message="Starting last Tomcat."/>
+			         <exec executable="cmd.exe" spawn="true">
+				          <env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+						  <env key="JAVA_OPTS" value="-Djava.util.logging.config.file=${run.dir}/logging-2.properties -XX:MaxPermSize=256m -Dsun.lang.ClassLoader.allowArraySyntax=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=20003" />
+						  <arg line="/c ${run.dir}/server/tomcat/bin/startup.bat -config ${run.dir}/server-1.xml"/>
+			         </exec>
+			    </sequential>
+			</daemons>
+		</parallel>
+
+		<!-- Waiting for Tomcat to be ready -->
+		<sleep seconds="${tomcat.wait}"/>
+	</target>
+
+	<target name="start-tomcat-server">
+		<exec executable="cmd.exe" spawn="true">
+			<env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+			<env key="JAVA_OPTS" value="-Dsun.lang.ClassLoader.allowArraySyntax=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=20004 -Xrunjdwp:transport=dt_socket,address=9001,server=y,suspend=n -XX:MaxPermSize=160M -Xmx1024M -Xms256M -Dcatalina.base=${run.dir}/tomcat -Dcatalina.home=${run.dir}/tomcat -Djava.endorsed.dirs=${run.dir}/tomcat\common\endorsed -Djava.io.tmpdir=${run.dir}/tomcat\temp -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.util.logging.config.file=${run.dir}/configuration\logging.properties"/>
+			<arg line="/c ${run.dir}/server/tomcat/bin/startup.bat -config ${run.dir}/server.xml"/>
+		</exec>
+		<sleep seconds="${tomcat.wait}"/>
+	</target>
+
+	<target name="stop-tomcat-servers">
+		<sequential>
+			<exec executable="cmd.exe">
+				<env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+				<arg line="/c ${run.dir}/server/tomcat/bin/shutdown.bat -config ${run.dir}/server-2.xml"/>
+			</exec>
+			<exec executable="cmd.exe">
+				<env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+				<arg line="/c ${run.dir}/server/tomcat/bin/shutdown.bat -config ${run.dir}/server-1.xml"/>
+			</exec>
+			<exec executable="cmd.exe">
+				<env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+				<arg line="/c ${run.dir}/server/tomcat/bin/shutdown.bat -config ${run.dir}/server.xml"/>
+			</exec>
+		</sequential>
+	</target>
+	
+	<target name="stop-tomcat-server">
+		<exec executable="cmd.exe">
+			<env key="CATALINA_HOME" path="${tomcat.run.home}"/>
+			<arg line="/c ${run.dir}/server/tomcat/bin/shutdown.bat -config ${run.dir}/server.xml"/>
+		</exec>
+	</target>
+
+	<target name="install-agent"><!-- you may want to copy the HookTool.ini file into your agent location -->
+		<copy todir="${build.root.dir}/agent_install/config" overwrite="true" includeemptydirs="true">
+			<fileset dir="${build.root.dir}/config/"/>
+		</copy>
+		<exec dir="${build.root.dir}/platform/win32/release/bin/" executable="cmd.exe" failonerror="true">
+			<arg line="/c controlmodule -i -Djava.class.path=${build.root.dir}\agent-controlmanager.jar;${build.root.dir}\common-domain.jar;${build.root.dir}\common-domain-types.jar;${build.root.dir}\common-framework.jar;${build.root.dir}\server-base.jar;${build.root.dir}\common-pf.jar;${xlib_jar_dir}\axis.jar;${build.root.dir}\agent-types.jar;${xlib_jar_dir}/commons-logging-1.0.4.jar;${xlib_jar_dir}/castor-0.9.5.4.jar;${build.root.dir}\management-types.jar;${xlib_jar_dir}/jaxrpc.jar;${xlib_jar_dir}/xercesImpl.jar;${xlib_jar_dir}\xmlParserAPIs.jar;${build.root.dir}\agent-common.jar;${build.root.dir}\dabs-common-services.jar;${build.root.dir}\dabs-agent-services.jar;${build.root.dir}\log-types.jar;${xlib_jar_dir}/commons-discovery-0.2.jar;${xlib_jar_dir}/saaj.jar;${xlib_jar_dir}\wsdl4j-1.5.1.jar;${build.root.dir}\agent-ipc.jar;${build.root.dir}\client-pf.jar;${xlib_jar_dir}/ehcache-1.1.jar;${xlib_jar_dir}\commons-collections-2.1.1.jar;${xlib_jar_dir}/junit-4.3.jar;${build.root.dir}\common-framework-types.jar;${xlib_jar_dir}/activation.jar;${xlib_jar_dir}\mail.jar;${build.root.dir}\policy-types.jar;${build.root.dir}\deployment-types.jar;${xlib_jar_dir}\antlr.jar;${build.root.dir}\server-shared-types.jar;${build.root.dir}\crypt.jar;${build.root.dir}\version-types.jar;${build.root.dir}\version.jar;${build.root.dir}\common-version-impl.jar;${build.root.dir}\common-version.jar;${build.root.dir}\common-oil.jar -Djava.util.logging.config.file=${build.root.dir}\run\logging.properties -Djava.library.path=${build.root.dir}\platform\win32\debug\bin -Djava.util.logging.config.file=${build.root.dir}\run\logging.properties -Xdebug -Xrunjdwp:transport=dt_socket,address=6000,server=y,suspend=n wrkdir=${build.root.dir}/agent_install"/>
+		</exec>	
+	</target>
+	
+	<target name="uninstall-agent">
+		<exec dir="${build.root.dir}/platform/win32/release/bin/" executable="cmd.exe" failonerror="true">
+			<arg line="/c controlmodule -r -Djava.class.path=${build.root.dir}\agent-controlmanager.jar;${build.root.dir}\common-domain.jar;${build.root.dir}\common-domain-types.jar;${build.root.dir}\common-framework.jar;${build.root.dir}\server-base.jar;${build.root.dir}\common-pf.jar;${xlib_jar_dir}\axis.jar;${build.root.dir}\agent-types.jar;${xlib_jar_dir}/commons-logging-1.0.4.jar;${xlib_jar_dir}/castor-0.9.5.4.jar;${build.root.dir}\management-types.jar;${xlib_jar_dir}/jaxrpc.jar;${xlib_jar_dir}/xercesImpl.jar;${xlib_jar_dir}\xmlParserAPIs.jar;${build.root.dir}\agent-common.jar;${build.root.dir}\dabs-common-services.jar;${build.root.dir}\dabs-agent-services.jar;${build.root.dir}\log-types.jar;${xlib_jar_dir}/commons-discovery-0.2.jar;${xlib_jar_dir}/saaj.jar;${xlib_jar_dir}\wsdl4j-1.5.1.jar;${build.root.dir}\agent-ipc.jar;${build.root.dir}\client-pf.jar;${xlib_jar_dir}/ehcache-1.1.jar;${xlib_jar_dir}\commons-collections-2.1.1.jar;${xlib_jar_dir}/junit-4.3.jar;${build.root.dir}\common-framework-types.jar;${xlib_jar_dir}/activation.jar;${xlib_jar_dir}\mail.jar;${build.root.dir}\policy-types.jar;${build.root.dir}\deployment-types.jar;${xlib_jar_dir}\antlr.jar;${build.root.dir}\server-shared-types.jar;${build.root.dir}\crypt.jar;${build.root.dir}\version-types.jar;${build.root.dir}\version.jar;${build.root.dir}\common-version-impl.jar;${build.root.dir}\common-version.jar;${build.root.dir}\common-oil.jar -Djava.util.logging.config.file=${build.root.dir}\run\logging.properties -Djava.library.path=${build.root.dir}\platform\win32\debug\bin -Xdebug -Xrunjdwp:transport=dt_socket,address=6000,server=y,suspend=n wrkdir=${build.root.dir}/agent_install"/>
+		</exec>	
+		<delete file="${build.root.dir}/agent_install/config/registration.info"/>
+		<delete file="${build.root.dir}/agent_install/config/security/agent-keystore.jks"/>			
+		<delete file="${build.root.dir}/agent_install/config/security/agent-truststore.jks"/>
+		<delete file="${build.root.dir}/agent_install/bundle.bin"/>
+	</target>
+	
+	<target name="start-agent-service">
+		<exec dir="${build.root.dir}/platform/win32/release/bin/" executable="cmd.exe" failonerror="true">
+			<arg line="/c net start 'Compliance Agent Service'"/>
+		</exec>
+		<sleep seconds="${agent.wait}"/>
+	</target>
+
+	<target name="stop-agent-service">
+		<exec dir="${build.root.dir}/platform/win32/release/bin/" executable="cmd.exe" failonerror="true">
+			<arg line="/k start StopEnforcer.exe -p password"/>
+		</exec>		
+	</target>
+
+	<target name="start-pqlimport"><!-- need to update this -->
+		<exec executable="cmd.exe" failonerror="true">
+			<arg line="/k start java -cp ${build.root.dir}/server-base.jar;${build.root.dir}/management-types.jar;${build.root.dir}/server-datasource.jar;${build.root.dir}/common-framework.jar;${build.root.dir}/common-pf.jar;${build.root.dir}/server-pf.jar;${build.root.dir}/server-framework.jar;${build.root.dir}/server-dcsf.jar;${build.root.dir}/server-dcsf-test.jar;${xlib_jar_dir}/junit-4.3.jar;${xlib_jar_dir}/hibernate2.jar;${xlib_jar_dir}/jta.jar;${xlib_jar_dir}/commons-collections-2.1.1.jar;${xlib_jar_dir}/cglib-full-2.0.2.jar;${xlib_jar_dir}/ehcache-1.1.jar;${xlib_jar_dir}/dom4j-1.4.jar;${xlib_jar_dir}/commons-logging-1.0.4.jar;${build.root.dir}/client-policyutil.jar;${xlib_jar_dir}/axis.jar;${xlib_jar_dir}/jaxrpc.jar;${xlib_jar_dir}/postgresql-9.2-1002.jdbc4.jar;${xlib_jar_dir}/antlr.jar;${xlib_jar_dir}/mail.jar;${build.root.dir}/server-pf-tests.jar com.bluejungle.destiny.policyutil.deploy.PQLImporter"/>
+		</exec>
+	</target>
+
+	<target name="test-all">
+		<antfetch target="run-standalone-tests" inheritrefs="true" return="junit.fail"/>
+		<ant target="rebuild-env" inheritrefs="true"/>
+		<ant target="start-tomcat-servers" inheritrefs="true"/>
+		<antfetch target="test-inquiryCenter" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-server-shared" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-app-framework" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-mgmt-console" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-dabs" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-dac" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-dcsf" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-dms" inheritrefs="true" return="junit.fail"/>
+		<antfetch target="test-dps" inheritrefs="true" return="junit.fail"/>
+		<ant target="stop-tomcat-servers" inheritrefs="true"/>
+		<antfetch target="run-tests-agentcontrolmanager" inheritrefs="true" return="junit.fail"/>
+		<ant target="generate-test-report" inheritrefs="true"/>
+	</target>
+
+	<target name="test-dabs" description="Test DABS component (inline)">
+		<antfetch dir="${src.root.dir}/server/container/dabs" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-dac" description="Test DAC component (this assumes the service is up)">
+		<antfetch dir="${src.root.dir}/server/container/dac" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-dcsf" description="Test DCSF component">
+		<antfetch dir="${src.root.dir}/server/container/dcsf" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-dms" description="Test DMS component (inline)">
+		<antfetch dir="${src.root.dir}/server/container/dms" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-dps" description="Test DPS component (inline)">
+		<antfetch dir="${src.root.dir}/server/container/dps" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-inquiryCenter" description="Tests the inquiry center">
+		<antfetch dir="${src.root.dir}/server/apps/inquiryCenter/src/java/test" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-standalone-server-shared" depends="build-server-shared" description="Tests Server Shared">
+	  	<antfetch dir="${src.root.dir}/server/container/shared/src/java/test/" target="standalone-tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+	
+	<target name="test-pf" depends="build-pf" description="Policy Framework Tests (inline)">
+		<antfetch dir="${src.root.dir}/server/pf" target="tests" inheritRefs="true" return="junit.fail"/>	
+		<antfetch dir="${src.root.dir}/client/pf" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-server-shared" depends="build-server-shared" description="Tests Server Shared">
+		<antfetch dir="${src.root.dir}/server/container/shared/src/java/test/" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-enrollment" depends="build-server-shared" description="Tests Enrollment">
+		<antfetch dir="${src.root.dir}/server/container/shared/src/java/test/" target="test-enrollment" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-standalone-dac" depends="build-dac" description="Standalone tests for DAC">
+		<antfetch dir="${src.root.dir}/server/container/dac" target="test-standalone" inheritrefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-standalone-dcsf" depends="build-dcsf" description="Tests for the standalne DCSF components">
+		<antfetch dir="${src.root.dir}/server/container/dcsf" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+	
+	<target name="test-standalone-dabs" description="Tests the DABS component standalone (w/o a tomcat server)">
+		<antfetch dir="${src.root.dir}/server/container/dabs" target="standalone-tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-standalone-dms" description="Tests the DMS component standalone (w/o a tomcat server)">
+		<antfetch dir="${src.root.dir}/server/container/dms" target="standalone-tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-app-framework" description="Tests the app framework">
+		<antfetch dir="${src.root.dir}/server/apps/appFramework/src/java/test" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+	
+	<target name="test-policyutil" description="Tests the PQLImporter">
+		<antfetch dir="${src.root.dir}/client/policyutil" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-standalone-web-framework" description="Tests the web framework">
+		<antfetch dir="${src.root.dir}/server/apps/webFramework/src/java/test" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+
+	<target name="test-mgmt-console" description="Test management console">
+		<antfetch dir="${src.root.dir}/server/apps/mgmtConsole/src/java/test" target="tests" inheritRefs="true" return="junit.fail"/>
+	</target>
+	
+	<target name="setup-integration-test" description="File setup for integration test">		
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/tracking.txt" tofile="${build.root.dir}/integration-test/rename.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/write.txt" tofile="${build.root.dir}/integration-test/move.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/edit-deny-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/edit-allow-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/delete-deny-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/delete-allow-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/move-deny-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/move-allow-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/rename-deny-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/rename-allow-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/attribute-deny-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/attribute-allow-user/test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/deny-read.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/allow-group-read.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/reporting-test.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/file-copy.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/move-file.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/rename-file.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/attribute.txt" overwrite="true"/>
+		<copy file="${src.root.dir}/test/read.txt" tofile="${build.root.dir}/integration-test/test/write/user/test.txt" overwrite="true"/>
+		<mkdir dir="${build.root.dir}/integration-test/move-to"/>
+		<copy todir="${build.root.dir}/platform/win32/release/bin" overwrite="true" includeemptydirs="true">
+			<fileset dir="${src.root.dir}/etc/">
+				<include name="*.ini"/>
+			</fileset>
+		</copy>
+		<copy file="${build.root.dir}/platform/win32/drivers/NTProcDrv/WXPrelease/NTProcDrv.sys" todir="${build.root.dir}/platform/win32/release/bin" overwrite="true"/>
+	</target>
+	
+	<target name="test-integration-run" depends="setup-integration-test" description="Test Integration">
+		<antcall target="stop-agent-service" inheritRefs="true"/>
+		<antcall target="uninstall-agent" inheritRefs="true"/>
+		<antcall target="stop-tomcat-servers-one" inheritRefs="true"/>
+		<antcall target="rebuild-env" inheritRefs="true"/>
+		<antcall target="start-tomcat-servers-one" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/test/integration" target="tests" inheritRefs="true"/>
+		<!--<sleep seconds="400"/>-->
+		<antcall target="stop-agent-service" inheritRefs="true"/>
+		<antcall target="stop-tomcat-servers-one" inheritRefs="true"/>
+		<antcall target="uninstall-agent" inheritRefs="true"/>
+		<antcall target="generate-test-report" inheritRefs="true"/>
+		<!-- need to overwrite the commprofile.xml
+		<copy file="${src.root.dir}/ todir="${build.root.dir}/config" overwrite="true"/>
+		-->
+		<delete dir="${build.root.dir}/integration-test"/>
+	</target>
+	
+	<target name="test-integration-setup" depends="setup-integration-test" description="Sets up everything you need before the integration test">
+		<antcall target="stop-agent-service" inheritRefs="true"/>
+		<antcall target="uninstall-agent" inheritRefs="true"/>
+		<antcall target="stop-tomcat-servers-one" inheritRefs="true"/>
+		<antcall target="rebuild-env" inheritRefs="true"/>
+		<antcall target="start-tomcat-servers-one" inheritRefs="true"/>
+	</target>
+	
+	<target name="test-integration-test" description="Test Integration without the setup">
+		<ant dir="${src.root.dir}/test/integration" target="tests" inheritRefs="true"/>
+		<antcall target="generate-test-report" inheritRefs="true"/>
+	</target>
+	
+	<target name="test-integration-teardown" description="tear down after Test Integration">
+		<antcall target="stop-agent-service" inheritRefs="true"/>
+		<antcall target="stop-tomcat-servers-one" inheritRefs="true"/>
+		<antcall target="uninstall-agent" inheritRefs="true"/>
+		<delete dir="${build.root.dir}/integration-test"/>
+	</target>
+	
+	<target name="copy-destiny-dlls" depends="discover-system-root">
+		<copy todir="${env.SystemRoot}/system32">
+			<fileset dir="${destiny.dll.dir}"/>
+		</copy>
+	</target>
+
+	<target name="discover-system-root" unless="env.SystemRoot">
+		<property name="env.SystemRoot" value="${env.SYSTEMROOT}"/>
+	</target>
+
+	<target name="wsdl" depends="check-wsdl, pre-build" unless="wsdlBuild.notRequired">
+		<ant dir="${src.root.dir}/server/container/shared/src" target="wsdl-generate" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dps" target="wsdl-generate" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dcsf" target="wsdl-generate" inheritRefs="true"/>
+  		<ant dir="${src.root.dir}/server/container/dem" target="wsdl-generate" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dms" target="wsdl-generate" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dabs" target="wsdl-generate" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dac" target="wsdl-generate" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dkms" target="wsdl-generate" inheritRefs="true"/>
+
+
+		<ant dir="${src.root.dir}/server/container/shared/src" target="wsdl-compile" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dps" target="wsdl-compile" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dcsf" target="wsdl-compile" inheritRefs="true"/>
+        <ant dir="${src.root.dir}/server/container/dem" target="wsdl-compile" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dms" target="wsdl-compile" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dabs" target="wsdl-compile" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dac" target="wsdl-compile" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dkms" target="wsdl-compile" inheritRefs="true"/>
+
+		<ant dir="${src.root.dir}/server/container/shared/src" target="wsdl-jar" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dps" target="wsdl-jar" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dcsf" target="wsdl-jar" inheritRefs="true"/>
+        <ant dir="${src.root.dir}/server/container/dem" target="wsdl-jar" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dms" target="wsdl-jar" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dabs" target="wsdl-jar" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dac" target="wsdl-jar" inheritRefs="true"/>
+		<ant dir="${src.root.dir}/server/container/dkms" target="wsdl-jar" inheritRefs="true"/>
+
+		<!-- copy the template WSDD file so that web service installation can be done -->
+		<copy todir="${wsdd.template.dir}" file="${src.root.dir}/server/wsgen/etc/server-config.wsdd"/>
+	</target>
+
+	<target name="sharepoint-wsdl" depends="check-wsdl, pre-build">
+        <ant dir="${src.root.dir}/server/ind/etc/sharepoint" target="wsdl-jar" inheritRefs="true"/>
+    </target>
+
+	<!-- FOR ENGINEERING_INTERNAL USE ONLY -->
+	<target name="refresh-dictionary-schema">
+        <ant dir="${src.root.dir}/server/tools/dbinit/src" target="create-dictionary-schema" inheritRefs="true"/>
+	</target>
+
+	<target name="refresh-bluejungle-seeds" depends="refresh-dictionary-schema">
+		<ant dir="${src.root.dir}/server/container/shared/src/java/test" target="refresh-local-enrollment" inheritRefs="true"/>
+	</target>
+		
+	<!-- Rebuilds any environment/data for the given build -->
+	<target name="rebuild-env">
+		<ant target="build-schema" inheritRefs="true"/>
+		<ant target="refresh-bluejungle-seeds" inheritRefs="true"/>
+	</target>
+
+	<target name="build-push-deployment-client">
+		<ant dir="${src.root.dir}/client/pf" target="build-push-deployment-client" inheritRefs="true"/>
+	</target>	
+
+</project>

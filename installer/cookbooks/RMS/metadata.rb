@@ -1,0 +1,6 @@
+name             'RMS'
+maintainer       'NextLabs, Inc.'
+maintainer_email ''
+license          'NextLabs, Inc. All rights reserved.'
+description      'Install, Upgrade, or Uninstall Rights Management Server'
+version          '8.4.0'

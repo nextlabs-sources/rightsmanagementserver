@@ -1,0 +1,1647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="sharepint-on-promise">
+<!--  ODRM-489:view nxl file in site collection of sharepoint on-premise-windows authentication -->
+
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+	
+	<test name="ID 01 AllowOpenOnePagePDF1">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" /> 
+					<parameter name="FilePath" value="Documents/pdf/EAR04 onePage.pdf" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 onePage.pdf.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 onePage.pdf.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 onePage.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 onePage.pdf.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>  
+	</test>
+	
+<!--
+	<test name="ID 02 AllowOpenMulPagePDF2">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+				    <parameter name="Rights" value="Allow_View" />  
+					<parameter name="FilePath" value="Documents/pdf/EAR04 MulPage.pdf" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 MulPage.pdf.txt"/>
+				    <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 MulPage.pdf.txt"/>
+				    <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 MulPage.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 MulPage.pdf.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+    <test name="ID 03 Allowopen.pdf3">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />                  
+                <parameter name="FilePath" value="Documents/pdf/400-027-8388.pdf" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\400-027-8388.pdf.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\400-027-8388.pdf.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\400-027-8388.pdf.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\400-027-8388.pdf.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>   
+
+  <test name="ID 04 Allowopen.pdf4">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="FilePath" value="Documents/pdf/System_Admin.pdf" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\System_Admin.pdf.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\System_Admin.pdf.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\System_Admin.pdf.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\System_Admin.pdf.txt"/>             
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>   
+
+	<test name="ID 05 AllowOpenChinesePDF5">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" /> 
+					<parameter name="FilePath" value="Documents/pdf/EAR04 中文多页.pdf" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 中文多页.pdf.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 中文多页.pdf.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 中文多页.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 中文多页.pdf.txt"/> 
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="ID 06 AllowOpenOnePageExcelXLSX1">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/EXCEL/EAR04 oneSheetEnglish.xlsx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFile" value="C:\RMS\excelHTML\EAR04 oneSheetEnglish.xlsx.html"/>
+				    <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\EAR04 oneSheetEnglish.xlsx.html"/>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="sheetNum" value="1" />
+					<include name="openExcelFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+ 
+	<test name="ID 07 AllowOpenOnePageExcelXLS2">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/EXCEL/EAR04 oneSheetEnCh.xls" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFile" value="C:\RMS\excelHTML\EAR04 oneSheetEnCh.xls.html"/>
+				    <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\EAR04 oneSheetEnCh.xls.html"/>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="sheetNum" value="1" />
+					<include name="openExcelFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="ID 08 AllowOpenMulPageExcelXLSX3">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/EXCEL/EAR04 mulPageChinese.xlsx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFile" value="C:\RMS\excelHTML\EAR04 mulPageChinese.xlsx.html"/>
+				    <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\EAR04 mulPageChinese.xlsx.html"/>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="sheetNum" value="3" />
+					<include name="openExcelFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="ID 09 AllowOpenMulPageExcelXLS4">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/EXCEL/EAR04 MulPageEnglish .xls" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFile" value="C:\RMS\excelHTML\EAR04 MulPageEnglish .xls.html"/>
+				    <parameter name="CompareDesFile" value="\\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\EAR04 MulPageEnglish .xls.html"/>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="sheetNum" value="8" />
+					<include name="openExcelFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="ID 10 AllowOpenOnePageWordDOC1">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/word/EAR04 onePage.doc" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 onePage.doc.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 onePage.doc.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 onePage.doc.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 onePage.doc.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="ID 11 AllowOpenOnePageWordDOCX2">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+				    <parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/word/EAR04 onePage.docx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 onePage.docx.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 onePage.docx.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 onePage.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 onePage.docx.txt"/>					
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+ 
+  	
+	<test name="ID 12 AllowOpenMulPageWordDOC3">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+				    <parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/word/EAR04 mulPage-10M.doc" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 mulPage-10M.doc.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 mulPage-10M.doc.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 mulPage-10M.doc.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 mulPage-10M.doc.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+	
+	<test name="ID 13 AllowOpenMulPageWordDOCX4">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />					
+					<parameter name="FilePath" value="Documents/word/EAR04 mulPage.docx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 mulPage.docx.txt"/>
+				    <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 mulPage.docx.txt"/>
+				    <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 mulPage.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 mulPage.docx.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+	
+	  <test name="ID 14 Allowopen.doc5">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="FilePath" value="Documents/word/MCS51系列单片机实验.doc" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\MCS51系列单片机实验.doc.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\MCS51系列单片机实验.doc.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\MCS51系列单片机实验.doc.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\MCS51系列单片机实验.doc.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+    
+  <test name="ID 15 Allowopen.doc6">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />                 
+                <parameter name="FilePath" value="Documents/word/WeADMIN_ITOSS.doc" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\WeADMIN_ITOSS.doc.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\WeADMIN_ITOSS.doc.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\WeADMIN_ITOSS.doc.txt"/>                
+                <parameter name="CompareDesFile" value="C:\RMS\automation\WeADMIN_ITOSS.doc.txt"/> 
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>   
+   
+  <test name="ID 16 Allowopen.docx8">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />            
+                <parameter name="FilePath" value="Documents/word/MCS51系列单片机实验.docx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\MCS51系列单片机实验.docx.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\MCS51系列单片机实验.docx.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\MCS51系列单片机实验.docx.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\MCS51系列单片机实验.docx.txt"/>  
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+    
+  <test name="ID 17 Allowopen.docx9">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />                 
+                <parameter name="FilePath" value="Documents/word/WeADMIN_ITOSS.docx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\WeADMIN_ITOSS.docx.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\WeADMIN_ITOSS.docx.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\WeADMIN_ITOSS.docx.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\WeADMIN_ITOSS.docx.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+
+	<test name="ID 18 AllowOpenOnePagePPTX1">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />					
+					<parameter name="FilePath" value="Documents/powerpnt/EAR04 onePage.pptx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 onePage.pptx.txt"/>
+				    <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 onePage.pptx.txt"/>
+				    <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 onePage.pptx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 onePage.pptx.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="ID 19 AllowOpenOnePagePPT2">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />					
+					<parameter name="FilePath" value="Documents/powerpnt/EAR04 onePage.ppt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 onePage.ppt.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 onePage.ppt.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 onePage.ppt.txt"/>					
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 onePage.ppt.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="ID 20 AllowOpenMulPagePPTX3">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />				
+					<parameter name="FilePath" value="Documents/powerpnt/EAR04 MulPage.pptx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 MulPage.pptx.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 MulPage.pptx.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 MulPage.pptx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 MulPage.pptx.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+
+	<test name="ID 21 AllowOpenMulPagePPT4">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/powerpnt/EAR04 MulPage.ppt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04 MulPage.ppt.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04 MulPage.ppt.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04 MulPage.ppt.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04 MulPage.ppt.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+	
+	  <test name="ID 22 Allowopen.ppt5">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="FilePath" value="Documents/powerpnt/BUS_ADMIN.ppt" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\BUS_ADMIN.ppt.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\BUS_ADMIN.ppt.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\BUS_ADMIN.ppt.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\BUS_ADMIN.ppt.txt"/>  
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+    
+  <test name="ID 23 Allowopen.ppt6">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="FilePath" value="Documents/powerpnt/class8.ppt" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\class8.ppt.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\class8.ppt.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\class8.ppt.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\class8.ppt.txt"/>  
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+   
+    <test name="ID 24 Allowopen.pptx7">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="FilePath" value="Documents/powerpnt/BUS_ADMIN.pptx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\BUS_ADMIN.pptx.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\BUS_ADMIN.pptx.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\BUS_ADMIN.pptx.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\BUS_ADMIN.pptx.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+    
+  <test name="ID 25 Allowopen.pptx8">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" /> 
+                <parameter name="FilePath" value="Documents/powerpnt/class8.pptx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\class8.pptx.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\class8.pptx.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\class8.pptx.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\automation\class8.pptx.txt"/> 
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>    
+
+	<test name="ID 26 AllowOpenPNG">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/image/EAR04.png" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04.png.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04.png.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04.png.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04.png.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+ 
+	<test name="ID 27 AllowOpenJPG">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/image/EAR04.jpg" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04.jpg.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04.jpg.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04.jpg.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04.jpg.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+
+	<test name="ID 28 SpecialCharacterDOCX1">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/word/EAR04!@$^()_=-·;.docx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.docx.txt"/>
+					<parameter name="CompareSourceFileInWin08" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.docx.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.docx.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+	
+	<test name="ID 29 SpecialCharacterDOC2">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/word/EAR04!@$^()_=-·;.doc" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.doc.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.doc.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.doc.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.doc.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>
+
+	<test name="ID 30 SpecialCharacterPPT3">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/powerpnt/EAR04!@$^()_=-·;.ppt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.ppt.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.ppt.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.ppt.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.ppt.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>	
+
+	<test name="ID 31 SpecialCharacterPPTX4">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/powerpnt/EAR04!@$^()_=-·;.pptx" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.pptx.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.pptx.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.pptx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.pptx.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>	
+
+	<test name="ID 32 SpecialCharacterPDF5">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/pdf/EAR04!@$^()_=-·;.pdf" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.pdf.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.pdf.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.pdf.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>	
+
+	<test name="ID 33 SpecialCharacterPNG6">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/image/EAR04!@$^()_=-·;.png" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.png.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.png.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.png.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.png.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>	
+
+
+	<test name="ID 34 SpecialCharacterJPG7">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="Rights" value="Allow_View" />
+					<parameter name="FilePath" value="Documents/image/EAR04!@$^()_=-·;.jpg" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\EAR04!@$^()_=-·;.jpg.txt"/>
+					<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\EAR04!@$^()_=-·;.jpg.txt"/>
+					<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\EAR04!@$^()_=-·;.jpg.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\automation\EAR04!@$^()_=-·;.jpg.txt"/>
+					<include name="openDocFromSP"></include>
+				</methods>
+			</class>
+		</classes>		
+	</test>	
+
+
+
+
+	
+	
+	<test name="ID 35 DenyOpen10M.xlsx1">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.xlsx" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.xlsx.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+    <test name="ID 36 DenyOpen10M.xls2">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.xls" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.xls.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="ID 37 DenyOpen10M.pdf3">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.pdf" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.pdf.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="ID 38 DenyOpen10M.pptx4">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.pptx" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.pptx.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="ID 39 DenyOpen10M.ppt5">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.ppt" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.ppt.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="ID 40 DenyOpen10M.docx6">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.docx" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.docx.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="ID 41 DenyOpen10M.doc7">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/BigFiles/10M.doc" />
+					<parameter name="UserName" value="qapf1\administrator" />
+					<parameter name="Password" value="123blue!" />
+					<parameter name="ErrorMes" value="You are not authorized to view this document. (10M.doc.nxl)" />   
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+    <test name="ID 42 Allowopen10M.xlsx1">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/BigFiles/10M.xlsx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFile" value="C:\RMS\excelHTML\10M.xlsx.txt"/>
+                <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\10M.xlsx.txt"/>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="sheetNum" value="3" /> 
+                <include name="openExcelFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+
+   <test name="ID 43 Allowopen10M.xls2">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/BigFiles/10M.xls" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFile" value="C:\RMS\excelHTML\10M.xls.html"/>
+                <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\10M.xls.html"/>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="sheetNum" value="3" />  
+                <include name="openExcelFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+
+   <test name="ID 44 Allowopen10M.pdf3">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" /> 
+                <parameter name="FilePath" value="Documents/BigFiles/10M.pdf" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\10M.pdf.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\10M.pdf.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\10M.pdf.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\10M.pdf.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+
+   <test name="ID 45 Allowopen10M.pptx4">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="FilePath" value="Documents/BigFiles/10M.pptx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\10M.pptx.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\10M.pptx.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\10M.pptx.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\10M.pptx.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+
+   <test name="ID 46 Allowopen10M.ppt5">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" /> 
+                <parameter name="FilePath" value="Documents/BigFiles/10M.ppt" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\10M.ppt.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\10M.ppt.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\10M.ppt.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\10M.ppt.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+  
+   <test name="ID 47 Allowopen10M.docx6">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="FilePath" value="Documents/BigFiles/10M.docx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\10M.docx.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\10M.docx.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\10M.docx.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\10M.docx.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+
+   <test name="ID 48 Allowopen10M.doc7">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="Rights" value="Allow_View" />
+                <parameter name="FilePath" value="Documents/BigFiles/10M.doc" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2012\10M.doc.txt"/>
+                <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\win2008\10M.doc.txt"/>
+                <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\Linux\10M.doc.txt"/>
+                <parameter name="CompareDesFile" value="C:\RMS\10M.doc.txt"/>
+                <include name="openDocFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>
+
+    <test name="ID 49 DenyOpen.pdf3">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/pdf/400-027-8388.pdf" />
+                <parameter name="UserName" value="qapf1\administrator" />
+                <parameter name="Password" value="123blue!" />
+                <parameter name="ErrorMes" value="You are not authorized to view this document. (400-027-8388.pdf.nxl)" />
+                <include name="openNotSupportFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>   
+
+  <test name="ID 50 DenyOpen.doc6">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/word/WeADMIN_ITOSS.doc" />
+                <parameter name="UserName" value="qapf1\administrator" />
+                <parameter name="Password" value="123blue!" />
+                <parameter name="ErrorMes" value="You are not authorized to view this document. (WeADMIN_ITOSS.doc.nxl)" />
+                <include name="openNotSupportFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>   
+   
+  <test name="ID 51 DenyOpen.docx8">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/word/MCS51系列单片机实验.docx" />
+                <parameter name="UserName" value="qapf1\administrator" />
+                <parameter name="Password" value="123blue!" />
+                <parameter name="ErrorMes" value="You are not authorized to view this document. (MCS51系列单片机实验.docx.nxl)" />
+                <include name="openNotSupportFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+
+  <test name="ID 52 DenyOpen.ppt6">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/powerpnt/class8.ppt" />
+                <parameter name="UserName" value="qapf1\administrator" />
+                <parameter name="Password" value="123blue!" />
+                <parameter name="ErrorMes" value="You are not authorized to view this document. (class8.ppt.nxl)" />
+                <include name="openNotSupportFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+   
+    <test name="ID 53 DenyOpen.pptx7">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/powerpnt/BUS_ADMIN.pptx" />
+                <parameter name="UserName" value="qapf1\administrator" />
+                <parameter name="Password" value="123blue!" /> 
+                <parameter name="ErrorMes" value="You are not authorized to view this document. (BUS_ADMIN.pptx.nxl)" />
+                <include name="openNotSupportFromSP"></include>
+            </methods>
+        </class>
+    </classes>
+   </test> 
+
+    
+  <test name="ID 54 Allowopen.xls1">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/EXCEL/bank.xls" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFile" value="C:\RMS\excelHTML\bank.xls.html"/>
+                <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\bank.xls.html"/>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="sheetNum" value="3" />
+                <include name="openFileFromSharepoint"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>    
+  
+  <test name="ID 55 Allowopen.xls2">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/EXCEL/material.xls" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFile" value="C:\RMS\excelHTML\material.xls.html"/>
+                <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\material.xls.html"/>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="sheetNum" value="11" />
+                <include name="openFileFromSharepoint"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>    
+   
+    <test name="ID 56 Allowopen.xlsx1">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/EXCEL/bank.xlsx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFile" value="C:\RMS\excelHTML\bank.xlsx.html"/>
+                <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\bank.xlsx.html"/>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="sheetNum" value="3" />
+                <include name="openFileFromSharepoint"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>    
+
+  <test name="ID 57 Allowopen.xlsx2">
+    <classes>
+        <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+            <methods>
+                <parameter name="FilePath" value="Documents/EXCEL/material.xlsx" />
+                <parameter name="UserName" value="qapf1\john.tyler" />
+                <parameter name="Password" value="john.tyler" />
+                <parameter name="CompareSourceFile" value="C:\RMS\excelHTML\material.xlsx.html"/>
+                <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\destinationFiles\excelDes\material.xlsx.html"/>
+                <parameter name="Rights" value="Allow_View" />  
+                <parameter name="sheetNum" value="11" />
+                <include name="openFileFromSharepoint"></include>
+            </methods>
+        </class>
+    </classes>
+   </test>     
+
+   	<test name="ID 58 unsupportVideo.ts1odrm888(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.ts" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+   	<test name="ID 59 unsupportVideo.3gp2odrm888(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.3gp" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="ID 60 unsupportVideo.avi3odrm890(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.avi" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+     <test name="ID 61 unsupportVideo.flv4odrm888(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.flv" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSPt"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+
+    <test name="ID 62 unsupportVideo.gif5odrm888(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.gif" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+ 
+    <test name="ID 63 unsupportVideo.mkv6odrm888(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.mkv" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+    <test name="ID 64 unsupportVideo.mov7odrm888(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.mov" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+  
+    <test name="ID 65 unsupportVideo.mpg8odrm890(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.mpg" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+    
+      <test name="ID 66 unsupportVideo.rmvb9odrm890(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.rmvb" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>   
+ 
+    <test name="ID 67 unsupportVideo.swf10odrm890(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.swf" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+ 
+     <test name="ID 68 unsupportVideo.vob1-odrm890(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.vob" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+	   
+      <test name="ID 69 unsupportVideo.wmv12odrm890(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.wmv" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>   
+	
+	<test name="ID 70 unsupportVideo.mp413odrm888(7)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/video/VID.mp4" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+ 	     	
+    <test name="ID 71 unsupportAudio.mp314odrm903(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.mp3" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+  	
+     <test name="ID 72 unsupportAudio.aac15odrm905(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.aac" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+	
+	<test name="ID 73 unsupportAudio.amr16odrm905(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.amr" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+	 
+	<test name="ID 74 unsupportAudio.ape17odrm905(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.ape" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 75 unsupportAudio.flac18odrm903(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.flac" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+
+	<test name="ID 76 unsupportAudio.m4a19odrm903(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.m4a" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 77 unsupportAudio.m4r20odrm905(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.m4r" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 78 unsupportAudio.mmf21odrm905(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.mmf" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+		
+	<test name="ID 79 unsupportAudio.mp222odrm905(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.mp2" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>    
+	
+	<test name="ID 80 unsupportAudio.ogg23odrm903(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.ogg" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>    
+	
+	<test name="ID 81 unsupportAudio.wav24odrm903(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.wav" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="oopenNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 82 unsupportAudio.wma25odrm903(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.wma" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>     
+	
+	<test name="ID 83 unsupportAudio.wv26odrm903(7)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/audio/water.wv" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>     
+   
+   	<test name="ID 84 unsupportCorrupt.igs27odrm894(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.IGS" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>     
+  
+    <test name="ID 85 unsupportCorrupt.jt28odrm894(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.jt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 86 unsupportCorrupt.par29odrm894(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.par" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>   
+	
+	<test name="ID 87 unsupportCorrupt.prodrm894(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.prt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 		
+	  
+	<test name="ID 88 unsupportCorrupt.psm-31odrm894(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.psm" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+		   
+	<test name="ID 89 unsupportCorrupt.pwdodrm894(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.pwd" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+ 
+	<test name="ID 90 unsupportCorrupt.stl33odrm894(7)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.stl" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+	   
+	<test name="ID 91 unsupportCorrupt.x_b34odrm894(8)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.x_b" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 92 unsupportCorrupt.x_t35drm894(9)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.x_t" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+  
+    <test name="ID 93 unsupportCorrupt.xmt_txt36odrm894(10)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.xmt_txt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+  
+	<test name="ID 94 unsupportCorrupt.3dxml37odrm894(11)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.3dxml" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>    
+	
+	<test name="ID 95 unsupportCorrupt.cgr38odrm894(12)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.cgr" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 96 unsupportCorrupt.sldprt39odrm894(13)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/corrupt CAD file/corrupt.sldprt" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="There was an error while processing the file." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>  
+        
+	<test name="ID 97 unsupport2D.html40odrm887(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/2D unsupport/11.html" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 98 unsupport2D.CATDrawing41odrm901">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/2D unsupport/CATDrawing1.CATDrawing" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 99 unsupport2D.bmp42odrm899">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/2D unsupport/dfdf.bmp" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+ 
+	<test name="ID 100 unsupport2D.xps43odrm887(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/2D unsupport/fdfsadf.xps" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 101 unsupport2D.log44odrm887(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/2D unsupport/gear.log" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" /> 
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 102 unsupport3D.EASM45odrm897(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/3D unsupport/aasdsad.EASM" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 103 unsupport3D.model46odrm897(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/3D unsupport/boolean.model" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+
+	<test name="ID 104 unsupport3D.tga47odrm897(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SharePointPromiseTest">
+				<methods>
+					<parameter name="FilePath" value="Documents/unsupport/3D unsupport/Werewolf_torso_fur_color_2.tga" />
+					<parameter name="UserName" value="qapf1\john.tyler" />
+					<parameter name="Password" value="john.tyler" />
+					<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+					<include name="openNotSupportFromSP"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> 
+-->
+
+
+
+</suite>

@@ -1,0 +1,9 @@
+[Unit]
+Description=Nextlabs Rights Management Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/rms start
+ExecStop=/etc/init.d/rms stop
+Restart=always

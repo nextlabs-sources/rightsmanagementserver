@@ -1,0 +1,235 @@
+<!-- build_publish.xml
+
+Description:
+	This ANT script publishes installers and build artifacts to s:/build.
+	
+	To use this script, you must update properties is <project root>/scripts/build.properties or overide 
+	them from commandline (using -D option). For example:
+		
+		set PATH=C:\depot\external\apache-ant\apache-ant-1.8.4\bin;%PATH%
+		ant -XX:MaxPermSize=512m -Dexternal.dir=c:/depot/external -Dbuild_number=10001 -f scripts/build_publish.xml
+		
+	or
+		
+		set PATH=C:\depot\external\apache-ant\apache-ant-1.8.4\bin;%PATH%
+		set ANT_OPTS=-XX:MaxPermSize=512m -Dexternal.dir=%NLEXTERNALDIR2% -Dbuild_number=10001 
+		ant -f scripts/build_publish.xml -v	
+-->
+
+<project name="build_publish" default="all" basedir="..">
+
+	<!-- Debug 
+	<echoproperties />
+	<fail message="INFO: Debug" />
+	-->
+
+	<!-- Initialization tasks -->
+	<tstamp />
+
+	<!-- Properties -->
+	<property name="nlbuildroot" location="${basedir}"/>
+
+	<property file="${nlbuildroot}/scripts/build.properties" />
+	<property file="${nlbuildroot}/src/build-scripts/etc/build.properties" />
+	<property environment="env" />
+	
+	<!-- Global properties -->
+	<property name="build_dir" location="build" />
+	<property name="publish_BODA_sc_dir" location="${repository_root}/SecureCollaboration/${version_rms_str}/${version_build_short}" />
+	<property name="publish_BODA_sc_artifact_dir" location="${repository_root}/artifacts/SecureCollaboration/${version_rms_str}/${version_build_short}" />
+
+	<property name="zip_file_name_prefix" value="destiny-${version_str}-${version_build_short}-${build_date_long}" />
+	<property name="zip_file_xlib" value="${publish_BODA_sc_artifact_dir}/${zip_file_name_prefix}-xlib.zip" />
+	<property name="zip_file_build" value="${publish_BODA_sc_artifact_dir}/${zip_file_name_prefix}-build.zip" />
+	<property name="build_manifest_file" value="${nlbuildroot}/build.manifest" />
+
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<echo message="INFO: Dump properties completed" />
+
+	<!-- Sanity checks -->
+	<fail message="ERROR: version_str is not set" unless="version_str" />
+	<fail message="ERROR: version_str is empty">
+		<condition>
+			<equals arg1="${version_str}" arg2="" trim="true" />
+		</condition>
+	</fail>
+
+	<fail message="ERROR: build_number is not set" unless="build_number" />
+	<fail message="ERROR: build_number is empty">
+		<condition>
+			<equals arg1="${build_number}" arg2="" trim="true" />
+		</condition>
+	</fail>
+
+	<fail message="ERROR: version_build_short is not set" unless="version_build_short" />
+	<fail message="ERROR: version_build_short is empty">
+		<condition>
+			<equals arg1="${version_build_short}" arg2="" trim="true" />
+		</condition>
+	</fail>
+
+	<fail message="ERROR: build_date_long is not set" unless="build_date_long" />
+	<fail message="ERROR: build_date_long is empty">
+		<condition>
+			<equals arg1="${build_date_long}" arg2="" trim="true" />
+		</condition>
+	</fail>
+
+	<fail message="ERROR: repository_root is not set" unless="repository_root" />
+	<fail message="ERROR: repository_root is empty">
+		<condition>
+			<equals arg1="${repository_root}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<!-- We typically might not have permission to create repository_root dir, but try to create it anyway -->
+	<mkdir dir="${repository_root}" />
+	<available file="${repository_root}" type="dir" property="local.repository_root_exists" />
+	<fail message="ERROR: repository_root directory does not exist: ${repository_root}" unless="local.repository_root_exists" />
+
+	<!-- Targets -->
+	<!-- <target name="all" depends="product, archive" /> -->
+	<target name="all" depends="product" />
+
+	<target name="product" depends="sc" />
+	
+	<target name="sc">	
+		<fileset id="RightsManagementServer_zip_files" dir="${nlbuildroot}\staging">
+			<include name="RMS-*.zip" />
+			<include name="RightsManagementServer-*.zip" />						
+			<include name="RMSTestAutomation.zip" />
+		</fileset>
+		<fileset id="RightsManagementServer_installer_files" dir="${nlbuildroot}\staging">
+			<include name="RightsMgmtSrv-*.zip"/>
+			<include name="RightsMgmtSrv-*.tar.gz"/>
+		</fileset>
+		<fileset id="KeyManagementServer_zip_files" dir="${nlbuildroot}\staging">
+			<include name="KMS-*.zip" />
+			<include name="KeyManagementServer-*.zip" />						
+			<include name="KMSTestAutomation.zip" />
+		</fileset>
+		<fileset id="JavaPC_zip_files" dir="${nlbuildroot}\staging">
+			<include name="javapc-windows.zip" />
+			<include name="javapc-linux.tar" />
+		</fileset>
+		<!-- Check for errors -->
+		<fail message="ERROR: Cannot locate any RMS packages to copy... Aborting!">
+			<condition>
+				<resourcecount count="0" when="equal">
+					<fileset refid="RightsManagementServer_zip_files" />
+				</resourcecount>
+			</condition>
+		</fail>
+		
+		<fail message="ERROR: Cannot locate any KMS packages to copy... Aborting!">
+			<condition>
+				<resourcecount count="0" when="equal">
+					<fileset refid="KeyManagementServer_zip_files" />
+				</resourcecount>
+			</condition>
+		</fail>
+
+		<fail message="ERROR: Cannot locate any installer packages to copy... Aborting!">
+			<condition>
+				<resourcecount count="0" when="equal">
+					<fileset refid="RightsManagementServer_installer_files" />
+				</resourcecount>
+			</condition>
+		</fail>
+
+		<fail message="ERROR: Couldn't locate JavaPC zip to copy... Aborting!">
+			<condition>
+				<resourcecount count="0" when="equal">
+					<fileset refid="JavaPC_zip_files" />
+				</resourcecount>
+			</condition>
+		</fail>
+
+		<mkdir dir="${nlbuildroot}/staging/hoops_converter" />
+		<copy todir="${nlbuildroot}/staging/hoops_converter">
+			<fileset dir="${external.dir}/HOOPSCADViewer/2017_SP1_U1" />
+		</copy>
+		<echo file="${nlbuildroot}/staging/hoops_converter/bin/rms-cad-version.txt" message="RightsManagementServer-CADViewer-${version_rms_str}-${version_build_short}-${build_date_long}.zip" />
+		
+		<zip destfile="${nlbuildroot}\staging\RightsManagementServer-CADViewer-${version_rms_str}-${version_build_short}-${build_date_long}.zip" encoding="UTF-8">
+			<fileset dir="${nlbuildroot}/staging/hoops_converter">
+				<exclude name="**/cadviewer-modified/**"/>
+			</fileset>
+		</zip>
+		
+		<mkdir dir="${nlbuildroot}/staging/vds_viewer" />
+		<copy todir="${nlbuildroot}/staging/vds_viewer">
+			<fileset dir="${external.dir}/VDSViewer/8.3.0" />
+		</copy>
+		<echo file="${nlbuildroot}/staging/vds_viewer/SAPViewer/rms-sap-version.txt" message="RightsManagementServer-SAPViewer-${version_rms_str}-${version_build_short}-${build_date_long}.zip" />
+			
+		<zip destfile="${nlbuildroot}\staging\RightsManagementServer-SAPViewer-${version_rms_str}-${version_build_short}-${build_date_long}.zip" encoding="UTF-8">
+			<fileset dir="${nlbuildroot}/staging/vds_viewer">
+				<exclude name="**/RHViewer.jsp"/>
+				<exclude name="**/VDSViewer.jsp"/>
+			</fileset>
+		</zip>
+		
+		<mkdir dir="${nlbuildroot}/staging/perceptive" />
+		<copy todir="${nlbuildroot}/staging/perceptive">
+			<fileset dir="${external.dir}/perceptive/perceptive-11.2_Build_1858/">
+				<exclude name="**/intel-32/**"/>
+			</fileset>
+			<fileset dir="${nlbuildroot}/staging">
+				<include name ="RMS-Perceptive-Lib.jar"/>
+			</fileset>			
+		</copy>
+		<echo file="${nlbuildroot}/staging/perceptive/rms-perceptive-version.txt" message="RightsManagementServer-DocViewer-${version_rms_str}-${version_build_short}-${build_date_long}.zip" />
+		
+		<zip destfile="${nlbuildroot}\staging\RightsManagementServer-DocViewer-${version_rms_str}-${version_build_short}-${build_date_long}.zip" encoding="UTF-8">
+			<fileset dir="${nlbuildroot}/staging/perceptive"/>
+		</zip>
+		
+		<!-- Copy files -->
+		<mkdir dir="${publish_BODA_sc_dir}" />
+		<copy todir="${publish_BODA_sc_dir}">
+			<fileset refid="RightsManagementServer_zip_files" />
+			<fileset refid="KeyManagementServer_zip_files" />
+			<fileset refid="RightsManagementServer_installer_files" />
+			<fileset refid="JavaPC_zip_files" />
+		</copy>
+		<fileset id="Published_RightsManagementServer_zip_files" dir="${publish_BODA_sc_dir}">
+			<include name="*.*" />
+		</fileset>
+
+		<!-- Write information to build.manifest file -->
+		<echo message="[BUILD MANIFEST]   Product Name       : Secure Collaboration" />
+		<echo message="[BUILD MANIFEST]   Installer Location : ${publish_BODA_sc_dir}" />
+		<!-- Format path -->
+		<pathconvert pathsep="${line.separator}[BUILD MANIFEST]   Installer Package  : "             
+			property="echo.Published_RightsManagementServer_zip_files"             
+			refid="Published_RightsManagementServer_zip_files">
+		</pathconvert>
+		<echo>${echo.Published_RightsManagementServer_zip_files}</echo>
+	</target>
+
+	<target name="archive" depends="archive_xlib" />
+
+	<target name="archive_xlib">
+		<!-- Check for errors -->
+		<available file="${xlib_dir}" type="dir" property="local.xlib_exists" />
+		<fail message="ERROR: Missing xlib directory: ${xlib_dir}" unless="local.xlib_exists" />
+		
+		<!-- Zip up directory -->
+		<mkdir dir="${publish_BODA_sc_artifact_dir}" />
+		<delete file="${zip_file_xlib}" />
+		<zip destfile="${zip_file_xlib}" basedir="${xlib_dir}" update="false" />
+		<echo message="[BUILD MANIFEST] Archive: ${zip_file_xlib}" />
+	</target>
+
+	<target name="sc_manifest">
+		<!-- Check for errors -->
+		<available file="${build_manifest_file}" type="file" property="local.manifest_exists" />
+		<fail message="ERROR: Missing manifest file: ${build_manifest_file}" unless="local.manifest_exists" />
+
+		<!-- Copy file -->
+		<mkdir dir="${publish_BODA_sc_artifact_dir}" />
+		<copy file="${build_manifest_file}" todir="${publish_BODA_sc_artifact_dir}" preservelastmodified="true" overwrite="true" verbose="true" />
+	</target>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<!-- This defines RMS server and browser in client -->
+  <email id="001">
+		<SMTPHost>smtp.163.com</SMTPHost>
+		<SMTPUserName>nextlabs@163.com</SMTPUserName>
+		<SMTPPassword>123blue!</SMTPPassword>
+		<SMTPPort>25</SMTPPort>
+		<SMTPAuth>true</SMTPAuth>
+		<SMTPStarttlsEnable>true</SMTPStarttlsEnable>
+		<EmailTo>Michelle.Xu@cn.nextlabs.com;Ailsa.Chen@cn.nextlabs.com</EmailTo>
+		<EmailCC>sc-scrumteam@nextlabs.com</EmailCC>
+		<EmailSubject>RMS Automation Test Result for </EmailSubject>
+    </email>
+ </configuration>

@@ -1,0 +1,16 @@
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+        <xs:complexType name="AgentPluginData">
+                <xs:sequence>
+                        <xs:element name="Element" type="AgentPluginDataElement" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="AgentPluginDataElement">
+                <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                                <xs:attribute name="id" type="xs:string"/>
+                        </xs:extension>
+                </xs:simpleContent>
+        </xs:complexType>
+</xs:schema>

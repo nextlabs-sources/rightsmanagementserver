@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SPListFile">
+
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+	
+<!-- 
+	<test name="ID 01 openWordDOC-ODRM697a">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.doc.nxl"/>
+				<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04-win2012.doc.txt"/>
+				<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.doc.txt"/>
+				<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.doc.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\test\EAR04.doc.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+	
+    <test name="ID 02 openWordDOCX-ODRM697b">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="Rights" value="Allow_View"/>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.docx.nxl"/>
+ 				<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04-win2012.docx.txt"/>
+				<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04-rms-win2k802.docx.txt"/>
+				<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04-rms-win2k802.docx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\test\EAR04.docx.txt"/>	
+				<include name="openNotSupportFile"/>
+			</methods>
+		</classes>
+	</test>
+
+
+   <test name="ID 03 DenyOpenWordDOC-ODRM697c">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="UserName" value="administrator"></parameter>
+				<parameter name="UserPwd" value="123blue!"></parameter>
+				<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.docx.nxl"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.docx.nxl)" />
+				<include name="openNotSupportFile"/>
+			</methods>
+		</classes>
+	</test>
+-->
+	<!--
+    <test name="ID 04 DenyOpenWordDOCX-ODRM697d">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.docx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.docx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.docx.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.docx.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+
+    <test name="ID 05 openExcelXLS-ODRM697e">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="Rights" value="Allow_View" />  
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04 short.xls.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\htmlTemp\EAR04.xls.html"/>
+				<parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\html\EAR04.xls.html"/>
+				<parameter name="SheetsNum" value="-1"/>
+				<include name="openExcelFileFromRepository"/>
+			</methods>
+		</classes>
+	</test>
+	-->
+<!-- 
+   <test name="ID 06 openExcelXLSX-ODRM697f">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04Chinese.xlsx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04Chinese.xlsx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04Chinese.xlsx.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="EXCEL"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+	
+    <test name="ID 07 DenyOpenExcelXLS-ODRM697g">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04 short.xls.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04 short.xls.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04 short.xls.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="EXCEL"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04 short.xls.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+    <test name="ID 08 DenyOpenExcelXLSX-ODRM697h">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04Chinese.xlsx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04Chinese.xlsx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04Chinese.xlsx.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="EXCEL"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04Chinese.xlsx.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 09 openPPT-ODRM697i">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/字体出错。.ppt.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\字体出错。.ppt.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\字体出错。.ppt.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+  
+	<test name="ID 10 openPPTX-ODRM697j">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.pptx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pptx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.pptx.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 11 DenyOpenPPT-ODRM697k">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/字体出错。.ppt.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\字体出错。.ppt.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\字体出错。.ppt.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (字体出错。.ppt.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>	
+
+	<test name="ID 12 DenyOpenPPTX-ODRM697l">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.pptx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pptx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.pptx.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.pptx.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>	
+
+	<test name="ID 13 openPdf-ODRM698a">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.pdf.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pdf.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.pdf.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 14 DenyOpenPdf-ODRM698b">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.pdf.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pdf.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.pdf.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.pdf.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>	
+
+ 	<test name="ID 15 openPng-ODRM939a">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.png.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.png.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.png.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 16 DenyOpenPng-ODRM939b">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.png.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.png.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.png.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.png.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>	
+
+
+   	<test name="ID 17 openJpg-ODRM940a">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.jpg.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.jpg.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.jpg.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 18 DenyOpenJpg-ODRM940b">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.jpg.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.jpg.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.jpg.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.jpg.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>	
+	
+	<test name="ID 19 searchFileTypeDOCX-ODRM251a">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="docx" />
+				<parameter name="SearchNum" value="11"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+ 
+	<test name="ID 20 searchFileTypeDOC-ODRM251b">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="doc" />
+				<parameter name="SearchNum" value="5"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+		
+	<test name="ID 21 searchFileTypeXLS-ODRM251c">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value=".xls" />
+				<parameter name="SearchNum" value="7"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 22 searchFileTypeXLSX-ODRM251d">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value=".xlsx" />
+				<parameter name="SearchNum" value="13"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 23 searchFileTypePPT-ODRM251e">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ppt" />
+				<parameter name="SearchNum" value="5"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+
+    <test name="ID 24 searchFileTypePPTX-ODRM251f">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="pptx" />
+				<parameter name="SearchNum" value="6"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+
+    <test name="ID 25 searchFileTypePDF-ODRM251g">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="PDF" />
+				<parameter name="SearchNum" value="16"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+
+    <test name="ID 26 searchFileTypePNG-ODRM251h">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="Png" />
+				<parameter name="SearchNum" value="3"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+
+    <test name="ID 27 searchFileTypeJPG-ODRM251i">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value=".JPG" />
+				<parameter name="SearchNum" value="1"/>
+				<include name="checkSearchFileNum"/>
+			</methods>
+		</classes>
+	</test>
+ 
+	 <test name="ID 28 showFilesNum100-Subfolder-ODRM815">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="sub5folder" />
+				<parameter name="SearchNum" value="7"/>
+				<parameter name="ShowNum" value="100"/>
+				<include name="checkShowFileNum"/>
+			</methods>
+		</classes>
+	</test>
+
+	 
+    <test name="ID 29 showFilesNum50-LongName-ODRM252">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value=" dsfsdfdgfdhgfhhgtryhrtdfguerfheiurtfoiejfksjdfkljiruoqwierjklwjsdfiaweurioqjwkfsdoifuwoeruiqowjklfjsdfiuysiojksgfksdjgg.zip " />
+				<parameter name="SearchNum" value="1"/>
+				<parameter name="ShowNum" value="50"/>
+				<include name="checkShowFileNum"/>
+			</methods>
+		</classes>
+	</test>	 
+
+    <test name="ID 30 showFilesNum25-specialCharacter-ODRM253">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="$" />
+				<parameter name="SearchNum" value="7"/>
+				<parameter name="ShowNum" value="25"/>
+				<include name="checkShowFileNum"/>
+			</methods>
+		</classes>
+	</test>	 		
+	 
+    <test name="ID 31 showFilesNum10-multipleResult-ODRM256">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="SearchNum" value="28"/>
+				<parameter name="ShowNum" value="10"/>
+				<include name="checkShowFileNum"/>
+			</methods>
+		</classes>
+	</test>	  	 		 		 
+		
+    <test name="ID 32 showFilesNum10-space-ODRM459">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="bafa-03 04" />
+				<parameter name="SearchNum" value="2"/>
+				<parameter name="ShowNum" value="10"/>
+				<include name="checkShowFileNum"/>
+			</methods>
+		</classes>
+	</test>	  		
+ 
+	<test name="ID 33 searchFileAndOpenWordDOCX">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.docx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.docx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.docx.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>
+ 	
+	<test name="ID 34 searchFileAndOpenWordDOC">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.doc.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.doc.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.doc.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 35 searchFileAndOpenPPTX">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="EAR04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.pptx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pptx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.pptx.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test> 
+
+	<test name="ID 36 searchFileAndOpenPPT">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="字体出错" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/字体出错。.ppt.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\字体出错。.ppt.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\字体出错。.ppt.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  	
+
+	<test name="ID 37 searchFileAndOpenExcelXLSX">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04 short.xlsx.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04 short.xlsx.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04 short.xlsx.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="EXCEL"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  	
+
+	<test name="ID 38 searchFileAndOpenExcelXLS">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="Rights" value="Allow_View"/>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04 short.xls.nxl"/>
+				<parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\html\EAR04 short.xls.html"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\htmlTemp\EAR04 short.xls.html"/>
+				<parameter name="SheetsNum" value="1"/>	
+				<include name="searchExcelFile"/>
+			</methods>
+		</classes>
+	</test>  	
+	 	
+
+ 	<test name="ID 39 searchFileAndOpenPDF">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="Rights" value="Allow_View"/>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="pdf" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.pdf.nxl"/>
+				<parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pdf.txt"/>
+				<parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pdf.txt"/>
+				<parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.pdf.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.pdf.txt"/>
+				<include name="searchDocFile"/>
+			</methods>
+		</classes>
+	</test>  
+	 	-->
+	 <!--
+    <test name="ID 40 searchFileAndOpenPNG">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.png.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.png.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.png.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+ 
+     <test name="ID 41 searchFileAndOpenJPG">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ear04" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.jpg.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.jpg.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.jpg.txt"/>
+				<parameter name="rights" value="Allow_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="" />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+
+ 	 -->
+     <test name="ID 42 searchAndOpenUnsupport-log-odrm887(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="png" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/overlayEAR04/‘EAR04.png.nxl"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (‘EAR04.png.nxl)" />
+				<include name="searchNotSupportFile"/>
+			</methods>
+		</classes>
+	</test>   
+
+ <!--
+ 
+ 	<test name="ID 16 DenyOpenPng-ODRM939b">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="administrator"></parameter>
+				<parameter name="password" value="123blue!"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="filePath" value="SRMS-sp2013/Documents/overlayEAR04/EAR04.png.nxl"/>
+				<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\SPListFile\destinationFile\EAR04.png.txt"/>
+				<parameter name="CompareDesFile" value="C:\RMS\EAR04.png.txt"/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="You are not authorized to view this document. (EAR04.png.nxl)" />
+				<include name="openFileFromSPList"/>
+			</methods>
+		</classes>
+	</test>	
+ 
+     <test name="ID 43 searchAndOpenUnsupport-xps-odrm887(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="xps" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/2D/fdfsadf.xps.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+
+     <test name="ID 44 searchAndOpenUnsupport-html-odrm887(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="html" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/2D/11.html.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+
+    <test name="ID 45 searchAndOpenUnsupport-bmp-odrm899">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="bmp" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/2D/dfdf.bmp.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+ 
+     <test name="ID 46 searchAndOpenUnsupport-CATDrawing-odrm899">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="CATDrawing" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/2D/CATDrawing1.CATDrawing.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+
+     <test name="ID 47 searchAndOpenUnsupport-model-odrm897(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="model" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/3D/boolean.model.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+ 
+     <test name="ID 48 searchAndOpenUnsupport-tga-odrm897(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="tga" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/3D/Werewolf_torso_fur_color_2.tga.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+ 
+     <test name="ID 49 searchAndOpenUnsupport-easm-odrm897(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="easm" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/3D/aasdsad.EASM.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+ 
+     <test name="ID 50 searchAndOpenUnsupport-mp4-odrm888(1)====================================文件未放">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mp4" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/3D/aasdsad.EASM.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+ 
+     <test name="ID 51 searchAndOpenUnsupport-ts-odrm888(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ts" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/7.ts.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+ 
+     <test name="ID 52 searchAndOpenUnsupport-3gp-odrm888(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="3gp" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.3gp.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>     
+ 
+     <test name="ID 53 searchAndOpenUnsupport-flv-odrm888(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="flv" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.flv.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>     
+ 
+     <test name="ID 54 searchAndOpenUnsupport-gif-odrm888(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="gif" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.gif.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+ 
+     <test name="ID 55 searchAndOpenUnsupport-mkv-odrm888(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mkv" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.mkv.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+ 
+     <test name="ID 56 searchAndOpenUnsupport-mov-odrm888(7)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mov" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.mov.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+ 
+     <test name="ID 57 searchAndOpenUnsupport-avi-odrm890(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="avi" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.avi.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+ 
+     <test name="ID 58 searchAndOpenUnsupport-mpg-odrm890(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mpg" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.mpg.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+ 
+    <test name="ID 59 searchAndOpenUnsupport-rmvb-odrm890(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="rmvb" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.rmvb.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test> 
+ 
+   <test name="ID 60 searchAndOpenUnsupport-swf-odrm890(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="swf" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.swf.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+ 
+   <test name="ID 61 searchAndOpenUnsupport-vob-odrm890(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="vob" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.vob.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+ 
+   <test name="ID 62 searchAndOpenUnsupport-wmv-odrm890(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="wmv" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/video/VID_20151017_115336.wmv.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+ 
+   <test name="ID 63 searchAndOpenUnsupport-mp3-odrm903(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mp3" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/Going Out.mp3.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+ 
+   <test name="ID 64 searchAndOpenUnsupport-m4a-odrm903(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="m4a" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.m4a.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test> 
+  
+    <test name="ID 65 searchAndOpenUnsupport-flac-odrm903(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="flac" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.flac.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test> 
+  
+    <test name="ID 66 searchAndOpenUnsupport-ogg-odrm903(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ogg" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.ogg.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+  
+     <test name="ID 67 searchAndOpenUnsupport-wav-odrm903(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="wav" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.wav.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+  
+    <test name="ID 68 searchAndOpenUnsupport-wma-odrm903(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="wma" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.wma.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+  
+    <test name="ID 69 searchAndOpenUnsupport-wv-odrm903(7)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="wv" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.wv.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>      
+  
+    <test name="ID 70 searchAndOpenUnsupport-aac-odrm905(1)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="aac" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.aac.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+  
+    <test name="ID 71 searchAndOpenUnsupport-amr-odrm905(2)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="amr" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.amr.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>  
+  
+    <test name="ID 72 searchAndOpenUnsupport-ape-odrm905(3)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="ape" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.ape.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>   
+  
+    <test name="ID 73 searchAndOpenUnsupport-m4r-odrm905(4)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="m4r" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.m4r.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>    
+  
+    <test name="ID 74 searchAndOpenUnsupport-mmf-odrm905(5)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mmf" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.mmf.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>      
+  
+    <test name="ID 75 searchAndOpenUnsupport-mp2-odrm905(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mp2" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.mp2.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>       
+
+    <test name="ID 76 searchAndOpenCorrupt-mp2-odrm905(6)">
+		<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SPFileListTest"></class>
+			<methods>
+				<parameter name="userName" value="john.tyler"></parameter>
+				<parameter name="password" value="john.tyler"></parameter>
+				<parameter name="domain" value="qapf1.qalab01.nextlabs.com"></parameter>
+				<parameter name="SearchText" value="mp2" />
+				<parameter name="FilePath" value="SRMS-sp2013/Documents/unsupported file/audio/water.mp2.nxl"/>
+				<parameter name="CompareSourceFile" value=""/>
+				<parameter name="CompareDesFile" value=""/>
+				<parameter name="rights" value="Deny_View"/>
+				<parameter name="type" value="PICTURE"/>
+				<parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+				<include name="searchFileAndOpen"/>
+			</methods>
+		</classes>
+	</test>         
+      -->
+</suite>
+
+

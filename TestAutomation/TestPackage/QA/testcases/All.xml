@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RMS all test suites" parallel="none">
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+	
+	<suite-files>
+    <suite-file path="Login.xml" />
+	<suite-file path="Setting.xml" />
+    <suite-file path="ManageRepository.xml" />
+	<suite-file path="SPListFile.xml"/>
+    <suite-file path="UploadFile.xml" />
+	<suite-file path="PrintFile.xml" />
+	<suite-file path="DownloadRMC.xml"/>
+</suite-files>
+</suite>   

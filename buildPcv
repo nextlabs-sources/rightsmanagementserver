@@ -1,0 +1,95 @@
+#!/bin/bash
+#
+# DESCRIPTION
+#	Invoke PCV build
+#
+# USAGE:
+#	Steps to invoke this script.
+#		export NLEXTERNALDIR2=<path>
+#		export BUILD_NUMBER=<#>
+#		export PUBLISH_TO_BODA=Yes|yes|YES|1  # export this variable if you want to publish packages to Build-Output-Download-Area / BODA
+#		source setEnv
+#		./buildPcv
+#
+# JENKINS BUILD:
+#	cd $WORKSPACE
+#	export NLEXTERNALDIR2=c:/P4/main_external
+#	source setEnv
+#	./buildPcv
+#
+# DEBUG:
+#	To debug ANT problems, add -v option to an ANT command. For example:
+#		$ANT -v -f scripts/build_xlib.xml
+
+export ANT_HOME=$NLEXTERNALDIR2/apache-ant/apache-ant-1.7.0
+
+ANT=$ANT_HOME/bin/ant
+LOG_FILE=buildPcv.log
+BUILD_MANIFEST_FILE=build.manifest
+
+(
+set -x
+# Extract Git and Jenkins info from Workspace (only if running on Jenkins)
+if [ -f ../config.xml ]; then
+	scripts/getGitWorkspaceInfo.pl ../config.xml
+fi
+
+# # Prepare environment
+./configure --type=pcv_smdc || exit $?
+source ./build.config
+
+# Create a properties file with version information.
+mkdir -p ./src/com/nextlabs/rms/config
+echo "RMS_BUILD_NUMBER=$VERSION_BUILD" > ./conf/RMSVersion.properties
+
+# Prepare dependencies
+$ANT -f scripts/rms_build_xlib.xml || exit $?
+$ANT -f scripts/kms_build_xlib.xml || exit $?
+
+# Compile code and build installers
+export ANT_OPTS="-Xmx1024M -XX:PermSize=128m -XX:MaxPermSize=512m"
+export ANT_ARGS="-Dexternal.dir=$NLEXTERNALDIR2 -Dversion_str=$VERSION_STR -Dversion_build_short=$VERSION_BUILD_SHORT -Dbuild_date_long=$BUILD_DATE_LONG"
+$ANT -f scripts/rms-pre-build.xml prepare-RMS-KMS || exit $?
+$ANT -f scripts/build_wrapper.xml all || exit $?
+
+./generateInstaller.sh
+
+# Publish packages and artifacts to BODA only if PUBLISH_TO_BODA environment variable is set
+if [ "X${PUBLISH_TO_BODA}" = "XYes" -o "X${PUBLISH_TO_BODA}" = "Xyes" -o "X${PUBLISH_TO_BODA}" = "XYES" -o "X${PUBLISH_TO_BODA}" = "X1" ]
+then
+	# Publish installers and artifacts
+	$ANT -f scripts/build_publish.xml sc || exit $?
+fi
+
+# Create and publish build manifest
+scripts/createBuildManifest.pl $LOG_FILE > $BUILD_MANIFEST_FILE || exit $?
+
+# Publish packages and artifacts to BODA only if PUBLISH_TO_BODA environment variable is set (set in Jenkins build process)
+if [ "X${PUBLISH_TO_BODA}" = "XYes" -o "X${PUBLISH_TO_BODA}" = "Xyes" -o "X${PUBLISH_TO_BODA}" = "XYES" -o "X${PUBLISH_TO_BODA}" = "X1" ]
+then
+	# Push build-manifest to the BODA
+	$ANT -f scripts/build_publish.xml sc_manifest || exit $?
+
+	# Create the test-automation flat file that will be used for testing.
+	cd S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/
+	ls -t ${VERSION_BUILD}/RightsManagementServer-WAR-${VERSION_RMS_STR}-*.zip > S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/RMSTestAutomation.zip >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/KeyManagementServer-WAR-${VERSION_RMS_STR}-*.zip > S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/KMS_TEST_AUTOMATION.txt
+	# ls -t ${VERSION_BUILD}/KMSTestAutomation.zip >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/KMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/RightsMgmtSrv-Win-${VERSION_RMS_STR}-*.zip >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/RightsMgmtSrv-Lin-${VERSION_RMS_STR}-*.tar.gz >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/RightsManagementServer-CADViewer-${VERSION_RMS_STR}-*.zip >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/RightsManagementServer-DocViewer-${VERSION_RMS_STR}-*.zip >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+	ls -t ${VERSION_BUILD}/RightsManagementServer-SAPViewer-${VERSION_RMS_STR}-*.zip >> S:/build/pcv/SecureCollaboration/${VERSION_RMS_STR}/RMS_TEST_AUTOMATION.txt
+fi
+
+set +x
+
+echo
+echo
+echo "####################### BUILD MANIFEST CONTENTS ########################"
+cat ${WORKSPACE}/${BUILD_MANIFEST_FILE}
+echo "########################################################################"
+) 2>&1 | tee $LOG_FILE
+
+exit ${PIPESTATUS[0]}

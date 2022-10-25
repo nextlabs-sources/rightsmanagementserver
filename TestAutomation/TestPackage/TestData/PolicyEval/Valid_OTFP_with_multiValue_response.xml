@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicyQueries xmlns="https://www.nextlabs.com/rms/policy/eval">
+   <PolicyQuery>
+      <Response>
+         <Obligations/>
+         <Rights>
+            <Right>RIGHT_PRINT</Right>
+            <Right>RIGHT_VIEW</Right>
+         </Rights>
+      </Response>
+   </PolicyQuery>
+</PolicyQueries>

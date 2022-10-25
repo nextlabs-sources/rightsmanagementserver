@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT nxpackage (signature,data)>
+<!ELEMENT signature (#PCDATA)>
+<!ELEMENT data (policybundle)>
+<!ATTLIST data issuer CDATA #REQUIRED>
+<!ATTLIST data issue-time CDATA #REQUIRED>
+<!ATTLIST data data-type CDATA #IMPLIED>
+<!ELEMENT policybundle (policyset,usergroupmap,rightset,components)>
+<!ATTLIST policybundle version CDATA #REQUIRED>
+<!ATTLIST policybundle validfrom CDATA #REQUIRED>
+<!ATTLIST policybundle validthrough CDATA #IMPLIED>
+<!ELEMENT policyset (policy*)>
+<!ELEMENT policy (condition+,obligation*)>
+<!ATTLIST policy id CDATA #REQUIRED>
+<!ATTLIST policy name CDATA #REQUIRED>
+<!ATTLIST policy usergroup CDATA #IMPLIED>
+<!ATTLIST policy rights CDATA #REQUIRED>
+<!ATTLIST policy customrights CDATA #IMPLIED>
+<!ELEMENT condition (#PCDATA)>
+<!ATTLIST condition type CDATA #IMPLIED>
+<!ATTLIST condition exclude CDATA "false">
+<!ELEMENT obligation (param*)>
+<!ATTLIST obligation name CDATA #REQUIRED>
+<!ELEMENT param EMPTY>
+<!ATTLIST param name CDATA #REQUIRED>
+<!ATTLIST param value CDATA #REQUIRED>
+<!ELEMENT usergroupmap (usermap+)>
+<!ELEMENT usermap (#PCDATA)>
+<!ATTLIST usermap id CDATA #REQUIRED>
+<!ATTLIST usermap tenantid CDATA #REQUIRED>
+<!ELEMENT rightset (right+)>
+<!ELEMENT right (#PCDATA)>
+<!ATTLIST right id CDATA #REQUIRED>
+<!ATTLIST right name CDATA #REQUIRED>
+<!ATTLIST right type CDATA "builtin">
+<!ELEMENT components (applications,locations,resources)>
+<!ELEMENT applications (application*)>
+<!ELEMENT application (property*)>
+<!ATTLIST application id CDATA #IMPLIED>
+<!ELEMENT locations (location*)>
+<!ELEMENT location (property*)>
+<!ATTLIST location id CDATA #IMPLIED>
+<!ELEMENT resources (resource*)>
+<!ELEMENT resource (property*)>
+<!ATTLIST resource id CDATA #IMPLIED>
+<!ELEMENT property EMPTY>
+<!ATTLIST property type CDATA "0">
+<!ATTLIST property name CDATA #REQUIRED>
+<!ATTLIST property value CDATA #REQUIRED>
+<!ATTLIST property method CDATA "EQ">

@@ -1,0 +1,10 @@
+cookbook_path       File.join(ENV['START_DIR'],"cookbooks")
+local_mode          true
+chef_zero.enabled   true
+json_attribs        File.join(ENV['START_DIR'],"setup_ui.json")
+log_location        File.join(Dir.tmpdir,ENV['LOG_DIR'])
+log_level           :info
+verbose_logging     false
+nodename            "localhost"
+node_path           Dir.tmpdir
+cache_path          File.join(Dir.tmpdir,"local_mode_cache")

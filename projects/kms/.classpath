@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="build/xjc/src"/>
+	<classpathentry kind="src" path="conf"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/hibernate/antlr-2.7.7.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/hibernate/dom4j-1.6.1.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/hibernate/dom4j-1.6.1-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/hibernate/hibernate-commons-annotations-5.0.1.Final.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/hibernate/hibernate-commons-annotations-5.0.1.Final-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/hibernate/hibernate-core-5.0.8.Final.jar" />
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/hibernate/hibernate-jpa-2.1-api-1.0.0.Final.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/hibernate/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/slf4j/slf4j-api-1.7.13.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/slf4j/slf4j-api-1.7.13-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/slf4j/slf4j-log4j12-1.7.13.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/slf4j/slf4j-log4j12-1.7.13-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/log4j/log4j-1.2.17.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/log4j/log4j-1.2.17-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/aopalliance-1.0.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/aopalliance-1.0-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-aop-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-aop-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-core-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-core-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-context-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-context-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-beans-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-beans-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-expression-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-expression-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-jdbc-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-jdbc-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-orm-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-orm-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-tx-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-tx-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-web-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-web-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/spring/spring-webmvc-4.2.4.RELEASE.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/spring/spring-webmvc-4.2.4.RELEASE-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/servlet/javax.servlet-api-3.1.0.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/servlet/javax.servlet-api-3.1.0-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/commons/commons-codec-1.10.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/commons/commons-codec-1.10-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/commons/commons-io-2.4.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/commons/commons-io-2.4-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/commons/commons-logging-1.2.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/commons/commons-logging-1.2-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/jaxb/jaxb-xjc-2.2.11.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/jaxb/jaxb-xjc-2.2.11-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/jaxb/jaxb-core-2.2.11.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/jaxb/jaxb-core-2.2.11-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/c3p0/c3p0-0.9.5.2.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/c3p0/c3p0-0.9.5.2-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/c3p0/mchange-commons-java-0.2.11.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/mchange-commons-java-0.2.11-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/jdbc/mysql/mysql-connector-java-5.1.38.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/jdbc/mysql/mysql-connector-java-5.1.38-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/jdbc/hsql/hsqldb-2.3.3.jar" sourcepath="/BASE_DIR/projects/kms/lib_SRC/jdbc/hsql/hsqldb-2.3.3-sources.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/jdbc/mssql/sqljdbc41.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/jdbc/oracle/ojdbc7.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/restlet/org.restlet-2.3.5.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/restlet/org.restlet.ext.servlet-2.3.5.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/restlet/org.restlet.ext.spring-2.3.5.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/restlet/org.restlet.ext.jaxb-2.3.5.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/sharedutil/RMSUtil.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/projects/kms/lib/sharedutil/RMEncryptionUtil.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

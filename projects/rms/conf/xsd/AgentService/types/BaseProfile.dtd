@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basictypes SYSTEM "BasicTypes.dtd">
+%basictypes;
+<!--element and attribute declarations-->
+<!ELEMENT defaultProfile (#PCDATA)>
+<!ELEMENT createdDate (#PCDATA)>
+<!ELEMENT modifiedDate (#PCDATA)>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PrintFile"> <!-- "none" -->
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+	
+ 	<test name="ID 01 RMS_Print file - ODRM-584 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.xlsx.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="PrintExcel" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 02 RMS_Print file - ODRM-584 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.xls.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="PrintExcel" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 03 RMS_Print file - ODRM-584 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.docx.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 04 RMS_Print file - ODRM-584 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.doc.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+	
+ 	<test name="ID 05 RMS_Print file - ODRM-584 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.pptx.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 06 RMS_Print file - ODRM-584 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.ppt.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 07 RMS_Print file - ODRM-702">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.pdf.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 08 RMS_Print file - ODRM-705 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.jpg.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 09 RMS_Print file - ODRM-705 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.png.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 10 RMS_Print file - ODRM-705 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.txt.nxl" />
+				    <parameter name="PrintType" value="Deny_print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+	
+ 	<test name="ID 11 RMS_Print file - ODRM-582 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.xlsx.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="PrintExcel" />
+                </methods> 
+         </classes>
+	</test>
+
+ 	<test name="ID 12 RMS_Print file - ODRM-582 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.xls.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="PrintExcel" />
+                </methods> 
+         </classes>
+	</test>
+
+	<test name="ID 13 RMS_Print file - ODRM-582 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.docx.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+	<test name="ID 14 RMS_Print file - ODRM-582 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.doc.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+
+	<test name="ID 15 RMS_Print file - ODRM-582 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.pptx.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+	
+	<test name="ID 16 RMS_Print file - ODRM-582 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.ppt.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>	
+	
+	<test name="ID 17 RMS_Print file - ODRM-616 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.pdf.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>	
+
+	<test name="ID 18 RMS_Print file - ODRM-616 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.jpg.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>	
+
+	<test name="ID 19 RMS_Print file - ODRM-616 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.png.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>	
+
+	<test name="ID 20 RMS_Print file - ODRM-616 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA03.txt.nxl" />
+				    <parameter name="PrintType" value="Allow_Print" />
+                	<include
+                		name="Pictureprint" />
+                </methods> 
+         </classes>
+	</test>
+</suite>
+				

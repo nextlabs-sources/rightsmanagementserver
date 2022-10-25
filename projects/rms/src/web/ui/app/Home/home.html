@@ -1,0 +1,54 @@
+<div ng-controller="homeController" data-ng-class="{'relative-position':checked}">
+	<div class="col-sm-2 rms-left-panel animate-hide" ng-class="{'hidden-class':checked}">
+		<div class="menu-wrapper-div">
+			<div ui-view="menuView"></div>
+			<span class="float-right"><a class="glyphicon glyphicon-remove white-glyphicon big-screen-hide toggle-close-button" data-ng-click="toggleSideBar()"></a></span>
+		</div>
+		<div id="user-info-mobile">
+			<div id="mobile-username-div" class="color-white">{{userName}}</div>
+			<div style="padding-bottom: 50px;">
+				<div id="mobile-version-div" class="color-white">
+					RMS - {{rmsVersion}}
+				</div>
+				<div id="mobile-logout-div" class="color-white">
+					<a href="javascript:void(0)" id="mobile-logout-button" data-ng-click="doLogout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div  id="rms-right-panel" class="col-sm-10 rms-content-view" ng-class="{'show-sidebar':!checked}">
+		<div class="no-padding cc-layout-full-width" data-ng-class="transition" >
+		   	<div data-ng-class="transition" ui-view="contentView"></div>			
+		</div>	
+	</div>
+	<footer id="rms-home-footer-desktop" class="footer rms-footer-override">
+	    <div class="container-fluid ">
+	      <div id="footer" class="rms-footer">
+	        <div class="rms-footer-version">
+	       <p class="text-muted">RMS - {{rmsVersion}}</p>
+	        </div>
+	        
+	        <div class="rms-footer-copyright">
+				<p class="text-muted">&#169; {{copyrightYear}} <a href="http://www.nextlabs.com" target="_blank">NextLabs Inc.</a> All rights reserved.</p>
+	        </div>
+	               
+	        <div class="rms-footer-rmc-download" data-ng-if="isRMCConfigured">
+	          <p class=""><a ng-href="#/home/downloadRMC">{{'download.rmc.tab' | translate}}</a></p>
+	        </div>        
+	        
+	      </div>
+	 	</div> 
+	</footer>
+	<footer id="rms-home-footer-mobile" class="footer rms-footer-override">
+	    <div class="container-fluid ">
+	      <div id="footer" class="rms-footer">               
+	        <div class="rms-footer-copyright">
+				<p class="text-muted">&#169; {{copyrightYear}} <a href="http://www.nextlabs.com" target="_blank">NextLabs Inc.</a> All rights reserved.</p>
+	        </div>              
+	        <div class="rms-footer-rmc-download" data-ng-if="isRMCConfigured">
+	          <p class=""><a ng-href="#/home/downloadRMC">{{'download.rmc.tab' | translate}}</a></p>
+	        </div>                
+	      </div>
+	 	</div> 
+	</footer>	
+</div>

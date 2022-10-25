@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="UploadFile"> <!-- "none" -->
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+<!-- 
+	<test name="ID 01 RMS_Upload and View protected file - ODRM-115">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+			    <methods>
+				    <parameter name="UserName" value="jimmy.carter" />
+                	<parameter name="UserPwd" value="jimmy.carter" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\3D.pdf" />
+				    <parameter name="ErrorMes" value="You can upload only '.nxl' files and '.zip' files with CAD assembly contents to Rights Management for viewing." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+
+	<test name="ID 02 RMS_Upload and View protected file - ODRM-590 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="jimmy.carter" />
+                	<parameter name="UserPwd" value="jimmy.carter" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.pptx.nxl" />
+				    <parameter name="ErrorMes" value="You are not authorized to view this document.(EAR04.pptx)" />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+	<test name="ID 03 RMS_Upload and View protected file - ODRM-590 2">
+    <classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+			<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA01.pptx.nxl" />
+				    <parameter name="ErrorMes" value="You are not authorized to view this document. (TAA01.pptx.nxl)" />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 04 RMS_Upload and View protected file - ODRM-590 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA01.docx.nxl" />
+				    <parameter name="ErrorMes" value="You are not authorized to view this document. (TAA01.docx.nxl)" />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+	<test name="ID 05 RMS_Upload and View protected file - ODRM-590 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\TAA01.xlsx.nxl" />
+				    <parameter name="ErrorMes" value="You are not authorized to view this document. (TAA01.xlsx.nxl)" />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+
+	<test name="ID 06 RMS_Upload and View protected file - ODRM-187 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.docx.nxl" />
+				    <parameter name="CompareSourceFileInWin2012" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04-win2012.docx.txt"/>
+				    <parameter name="CompareSourceFileInWin2008" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04-rms-win2k802.docx.txt"/>
+				    <parameter name="CompareSourceFileInLinux" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04-rms-win2k802.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\test\EAR04.docx.txt"/>	
+                	<include
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+
+	<test name="ID 07 RMS_Upload and View protected file - ODRM-187 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.doc.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.doc.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.doc.txt"/>	
+                	<include
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>
+	</test>
+
+
+	<test name="ID 08 RMS_Upload and View protected file - ODRM-187 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.pptx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.pptx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.pptx.txt"/>	
+                	<include 
+                		name="uploadDocFile" />
+                </methods>
+         </classes>
+	</test>
+	
+	<test name="ID 09 RMS_Upload and View protected file - ODRM-187 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.ppt.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.ppt.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.ppt.txt"/>	
+                	<include 
+                		name="uploadDocFile" />
+                </methods>
+         </classes>
+	</test>
+ -->
+ 
+	<test name="ID 10 RMS_Upload and View protected file - ODRM-187 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04 chart.xlsx.nxl" />
+				    <parameter name="CompareDesFile" value="\\autonas01\Public\RMSAutomationTestData\html\EAR04.xlsx.html"/>
+				    <parameter name="CompareSourFile" value="\\autonas01\Public\RMSAutomationTestData\htmlTemp\EAR04.xlsx.html"/>
+				    <parameter name="SheetsNum" value="-1"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>      
+     </test>
+     
+     <!--
+     <test name="ID 11 RMS_Upload and View protected file - ODRM-187 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.xls.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.xls.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.xls.txt"/>
+				    <parameter name="SheetsNum" value="3"/>
+				    <parameter name="SheetsName" value="Sheet3"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>      
+     </test>
+ 	
+	 <test name="ID 12 RMS_UploadAndView - ODRM-187 7">
+     <classes>
+    	  <class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04 MulPageEnglish.xls.nxl" />	
+                	<parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04 MulPageEnglish.xls.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04 MulPageEnglish.xls.txt"/>	
+                	<parameter name="SheetsNum" value="6"/>
+				    <parameter name="SheetsName" value="Search"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>
+	</test>
+ 
+	<test name="ID 13 RMS_Upload and View protected file - ODRM-188">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.pdf.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.pdf.txt"/>		
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+
+     <test name="ID 14 RMS_Upload and View protected file - ODRM-91 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.PNG.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.PNG.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.PNG.txt"/>		
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+     
+     <test name="ID 15 RMS_Upload and View protected file - ODRM-91 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.jpg.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.jpg.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.jpg.txt"/>		
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+     
+     <test name="ID 16 RMS_Upload and View protected file - ODRM-91 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.gif.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.gif.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.gif.txt"/>		
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+     
+     <test name="ID 17 RMS_Upload and View protected file - ODRM-300">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.txt.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.txt.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.txt.txt"/>		
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+
+     <test name="ID 19 RMS_Upload and View protected file - ODRM-201">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04%$.pdf.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04%$.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04%$.pdf.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+   
+     <test name="ID 20 RMS_Upload and View protected file - ODRM-200">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.docx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\longnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongnamelongname.docx.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+  
+  <test name="ID 21 RMS_Upload and View protected file - ODRM-205 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04 comment.pdf.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04 comment.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04 comment.pdf.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+
+  <test name="ID 22 RMS_Upload and View protected file - ODRM-205 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04 chart.docx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04 chart.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04 chart.docx.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 23 RMS_Upload and View protected file - ODRM-205 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04 chart.pdf.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04 chart.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04 chart.pdf.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+
+  <test name="ID 24 RMS_Upload and View protected file - ODRM-205 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04 chart.xlsx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04 chart.xlsx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04 chart.xlsx.txt"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>      
+     </test>	 
+	 
+		<test name="ID 25 RMS_Upload and View protected file - ODRM-887">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\TAA03.log.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 26 RMS_Upload and View protected file - ODRM-901">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\TAA03.CATDrawing.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 27 RMS_Upload and View protected file - ODRM-903 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\TAA03.mp3.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 28 RMS_Upload and View protected file - ODRM-903 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\hongzhijian.m4a.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 29 RMS_Upload and View protected file - ODRM-903 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.avi.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 30 RMS_Upload and View protected file - ODRM-903 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.flac.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 31 RMS_Upload and View protected file - ODRM-903 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.ogg.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 32 RMS_Upload and View protected file - ODRM-903 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.wav.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 33 RMS_Upload and View protected file - ODRM-903 7">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.wma.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 34 RMS_Upload and View protected file - ODRM-903 8">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.wv.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 35 RMS_Upload and View protected file - ODRM-905 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.aac.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 36 RMS_Upload and View protected file - ODRM-905 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.amr.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 37 RMS_Upload and View protected file - ODRM-905 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.ape.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 38 RMS_Upload and View protected file - ODRM-905 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.m4r.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 39 RMS_Upload and View protected file - ODRM-905 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.mmf.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+
+		<test name="ID 40 RMS_Upload and View protected file - ODRM-905 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\water.mp2.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 41 RMS_Upload and View protected file - ODRM-888 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.ts.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 42 RMS_Upload and View protected file - ODRM-888 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.3gp.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 43 RMS_Upload and View protected file - ODRM-888 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.flv.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 44 RMS_Upload and View protected file - ODRM-888 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.gif.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 45 RMS_Upload and View protected file - ODRM-888 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.mkv.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 46 RMS_Upload and View protected file - ODRM-888 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.mov.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 47 RMS_Upload and View protected file - ODRM-888 7">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.mp4.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 48 RMS_Upload and View protected file - ODRM-890 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.mpg.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 49 RMS_Upload and View protected file - ODRM-890 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.rmvb.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 50 RMS_Upload and View protected file - ODRM-890 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.swf.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 51 RMS_Upload and View protected file - ODRM-890 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.vob.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+	
+		<test name="ID 52 RMS_Upload and View protected file - ODRM-890 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	 
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FilePath" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\unsupport\VID.wmv.nxl" />
+				    <parameter name="ErrorMes" value="Can't display the content in the protected file, the file format is not supported currently." />
+                	<include
+                		name="uploadNotSupportFile" />
+                </methods> 
+         </classes>
+	</test>
+
+  <test name="ID 53 RMS_Upload and View protected file - ODRM-109 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.docx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.docx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.docx.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 54 RMS_Upload and View protected file - ODRM-109 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.doc.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.doc.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.doc.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 55 RMS_Upload and View protected file - ODRM-109 3">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.pdf.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.pdf.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 56 RMS_Upload and View protected file - ODRM-109 4">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.pptx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.pptx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.pptx.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 57 RMS_Upload and View protected file - ODRM-109 5">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.ppt.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.ppt.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.ppt.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 58 RMS_Upload and View protected file - ODRM-109 6">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.xlsx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.xlsx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.xlsx.txt"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 59 RMS_Upload and View protected file - ODRM-109 7">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\10M.xls.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\10M.xls.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\10M.xls.txt"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 59 RMS_Upload and View protected file - ODRM-90 1">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="C:\test\EAR04.xlsx.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.xlsx.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.xlsx.txt"/>
+					<parameter name="SheetsNum" value="3"/>
+				    <parameter name="SheetsName" value="2"/>
+                	<include 
+                		name="uploadExcelFile" />
+                </methods> 
+         </classes>      
+     </test>
+	 
+  <test name="ID 59 RMS_Upload and View protected file - ODRM-90 2">
+    	<classes>
+    		<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />  
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />    
+				    <parameter name="FileName" value="C:\test\EAR04.pdf.nxl" />
+				    <parameter name="CompareSourceFile" value="\\autonas01\Public\RMSAutomationTestData\OpenFileSource\EAR04.pdf.txt"/>
+				    <parameter name="CompareDesFile" value="C:\RMS\EAR04.pdf.txt"/>
+                	<include 
+                		name="uploadDocFile" />
+                </methods> 
+         </classes>      
+     </test>
+
+	<test name="ID 11 RMS_Upload and View protected file - ODRM618">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />	
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />  	             	
+                	<parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.jt.nxl" />
+                	<parameter name="Type" value="CAD"/> 
+                	<include 
+                		name="uploadFile" />                 
+			</methods>
+			</classes>
+	</test> 
+
+	<test name="ID 12 RMS_Upload and View protected file - ODRM622">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />	
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />  	             	
+                	<parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\Reallight Transmission.vds.nxl" />
+                	<parameter name="Type" value="VDS"/> 
+                	<include 
+                		name="uploadFile" />                 
+			</methods>
+			</classes>
+	</test>
+
+	<test name="ID 13 RMS_Upload and View protected file - ODRM621">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.UploadAndViewTest" />
+				<methods>	
+				    <parameter name="Rights" value="Allow_View" />	
+				    <parameter name="UserName" value="john.tyler" />
+                	<parameter name="UserPwd" value="john.tyler" />  
+                   	<parameter name="UserDomain" value="qapf1.qalab01.nextlabs.com" />  	             	
+                	<parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\571_810321_003.rh.nxl" />
+                	<parameter name="Type" value="RH"/> 
+                	<include 
+                		name="uploadFile" />                 
+			</methods>
+			</classes>
+	</test>
+  -->
+</suite>
+				

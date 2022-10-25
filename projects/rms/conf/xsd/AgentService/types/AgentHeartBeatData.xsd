@@ -1,0 +1,29 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+	<xs:include schemaLocation="AgentProfileStatusData.xsd"/>
+	<xs:include schemaLocation="AgentPluginData.xsd"/>
+	<xs:import schemaLocation="PolicyTypes.xsd"/>
+	<xs:import schemaLocation="SharedFolderTypes.xsd"/>
+	
+	<xs:complexType name="KeyRingsMetaDataType">
+		<xs:sequence>
+			<xs:element name="KeyRingMetaData" type="KeyRingMetaDataType" minOccurs="1" maxOccurs="unbounded"/>				
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="KeyRingMetaDataType">
+		<xs:sequence>
+			<xs:element name="KeyRingName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LastModifiedDate" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="AgentHeartbeatData">
+		<xs:sequence>
+			<xs:element name="profileStatus" type="AgentProfileStatusData" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="policyAssemblyStatus" type="DeploymentRequest" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="keyRingsMetaData" type="KeyRingsMetaDataType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sharedFolderDataCookie" type="SharedFolderDataCookie" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="pluginData" type="AgentPluginData" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nextlabs.com/rms/services/agentservice" xmlns:common="http://bluejungle.com/destiny/framework/types" xmlns:types="http://bluejungle.com/destiny/services/agent/types" targetNamespace="http://nextlabs.com/rms/services/agentservice" elementFormDefault="qualified">
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/BasicTypes.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/CommonFaults.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/services/agent/types" schemaLocation="types/AgentUpdateAcknowledgementData.xsd"/>
+	<xs:element name="AcknowledgeUpdates" type="tns:acknowledgeUpdates"/>
+	<xs:complexType name="acknowledgeUpdatesRequest">
+		<xs:sequence>
+			<xs:element name="id" type="common:ID" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="acknowledgementData" type="types:AgentUpdateAcknowledgementData" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="acknowledgeUpdatesResponse">
+		<xs:sequence>
+			<xs:element name="fault" type="common:commonFault" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="acknowledgeUpdates">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="acknowledgeUpdatesRequest" type="tns:acknowledgeUpdatesRequest"/>
+			<xs:element name="acknowledgeUpdatesResponse" type="tns:acknowledgeUpdatesResponse"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:simpleType name="ActionTypeDTO">
+		<xs:annotation>
+			<xs:documentation>Represents an enumeration of actions which an agent can detect and respond to</xs:documentation>
+		</xs:annotation>
+			<xs:restriction base="xs:string">
+       			<xs:enumeration value="OPEN"/>
+				<xs:enumeration value="EDIT"/>
+				<xs:enumeration value="DELETE"/>
+				<xs:enumeration value="CHANGE_ATTRIBUTES"/>
+				<xs:enumeration value="CHANGE_SECURITY"/>
+				<xs:enumeration value="PASTE"/>
+				<xs:enumeration value="MOVE"/>				
+				<xs:enumeration value="RENAME"/>								
+				<xs:enumeration value="COPY"/>								
+				<xs:enumeration value="EMBED"/>												
+				<xs:enumeration value="EMAIL"/>																
+				<xs:enumeration value="IM"/>																
+				<xs:enumeration value="PRINT"/>																
+				<xs:enumeration value="STOP_AGENT"/>																
+				<xs:enumeration value="START_AGENT"/>																
+				<xs:enumeration value="AGENT_USER_LOGIN"/>																
+				<xs:enumeration value="AGENT_USER_LOGOUT"/>																
+				<xs:enumeration value="ACCESS_AGENT_CONFIG"/>																
+				<xs:enumeration value="ACCESS_AGENT_LOGS"/>	
+				<xs:enumeration value="ACCESS_AGENT_BINARIES"/>	
+				<xs:enumeration value="ACCESS_AGENT_BUNDLE"/>	
+				<xs:enumeration value="ABNORMAL_AGENT_SHUTDOWN"/>
+				<xs:enumeration value="INVALID_BUNDLE"/>
+				<xs:enumeration value="BUNDLE_RECEIVED"/>				
+				<xs:enumeration value="EXPORT"/>	
+				<xs:enumeration value="ATTACH"/>	
+				<xs:enumeration value="RUN"/>	
+			</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="ActionTypeDTOList">
+		<xs:sequence>
+			<xs:element name="action" type="ActionTypeDTO" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

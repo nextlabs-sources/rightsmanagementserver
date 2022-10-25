@@ -1,0 +1,63 @@
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import schemaLocation="CommProfile.xsd"/>
+
+	<xs:import schemaLocation="AgentProfile.xsd"/>
+
+	<xs:import schemaLocation="PolicyTypes.xsd"/>
+
+	<xs:import schemaLocation="SharedFolderTypes.xsd"/>
+	
+	<xs:import schemaLocation="CustomObligationsTypes.xsd"/>
+	
+	<xs:include schemaLocation="AgentPluginData.xsd"/>
+	
+	<xs:import schemaLocation="ClassificationProfile.xsd"/>
+	
+	<xs:import schemaLocation="nxpackage.xsd"/>
+	
+	<xs:import schemaLocation="SupportedCADFormats.xsd"/>
+	
+	<xs:complexType name="policyDeploymentBundleType">
+		<xs:sequence>
+			<xs:element name="Bundle" type="xs:string" minOccurs="1" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="KeyRingsType">
+		<xs:sequence>
+			<xs:element name="KeyRing" type="KeyRingType" minOccurs="0" maxOccurs="unbounded"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="KeyRingType">
+		<xs:sequence>
+			<xs:element name="Key" type="KeyType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="KeyRingName" type="xs:string" use="required"/>
+		<xs:attribute name="LastModifiedDate" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="KeyType">
+		<xs:sequence>
+			<xs:element name="KeyId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="KeyData" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="KeyVersion" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="TimeStamp" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AgentUpdates">
+		<xs:sequence>
+			<xs:element name="commProfile" type="CommProfileDTO" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="agentProfile" type="AgentProfileDTO" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="policyDeploymentBundle" type="POLICYBUNDLETYPE" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="keyRings" type="KeyRingsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sharedFolderData" type="SharedFolderData" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="customObligationsData" type="CustomObligationsData" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ClassificationProfile" type="classificationProfileType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="pluginData" type="AgentPluginData" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="supportedCadFormats" type="SupportedCADFormatsType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

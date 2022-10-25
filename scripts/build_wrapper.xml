@@ -1,0 +1,91 @@
+<project name="build_wrapper" default="all" basedir=".">
+	
+	<property name="nlbuildroot" value="${basedir}/.." />
+	<property name="rmsprojectdir" value="${nlbuildroot}/projects/rms" />
+	<property name="kmsprojectdir" value="${nlbuildroot}/projects/kms" />
+	<property name="rmsTestAutomationdir" value="${nlbuildroot}/TestAutomation/projects" />
+	<property file="${basedir}/build.properties" />
+	<property file="${basedir}/build_wrapper.properties" />
+	
+	<target name="compile-kms-xml-beans">
+		<ant dir="${kmsprojectdir}/build-scripts" antfile="build-kms.xml" target="build_stage_kms_xml_beans" inheritrefs="true" />
+	</target>
+	
+	<target name="compile-rmsutil">
+		<ant dir="${rmsprojectdir}/build-scripts" antfile="build-rms.xml" target="shared-util" inheritrefs="true" />
+	</target>
+	
+	<target name="compile-kms">
+		<ant dir="${kmsprojectdir}/build-scripts" antfile="build-kms.xml" target="all" inheritrefs="true" />
+	</target>
+	
+	<target name="compile-rms">
+		<ant dir="${rmsprojectdir}/build-scripts" antfile="build-rms.xml" target="all" inheritrefs="true" />		
+	</target>
+
+	<target name="build-testAutomation">
+		<ant dir="${rmsTestAutomationdir}/DevTests/build-scripts" antfile="build-devtests.xml" target="all" inheritrefs="true" />
+		<ant dir="${rmsTestAutomationdir}/QATests/build-scripts" antfile="build-qatests.xml" target="all" inheritrefs="true" />
+	</target>
+	
+	<target name="package-test-automation" description="Packages test artifacts" depends="build-testAutomation">	
+		
+		<!-- Test automation dependencies -->
+		<copy todir="${testautomation.root}/TestPackage" overwrite="true">
+			<fileset file="${dev-javamaillibdir}/javax.mail.jar" />
+			<fileset file="${dev-xmlbeanslibdir}/xmlpublic.jar" />
+			<fileset file="${dev-xmlbeanslibdir}/RMS_xmlbeans.jar" />
+			<fileset file="${dev-xmlbeanslibdir}/xbean.jar" />
+			<fileset file="${dev-commonslibdir}/commons-io-2.4.jar" />
+		</copy>
+		
+		<mkdir dir="${temppackagedir}"/>
+		<copy todir="${temppackagedir}">
+			<fileset file="${testautomation.root}/TestPackage/**" />
+		</copy>
+		
+		<mkdir dir="${tempQADir}/lib"/>
+		<copy todir="${tempQADir}/lib">
+			<!--QA dependencies-->
+			<fileset file="${qa-autoItX4Javalibdir}/AutoItX4Java.jar" />
+			<fileset file="${qa-dom4jlibdir}/dom4j-1.6.1.jar" />
+			<fileset file="${qa-fluent-hclibdir}/fluent-hc-4.5.1.jar" />
+			<fileset file="${qa-guicelibdir}/guice-3.0.jar" />
+			<fileset file="${qa-jacoblibdir}/jacob.jar" />
+			<fileset file="${qa-reportnglibdir}/reportng-1.1.4.jar" />
+			<fileset file="${qa-selenium-javalibdir}/selenium-java-2.49.0.jar" />
+			<fileset file="${qa-selenium-javalibdir}/selenium-server-standalone-2.49.0.jar" />
+			<fileset file="${qa-testnglibdir}/testng.jar" />
+			<fileset file="${qa-velocity-deplibdir}/velocity-dep-1.4.jar" />
+			<fileset file="${qa-zip4jlibdir}/zip4j_1.3.2.jar" />
+			<fileset file="${qa-commonslibdir}/commons-lang3-3.4.jar" />
+			<fileset file="${qa-commonslibdir}/commons-codec-1.10.jar" />
+			<fileset file="${qa-commonslibdir}/commons-logging-1.1.3.jar" />
+			<fileset file="${qa-log4jlibdir}/log4j-1.2.17.jar" />
+			<fileset file="${qa-jcommanderlibdir}/jcommander-1.48.jar" />
+			<fileset file="${qa-javamaillibdir}/javax.mail.jar" />
+			<fileset file="${staging.dir}/${package_name_QA_test}.jar" />
+		</copy>
+		
+		<mkdir dir="${tempQADir}/drivers"/>
+		<copy todir="${tempQADir}/drivers">
+			<fileset file="${qa-selenium-javalibdir}/chromedriver.exe" />
+			<fileset file="${qa-selenium-javalibdir}/IEDriverServer.exe" />			
+		</copy>
+		
+		<zip destfile="${rootbuild_dir}/${test_automation_zip_file_name}" encoding="UTF-8">
+			<fileset file="${rootbuild_dir}/${package_name_test}.jar" />
+			<fileset file="${rootbuild_dir}/${package_name_QA_test}.jar" />
+			<fileset file="${temppackagedir}/**" />
+		</zip>	
+	</target>
+	
+	<target name="all" depends="clean, compile-kms-xml-beans, compile-rmsutil, compile-kms, compile-rms, build-testAutomation, package-test-automation"/>
+	
+	<target name="dev" depends="clean, compile-kms-xml-beans, compile-rmsutil, compile-kms, compile-rms"/>
+	
+	<target name="clean" description="Delete all build artifacts in staging" depends="">
+		<delete includeemptydirs="true" dir="${staging.dir}"/>
+	</target>
+		
+</project>

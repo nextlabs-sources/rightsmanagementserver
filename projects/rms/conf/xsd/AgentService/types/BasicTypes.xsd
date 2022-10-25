@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WARNING!!! - When changing anything in this file, make sure you also consider updating the customer public BasicTypes within DAC -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- An Object Identifier - -->
+	<xs:simpleType name="id">
+		<xs:restriction base="xs:integer">
+			<xs:maxInclusive value="9223372036854775807"/>
+			<xs:minInclusive value="-9223372036854775808"/>
+			<!-- FIXME Currently the same as type "long".  Revisit when ID's in system are clarified -->
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+        A Human Readable Identifier without spaces
+    -->
+	<xs:simpleType name="name">
+		<xs:restriction base="xs:token">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="128"/>
+			<xs:pattern value="(#x20.*)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="timeIntervalDTO">
+		<xs:sequence>
+			<xs:element name="time" type="xs:unsignedShort"/>
+			<xs:element name="time-unit" type="timeUnits" default="seconds"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="timeUnits">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="days"/>
+			<xs:enumeration value="hours"/>
+			<xs:enumeration value="minutes"/>
+			<xs:enumeration value="seconds"/>
+			<xs:enumeration value="milliseconds"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

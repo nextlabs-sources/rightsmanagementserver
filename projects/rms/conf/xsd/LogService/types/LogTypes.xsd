@@ -1,0 +1,9 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="LogStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Success"/>
+            <xs:enumeration value="Failed"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT HeartBeatRequest (id, heartbeat)>
+<!ENTITY % agentheartbeatdata SYSTEM "types/AgentHeartBeatData.dtd">
+%agentheartbeatdata;
+<!--element and attribute declarations-->
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT heartbeat (profileStatus, policyAssemblyStatus, keyRingsMetaData, sharedFolderDataCookie, pluginData)>

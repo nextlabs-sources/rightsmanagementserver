@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--element and attribute declarations-->
+<!ELEMENT major (#PCDATA)>
+<!ELEMENT minor (#PCDATA)>
+<!ELEMENT maintenance (#PCDATA)>
+<!ELEMENT patch (#PCDATA)>
+<!ELEMENT build (#PCDATA)>

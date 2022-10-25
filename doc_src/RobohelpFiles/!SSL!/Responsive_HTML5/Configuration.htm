@@ -1,0 +1,564 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Adobe RoboHelp 2015" />
+<title>Configuration</title>
+<link rel="StyleSheet" href="default.css" type="text/css" />
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+p.WebHelpNavBar { text-align:right; }
+-->
+</style>
+
+<script type="text/javascript" src="template/scripts/rh.min.js"></script>
+<script type="text/javascript" src="template/scripts/common.min.js"></script>
+<script type="text/javascript" src="template/scripts/topic.min.js"></script>
+<script type="text/javascript" src="template/scripts/constants.js"></script>
+<script type="text/javascript" src="template/scripts/utils.js"></script>
+<script type="text/javascript" src="template/scripts/mhutils.js"></script>
+<script type="text/javascript" src="template/scripts/mhlang.js"></script>
+<script type="text/javascript" src="template/scripts/mhver.js"></script>
+<script type="text/javascript" src="template/scripts/settings.js"></script>
+<script type="text/javascript" src="template/scripts/XmlJsReader.js"></script>
+<script type="text/javascript" src="template/scripts/loadparentdata.js"></script>
+<script type="text/javascript" src="template/scripts/loadscreen.js"></script>
+<script type="text/javascript" src="template/scripts/loadprojdata.js"></script>
+<script type="text/javascript" src="template/scripts/mhtopic.js"></script>
+ <link rel="stylesheet" type="text/css" href="template/styles/topic.min.css">
+<script type="text/javascript" >
+gRootRelPath = ".";
+gCommonRootRelPath = ".";
+gTopicId = "0_4";
+</script>
+</head>
+
+<body>
+<script type="text/javascript" src="./ehlpdhtm.js"></script>
+
+
+<h4 style="font-family: 'MS Reference Sans Serif';">Configuration</h4>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">The 
+ Configuration page allows you to configure settings for the Policy Controller, 
+ Mail Server, DropBox App, SharePoint App, Client Management, and other 
+ General Settings.</p>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><span 
+	 style="font-weight: bold;">NOTE:</span> If you do not intend to use 
+ the Document Viewer in your Rights Management Server 
+ deployment then you only need to configure the Client Management Settings. 
+ Conversely if you do not want to manage any Client devices in your Rights Management Server deployment 
+ then you can leave the Client Management Settings blank, while configuring 
+ the remaining sections.</p>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">The 
+ Rights Management Server 
+ uses this information to interact with each of these components.</p>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<h5 style="font-size: 10pt;"><span style="font-size: 10pt;"><span>General 
+ Settings</span></span></h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the General Settings section, type the following details:<br />
+	</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Session Timeout</p></td>
+			<td><p>&#160;</p>
+			<p>Type the minimum number of minutes before your Rights Management Server 
+			 web portal session is terminated.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Turn on User Location</p></td>
+			<td><p>&#160;</p>
+			<p>Set this field to <span style="font-weight: bold;">Yes</span> 
+			 if you want to enforce policies that allow or deny access 
+			 to NextLabs rights protected documents.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Policy User Location Identifier</p></td>
+			<td><p>&#160;</p>
+			<p>This is the attribute name used in your policies to specify 
+			 the country code of the user for whom you want to allow or 
+			 deny access to a NXL protected document.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Location DB Last identified time</p></td>
+			<td><p>&#160;</p>
+			<p>This displays the last time the Location database file was 
+			 updated.</p>
+			<p>&#160;</p>
+			<p><span style="font-weight: bold;">NOTE:</span> <span>This 
+			 file is used for location lookup of the IP address that accompanies 
+			 a user request to access a NXL protected document.</span></p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Location Update Frequency</p></td>
+			<td><p>&#160;</p>
+			<p>This is the frequency of update performed for the Location 
+			 database file.</p>
+			<p>&#160;</p>
+			<p><span style="font-weight: bold;">NOTE:</span> The first 
+			 time you set this option, Rights Management Server 
+			 downloads the Location database file for the first time. If 
+			 your Internet connection speed is slow, then the Rights Management Server 
+			 user interface (for the current session) may become non-responsive 
+			 until the Location database file has been downloaded.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Save</span>.</p></li>
+</ol>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<p style="margin-left: 40px;"><span style="font-weight: bold;">NOTE:</span> 
+ After you have configured the User Location settings, in your Tomcat Server 
+ you must set the JAVA_OPTS parameter value in the catalina.bat file. For 
+ more information, refer to the User Location Settings section in the &#160;Rights Management Server Administrator's 
+ Guide.</p>
+<p>&#160;</p>
+<h5 style="font-size: 10pt;"><span style="font-size: 10pt;"><span>Client 
+ Management Settings</span></span></h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the Client Management Settings section, enter the following details:</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>ICENet Server URL</p></td>
+			<td><p>&#160;</p>
+			<p>This is the IP Address or the fully qualified domain name 
+			 (FQDN) of the web services URL.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Client Version Number</p></td>
+			<td><p>&#160;</p>
+			<p>This is the version number of the latest Rights Management 
+			 Client (RMC) installation file.</p>
+			<p>&#160;</p>
+			<p>The Rights Management Client deployed on different machines 
+			 checks against this Client Version Number to determine if 
+			 a new version of the RMC installer is available.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Client Package Download URL (32-bit)</p></td>
+			<td><p>&#160;</p>
+			<p>This is the URL that is used to download the 32-bit version 
+			 of the &#160;Rights Management Client (RMC) installer.</p>
+			<p>&#160;</p>
+			<p>This is the location from where the RMC downloads the new 
+			 installer.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Client Package Checksum (32-bit)</p></td>
+			<td><p>&#160;</p>
+			<p>This is the Check value which is associated with the 32-bit 
+			 installation file.</p>
+			<p>&#160;</p>
+			<p>This value can be generated by using the appropriate Checksum 
+			 tools on the new installation file.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Client Package Download URL (64-bit)</p></td>
+			<td><p>&#160;</p>
+			<p>This is the URL that is used to download the 64-bit version 
+			 of the &#160;Rights Management Client (RMC) installer.</p>
+			<p>&#160;</p>
+			<p>This is the location from where the RMC downloads the new 
+			 installer.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Client Package Checksum (64-bit)</p></td>
+			<td><p>&#160;</p>
+			<p>This is the Check value which is associated with the 64-bit 
+			 installation file.</p>
+			<p>&#160;</p>
+			<p>This value can be generated by using the appropriate Checksum 
+			 tools on the new installation file.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Save</span><span>.</span></p></li>
+</ol>
+<h5 style="font-size: 10pt;"><span style="font-size: 10pt;">Mail Server 
+ Settings</span></h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the Mail Server Settings section, set <span style="font-weight: bold;">Allow 
+	 Registration Request</span> <span>to</span> <span style="font-weight: bold;">Yes</span><span>.</span></p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details:</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>SMTP Host</p></td>
+			<td><p>&#160;</p>
+			<p>This is the hostname of your SMTP Mail Server</p>
+			<p>&#160;</p>
+			<p><span style="font-weight: bold;">NOTE:</span> If your Rights Management Server 
+			 is deployed on a Linux system then you must specify the corresponding 
+			 IP Address for this field.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>SMTP Port</p></td>
+			<td><p>&#160;</p>
+			<p>This is the port number at which Rights Management Server 
+			 and SMTP communication occurs.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>SMTP Authentication needed?</p></td>
+			<td><p>&#160;</p>
+			<p>If you want to enable SMTP authentication prior to any email 
+			 being sent due to Rights Management Server, 
+			 then select Yes</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>SMTP User Name</p></td>
+			<td><p>&#160;</p>
+			<p>This is the user name for the mail account which will send 
+			 emails to the Administrator and sponsor on behalf of Rights Management Server.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>SMTP Password</p></td>
+			<td><p>&#160;</p>
+			<p>This is the password for the SMTP User Name</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Reenter SMTP Password</p></td>
+			<td><p>&#160;</p>
+			<p>Confirm your SMTP Password</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Enable TLS?</p></td>
+			<td><p>&#160;</p>
+			<p>Transport Layer Security (TLS) is a protocol that encrypts 
+			 and delivers messages in a secure fashion. If you want to 
+			 use this protocol for communication between the Rights Management Server 
+			 and your SMTP mail server then select True.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Email Subject</p></td>
+			<td><p>&#160;</p>
+			<p>This is the subject of the email that the SMTP mail server 
+			 sends on behalf of Rights Management Server. 
+			 You can specify this to be something meaningful that would 
+			 indicate the purpose of the email to be related to Rights Management Server 
+			 user account creation.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Rights Management Server 
+			 Administrator Email</p></td>
+			<td><p>&#160;</p>
+			<p>This is the email address of the Administrator that you 
+			 want to send the user account creation request email to.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Save</span><span>.</span></p></li>
+</ol>
+<h5 style="font-size: 10pt;">Policy Controller Settings</h5>
+<p style="font-size: 10pt;">The Policy Controller Settings are used by 
+ the Rights Management Server 
+ to communicate with the Policy Controller in order to determine if a User 
+ has sufficient Rights to view a file in Document Viewer.</p>
+<p>&#160;</p>
+<ol style="list-style: decimal;">
+	<li>In the Policy Controller Settings section, type the following details:</li>
+</ol>
+<ol style="list-style: decimal;">
+	<li style="list-style: none; display: inline;"><table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Policy Controller Hostname</p></td>
+			<td><p>&#160;</p>
+			<p>hostname of the machine your Policy Controller’s Key Management 
+			 and Policy Evaluation component is installed on.</p>
+			<p>&#160;</p>
+			<p>This must be specified in the following format:</p>
+			<p style="font-family: 'Courier New', monospace;">https://&lt;server 
+			 name&gt;:&lt;port number&gt;</p>
+			<p>&#160;</p>
+			<p>For example:</p>
+			<p><span style="font-family: 'Courier New', monospace;">https://RightsManagement.mycompany.com:8443</span></p>
+			<p>&#160;</p>
+			<p><span style="font-weight: bold;">NOTE:</span> If your Rights Management Server 
+			 is deployed on a Linux system then you must specify the corresponding 
+			 IP Address for this field.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>RMI Port Number for Key Management</p></td>
+			<td><p>&#160;</p>
+			<p>port number on which Rights Management Server 
+			 communicates with the Policy Controller for the purpose of 
+			 Key Management</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>KeyStore file</p></td>
+			<td><p>&#160;</p>
+			<p>complete file path for the KeyStore file. This file has 
+			 the certificate that is used to identify Rights Management Server 
+			 to the Policy Controller.</p>
+			<p>NOTE: The certificate in this KeyStore should be imported 
+			 into the TrustStore of the Policy Controller, which is specified 
+			 in the Key Management Service Plugin of the Policy Controller.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>KeyStore Password</p></td>
+			<td><p>&#160;</p>
+			<p>password for the KeyStore</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>TrustStore File</p></td>
+			<td><p>&#160;</p>
+			<p>complete file path for the TrustStore file. This file includes 
+			 the certificates that are trusted by Rights Management Server.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>TrustStore Password</p></td>
+			<td><p>&#160;</p>
+			<p>password for the TrustStore</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>RMI Port Number for Policy Evaluation</p></td>
+			<td><p>&#160;</p>
+			<p>port number on which Rights Management Server 
+			 communicates with the Policy Controller for the purpose of 
+			 Policy Evaluation</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+</ol>
+<ol start="2" style="list-style: decimal;">
+	<li>Click <span style="font-weight: bold;">Test Connection</span> <span>to 
+	 verify that the Rights Management Server can connect &#160;to the 
+	 Policy Controller connection details.</span></li>
+	<li>Click <span style="font-weight: bold;">Save</span><span>.</span></li>
+</ol>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<h5>DropBox App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the DropBox App Settings section, set <span style="font-weight: bold;">Allow 
+	 Personal Repositories</span> to <span style="font-weight: bold;">Yes</span>.<br />
+	<span style="font-weight: bold;">NOTE:</span> &#160;The following Dropbox 
+	 App Settings can only be obtained after a Dropbox App has been created 
+	 for Rights Management Server. 
+	 For more details, refer to the Rights Management Server 
+	 Installation Guide.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><span>Type 
+	 the following details:</span></p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Dropbox App Key</p></td>
+			<td><p>&#160;</p>
+			<p>this value is used by Rights Management Server 
+			 to establish a secure communication channel with Dropbox</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Dropbox App Secret</p></td>
+			<td><p>&#160;</p>
+			<p>this value is used by Rights Management Server 
+			 to establish a secure communication channel with Dropbox</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Dropbox Redirect URL</p></td>
+			<td><p>&#160;</p>
+			<p>URL used by users to access the Rights Management Server 
+			 portal</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Save</span>.</p></li>
+</ol>
+<h5>SharePoint App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the SharePoint App Settings section, click <span style="font-weight: bold;">Add 
+	 SharePoint Application</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><span>Complete 
+	 the following details:</span></p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>SharePoint Type</p></td>
+			<td><p>&#160;</p>
+			<p>Select the type of SharePoint deployment you are creating 
+			 your SharePoint for. SharePoint Online (cloud based) or SharePoint 
+			 On-Premise (stand alone deployment on your company's intranet).</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>Display Name</p></td>
+			<td><p>&#160;</p>
+			<p>this is the displayed name for the SharePoint App you want 
+			 to configure.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Remote App URL<br />
+			(<span style="font-weight: bold;">NOTE:</span> <span>This field 
+			 is visible only if you have selected SharePoint Type as SharePoint 
+			 On-Premise</span>)</p></td>
+			<td><p>&#160;</p>
+			<p>this is the URL of your SharePoint On-Premise web application</p>
+			<p>that you have deployed on your IIS. You must append the</p>
+			<p>following to it:</p>
+			<p>/Pages/Default.aspx</p>
+			<p>For example if your SharePoint Site App URL is:</p>
+			<p>https://myserver:4444</p>
+			<p>then you must type it as:</p>
+			<p>https://myserver:4444/Pages/Default.aspx</p>
+			<p><span style="font-weight: bold;">NOTE:</span> If you have 
+			 not changed the default port number (443)</p>
+			<p>for your server then you don’t need to specify the port</p>
+			<p>number in the URL. Therefore, the above URL would be listed</p>
+			<p>as:</p>
+			<p>https://myserver/Pages/Default.aspx</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>App Client ID</p></td>
+			<td><p>&#160;</p>
+			<p>this is the value generated by SharePoint when you registered 
+			 your SharePoint Application. For more details, see Registering 
+			 your SharePoint Online Application in the Rights Management Server 
+			 Administrator Guide.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>App Client Secret</p></td>
+			<td><p>&#160;</p>
+			<p>this is the value generated by SharePoint when you registered 
+			 your SharePoint Application. For more details, see Registering 
+			 your SharePoint Online Application in the Rights Management Server 
+			 Administrator Guide.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Save</span><span>.</span></p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 the download icon <img src="Images/DownloadAppIcon.png" alt="" style=" border:none; width:100%; max-width:20px;" border="0" />.</p></li>
+</ol>
+<p>&#160;</p>
+<p>&#160;</p>
+<div style="width: 100%; position: relative;" id="footer">
+	<p>-----------------------------------------------------</p>
+	<p><br />
+<span style="font-weight: bold;">CONFIDENTIALITY NOTICE</span><br />
+<br />
+THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY 
+ NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.<br />
+<br />
+© 2014 - 2016 NextLabs, 
+ Inc. All Rights Reserved<br />
+</p>
+	<p>-----------------------------------------------------</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<logService tenantId="N/A" agentId="1517" version="5">
+<logRequest>
+    <logs>
+        <log uid="173222975626704" timestamp="2015-07-09T13:41:19-07:00" type="Evaluation">
+            <Rights>View</Rights>
+            <Operation>OPEN</Operation>
+            <Environment>
+                <current_time.identity>2015-07-09T20:41:15Z</current_time.identity>
+                <SessionType>Console</SessionType>
+                <SecondsSinceLastHeartbeat>48</SecondsSinceLastHeartbeat>
+            </Environment>
+            <User>
+                <Name>john.tyler</Name>
+                <Sid>s-1-5-21-2018228179-1005617703-974104760-187941</Sid>
+				<Context>12346</Context>
+                <Attributes>
+					<Attribute Name="Sample Name 1" Value="Sample value 1"/>
+					<Attribute Name="Sample Name 2" Value="Sample value 2"/>
+				</Attributes>
+            </User>
+            <Host>
+                <Name>devtestrmc01.qapf1.qalab01.nextlabs.com</Name>
+				<ipv4>127.0.0.1</ipv4>
+            </Host>
+            <Application>
+                <Image>\??\c:\program files (x86)\microsoft office\office15\winword.exe</Image>
+                <Publisher>microsoft corporation</Publisher>
+            </Application>
+            <Resource>
+                <Path>c:\users\john.tyler\appdata\local\microsoft\windows\temporary internet files\nextlabs\nxl71e4.tmp\figures.rh</Path>
+                <Tags>
+                    <Tag Name="jurisdiction" Value="itar"/>
+                    <Tag Name="project" Value="pr-01"/>
+                    <Tag Name="sensitivity" Value="confidential"/>
+                    <Tag Name="license" Value="taa-01"/>
+                </Tags>
+            </Resource>
+            <HitPolicies>
+                <Policy Id="285" Name="View/Everyone2"/>
+            </HitPolicies>
+        </log>
+        <log uid="6515481792043" timestamp="2015-07-09T13:41:19-07:00" type="Evaluation">
+            <Rights>View</Rights>
+            <Operation>OPEN</Operation>
+            <Environment>
+                <current_time.identity>2015-07-09T20:41:19Z</current_time.identity>
+                <SessionType>Console</SessionType>
+                <SecondsSinceLastHeartbeat>52</SecondsSinceLastHeartbeat>
+            </Environment>
+            <User>
+                <Name>john.tyler</Name>
+                <Sid>s-1-5-21-2018228179-1005617703-974104760-187941</Sid>
+                <Context>12347</Context>
+				<Attributes/>
+            </User>
+            <Host>
+                <Name>devtestrmc01.qapf1.qalab01.nextlabs.com</Name>
+            </Host>
+            <Application>
+                <Image>\??\c:\program files (x86)\microsoft office\office15\winword.exe</Image>
+                <Publisher>microsoft corporation</Publisher>
+            </Application>
+            <Resource>
+                <Path>d:\files\hello.docx</Path>
+                <Tags>
+                    <Tag Name="jurisdiction" Value="ear"/>
+                    <Tag Name="project" Value="pr-03"/>
+                    <Tag Name="sensitivity" Value="non business"/>
+                    <Tag Name="license" Value="ear-01"/>
+                </Tags>
+            </Resource>
+            <HitPolicies>
+                <Policy Id="285" Name="View/Everyone2"/>
+            </HitPolicies>
+        </log>
+        <log uid="6515481792044" timestamp="2015-07-09T13:41:28-07:00" type="Evaluation">
+            <Rights>View</Rights>
+            <Operation>OPEN</Operation>
+            <Environment>
+                <current_time.identity>2015-07-09T20:41:25Z</current_time.identity>
+                <SessionType>Console</SessionType>
+                <SecondsSinceLastHeartbeat>58</SecondsSinceLastHeartbeat>
+            </Environment>
+            <User>
+                <Name>john.tyler</Name>
+                <Sid>s-1-5-21-2018228179-1005617703-974104760-187941</Sid>
+				<Context>12345</Context>
+                <Attributes/>
+            </User>
+            <Host>
+                <Name>devtestrmc01.qapf1.qalab01.nextlabs.com</Name>
+            </Host>
+            <Application>
+                <Image>\??\c:\program files (x86)\notepad++\notepad++.exe</Image>
+            </Application>
+            <Resource>
+                <Path>d:\files\test.txt</Path>
+                <Tags>
+                    <Tag Name="jurisdiction" Value="itar"/>
+                    <Tag Name="project" Value="pr-03"/>
+                    <Tag Name="sensitivity" Value="proprietary"/>
+                    <Tag Name="license" Value="taa-01"/>
+                    <Tag Name="license" Value="taa-03"/>
+                </Tags>
+            </Resource>
+            <HitPolicies>
+                <Policy Id="-1" Name="BuiltinAppWhiteList"/>
+            </HitPolicies>
+        </log>
+        <log uid="6515481792045" timestamp="2015-07-09T13:41:32-07:00" type="Evaluation">
+            <Rights>View</Rights>
+            <Operation>OPEN</Operation>
+            <Environment>
+                <current_time.identity>2015-07-09T20:41:32Z</current_time.identity>
+                <SessionType>Console</SessionType>
+                <SecondsSinceLastHeartbeat>65</SecondsSinceLastHeartbeat>
+            </Environment>
+            <User>
+                <Name>john.tyler</Name>
+                <Sid>s-1-5-21-2018228179-1005617703-974104760-187941</Sid>
+				<Context>12348</Context>
+                <Attributes/>
+            </User>
+            <Host>
+                <Name>devtestrmc01.qapf1.qalab01.nextlabs.com</Name>
+            </Host>
+            <Application>
+                <Image>\??\c:\program files (x86)\adobe\reader 11.0\reader\acrord32.exe</Image>
+                <Publisher>adobe systems, incorporated</Publisher>
+            </Application>
+            <Resource>
+                <Path>d:\files\cachemanager.pdf</Path>
+                <Tags>
+                    <Tag Name="jurisdiction" Value="itar"/>
+                    <Tag Name="project" Value="pr-01"/>
+                    <Tag Name="sensitivity" Value="proprietary"/>
+                    <Tag Name="license" Value="taa-01"/>
+                </Tags>
+            </Resource>
+            <HitPolicies>
+                <Policy Id="285" Name="View/Everyone2"/>
+            </HitPolicies>
+        </log>
+        <log uid="6515481792046" timestamp="2015-07-09T13:41:32-07:00" type="Evaluation">
+            <Rights>View</Rights>
+            <Operation>OPEN</Operation>
+            <Environment>
+                <current_time.identity>2015-07-09T20:41:32Z</current_time.identity>
+                <SessionType>Console</SessionType>
+                <SecondsSinceLastHeartbeat>65</SecondsSinceLastHeartbeat>
+            </Environment>
+            <User>
+                <Name>john.tyler</Name>
+                <Sid>s-1-5-21-2018228179-1005617703-974104760-187941</Sid>
+                <Context>12349</Context>
+				<Attributes/>
+            </User>
+            <Host>
+                <Name>devtestrmc01.qapf1.qalab01.nextlabs.com</Name>
+            </Host>
+            <Application>
+                <Image>\??\c:\program files (x86)\adobe\reader 11.0\reader\acrord32.exe</Image>
+                <Publisher>adobe systems, incorporated</Publisher>
+            </Application>
+            <Resource>
+                <Path>d:\files\cachemanager.pdf</Path>
+                <Tags>
+                    <Tag Name="project" Value="pr-01"/>
+                    <Tag Name="jurisdiction" Value="itar"/>
+                    <Tag Name="sensitivity" Value="proprietary"/>
+                    <Tag Name="license" Value="taa-01"/>
+                </Tags>
+            </Resource>
+            <HitPolicies>
+                <Policy Id="285" Name="View/Everyone2"/>
+            </HitPolicies>
+        </log>
+    </logs>
+</logRequest>
+</logService>

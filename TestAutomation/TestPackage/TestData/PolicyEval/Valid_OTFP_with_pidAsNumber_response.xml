@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicyQueries xmlns="https://www.nextlabs.com/rms/policy/eval">
+   <PolicyQuery>
+      <Response>
+         <Obligations>
+            <Obligation name="OB_OVERLAY" right="RIGHT_VIEW">
+               <Attribute name="Transparency">
+                  <AttributeValue>60</AttributeValue>
+               </Attribute>
+               <Attribute name="FontSize">
+                  <AttributeValue>36</AttributeValue>
+               </Attribute>
+               <Attribute name="Placement">
+                  <AttributeValue>Repeat</AttributeValue>
+               </Attribute>
+               <Attribute name="FontName">
+                  <AttributeValue>Sitka Text</AttributeValue>
+               </Attribute>
+               <Attribute name="Text">
+                  <AttributeValue>$(User) $(Time)</AttributeValue>
+               </Attribute>
+               <Attribute name="TextColor">
+                  <AttributeValue>Black</AttributeValue>
+               </Attribute>
+               <Attribute name="Rotation">
+                  <AttributeValue>Anticlockwise</AttributeValue>
+               </Attribute>
+               <Attribute name="Density">
+                  <AttributeValue>Dense</AttributeValue>
+               </Attribute>
+            </Obligation>
+            <Obligation name="CE::NOTIFY" right="RIGHT_VIEW">
+               <Attribute name="message">
+                  <AttributeValue>This is user alert112324324</AttributeValue>
+               </Attribute>
+            </Obligation>
+            <Obligation name="OB_OVERLAY" right="RIGHT_PRINT">
+               <Attribute name="Transparency">
+                  <AttributeValue>60</AttributeValue>
+               </Attribute>
+               <Attribute name="FontSize">
+                  <AttributeValue>36</AttributeValue>
+               </Attribute>
+               <Attribute name="Placement">
+                  <AttributeValue>Repeat</AttributeValue>
+               </Attribute>
+               <Attribute name="FontName">
+                  <AttributeValue>Sitka Text</AttributeValue>
+               </Attribute>
+               <Attribute name="Text">
+                  <AttributeValue>$(User) $(Time)</AttributeValue>
+               </Attribute>
+               <Attribute name="TextColor">
+                  <AttributeValue>Black</AttributeValue>
+               </Attribute>
+               <Attribute name="Rotation">
+                  <AttributeValue>Anticlockwise</AttributeValue>
+               </Attribute>
+               <Attribute name="Density">
+                  <AttributeValue>Dense</AttributeValue>
+               </Attribute>
+            </Obligation>
+            <Obligation name="CE::NOTIFY" right="RIGHT_PRINT">
+               <Attribute name="message">
+                  <AttributeValue>This is user alert112324324</AttributeValue>
+               </Attribute>
+            </Obligation>
+         </Obligations>
+         <Rights>
+            <Right>RIGHT_PRINT</Right>
+            <Right>RIGHT_VIEW</Right>
+         </Rights>
+      </Response>
+   </PolicyQuery>
+</PolicyQueries>

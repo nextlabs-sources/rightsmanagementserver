@@ -1,0 +1,35 @@
+<div data-ng-controller="fileListController">
+	<div id="loading-background" data-ng-show="isLoading">
+			<div id="pgLoading-image-with-border">
+           		<img  src="ui/css/img/loading-icon.gif" alt="Loading..." />
+           </div>
+    </div>
+    <div id="fileListHeader" data-ng-include="'ui/app/Home/Repositories/partials/fileListHeader.html'"></div>
+    <div id="mobile-fileListHeader" data-ng-include="'ui/app/Home/Repositories/partials/fileListHeaderForMobile.html'"></div>    
+	<div data-ng-class="isTreeOpen? 'rms-fileList' : ''">
+	<div class="row">	
+		 <div id="resizable-tree" data-ng-show="isTreeOpen && !searchActivated" class="resize" resizable r-directions="['right']" r-flex="true">
+		<div class="col-md-2 rms-width-auto" data-ng-show="isTreeOpen && !searchActivated">
+			<div class="rms-tree cc-layout-full-height">
+				<div id="rmstree" data-js-tree="treeConfig" data-ng-model="treeData" data-tree="fileListTree" data-should-apply="applyModelChanges()" data-tree-events-obj="treeEventsObj" data-ng-show="isTreeOpen"></div>
+			</div>
+		</div>	
+		</div>		
+		<div id="fileList-col-id" class="col-md-10">			
+			<div class="rms-error-messages" data-ng-class="{'alert' : true, 'alert-danger' : true}" data-ng-if="messages.length" ng-show="shouldDisplay()">
+				<button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+				<center><p ng-repeat="msg in messages">{{msg}}</p></center>
+			</div>
+
+			<div data-ng-if="repoContents.result != false">
+				<ul id="unordered-fileList-id">
+					<li class="list-group-item rms-file-list" data-ng-repeat="eachFile in repoContents |orderBy:selectedSort" data-ng-if="isFiltered(eachFile)"> 
+						<div data-ng-include="'ui/app/Home/Repositories/partials/fileListTemplate.html'"></div>
+					</li>
+				</ul>	
+			</div>
+	    </div>	
+	         
+    </div>
+</div>
+</div>

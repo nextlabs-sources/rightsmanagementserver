@@ -1,0 +1,14 @@
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:include schemaLocation="AgentProfileStatusData.xsd"/>
+	
+	<xs:import schemaLocation="PolicyTypes.xsd"/>
+	
+	<xs:complexType name="AckHeartBeatData">
+		<xs:sequence>
+			<!--agent id-->
+			<xs:element name="profileStatus" type="AgentProfileStatusData" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="policyAssemblyStatus" type="DeploymentRequest" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

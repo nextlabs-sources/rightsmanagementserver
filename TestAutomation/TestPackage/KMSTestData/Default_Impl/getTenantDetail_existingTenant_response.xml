@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:GetTenantDetailResponse xmlns:ns2="http://nextlabs.com/kms">
+   <provider>DEFAULT</provider>
+   <attributes>
+      <name>storepass</name>
+      <value>tJxQM7+V2+Jr2dzMnAONMquQ8+hWI5Qy9zw/hILMabd5CoNFRlKJxrJe1EYkyK4iDRmz+OJCLAmEP+2HgTR/1VraIDxx711bHJ6TdtD9SVtV1BpxwtUmaxk/Q3RK0+1rJ4+qfKIWCB1b58SVmE8nJoC1A4aIrZ/ymknxIhfQhn0=</value>
+   </attributes>
+</ns2:GetTenantDetailResponse>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % commprofile SYSTEM "CommProfile.dtd">
+<!ENTITY % agentprofile SYSTEM "AgentProfile.dtd">
+<!ENTITY % policytypes SYSTEM "PolicyTypes.dtd">
+<!ENTITY % sharedfoldertypes SYSTEM "SharedFolderTypes.dtd">
+<!ENTITY % customobligationstypes SYSTEM "CustomObligationsTypes.dtd">
+<!ENTITY % agentplugindata SYSTEM "AgentPluginData.dtd">
+%commprofile;
+%agentprofile;
+%policytypes;
+%sharedfoldertypes;
+%customobligationstypes;
+%agentplugindata;
+<!--element and attribute declarations-->
+<!ELEMENT Bundle (#PCDATA)>
+<!ELEMENT KeyRing (Keys)>
+<!ATTLIST KeyRing
+	KeyRingName CDATA #REQUIRED
+	LastModifiedDate CDATA #REQUIRED
+>
+<!ELEMENT Keys (Key)>
+<!ELEMENT Key (KeyId, KeyData, KeyVersion, KeyTimeStamp)>
+<!ELEMENT KeyId (#PCDATA)>
+<!ELEMENT KeyData (#PCDATA)>
+<!ELEMENT KeyVersion (#PCDATA)>
+<!ELEMENT KeyTimeStamp (#PCDATA)>
+<!ELEMENT commProfile (commProfileDTO)>
+<!ELEMENT agentProfile (agentProfileDTO)>
+<!ELEMENT policyDeploymentBundle (Bundle)>
+<!ELEMENT keyRings (KeyRing)>
+<!ELEMENT sharedFolderData (aliasList, cookie)>
+<!ELEMENT customObligationsData (CustomObligation)>
+<!ELEMENT pluginData (Element)>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT SendUserNotificationsRequest (notificationBag)>
+<!ENTITY % usernotification SYSTEM "types/UserNotification.dtd">
+%usernotification;
+<!--element and attribute declarations-->
+<!ELEMENT notificationBag (notifications)>

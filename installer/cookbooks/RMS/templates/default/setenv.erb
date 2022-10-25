@@ -1,0 +1,24 @@
+export JRE_HOME="<%= @jre_home %>"
+export CATALINA_HOME="<%= @tomcat_path %>"
+export CATALINA_BASE="<%= @tomcat_path %>"
+export CATALINA_TMPDIR="<%= @tomcat_path %>/temp"
+export CATALINA_OPTS="-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Djava.awt.headless=true -Done-jar.jar.path=<%= @embedded_pdp_path %>"
+export DISPLAY=:0
+export RMSDATADIR="<%= @data_dir_path %>"
+export RMSINSTALLDIR="<%= @install_dir_path %>"
+export LC_ALL="en_US.UTF-8"
+<%-	if @install_kms || @kms_installed -%>
+export KMSDATADIR="<%= @kms_data_dir_path %>"
+export KMSINSTALLDIR="<%= @install_dir_path %>"
+<%- end -%>
+
+# Edit the following line to configure minimum and maximum Java heap size
+export JAVA_OPTS="-Xms128M -Xmx512M"
+
+<% if @user_attribute -%>
+	<% @user_attribute.keys.each do |user_var| -%>
+if [ -r "<%= @user_attribute[user_var] %>" ]; then
+	. "<%= @user_attribute[user_var] %>"
+fi
+	<% end -%>
+<% end -%>

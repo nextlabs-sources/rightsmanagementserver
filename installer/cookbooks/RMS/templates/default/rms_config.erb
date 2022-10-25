@@ -1,0 +1,10 @@
+LDAP_NUM_SERVERS=1
+LDAP.1.LDAP_TYPE=<%= @ldap_type %>
+LDAP.1.HOST_NAME=<%= @host_name %>
+LDAP.1.DOMAIN=<%= @domain %>
+LDAP.1.SEARCH_BASE=<%= @search_base %>
+LDAP.1.USER_SEARCH_QUERY=(&(objectClass=user)(sAMAccountName=$USERID$))
+LDAP.1.RMS_USERGROUP=<%= @user_group %>
+LDAP.1.RMS_ADMIN=<%= @admin %>
+
+EMBEDDEDJPC_RMI_PORT_NUMBER=<%= @rmi_km_port %>

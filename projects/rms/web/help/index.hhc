@@ -1,0 +1,62 @@
+﻿<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="FrameName" value="bsscright">
+  <param name="SiteType" value="toc">
+  <param name="Image Width" value="16">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Upload and View">
+    <param name="Local" value="Upload_and_View.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Document Viewer">
+    <param name="Local" value="Document_Viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="VDS Viewer">
+    <param name="Local" value="VDS_Viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="RH Viewer">
+    <param name="Local" value="RH_Viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="CAD Viewer">
+    <param name="Local" value="CAD_Viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Manage Personal Repositories">
+    <param name="Local" value="Manage_Repositories_Personal.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Manage Repositories">
+    <param name="Local" value="Manage_Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Service Providers">
+    <param name="Local" value="ServiceProviders.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Configuration">
+    <param name="Local" value="Configuration.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Downloading RMC">
+    <param name="Local" value="rmcDownload.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Contact Us">
+    <param name="Local" value="Contact_Us.htm">
+  </object>
+</ul>
+</html>

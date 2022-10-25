@@ -1,0 +1,21 @@
+Stack trace
+-----------
+
+java -cp <path to allatori.jar> com.allatori.StackTrace allatori-log.xml <file with obfuscated stack trace> <output file>
+
+Rebuild allatori-log.xml
+------------------------
+
+Individual log.xml files are built under common/pf, client/pf, etc.
+allatori-log.xml is a sort of combination of these.  It's used to
+define ahead of time the obfuscated names so that we don't get name
+collisions between the different jars (we are odd in that we have
+things in the same package, but in different jars.  If these are
+obfuscated separately then two different classes in different jars in
+the same package can end up with the same name.  This is a very bad
+thing.
+
+java -jar <location of allatori> allatori-config.xml
+
+Then copy new-allatori-log.xml over allatori-log.xml 
+

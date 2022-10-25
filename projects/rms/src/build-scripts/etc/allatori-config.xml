@@ -1,0 +1,520 @@
+<config>
+        <jars>
+                <jar in="../../common/pf/build/orig-common-pf.jar" out="../../common/pf/build/common-pf.jar"/>
+                <jar in="../../server/dictionary/build/orig-server-dictionary.jar" out="../../server/dictionary/build/server-dictionary.jar"/>
+                <jar in="../../../build/orig-server-pf.jar" out="../../../build/server-pf.jar"/>
+                <jar in="../../../build/orig-client-pf.jar" out="../../../build/client-pf.jar"/>
+        </jars>
+        <property name="incremental-obfuscation" value="./allatori-log.xml"/>
+        <property name="log-file" value="./new-allatori-log.xml"/>
+        <keep-names>
+                <!-- Keep serialization information around in general -->
+                <class template="class * instanceof java.io.Serializable">
+                        <field template="static final long serialVersionUID"/>
+                        <method template="void writeObject(java.io.ObjectOutputStream)"/>
+                        <method template="void readObject(java.io.ObjectInputStream)"/>
+                        <method template="java.lang.Object writeReplace()"/>
+                        <method template="java.lang.Object readResolve()"/>
+                </class>
+
+	         <class template="class com.nextlabs.pf.destiny.formatter.DACDomainObjectFormatter*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.nextlabs.pf.destiny.formatter.DACCentralAccessRule*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.nextlabs.pf.destiny.formatter.DACCentralAccessPolicy">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.nextlabs.pf.destiny.formatter.XACMLDomainObjectFormatter">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.formatter.DomainObjectFormatter">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.exceptions.CombiningAlgorithm">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.exceptions.PolicyExceptions">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.exceptions.PolicyReference">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.misc.Target">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.misc.EffectType">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.misc.IDEffectType">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.misc.IDTarget">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.policy.IDPolicy">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.resource.ResourceAttribute">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.action.DAction">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.action.IDActionManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.action.ActionAttribute">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.action.IDAction">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.AgentAttribute">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.IDeploymentBundle">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.DeploymentBundleFactory">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+                <!-- Start stuff that is serialized in the bundle -->
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.DeploymentBundle">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.DeploymentBundleV2">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.DeploymentBundleSignatureEnvelope">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.SubjectKeyMappingImpl">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+                <!-- End stuff that is serialized in the bundle -->
+	         <class template="class com.bluejungle.pf.domain.epicenter.common.SpecType">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.exceptions.ICombiningAlgorithm">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.exceptions.IPolicyExceptions">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.exceptions.IPolicyReference">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.misc.IAccessControlled">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.misc.ITarget">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.misc.IObligation">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.policy.IPolicy">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.resource.AbstractResourceManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.resource.IResourceAttributeLoader">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.resource.IMResource">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.resource.IResource">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.resource.Resource">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.log.ResourceInformation">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.ClientInformation">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IClientInformationManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+                <!-- CLIENT_COMPARATOR can't be created unless this has private access -->
+	         <class template="class com.bluejungle.pf.engine.destiny.ClientInformationManager">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.RegularExpressionInformationManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.EngineResourceInformation">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IRegularExpressionInformationManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.EvaluationQueryResponse">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IEvaluationEngine">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.EvaluationEngine">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.EvaluationResult">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.EvaluationRequest">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IEngineSubjectResolver">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.ITargetResolver">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.SubjectCache">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+                <!-- for ILLEGAL -->
+	         <class template="class com.bluejungle.pf.destiny.lifecycle.DevelopmentStatus">
+		         <field template="static final * ILLEGAL"/>
+	         </class>
+                <!-- for setters and getters -->
+	         <class template="class com.bluejungle.pf.destiny.lifecycle.DeploymentRecord">
+		         <field access="private+"/>
+		         <method access="private+"/>  
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lifecycle.DeploymentEntity">
+		         <field access="private+"/>
+		         <method access="private+"/>  
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lifecycle.DevelopmentEntity">
+		         <field access="private+"/>
+		         <method access="private+"/>  
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.policymap.STRLog">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.axis.IPolicyDeployment">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.common.DefaultSpecManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.common.ServerSpecManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.DictionaryHelper">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.DMSServiceImpl">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+
+ 		 <!-- Added for BatchDeployer -->
+		 <class template="class com.bluejungle.pf.tools.DeploymentToolsBase">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+
+ 		 <!-- Added for BatchDeployer -->
+	         <class template="class com.bluejungle.pf.tools.CollectingPQLVisitor">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+
+	         <class template="class com.bluejungle.pf.engine.destiny.IAgentPolicyContainer">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.AgentPolicyAssembly">
+                       <!-- Required by unit tests -->
+		         <method template="java.util.Calendar getTimestamp()"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.ISystemUser">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IBundleVault">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.BundleVaultImpl">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.obligation.ILoggingLevel">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.resource.AgentResourceManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.DefaultFileResourceHandler">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.services.ResourcePreview">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.services.PolicyEditorClient">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.services.PolicyEditorClient*">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.services.IPolicyEditorClient">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.services.IPolicyEditorClient*">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.services.UNCUtil">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.nextlabs.pf.destiny.importexport.*">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.Dictionary">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.ConfigurationSession">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.DictionarySession">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+                <!-- Set by reflection, hence the "private" access -->
+	         <class template="class com.bluejungle.dictionary.Enrollment">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.EnrollmentProperty">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.EnumeratedGroup">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.GroupBase">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.DictionaryElementBase">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.ExternalFieldMapping">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.EnumerationMember">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.EnumerationGroupMember">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.EnumerationProvisionalMember">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.UpdateRecord">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.ElementField">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.dictionary.ElementType">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+
+                <!-- Wildcards come at the end so that we don't override any previous specializations -->
+                <!-- I need a way to make IDeploymentBundle$ISubjectKeyMapping visible.  How? -->
+	         <class template="class com.bluejungle.pf.domain.destiny.deployment.IDeploymentBundle*">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+                <!-- Get the inner class too -->
+	         <class template="class com.bluejungle.pf.domain.epicenter.resource.IResourceManager*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IClientInformationManager*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.engine.destiny.IContentAnalysisManager">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.policymap.PolicyQueryImpl">
+		         <field template="public COMP_INFO "/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.policymap.ServerTargetResolver">
+		         <field template="public COMP_INFO "/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.policymap.MapBuilder">
+	         </class>
+                 <class template="class com.bluejungle.pf.destiny.policymap.ReferenceResolver">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+                 </class>
+	         <class template="class com.bluejungle.pf.destiny.lifecycle.LifecycleManager*">
+		         <field access="package+"/>
+		         <method access="package+"/>
+	         </class>
+                <!-- IBundleVault.BundleInfo -->
+	         <class template="class com.bluejungle.pf.engine.destiny.IBundleVault*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+                <!-- Definitely need DefaultPQLVisitor, DOB, DOD, IHasPQL, PQLException, and PQLHelper.  Let's just include everything -->
+	         <class template="class com.bluejungle.pf.destiny.parser.*">
+		          <field access="protected+"/>
+		          <method access="protected+"/>
+	         </class>
+                <!-- We definitely need DObligation, IDObligation, DisplayObligation, NotifyObligation, and the managers -->
+	         <class template="class com.bluejungle.pf.domain.destiny.obligation.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+                <!-- Serialized -->
+	         <class template="class com.bluejungle.pf.destiny.lib.RegularExpressionRequestDTO">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.RegularExpressionDTO">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.ClientInformationRequestDTO">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.ClientInformationDTO">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lib.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.nextlabs.pf.destiny.lib.KeyManagerConstants">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.destiny.lifecycle.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+                <!-- HeartbeatAttribute, RemoteAccessAttribute, TimeAttribute -->
+	         <class template="class com.bluejungle.pf.domain.destiny.environment.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.common.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.function.FunctionApplication">
+		         <field access="private+"/>
+		         <method access="private+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.epicenter.subject.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.subject.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.bluejungle.pf.domain.destiny.serviceprovider.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+	         <class template="class com.nextlabs.pf.domain.destiny.serviceprovider.*">
+		         <field access="protected+"/>
+		         <method access="protected+"/>
+	         </class>
+        </keep-names>
+</config>

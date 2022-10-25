@@ -1,0 +1,22 @@
+The following components will be installed.
+<%-	if install_rms -%>
+		- NextLabs Rights Management Server <%= rms_ver %>
+<%- end -%>
+<%-	if install_kms -%>
+		- NextLabs Key Management Server <%= kms_ver %>
+<%- end -%>
+
+Installation directory : <%= installation_dir %>
+Data directory : <%= data_dir %>
+<%- if !license_path.nil? && license_path != "" -%>
+License File : <%= license_path %>
+<%- end -%>
+
+<%- if install_tomcat -%>
+SSL port for RMS : <%= rms_ssl_port %>
+Shutdown port for RMS : <%= rms_shutdown_port %>
+<%- end -%>
+<%-	if install_rms && !rms_installed -%>
+RMI Key Management Port : <%= rmi_km_port %>
+ICENet Server : <%= icenet_server %> 
+<%- end -%>

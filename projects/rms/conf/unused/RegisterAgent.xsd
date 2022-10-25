@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nextlabs.com/rms/services/agentservice" xmlns:types="http://bluejungle.com/destiny/services/agent/types" xmlns:faults="http://bluejungle.com/destiny/framework/types" targetNamespace="http://nextlabs.com/rms/services/agentservice" elementFormDefault="qualified">
+	<xs:import namespace="http://bluejungle.com/destiny/services/agent/types" schemaLocation="types/AgentRegistrationData.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/services/agent/types" schemaLocation="types/AgentStartupConfiguration.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/CommonFaults.xsd"/>
+	<xs:element name="RegisterAgent" type="tns:registerAgentType"/>
+	<xs:complexType name="registerAgentRequest">
+		<xs:sequence>
+			<xs:element name="RegistrationData" type="types:AgentRegistrationData" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="registerAgentResponse">
+		<xs:sequence>
+			<xs:element name="StartupConfiguration" type="types:AgentStartupConfiguration" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="fault" type="faults:commonFault" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="registerAgentType">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="registerAgentRequest" type="tns:registerAgentRequest"/>
+			<xs:element name="registerAgentResponse" type="tns:registerAgentResponse"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhpml majorversion="7" minorversion="13">
+	<files>
+		<file>
+			<name>!ScreenLayout!\Azure_Green\usersettings.js</name>
+			<usercreated>true</usercreated>
+			<comments/>
+		</file>
+		<file>
+			<name>!ScreenLayout!\Charcoal_Grey\usersettings.js</name>
+			<usercreated>true</usercreated>
+			<comments/>
+		</file>
+	</files>
+</rhpml>

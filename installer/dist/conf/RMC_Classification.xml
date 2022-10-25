@@ -1,0 +1,70 @@
+<Classify>
+	<Profiles>
+		<!-- <Default> profile MUST exist -->
+		<Default>0,1</Default>
+		<Engineer>0,1</Engineer>
+		<Product>0,1</Product>
+	</Profiles>
+	<LabelList>
+		<!-- <Label> element defines the label which is shown in classify UI
+				There must be at least one label
+		-->
+		<Label id="0" name="Sensitivity" display-name="Sensitivity" mandatory="true" multi-select="false" default-value="0">
+			<VALUE priority="0" value="Non Business" />
+			<VALUE priority="1" value="General Business" />
+			<VALUE priority="2" value="Proprietary" />
+			<VALUE priority="3" value="Confidential" />
+		</Label>
+		<Label id="1" name="Program" display-name="Program" mandatory="true" multi-select="false" default-value="0">
+			<VALUE value="PR-01" sub-label="2"/>
+			<VALUE value="PR-02" sub-label="2"/>
+			<VALUE value="PR-03" sub-label="2"/>
+		</Label>
+		<Label id="2" name="Jurisdiction" display-name="Jurisdiction" mandatory="true" multi-select="false" default-value="0">
+			<VALUE value="ITAR"  sub-label="3"/>
+			<VALUE value="EAR" sub-label="4"/>
+			<VALUE value="BAFA" sub-label="5"/>
+		</Label>
+		<Label id="3" name="ITAR" display-name="ITAR Property" mandatory="true" multi-select="true" default-value="0">
+			<VALUE value="TAA-01" />
+			<VALUE value="TAA-02" />
+			<VALUE value="TAA-03" />
+			<VALUE value="TAA-04" />
+		</Label>
+		<Label id="4" name="EAR" display-name="EAR Property" mandatory="true" multi-select="true" default-value="0">
+			<VALUE value="EAR-01" />
+			<VALUE value="EAR-02" />
+			<VALUE value="EAR-03" />
+			<VALUE value="EAR-04" />
+		</Label>
+		<Label id="5" name="BAFA" display-name="BAFA Property" mandatory="true" multi-select="true" default-value="0">
+			<VALUE value="BAFA-01" />
+			<VALUE value="BAFA-02" />
+			<VALUE value="BAFA-03" />
+			<VALUE value="BAFA-04" />
+		</Label>
+	</LabelList>	
+	<WhiteList>
+		<!-- <Applications> element defines a list of applications which are always trusted by RMC
+				<Application> element defines an application which is always trusted, see following examples.
+					* name (mandatory): application's name
+					* publisher (optional): application's publisher (if signed).
+					* rights (optional): rights given to this application. If it is not set or empty, RIGHT_VIEW will be given to this application by default.
+		-->
+		<!-- SEE following examples:
+		<Applications>
+			<Application name="devenv.exe" publisher="Microsoft Corporation" rights="RIGHT_VIEW,RIGHT_EDIT"/>
+			<Application name="notepad++.exe"/>
+		</Applications>
+		-->
+		<!--
+			<Extensions> element contains a valid regular expression which defines what kind of file type is acceptable by Rights Management Client.
+			If this element is not defined or is empty, RMC accepts any file type.
+			See following example.
+			NOTE: author must ensure the regular expression is VALID.
+		-->
+		<!-- SEE following examples:
+		<Extensions>.*\.(txt|rtf|pdf|rh|dwg|(doc[x]?)|(xls[x]?)|(ppt[x]?))$</Extensions>
+		-->
+    </WhiteList>
+</Classify>

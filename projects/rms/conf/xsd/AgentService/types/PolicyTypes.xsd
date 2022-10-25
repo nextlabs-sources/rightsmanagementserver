@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="SystemUser">
+		<xs:sequence>
+			<xs:element name="userSubjectType" type="xs:string" minOccurs="1"/>
+			<xs:element name="systemId" type="xs:string" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+    <xs:complexType name="DeploymentRequest">
+		<xs:sequence>
+            <xs:choice>
+                <xs:element name="policyUsers" type="SystemUser" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="userSubjectTypes" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+            <xs:element name="agentCapabilities" type="AgentCapability" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+        <xs:attribute name="agentHost" type="xs:string" use="required"/>
+        <xs:attribute name="agentType" type="AgentTypeEnum" use="required"/>
+        <xs:attribute name="timestamp" type="xs:dateTime" use="optional"/>
+    </xs:complexType>
+
+    <xs:simpleType name="AgentTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DESKTOP"/>
+            <xs:enumeration value="FILE_SERVER"/>
+            <xs:enumeration value="PORTAL"/>
+            <xs:enumeration value="ACTIVE_DIRECTORY"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AgentCapability">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FILESYSTEM"/>
+            <xs:enumeration value="PORTAL"/>
+            <xs:enumeration value="EMAIL"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

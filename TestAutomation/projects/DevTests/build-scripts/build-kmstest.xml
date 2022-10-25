@@ -1,0 +1,120 @@
+<project name="build_kmstest" default="all" basedir=".">
+
+	<property name="nlbuildroot" value="${basedir}/../../../.." />
+	<property name="devtestsdir" value="${basedir}/.." />
+	<!-- Property files -->
+	<property environment="env" />
+	<property file="${basedir}/build-kmstest.properties" />
+
+	<!-- Global properties -->
+	<property name="package_dir" value="${build_dir}/${package_name}" />
+	<property name="package_dir_test" value="${build_dir}/${package_name_test}" />
+
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<echo message="INFO: Dump properties completed" />
+
+	<!-- Sanity checks -->
+	<fail message="kms.root is not set" unless="kms.root" />
+	<fail message="kms.root is empty">
+		<condition>
+			<equals arg1="${kms.root}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${kms.root}" type="dir" property="local.kms.root_exists" />
+	<fail message="kms.root directory does not exist - ${kms.root}" unless="local.kms.root_exists" />
+
+	<echo message="INFO: Sanity check completed (no error)" />
+
+	<path id="classpath.hibernate">
+		<fileset dir="${hibernatelibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.log4j">
+		<fileset dir="${log4jlibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.restlet">
+		<fileset dir="${restletlibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.servlet">
+		<fileset dir="${servletlibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.slf4j">
+		<fileset dir="${slf4jlibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.spring">
+		<fileset dir="${springlibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.jaxb">
+		<fileset dir="${jaxblibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.commons">
+		<fileset dir="${commonslibdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.c3p0">
+		<fileset dir="${c3p0libdir}" includes="*.jar" />
+	</path>
+	<path id="classpath.kms">
+		<fileset dir="${kmslibdir}" includes="*.jar" />
+	</path>
+	
+	<!-- Global tasks -->
+	<tstamp>
+		<format property="local.now" pattern="EEE, d MMM yyyy HH:mm:ss Z" />
+	</tstamp>
+
+	<echo message="version_str = ${version_str}" />
+	<echo message="time = ${local.now}" />
+
+	<!-- Targets -->
+	<target name="all" description="Default for all" depends="clean, compile-kms-test, package-test-automation" />
+
+	<target name="clean" description="Delete all build artifacts" depends="">
+		<delete includeemptydirs="true" dir="${build_dir}/${package_name_test}"/>
+	</target>
+
+    <target name="compile-kms-test" description="Compile KMS Testing code" depends="clean" >
+		<mkdir dir="${test_classes_dir}" />		
+        <javac srcdir="${src_dir}" destdir="${test_classes_dir}" encoding="UTF-8" >
+        	<classpath refid="classpath.hibernate" />
+			<classpath refid="classpath.log4j" />
+			<classpath refid="classpath.restlet" />
+			<classpath refid="classpath.servlet" />
+			<classpath refid="classpath.slf4j" />
+			<classpath refid="classpath.spring" />
+			<classpath refid="classpath.commons" />
+			<classpath refid="classpath.c3p0" />
+        	<classpath refid="classpath.jaxb" />
+        	<classpath refid="classpath.kms" />
+        </javac>
+        <jar destfile="${build_dir}/${package_name_test}.jar" basedir="${test_classes_dir}">
+			<manifest>
+				<attribute name="Java-Version" value="${java.version}"/>
+				<attribute name="Implementation-Vendor" value="NextLabs, Inc."/>
+				<attribute name="Implementation-Title" value="${product_name}"/>
+				<attribute name="Implementation-Version" value="${version_str} (${build_number})"/>
+				<attribute name="Implementation-Time" value="${local.now}"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="package-test-automation" description="builds each module" depends="compile-kms-test">	
+		<!-- Test automation dependencies -->
+		<copy todir="${testautomation.root}/TestPackage" overwrite="true">
+			<fileset file="${log4jlibdir}/log4j-1.2.17.jar" />
+			<fileset file="${log4jlibdir}/log4j-api-2.1.jar" />
+			<fileset file="${log4jlibdir}/log4j-core-2.1.jar" />
+			<fileset file="${slf4jlibdir}/slf4j-api-1.7.13.jar" />
+			<fileset file="${slf4jlibdir}/slf4j-log4j12-1.7.13.jar" />
+			<fileset file="${kmslibdir}/${package_name}_xmlbeans.jar" />
+			<fileset file="${kmslibdir}/KMSImporter.jar" />
+			<fileset file="${commonslibdir}/commons-io-2.4.jar" />
+			<fileset file="${commonslibdir}/commons-codec-1.10.jar" />
+		</copy>
+		<zip destfile="${build_dir}/${test_automation_zip_file_name}" encoding="UTF-8">
+			<fileset file="${build_dir}/${package_name_test}.jar" />
+			<fileset file="${testautomation.root}/TestPackage/**" />
+		</zip>	
+	</target>
+
+</project>

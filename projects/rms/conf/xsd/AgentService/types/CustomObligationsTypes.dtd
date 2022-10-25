@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--element and attribute declarations-->
+<!ELEMENT CustomObligation (DisplayName, RunAt, RunBy, InvocationString)>
+<!ELEMENT DisplayName (#PCDATA)>
+<!ELEMENT RunAt (#PCDATA)>
+<!ELEMENT RunBy (#PCDATA)>
+<!ELEMENT InvocationString (#PCDATA)>

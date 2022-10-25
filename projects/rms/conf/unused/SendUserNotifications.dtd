@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % usernotification SYSTEM "types/UserNotification.dtd">
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+%usernotification;
+%basicfaults;
+<!--element and attribute declarations-->
+<!ELEMENT SendUserNotifications (sendUserNotificationsRequest | sendUserNotificationsResponse)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT notificationBag (notifications+)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ELEMENT sendUserNotificationsRequest (notificationBag)>
+<!ELEMENT sendUserNotificationsResponse ((fault)?)>

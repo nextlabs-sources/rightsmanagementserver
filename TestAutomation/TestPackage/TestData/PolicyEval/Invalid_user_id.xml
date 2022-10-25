@@ -1,0 +1,42 @@
+<!-- Using un-enrolled or invalid <User> "id"  -->
+<PolicyQueries xmlns="https://www.nextlabs.com/rms/policy/eval">
+	<PolicyQuery id="q1">
+		<Request>
+			<Subject>
+				<User id="invalid" name="abraham.lincoln"> <!-- User Id is invalid -->
+					<Attribute name="citizenship">
+						<AttributeValue>id</AttributeValue>
+					</Attribute>
+				</User>
+				<Application name="rms" pid="rmsPID" path="">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Application>
+				<Host ip="2130706433">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Host>
+			</Subject>
+			<Resources>
+				<Resource type="fso" dimension="from" name="AnyName">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Resource>
+			</Resources>			
+			<Environments>
+				<Environment name="environment">
+					<Attribute name="dont-care-acceptable">
+						<AttributeValue>yes</AttributeValue>
+					</Attribute>
+				</Environment>
+			</Environments>
+			<Rights>
+				<Right>RIGHT_VIEW</Right>
+				<Right>RIGHT_PRINT</Right>
+			</Rights>
+		</Request>
+	</PolicyQuery>
+</PolicyQueries>

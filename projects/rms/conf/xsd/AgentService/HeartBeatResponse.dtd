@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT HeartBeatResponse (updates, fault)>
+<!ENTITY % commonfaults SYSTEM "types/CommonFaults.dtd">
+<!ENTITY % agentupdates SYSTEM "types/AgentUpdates.dtd">
+%commonfaults;
+%agentupdates;
+<!--element and attribute declarations-->
+<!ELEMENT updates (commProfile, agentProfile, policyDeploymentBundle, keyRings, sharedFolderData, customObligationsData, pluginData)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>

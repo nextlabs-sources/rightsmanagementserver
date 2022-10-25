@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % agenttype SYSTEM "AgentType.dtd">
+<!ENTITY % version SYSTEM "Version.dtd">
+%agenttype;
+%version;
+<!--element and attribute declarations-->
+<!ELEMENT host (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT version (major, minor, maintenance, patch, build)>
+<!ELEMENT osInformation (osInfo)>
+<!ELEMENT hardwareDetails (cpu, memoryAmount, memoryUnits, macAddressesList, deviceId)>
+<!ELEMENT groupInformation (groupInfo)>
+<!ELEMENT tenantId (#PCDATA)>
+<!ELEMENT osInfo (osType, osVersion)>
+<!ELEMENT osType (#PCDATA)>
+<!ELEMENT osVersion (#PCDATA)>
+<!ELEMENT cpu (#PCDATA)>
+<!ELEMENT memoryAmount (#PCDATA)>
+<!ELEMENT memoryUnits (#PCDATA)>
+<!ELEMENT macAddressesList (#PCDATA)>
+<!ELEMENT deviceId (#PCDATA)>
+<!ELEMENT groupInfo (groupId, groupName)>
+<!ELEMENT groupId (#PCDATA)>
+<!ELEMENT groupName (#PCDATA)>

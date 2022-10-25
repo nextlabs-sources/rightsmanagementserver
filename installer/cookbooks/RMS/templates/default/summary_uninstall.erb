@@ -1,0 +1,10 @@
+The following components will be uninstalled.
+<%-	if install_rms -%>
+		- NextLabs Rights Management Server <%= rms_ver %>
+<%- end -%>
+<%-	if install_kms -%>
+		- NextLabs Key Management Server <%= kms_ver %>
+<%- end -%>			
+						
+Installation directory : <%= installation_dir %>
+Data directory : <%= data_dir %>

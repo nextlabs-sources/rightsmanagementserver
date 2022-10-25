@@ -1,0 +1,39 @@
+/* When specifying the path, use either single forward slash ('/') or double backward slashes ('\\') */
+/* Installation will not continue if the MANDATORY fields are empty	*/
+
+{
+	"installation_dir"		:	"",			/* Not applicable for Unix platform */
+	"data_dir"			:	"",			/* Not applicable for Unix platform */
+
+	"rms_ssl_port"			:	"",			
+	"rms_shutdown_port"		:	"",
+	"rmi_km_port"			:	"",
+	"license_file_location"		: 	"",			/* Optional  */
+	"icenet_server"			:	"",			/* Mandatory */
+  
+	/* AD Configurations */
+	"ldap_type"			:	"",			/* Mandatory.Supported LDAP: AD,OPENLDAP */
+	"ldap_host_name"		:	"",			/* Mandatory */
+	"ldap_domain"			:	"", 			/* Mandatory */
+	"ldap_search_base"		:	"",			/* Mandatory */
+	"ldap_user_group"		:	"",			/* Optional  */
+	"ldap_admin"			:	"",			/* Mandatory */
+  
+	/*OPTIONS FOR RMS COMPONENT */
+
+	"rms_db_type"			: 	"",   			/* Mandatory. Supported Databases : MSSQL, ORACLE, MYSQL 
+										Choose IN_BUILT option for a built in database - 
+										Note: IN_BUILT database is meant for demo purposes, strictly not for production use.
+										      Data from IN_BUILT database cannot be migrated to any external database.
+									*/
+	"rms_db_host_name"		: 	"",			/* Mandatory for all databases except IN_BUILT database type*/ 
+	"rms_db_port"			: 	"",			/* Mandatory for all databases */  
+    	"rms_db_name"			: 	"",			/* Mandatory for all databases except IN_BUILT database type */  
+	"rms_db_username"		:  	"",			/* Mandatory for all databases except IN_BUILT database type. IN_BUILT => "root" */
+	"rms_db_password"		:	"",			/* Optional */
+	"rms_db_conn_url"		:	"",			/* Optional, if specified, ignores rms_db_host_name, rms_db_port and rms_db_name attributes */
+
+
+	/* Uninstall Options */
+	"delete_data_dir"		:	"" 			/* Only applicable to uninstall. Default => "no". Acceptable => "yes","no" */
+}

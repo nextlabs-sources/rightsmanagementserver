@@ -1,0 +1,51 @@
+﻿[OPTIONS]
+Compiled File=Rights Management Server 1.0.chm
+Title=Secure Collaboration
+Contents File=Rights Management Server 1.0.hhc
+Index File=Rights Management Server 1.0.hhk
+Default topic=Repositories.htm
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+LANG_ID=1033
+LANG_NAME=English (US)
+
+[WINDOWS]
+
+[FILES]
+Manage_Repositories.htm
+Document_Viewer.htm
+Contact_Us.htm
+Manage_Repositories_Personal.htm
+Upload_and_View.htm
+rmcDownload.htm
+CAD_Viewer.htm
+Repositories.htm
+Configuration.htm
+RH_Viewer.htm
+Login_Page.htm
+Supported_File.htm
+ServiceProviders.htm
+VDS_Viewer.htm
+!ScreenLayout!\Azure_Green\usersettings.js
+!ScreenLayout!\Charcoal_Grey\usersettings.js
+
+Rights Management Server 1.0.glo
+Rights Management Server 1.0.brs
+[ALIAS]
+#include Rights Management Server 1.0.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

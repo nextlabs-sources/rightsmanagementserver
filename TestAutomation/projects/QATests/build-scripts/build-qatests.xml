@@ -1,0 +1,123 @@
+<project name="build_qatests" default="all" basedir=".">
+
+	<property name="nlbuildroot" value="${basedir}/../../../.." />
+	<property name="qatestsdir" value="${basedir}/.." />
+	<!-- Property files -->
+	<property environment="env" />
+	<property file="${basedir}/build-qatests.properties" />
+
+	<!-- Global properties -->
+	<property name="package_dir" value="${build_dir}/${package_QA_name}" />
+	<property name="package_dir_test" value="${build_dir}/${package_name_QA_test}" />
+
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<echo message="INFO: Dump properties completed" />
+
+	<!-- Sanity checks -->
+	<fail message="odrm.root is not set" unless="odrm.root" />
+	<fail message="odrm.root is empty">
+		<condition>
+			<equals arg1="${odrm.root}" arg2="" trim="true" />
+		</condition>
+	</fail>
+	<available file="${odrm.root}" type="dir" property="local.odrm.root_exists" />
+	<fail message="odrm.root directory does not exist - ${odrm.root}" unless="local.odrm.root_exists" />
+
+	<echo message="INFO: Sanity check completed (no error)" />
+
+	<path id="classpath.autoItX4Java">
+		<fileset dir="${autoItX4Javalibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.dom4j">
+		<fileset dir="${dom4jlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.fluent-hc">
+		<fileset dir="${fluent-hclibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.guice">
+		<fileset dir="${guicelibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.jacob">
+		<fileset dir="${jacoblibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.jcommander">
+		<fileset dir="${jcommanderlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.reportng">
+		<fileset dir="${reportnglibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.selenium-java">
+		<fileset dir="${selenium-javalibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.velocity-dep">
+		<fileset dir="${velocity-deplibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.zip4j">
+		<fileset dir="${zip4jlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.commons">
+		<fileset dir="${commonslibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.log4j">
+		<fileset dir="${log4jlibdir}" includes="*.jar"/>
+	</path>
+	<path id="classpath.javamail">
+		<fileset dir="${javamaillibdir}" includes="*.jar"/>
+	</path>
+
+	<!-- Global tasks -->
+	<tstamp>
+		<format property="local.now" pattern="EEE, d MMM yyyy HH:mm:ss Z" />
+	</tstamp>
+
+	<echo message="version_str = ${version_str}" />
+	<echo message="time = ${local.now}" />
+	<echo message="${package_name_QA_test}.jar" />
+	
+	<!-- Targets -->
+	<target name="all" description="Default for all" depends="clean, compile-test" />
+
+	<target name="clean" description="Delete all build artifacts" depends="">
+		<delete includeemptydirs="true" dir="${build_dir}"/>
+	</target>
+
+    <target name="compile-test" description="Compile the Testing code" depends="clean" >
+		<mkdir dir="${test_classes_dir}" />		
+        <javac srcdir="${src_dir}" destdir="${test_classes_dir}" encoding="UTF-8" >
+        	<classpath refid="classpath.autoItX4Java"/>
+        	<classpath refid="classpath.dom4j"/>
+			<classpath refid="classpath.fluent-hc"/>
+			<classpath refid="classpath.guice"/>
+       		<classpath refid="classpath.javamail"/>
+			<classpath refid="classpath.jacob"/>
+			<classpath refid="classpath.jcommander"/>
+			<classpath refid="classpath.reportng"/>
+        	<classpath refid="classpath.selenium-java"/>
+			<classpath refid="classpath.velocity-dep"/>
+       		<classpath refid="classpath.zip4j"/>
+			<classpath refid="classpath.log4j"/>
+			<classpath refid="classpath.commons"/>
+        </javac>
+    	<copy todir="${test_classes_dir}/com/nextlabs/rms/qa/config">
+	      <fileset dir="${nlbuildroot}/conf" casesensitive="yes">
+               <include name="RMSVersion.properties"/>
+          </fileset>
+        </copy>
+    		
+        <jar destfile="${build_dir}/${package_name_QA_test}.jar" basedir="${test_classes_dir}">
+			<manifest>
+				<attribute name="Java-Version" value="${java.version}"/>
+				<attribute name="Implementation-Vendor" value="NextLabs, Inc."/>
+				<attribute name="Implementation-Title" value="${product_name}"/>
+				<attribute name="Implementation-Version" value="${version_str} (${build_number})"/>
+				<attribute name="Implementation-Time" value="${local.now}"/>
+			</manifest>
+		</jar>
+		<copy todir="${staging.dir}" overwrite="true">
+			<fileset file="${build_dir}/${package_name_QA_test}.jar" />
+		</copy>
+	</target>
+	
+</project>

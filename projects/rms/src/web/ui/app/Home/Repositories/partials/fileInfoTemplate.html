@@ -1,0 +1,59 @@
+<div class="rms-info-filedetails">
+	<div>
+		<a class="rms-info-closeLink" data-ng-click="ok()">x</a>
+		<div class="rms-info-fileName" >{{fileDetails.fileName}}
+		</div>
+		<br></br>
+		<table style="" class="rms-info-fileProperties">
+			<tr>
+				<td width="30%">{{"file.type" | translate}}</td>
+				<td width="30%">{{"file.size" | translate}}</td>
+				<td width="40%">{{"file.modified.time" | translate}}</td>
+			</tr>
+			<tr>
+				<td><b>{{fileDetails.fileType}}</b></td>
+				<td><b>{{fileDetails.fileSize | filesize:2}}</b></td>
+				<td><b><friendly-date data-ng-if="fileDetails.lastModifiedTime != null" data-date="{{fileDetails.lastModifiedTime}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy, h:mm a"
+				data-short-format="h:mm a" /></b></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="rms-info-repoDetails">
+  <h4>{{fileDetails.repoName}}</h4>
+  <h5>{{fileDetails.path}}</h5>
+</div>
+<div id="rms-info-tags" class="rms-info-tags">
+	<br><br>
+	<center>
+	  	<Label>{{"file.classification" | translate}}</Label><br>
+		<span data-ng-if="!tagsExist">
+			{{"file.noclassification" | translate}}
+		</span>
+		<li data-ng-if="tagsExist" data-ng-repeat="(key,value) in tags">
+			<span>{{key}}</span>
+			<br>
+			<b class="rms-break-word">{{value}}</b>
+			<br>
+		</li>
+	</center>
+</div>
+<div class="rms-info-rights">
+	<br><br>
+	<center>
+		<label>{{"file.rights" | translate}}</label><br>
+		<li>
+			<div data-ng-if="ViewRights"><img src="ui/css/img/icn-fileinfo-view.png" /><br><h5>View</h5></br></div>
+		</li>
+		<li>
+			<div data-ng-if="PrintRights"><img src="ui/css/img/icn-fileinfo-print.png" /><br><h5>Print</h5></br></div>
+		</li>
+		<li>
+			<div data-ng-if="PMIRights"><img src="ui/css/img/icn-fileinfo-PMI.png" /><br><h5>PMI</h5></br></div>
+		</li>
+	</center>
+</div>
+
+
+

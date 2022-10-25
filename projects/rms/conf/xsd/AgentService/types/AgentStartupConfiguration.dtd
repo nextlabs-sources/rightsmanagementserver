@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basictypes SYSTEM "BasicTypes.dtd">
+<!ENTITY % commprofile SYSTEM "CommProfile.dtd">
+<!ENTITY % agentprofile SYSTEM "AgentProfile.dtd">
+%basictypes;
+%commprofile;
+%agentprofile;
+<!--element and attribute declarations-->
+<!ELEMENT commProfile (commProfileDTO)>
+<!ELEMENT agentProfile (agentProfileDTO)>
+<!ELEMENT classificationProfile (#PCDATA)>
+<!ELEMENT registrationId (#PCDATA)>

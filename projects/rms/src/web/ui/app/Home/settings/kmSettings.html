@@ -1,0 +1,64 @@
+<div class="kms-main-view" id="settings-pane" data-ng-controller="kmSettingsController">
+	<div id="settingsLoading" data-ng-show="isLoading">
+		<div  id="pgLoading-image-with-border" >
+           <img src="ui/css/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+    
+    <div class="row service-provider-title">
+		<div class="setting-sidebar-toggle-div col-xs-9">
+			<div class="file-list-icons big-screen-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>	
+			<div>
+				<h4 class="padding-mobile"><b>{{'kmSettings.title' | translate}}</b></h4>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-8">
+			<div id="statusContainer" data-ng-class="{'alert alert-success': messageStatus==2, 'alert alert-danger': messageStatus==1}" style="margin-bottom:10px;" ng-show="messageStatus==1 || messageStatus==2">
+		        <button type="button" class="close" data-ng-click="dismissStatus()">x</button>
+		        {{message}}
+		    </div>
+		</div>
+	</div>
+
+	<div ng-if="keyrings.length" class="col-md-9">
+		<div>
+			<div style="float:left">
+				<div class=""><h5><b>{{selected_keyring.name}}</b></h5></div>
+				<div class="kms-kr-subtitle">{{'kmSettings.num.keys' | translate}}: {{selected_keyring.size}}</div>
+				<div display="inline-block" class="kms-kr-subtitle">
+					{{'last.modified' | translate}}: 
+					<friendly-date style="display:inline-block;" data-date="{{selected_keyring.mDate}}" data-content-class="friendly-date" data-full-format="d MMM yyyy, h:mm a" data-short-format="h:mm a" />
+				</div>
+			</div>
+			
+			<div style="float:right">
+				<a class="btn btn-default rms-settings-button-color" data-ng-click="generateKey()">{{"kmSettings.btn.generateKey" | translate}}</a>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+			
+		<br>
+		<div ng-if="selected_keyring.keys.length" data-ng-repeat="key in selected_keyring.keys">
+			<table class="kms-key-table">
+				<tr>
+					<td width="60%" class="kms-key-id kms-kr-tbl-row-1 kms-kr-tbl-col-1">{{key.id}}</td>
+					<td width="10%" rowspan="2" class="kms-kr-tbl-col-2">
+						<span ng-if="isActiveKey(key.id)" class="kms-key-active">ACTIVE<span>
+					</td>
+					<td width="20%" class="kms-kr-tbl-row-1 kms-kr-subtitle">{{'generated' | translate}}</td>
+				</tr>
+				<tr>
+					<td class="kms-kr-tbl-row-2 kms-kr-tbl-col-1 kms-kr-subtitle">{{key.algorithm}} | {{key.length}} bits </td>
+					<td class="kms-kr-tbl-row-2"><friendly-date data-date="{{key.cdate}}" data-content-class="friendly-date" data-full-format="d MMM yyyy, h:mm a" data-short-format="h:mm a" /></td>
+				</tr>
+			</table>
+		</div>
+		<div class="kms-empty-msg-span" ng-if="!selected_keyring.keys.length">
+			<span>{{"kmSettings.nokey" | translate}}</span>
+		</div>
+	</div>
+
+</div>

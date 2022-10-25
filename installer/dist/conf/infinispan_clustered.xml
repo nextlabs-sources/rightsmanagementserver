@@ -1,0 +1,16 @@
+<infinispan xsi:schemaLocation="urn:infinispan:config:8.0 infinispan-config-8.0.xsd"
+	xmlns="urn:infinispan:config:8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<jgroups>
+		<stack-file name="external-file" path="${rms.ispn.jgroups.conf.location}/jgroups.xml" />
+	</jgroups>
+	<cache-container default-cache="CACHEID_USER_ATTR">
+		<transport cluster="infinispan-cluster" stack="external-file" />
+		<distributed-cache owners ="1" name="CACHEID_USER_ATTR" mode="SYNC">
+			<eviction strategy="LIRS" size="1000" />
+			<expiration lifespan="300000" interval="900000"/>
+			<persistence passivation="true">
+				<file-store path="${rms.ispn.file.store}" max-entries="-1" purge="true"/>
+			</persistence>
+		</distributed-cache>
+	</cache-container>
+</infinispan>

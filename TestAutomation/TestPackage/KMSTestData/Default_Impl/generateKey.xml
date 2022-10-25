@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:generateKeyRequest xmlns:p="http://nextlabs.com/kms" xmlns:types="http://nextlabs.com/kms/types" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nextlabs.com/kms generateKey.xsd ">
+  <keyRingName>NL_SHARE_TEST</keyRingName>
+  <keyLength>256</keyLength>
+  <tenantId>KMS_TEST_AUTOMATION_TENANT</tenantId>
+  <version>1</version>
+</p:generateKeyRequest>

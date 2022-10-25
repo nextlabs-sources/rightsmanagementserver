@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/commons/commons-codec-1.10.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/commons/commons-lang3-3.4.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/commons/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/dom4j"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/jacob/jacob.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/log4j/log4j-1.2.17.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/testng/testng.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/JavaMail/javax.mail.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/AutoItX4Java/AutoItX4Java.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/dom4j/dom4j-1.6.1.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/fluent-hc/fluent-hc-4.5.1.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/guice/guice-3.0.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/reportng/reportng-1.1.4.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/selenium-java/selenium-java-2.49.0.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/selenium-java/selenium-server-standalone-2.49.0.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/velocity-dep/velocity-dep-1.4.jar"/>
+	<classpathentry kind="var" path="BASE_DIR/TestAutomation/projects/QATests/lib/zip4j/zip4j_1.3.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmc:unmarkOfflineRequest userId="1" APIVersion="1" deviceId="device ID" deviceOS="iOS" deviceType="MOBILE" operationTime="2016-01-19T14:51:28.314+08:00" xmlns:rmc="http://nextlabs.com/rms/rmc">
+    <cachedFileIdList>
+        <cachedFileId>8</cachedFileId>
+        <cachedFileId>9</cachedFileId>
+        <cachedFileId>10</cachedFileId>
+    </cachedFileIdList>
+</rmc:unmarkOfflineRequest>

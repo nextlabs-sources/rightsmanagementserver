@@ -1,0 +1,10 @@
+
+<project name="Destiny-tasks" default="build" basedir="../../">
+	<target name="build">
+		<ant dir="../../server/wsgen" target="build" inheritRefs="true"/>
+	</target>
+	
+	<target name="clean">
+		<ant dir="../../server/wsgen" target="clean" inheritRefs="true" verbose="false"/>
+	</target>
+</project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nextlabs.com/kms" xmlns="http://nextlabs.com/kms"
+	xmlns:kms-type="http://nextlabs.com/kms/types">
+	<xs:import schemaLocation="types/KeyManagementTypes.xsd" namespace="http://nextlabs.com/kms/types"/>
+
+	<xs:element name="getLatestKeyRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="keyRingName" type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="tenantId" type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="version" type="xs:int" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getLatestKeyResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="key" type="kms-type:KeyDTO" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

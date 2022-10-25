@@ -1,0 +1,87 @@
+<project name="ODRM Console" default="build" basedir=".">
+
+    <property name="nlbuildroot" value="${basedir}/.." />
+	
+	<property file="${nlbuildroot}/scripts/build.properties" />
+	<property file="${nlbuildroot}/scripts/build-scripts.properties" />
+
+    <property name="src.main.dir"   value="${nlbuildroot}/java/main"/>
+    <property name="src.test.dir"   value="${nlbuildroot}/java/test"/>   
+    <property name="src.jsp"      value="${nlbuildroot}/jsp"/>
+    <property name="src.jspf"      value="${nlbuildroot}/jspf"/>   
+    <property name="src.etc"     value="${nlbuildroot}/etc"/>   
+    <property name="src.bundles"     value="${nlbuildroot}/bundles"/> 
+    <property name="src.hibernate" value="${nlbuildroot}/hibernate" />
+    <property name="doc.dest"   value="${build.root.dir}/server/apps/odrmConsole/doc"/>
+    <property name="build.webapp" value="${build.root.dir}/server/apps/odrmConsole"/>
+    <property name="build.webinf" value="${build.webapp}/WEB-INF"/>
+    <property name="build.weblib" value="${build.webapp}/WEB-INF/lib"/>
+    <property name="build.webtld" value="${build.webapp}/WEB-INF/tld"/>
+    <property name="build.webconf" value="${build.webapp}/WEB-INF/conf"/>	
+	<property name="odrmConsole.war.filename" value="odrmConsole.war"/>
+    <property name="server.base.dir" value="${src.root.dir}/server/base/"/>
+	<property name="main.odrm.rms" value="${nlbuildroot}"/>
+	<property name="main.rms.lib" value="${main.odrm.rms}/projects/rms/lib"/>
+	<property name="kms.lib" value="${main.odrm.rms}/projects/kms/lib"/>
+	<property name="qa.test.lib" value="${main.odrm.rms}/TestAutomation/projects/QATests/lib"/>
+	<property name="dev.test.lib" value="${main.odrm.rms}/TestAutomation/projects/DevTests/lib"/>
+	<!-- Dump properties -->
+	<echoproperties />
+
+	<!--
+	<path id="compile.console.classpath">
+		<path refid="compile.classpath"/>
+	    <pathelement path="${build.root.dir}/agent-manager.jar"/>
+	    <pathelement path="${build.root.dir}/common-framework.jar"/>
+	    <pathelement path="${build.root.dir}/common-dictionary.jar"/>
+	    <pathelement path="${build.root.dir}/dcsf-types.jar"/>
+	    <pathelement path="${build.root.dir}/dms-services.jar"/>
+		<pathelement path="${build.root.dir}/management-types.jar"/>
+        <pathelement path="${build.root.dir}/policy-deploy-manager.jar"/>		
+        <pathelement path="${build.root.dir}/profile-manager.jar"/>
+		<pathelement path="${build.root.dir}/secure-session.jar"/>
+		<pathelement path="${build.root.dir}/server-base.jar"/>
+		<pathelement path="${build.root.dir}/server-dcsf.jar"/>
+		<pathelement path="${build.root.dir}/server-dictionary.jar"/>
+		<pathelement path="${build.root.dir}/server-shared-utils.jar"/>
+	    <pathelement path="${build.dest}"/>
+	</path>
+	-->
+	
+	<target name="prepare-RMS">
+		<mkdir dir="${build.root.dir}"/>
+        <copy todir="${main.rms.lib}" failonerror="true" verbose="true">
+			 <fileset dir="${xlib_rms_dir}"/>
+		</copy>
+		<copy todir="${main.rms.lib}/javapc" failonerror="true" verbose="true">
+			<fileset dir="${build.root.dir}">
+				<include name="agent-controlmanager.jar"/>
+				<include name="common-framework.jar"/>
+				<include name="common-pf.jar"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${main.odrm.rms}/app" />
+		<copy todir="${main.odrm.rms}/app" failonerror="true" verbose="true">
+			<fileset file="${xlib_sharepoint_build_artifacts_location}/SecureCollaboration_SPOnLineApp-*.zip" />
+			<fileset file="${xlib_sharepoint_build_artifacts_location}/SecureCollaboration_SPOnPremiseApp-*.zip" />
+		</copy>
+	</target>
+	
+	<target name="prepare-KMS">
+        <copy todir="${kms.lib}" failonerror="true" verbose="true">
+			 <fileset dir="${xlib_kms_dir}"/>
+		</copy>		
+	</target>
+	
+	<target name="prepare-Test-Projects">
+        <copy todir="${qa.test.lib}" failonerror="true" verbose="true">
+			 <fileset dir="${xlib_qa_test_automation_dir}"/>
+		</copy>
+		<copy todir="${dev.test.lib}" failonerror="true" verbose="true">
+			 <fileset dir="${xlib_dev_test_automation_dir}"/>
+		</copy>		
+	</target>
+	
+	<target name="prepare-RMS-KMS" depends="prepare-RMS, prepare-KMS, prepare-Test-Projects"/>
+	
+</project>

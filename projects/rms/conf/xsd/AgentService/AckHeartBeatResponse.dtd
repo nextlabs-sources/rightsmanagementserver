@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT AckHeartBeatResponse (fault)>
+<!ENTITY % commonfaults SYSTEM "types/CommonFaults.dtd">
+%commonfaults;
+<!--element and attribute declarations-->
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>

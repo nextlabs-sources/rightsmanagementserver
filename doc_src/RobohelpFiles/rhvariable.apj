@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhpml majorversion="7" minorversion="13">
+	<variablesets>
+		<variableset>
+			<name>Secure Collaboration</name>
+		</variableset>
+	</variablesets>
+	<variables>
+		<variable>
+			<name>ProductName</name>
+			<value>Rights Management Server</value>
+		</variable>
+		<variable>
+			<name>ProductVersion</name>
+			<value>8.4</value>
+		</variable>
+		<variable>
+			<name>CopyrightFooter</name>
+			<value>&lt;br /&gt;
+&lt;span style="font-weight: bold;"&gt;CONFIDENTIALITY NOTICE&lt;/span&gt;&lt;br /&gt;
+&lt;br /&gt;
+THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY 
+ NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.&lt;br /&gt;
+&lt;br /&gt;
+&lt;?rh-symbol_start name="Copyright" ?&gt;©&lt;?rh-symbol_end ?&gt; 2014 - 2017 NextLabs 
+ Inc. All rights reserved.&lt;br /&gt;
+</value>
+		</variable>
+		<variable>
+			<name>FooterLine</name>
+			<value>-----------------------------------------------------</value>
+		</variable>
+	</variables>
+</rhpml>

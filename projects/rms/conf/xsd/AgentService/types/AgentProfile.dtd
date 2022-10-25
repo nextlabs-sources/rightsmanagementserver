@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % baseprofile SYSTEM "BaseProfile.dtd">
+%baseprofile;
+<!--element and attribute declarations-->
+<!ELEMENT hookAllProc (#PCDATA)>
+<!ELEMENT hookSystemProc (#PCDATA)>
+<!ELEMENT logViewingEnabled (#PCDATA)>
+<!ELEMENT trayIconEnabled (#PCDATA)>
+<!ELEMENT agentProfileDTO ((id, name, defaultProfile, createdDate, modifiedDate), (hookAllProc, hookSystemProc, logViewingEnabled, trayIconEnabled))>

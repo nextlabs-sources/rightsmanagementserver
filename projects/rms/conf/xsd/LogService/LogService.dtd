@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT LogService (logRequest | logResponse)>
+<!ENTITY % logtypes SYSTEM "types/LogTypes.v4.dtd">
+<!ENTITY % commonfaults SYSTEM "../AgentService/types/CommonFaults.dtd">
+%logtypes;
+%commonfaults;
+<!--element and attribute declarations-->
+<!ELEMENT logRequest (logs)>
+<!ELEMENT logResponse (response, fault)>
+<!ELEMENT logs (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ATTLIST LogService
+	tenantId CDATA #REQUIRED
+	agentId CDATA #REQUIRED
+	version CDATA #REQUIRED
+	logType (PolicyActivity | Tracking | PolicyAssistant) #REQUIRED
+>

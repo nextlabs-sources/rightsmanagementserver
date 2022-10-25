@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT RegisterAgentResponse (StartupConfiguration, certificate, fault)>
+<!ENTITY % agentstartupconfiguration SYSTEM "types/AgentStartupConfiguration.dtd">
+<!ENTITY % commonfaults SYSTEM "types/CommonFaults.dtd">
+%agentstartupconfiguration;
+%commonfaults;
+<!--element and attribute declarations-->
+<!ELEMENT StartupConfiguration (id, commProfile, agentProfile, classificationProfile, registrationId)>
+<!ELEMENT certificate (#PCDATA)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>

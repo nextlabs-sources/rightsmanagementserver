@@ -1,0 +1,104 @@
+#!/bin/bash
+ 
+### BEGIN INIT INFO
+# Provides:          tomcat
+# Required-Start:    $network $syslog
+# Required-Stop:     $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start and stop Apache Tomcat
+# Description:       Enable Apache Tomcat service provided by daemon.
+### END INIT INFO
+ 
+TOMCAT_HOME="<%= @tomcat_path %>"
+TOMCAT_START_SCRIPT=$TOMCAT_HOME/bin/startup.sh
+TOMCAT_STOP_SCRIPT=$TOMCAT_HOME/bin/shutdown.sh
+JRE_HOME="<%= @jre_home %>"
+ 
+function isServiceRunning() {
+	local result=1
+    if [ "$(ps aux | grep "$JRE_HOME/bin/java" | grep $TOMCAT_HOME | wc -l)" -gt "0" ] ; then
+    	result=1
+    else
+    	result=0
+    fi
+	echo "$result"
+}
+
+function getServicePID() {
+	local result=`isServiceRunning`
+    if [ $result -gt 0 ] ; then
+    	result="$(ps aux | grep "$JRE_HOME/bin/java" | grep $TOMCAT_HOME | awk '{print $2}')"
+    else
+    	result=-1
+    fi
+	echo "$result"
+}
+ 
+start() {
+	local result=`isServiceRunning`
+	if [ $result -eq 0 ] ; then
+		echo "Starting Tomcat"
+		"$TOMCAT_START_SCRIPT"
+	fi
+}
+ 
+stop() {
+	local result=`isServiceRunning`
+	if [ $result -gt 0 ] ; then
+		echo "Stopping Tomcat"
+		"$TOMCAT_STOP_SCRIPT" &&
+		sleep 1
+		
+		SLEEP=60
+		while [ $SLEEP -ge 0 ]; do
+			result=`isServiceRunning`
+			if [ $result -gt 0 ] ; then
+				local pid=`getServicePID`
+				kill -0 $pid >/dev/null 2>&1
+				sleep 1
+			else
+				break		
+			fi
+			SLEEP=`expr $SLEEP - 1 `
+		done
+		result=`isServiceRunning`
+		if [ $result -gt 0 ] ; then
+			local pid=`getServicePID`
+			echo "Killing process with PID $pid" 
+			kill -9 $pid >/dev/null 2>&1
+		fi
+		echo "Tomcat stopped successfully"
+    fi
+}
+
+status() {
+	local result=`isServiceRunning`
+	if [ $result -gt 0 ] ; then
+		local pid=`getServicePID`
+		echo "Tomcat is running at $pid" 
+	else
+		echo "Tomcat is not running"
+	fi
+}
+ 
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        sleep 5
+        start
+        ;;
+    status)
+    	status
+    	;;
+    *)
+    echo "Usage: <%= @service_name %> {start|stop|restart|status}"
+    exit 1
+esac
+exit 0

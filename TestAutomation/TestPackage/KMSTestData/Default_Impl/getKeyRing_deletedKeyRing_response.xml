@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:error xmlns:ns2="http://nextlabs.com/kms/types">
+   <code>560</code>
+   <description>Key Ring not found</description>
+</ns2:error>

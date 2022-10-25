@@ -1,0 +1,93 @@
+<div data-ng-controller="repoListController">
+	<div> 
+		<p class="rms-repositories-heading"><b>{{'repositories' | translate}}</b></p>
+	</div>	
+	<div class="rms-repositories-panel" id="repo-list-menu-id">
+		<uib-accordion>
+			<uib-accordion-group is-open="collapseStatus">
+				<uib-accordion-heading>
+					<a data-ng-click="onClickTab(0)">
+						<span class="rms-all-files-heading" data-ng-class="{'rms-all-files-selected':isActiveTab(0)}">
+							<span class="menuicon" data-ng-class="isActiveTab(0) ? 'allfilesicon-selected':'allfilesicon'"></span>
+							<span class="menu-label padding-top-3" data-ng-class="isActiveTab(0) ? 'color-green':'color-white'">{{'all.files' | translate}}</span>
+							<i data-ng-click="toggleActiveTab()" class="pull-right glyphicon padding-top-3" data-ng-class="{'glyphicon-chevron-up': collapseStatus,'glyphicon-chevron-down': !collapseStatus,
+																			'color-green': isActiveTab(0),'color-white': !isActiveTab(0)}"></i>
+						</span>
+					</a>
+				</uib-accordion-heading>				
+				<div data-ng-repeat="tab in tabs">
+					<a class="cc-pc-menu-item"
+						data-ng-class="{'cc-ps-menu-selected':isActiveTab(tab.repoObj.repoId)}"
+						data-ng-click="onClickTab(tab)"> 
+						<span class="menuicon" data-ng-class="{	'dropboxicon': tab.repoObj.repoType == 'DROPBOX' && !isActiveTab(tab.repoObj.repoId),
+																'dropboxicon-selected': tab.repoObj.repoType == 'DROPBOX' && isActiveTab(tab.repoObj.repoId),
+																'boxicon': tab.repoObj.repoType == 'BOX' && !isActiveTab(tab.repoObj.repoId),
+																'boxicon-selected': tab.repoObj.repoType == 'BOX' && isActiveTab(tab.repoObj.repoId), 
+																'googleicon': tab.repoObj.repoType == 'GOOGLE_DRIVE' && !isActiveTab(tab.repoObj.repoId),
+																'googleicon-selected': tab.repoObj.repoType == 'GOOGLE_DRIVE' && isActiveTab(tab.repoObj.repoId),
+																'onedriveicon': tab.repoObj.repoType == 'ONE_DRIVE' && !isActiveTab(tab.repoObj.repoId),
+																'onedriveicon-selected': tab.repoObj.repoType == 'ONE_DRIVE' && isActiveTab(tab.repoObj.repoId),
+																'sharepointicon': (tab.repoObj.repoType == 'SHAREPOINT_ONPREMISE' || tab.repoObj.repoType == 'SHAREPOINT_ONLINE') && !isActiveTab(tab.repoObj.repoId),
+																'sharepointicon-selected': (tab.repoObj.repoType == 'SHAREPOINT_ONPREMISE' || tab.repoObj.repoType == 'SHAREPOINT_ONLINE') && isActiveTab(tab.repoObj.repoId)}"></span>
+						<span class="rms-repoList-label" data-ng-class="isActiveTab(tab.repoObj.repoId) ? 'color-green':'color-white'" uib-tooltip="{{tab.repoObj.repoName}}" tooltip-placement="right">{{tab.repoObj.shortenedDisplayName | translate}}</span> 
+					</a>
+				</div>
+			</uib-accordion-group> 
+		</uib-accordion>
+		<!--
+		<div class="rms-system-settings-item"> 
+			<a class="cc-pc-menu-item" 
+			data-ng-class="{'cc-ps-menu-selected':isActiveTab('favourites')}" 
+			data-ng-click="onClickTab('favourites')">
+			<span class="icon rms-repos-entry" data-ng-class="isActiveTab('favourites') ? 'favoritesicon-selected':'favoritesicon'"></span>
+			<span class="menu-label" data-ng-class="isActiveTab('favourites') ? 'color-green':'color-white'">{{'favorites' | translate}}</span>
+			 </a>	
+		</div>
+		-->
+		<div class="rms-system-settings-item"> 
+			<a class="cc-pc-menu-item" 
+			data-ng-class="{'cc-ps-menu-selected':isActiveTab('manage_repositories')}" 
+			data-ng-click="onClickTab('manage_repositories')">
+			<span class="icon rms-repos-entry" data-ng-class="isActiveTab('manage_repositories') ? 'manageRepoicon-selected':'manageRepoicon'"></span>
+			<span class="menu-label" data-ng-class="isActiveTab('manage_repositories') ? 'color-green':'color-white'">{{'manage.repositories' | translate}}</span>
+			</a>
+		</div>
+		<div class="rms-all-files-heading">
+			<button class="rms-upload-button" ng-click="upload()"type="button">{{'upload' | translate}}</button>
+		</div>
+        <hr class="rms-menu-separator"/>
+	</div>
+	<div data-ng-if="isAdmin"  class="rms-settings-menu">
+		<div> 
+			<p class="rms-settings-heading"><b>{{'system.settings' | translate}}</b></p>	
+		</div>
+		<div class="rms-settings-panel">
+			<div class="rms-system-settings-item">
+				<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('service_providers')}" data-ng-click="onClickTab('service_providers')">
+					<span class="icon rms-settings-entry" data-ng-class="isActiveTab('service_providers') ? 'serviceprovidericon-selected':'serviceprovidericon'"></span>
+					<span class="menu-label" data-ng-class="isActiveTab('service_providers') ? 'color-green':'color-white'">{{'service.providers' | translate}}</span>
+				</a>
+			</div>
+			<div class="rms-system-settings-item">
+				<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('configuration')}" data-ng-click="onClickTab('configuration')">
+					<span class="icon rms-settings-entry" data-ng-class="isActiveTab('configuration') ? 'configurationicon-selected':'configurationicon'"></span>
+					<span class="menu-label" data-ng-class="isActiveTab('configuration') ? 'color-green':'color-white'">{{'configuration' | translate}}</span>
+				</a>
+			</div>
+			<!--
+			<div class="rms-system-settings-item">
+				<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('key_mgmt')}" data-ng-click="onClickTab('key_mgmt')">
+					<span class="icon rms-settings-entry" data-ng-class="isActiveTab('key_mgmt') ? 'keymanagementicon-selected':'keymanagementicon'"></span>
+					<span class="menu-label" data-ng-class="isActiveTab('key_mgmt') ? 'color-green':'color-white'">{{'key.management' | translate}}</span>
+				</a>
+			</div>
+			<div class="rms-system-settings-item">
+				<a class="cc-pc-menu-item" data-ng-class="{'cc-ps-menu-selected':isActiveTab('user_mgmt')}" data-ng-click="onClickTab('user_mgmt')">
+					<span class="icon rms-settings-entry" data-ng-class="isActiveTab('user_mgmt') ? 'usermanagementicon-selected':'usermanagementicon'"></span>
+					<span class="menu-label" data-ng-class="isActiveTab('user_mgmt') ? 'color-green':'color-white'">{{'user.management' | translate}}</span>
+				</a>
+			</div>
+			-->
+		</div>
+	</div>
+</div>

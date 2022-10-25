@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ppfml version="2.00" project="Rights Management Server 1.0" type="4">
+ <windowlist>
+  <window name="NewWindow" x="5%" y="5%" width="90%" height="90%" viewtype="doublepane" workspacestyle="DEFAULT" caption="NewWindow" toolbar="off" locationbar="off" menu="off" resizable="yes" statusbar="off" usecurrentwindowsettings="yes">
+   <elements><element name="BrowseSequence" Present="no" /><element name="SearchInput" Present="no" />
+   </elements>
+   <agents defaultagent="toc">
+    <agent>toc
+    </agent>
+    <agent>ndx
+    </agent>
+    <agent>nls
+    </agent>
+   </agents>
+  </window>
+ </windowlist>
+ <contextmap>
+ </contextmap>
+ <topiclist defaulttopic="Repositories.htm">
+  <topic>Manage_Repositories.htm
+  </topic>
+  <topic>Document_Viewer.htm
+  </topic>
+  <topic>Contact_Us.htm
+  </topic>
+  <topic>Manage_Repositories_Personal.htm
+  </topic>
+  <topic>Upload_and_View.htm
+  </topic>
+  <topic>rmcDownload.htm
+  </topic>
+  <topic>CAD_Viewer.htm
+  </topic>
+  <topic>Repositories.htm
+  </topic>
+  <topic>Configuration.htm
+  </topic>
+  <topic>RH_Viewer.htm
+  </topic>
+  <topic>Login_Page.htm
+  </topic>
+  <topic>Supported_File.htm
+  </topic>
+  <topic>ServiceProviders.htm
+  </topic>
+  <topic>VDS_Viewer.htm
+  </topic>
+ </topiclist>
+ <projectincludes>
+ </projectincludes>
+ <filenamemap>
+  <filenameentry moniker="wh_languagetype">
+   <filename>en_US
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="toc">
+   <filename>index.hhc
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="ndx">
+   <filename>index.hhk
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="nls">
+   <filename>index.nla
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="gls">
+   <filename>index.glo
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="wh_lngfile">
+   <filename>index.lng
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="wh_stoplist">
+   <filename>index.stp
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="startpage">
+   <filename>index.htm
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="keywordinfo">
+   <filename>SearchOptions.xml
+   </filename>
+  </filenameentry>
+  <filenameentry moniker="favicon">
+   <filename>favicon.ico
+   </filename>
+  </filenameentry>
+ </filenamemap>
+</ppfml>

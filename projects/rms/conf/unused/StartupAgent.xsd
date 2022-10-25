@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nextlabs.com/rms/services/agentservice" xmlns:common="http://bluejungle.com/destiny/framework/types" xmlns:types="http://bluejungle.com/destiny/services/agent/types" targetNamespace="http://nextlabs.com/rms/services/agentservice" elementFormDefault="qualified">
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/BasicFaults.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/BasicTypes.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/services/agent/types" schemaLocation="types/AgentStartupData.xsd"/>
+	<xs:element name="StartupAgent" type="tns:startupAgent"/>
+	<xs:complexType name="commonFault">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="ServiceNotReadyFault" type="common:ServiceNotReadyFault"/>
+			<xs:element name="UnauthorizedCallerFault" type="common:UnauthorizedCallerFault"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="startupAgentRequest">
+		<xs:sequence>
+			<xs:element name="id" type="common:ID" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="startupData" type="types:AgentStartupData" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="startupAgentResponse">
+		<xs:sequence>
+			<xs:element name="fault" type="tns:commonFault" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="startupAgent">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="startupAgentRequest" type="tns:startupAgentRequest"/>
+			<xs:element name="startupAgentResponse" type="tns:startupAgentResponse"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

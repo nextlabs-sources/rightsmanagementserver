@@ -1,0 +1,36 @@
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import schemaLocation="AgentType.xsd"/>
+	<xs:import schemaLocation="Version.xsd"/>
+	<xs:import schemaLocation="GroupInfo.xsd"/>
+
+	<xs:complexType name="AgentRegistrationData">
+		<xs:sequence>
+			<xs:element name="host" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="AgentTypeDTO" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="version" type="Version" minOccurs="1" nillable="false"/>
+            <xs:element name="osInformation" type="OSInfo" minOccurs="1" nillable="false"/>
+            <xs:element name="hardwareDetails" type="HardwareDetails" minOccurs="1" nillable="false"/>
+            <xs:element name="groupInformation" type="GroupInfo" minOccurs="1" nillable="false"/>
+            <xs:element name="tenantId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:complexType name="OSInfo">
+        <xs:sequence>
+            <xs:element name="osType" type="xs:string"/>
+            <xs:element name="osVersion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HardwareDetails">
+        <xs:sequence>
+            <xs:element name="cpu" type="xs:string"/>
+            <xs:element name="memoryAmount" type="xs:integer"/>
+            <xs:element name="memoryUnits" type="xs:string"/>
+            <xs:element name="macAddressesList" type="xs:string"/>
+            <xs:element name="deviceId" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

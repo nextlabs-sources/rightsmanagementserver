@@ -1,0 +1,107 @@
+<div id="service-providers-pane" data-ng-controller="serviceProvidersController">
+	<div id="loading-background" data-ng-show="isLoading">
+		<div id="pgLoading-image-with-border">
+           <img src="ui/css/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="service-provider-title">
+		<div class="setting-sidebar-toggle-div">
+			<div class="file-list-icons big-screen-hide toggle-icon-div" data-ng-click="toggleSideBar()"><i class="fa fa-bars toggle-glyhicon"></i></div>	
+			<div>
+				<h4 class="padding-mobile">{{"config.manage.providers.heading" | translate}}</h4>
+			</div>
+		</div>
+		<div data-ng-class="{'alert alert-success': isSuccess() == true, 'alert alert-danger': isSuccess() == false}" style="margin-bottom:0px !important;" ng-show="shouldDisplay()">
+	        <button type="button" class="close" data-ng-click="dismissMessage()">x</button>
+	        {{getMessage()}}
+	    </div>
+	</div>
+	
+	<div id="configured" class="service-provider-section">
+		<div class="service-provider-subtitle">
+			<h5 class="heading-bottom-padding-10px">{{"config.configured.providers.heading" | translate}}</h5>
+			<hr class="no-vertical-margin"/>
+		</div>
+		<div ng-hide="serviceProviderSettingsMap.length"><br><center>{{"err.add.service.provider.admin" | translate}}</center></div>
+		<div data-ng-repeat="setting in serviceProviderSettingsMap" class="rms-provider service-provider center-service-provider-tile" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" id="configuredServiceProviderContent">
+			<div class="overlayContainer">
+				<div class="imgDiv" data-ng-class="{'dropbox-div': setting.providerType == 'DROPBOX', 'box-div': setting.providerType == 'BOX', 'google-div': setting.providerType == 'GOOGLE_DRIVE', 'onedrive-div': setting.providerType == 'ONE_DRIVE', 
+					'sharePoint-div': setting.providerType == 'SHAREPOINT_ONPREMISE' || setting.providerType == 'SHAREPOINT_ONLINE' || setting.providerType == 'SHAREPOINT_CROSSLAUNCH' ||
+					setting.providerType == 'SHAREPOINT_ONLINE_CROSSLAUNCH'}">
+				</div>
+				<a class="rms-configured-service-provider">
+					<!-- <i data-ng-class="{'fa fa-dropbox': setting.providerType == 'DROPBOX', 'fa fa-google': setting.providerType == 'GOOGLE_DRIVE'}"></i> -->
+					<span>{{setting.providerTypeDisplayName}}</span> 
+					<br/>
+					<span ng-if="setting.providerType == 'SHAREPOINT_ONLINE_CROSSLAUNCH' || setting.providerType == 'SHAREPOINT_CROSSLAUNCH'">{{setting.attributes.APP_NAME}}</span>
+				</a>
+			</div>
+			<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+					<div class="glyphicon-div" ng-mouseenter="hoverEdit=true" ng-mouseleave="hoverEdit=false" ng-class="{'glyphicon-div-hover':hoverEdit}" ng-click="openConfigModal(setting,true)">
+						<span class="glyphicon glyphicon-edit" ></span>
+					</div>
+					<div class="glyphicon-div" ng-mouseenter="hoverDelete=true" ng-mouseleave="hoverDelete=false" ng-class="{'glyphicon-div-hover':hoverDelete}" ng-click="unconfigure(setting)">
+						<span class="glyphicon glyphicon-trash"></span>
+					</div>
+					<div class="glyphicon-div" data-ng-show="setting.providerType == 'SHAREPOINT_CROSSLAUNCH' || setting.providerType == 'SHAREPOINT_ONLINE' ||
+					setting.providerType == 'SHAREPOINT_ONLINE_CROSSLAUNCH'" ng-mouseenter="hoverDownload=true" ng-mouseleave="hoverDownload=false" ng-class="{'glyphicon-div-hover':hoverDownload}" ng-click="downloadApp(setting)">
+						<span class="glyphicon glyphicon-download-alt"></span>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div id="remaining" class="service-provider-section">
+		<div class="service-provider-subtitle">
+			<h5 class="heading-bottom-padding-10px">{{"config.available.providers.heading" | translate}}</h5>
+			<hr class="no-vertical-margin"/>
+		</div>
+		<div data-ng-repeat="provider in remainingServiceProviders" class="center-service-provider-tile rms-provider service-provider" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+			<div class="overlayContainer">
+				<div class="imgDiv" data-ng-class="{'dropbox-div': provider.providerType == 'DROPBOX', 'box-div': provider.providerType == 'BOX','google-div': provider.providerType == 'GOOGLE_DRIVE', 'onedrive-div': provider.providerType == 'ONE_DRIVE', 
+					'sharePoint-div': provider.providerType == 'SHAREPOINT_ONPREMISE' || provider.providerType == 'SHAREPOINT_ONLINE' || provider.providerType == 'SHAREPOINT_CROSSLAUNCH' ||
+					provider.providerType == 'SHAREPOINT_ONLINE_CROSSLAUNCH',
+					'disabled' : !hovering
+				}">
+				</div>
+				<a class="rms-configured-service-provider" data-ng-class="{'disabled' : !hovering}">
+					<!-- <i data-ng-class="{'fa fa-dropbox': provider.providerType == 'DROPBOX', 'fa fa-google': provider.providerType == 'GOOGLE_DRIVE'}"></i>
+					 --><br/>
+					<span>{{provider.providerTypeDisplayName}}</span>
+				</a>
+			</div>
+			<div>
+				<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+					<a class="btn btn-default configure-button-hover" ng-click="openConfigModal(provider,false)">{{"config.configure.label" | translate}}</a>
+				</div>
+			</div>
+			<br/>
+		</div>
+	</div>
+	<div id="crossLaunch" class="service-provider-section">
+		<div class="service-provider-subtitle">
+			<h5 class="heading-bottom-padding-10px">{{"config.crosslaunch.providers.heading" | translate}}</h5>
+			<hr class="no-vertical-margin"/>
+		</div>
+		<div data-ng-repeat="provider in crossLaunchProviders" class="center-service-provider-tile rms-provider service-provider" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
+			<div class="overlayContainer">
+				<div class="imgDiv" data-ng-class="{'dropbox-div': provider.providerType == 'DROPBOX','box-div': provider.providerType == 'BOX', 'google-div': provider.providerType == 'GOOGLE_DRIVE', 'onedrive-div': provider.providerType == 'ONE_DRIVE', 
+					'sharePoint-div': provider.providerType == 'SHAREPOINT_ONPREMISE' || provider.providerType == 'SHAREPOINT_ONLINE' || provider.providerType == 'SHAREPOINT_CROSSLAUNCH' ||
+					provider.providerType == 'SHAREPOINT_ONLINE_CROSSLAUNCH' ,
+					'disabled' : !hovering
+				}">
+				</div>
+				<a class="rms-configured-service-provider">
+					<!-- <i data-ng-class="{'fa fa-dropbox': provider.providerType == 'DROPBOX', 'fa fa-google': provider.providerType == 'GOOGLE_DRIVE'}"></i> -->
+					<br/>
+					<span data-ng-class="{'disabled' : !hovering}">{{provider.providerTypeDisplayName}}</span> 
+				</a>
+			</div>
+			<div>
+				<div class="overlayDiv" data-ng-class="{'keep-hidden' : !hovering}" >
+					<a class="btn btn-default" ng-click="openConfigModal(provider,false)">{{"config.configure.label" | translate}}</a>
+				</div>
+			</div>
+			<br/>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % agentprofilestatusdata SYSTEM "AgentProfileStatusData.dtd">
+<!ENTITY % policytypes SYSTEM "PolicyTypes.dtd">
+%agentprofilestatusdata;
+%policytypes;
+<!--element and attribute declarations-->
+<!ELEMENT profileStatus (lastCommittedAgentProfileName, lastCommittedAgentProfileTimestamp, lastCommittedCommProfileName, lastCommittedCommProfileTimestamp)>
+<!ELEMENT policyAssemblyStatus ((policyUsers | userSubjectTypes), agentCapabilities)>
+<!ATTLIST policyAssemblyStatus
+	agentHost CDATA #REQUIRED
+	agentType (DESKTOP | FILE_SERVER | PORTAL | ACTIVE_DIRECTORY) #REQUIRED
+	timestamp CDATA #REQUIRED
+>

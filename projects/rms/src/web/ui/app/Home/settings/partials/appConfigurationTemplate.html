@@ -1,0 +1,112 @@
+<div>
+	<div id="providersLoading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+           <img src="ui/css/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="row modal-header dialog-title-div">
+		<div class="col-xs-5">
+			<div class="edit-text">
+				{{add ? "edit" : "configure" | translate}}
+			</div>
+			<div class="dialog-title"> 
+				{{displayName}}
+			</div>
+		</div>
+		<div class="col-xs-2">
+		</div>
+		<div class="col-xs-5">
+			<a class="btn btn-default margin-right-10" data-ng-click="cancel()">{{"CANCEL" | translate}}</a>
+            <a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="repoConfigForm.$pristine || repoConfigForm.$invalid || (providerType=='SHAREPOINT_ONPREMISE' && !settings.ENABLE_SHAREPOINT)" data-ng-click="repoConfigForm.$pristine || repoConfigForm.$invalid || (providerType=='SHAREPOINT_ONPREMISE' && !settings.ENABLE_SHAREPOINT) || saveServiceProviderSettings()">{{"SAVE" | translate}}</a> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 margin-top-10" id="display-error" data-ng-if="messageStatus==2">
+			<img src="ui/css/img/error.png" alt="Error" />
+			{{message}}
+		</div>
+		<div class="col-xs-12 margin-top-10" id="display-success" data-ng-if="messageStatus==1">
+			<img src="ui/css/img/correct.png" alt="Success" />
+			{{message}}
+		</div>
+	</div>
+	<form name="repoConfigForm" style="padding-top:35px;">
+		<div style="padding-left:60px;">
+			<!--For sharepoint use this-->
+			<div ng-if="providerType=='SHAREPOINT_ONPREMISE'">
+				<div class="dialog-contol-group">
+					<switch id="ENABLE_SHAREPOINT" name="ENABLE_SHAREPOINT" data-ng-model="settings.ENABLE_SHAREPOINT" disabled="add" data-ng-change="setFormDirty(add)"></switch>
+						{{"sp.enable.sharepoint.label" | translate}}
+						<span uib-tooltip="{{'sp.enable.sharepoint.info' | translate}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>				
+				</div>
+				<div class="dialog-contol-group">
+					<switch id="ALLOW_PERSONAL_REPO" name="ALLOW_PERSONAL_REPO" data-ng-model="settings.ALLOW_PERSONAL_REPO" data-ng-change="setFormDirty()"></switch>
+					{{"sp.allow_personal_repository.label" | translate}}
+					<span uib-tooltip="{{'allow_personal_repo.info' | translate}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+				</div>
+				<div data-ng-if="id !== undefined" class="dialog-contol-group">
+					<a class="btn btn-default rms-delete-button" ng-click="delete(id)">{{"delete" | translate}}</a>	
+				</div>
+			</div>
+			<!--For any repository except SharePoint-->
+			<div ng-if="providerType!='SHAREPOINT_ONPREMISE'">
+				<div ng-if="providerType=='SHAREPOINT_CROSSLAUNCH' || providerType=='SHAREPOINT_ONLINE_CROSSLAUNCH'" class="dialog-contol-group">
+					<label>{{"sp.app.name.label" | translate}}<span class="mandatory"> * </span></label><br/>
+					<input type="text" data-ng-model="settings.APP_NAME" id="APP_NAME" name="APP_NAME" data-ng-required="providerType=='SHAREPOINT_CROSSLAUNCH' || providerType=='SHAREPOINT_ONLINE_CROSSLAUNCH'" data-ng-trim="true"/>
+					<span uib-tooltip="{{'sp.sp_app_name.info' | translate}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+					<span class="mandatory" ng-show="repoConfigForm.APP_NAME.$touched && repoConfigForm.APP_NAME.$error.required">{{"sp.app_name.required" | translate}}</span>
+				</div>				
+				<div class="dialog-contol-group">
+					<label>{{"sp.app.key.label" | translate}}<span class="mandatory"> * </span></label><br/>
+					<input type="text" data-ng-model="settings.APP_ID" id="APP_ID" name="APP_ID" data-ng-required="true" data-ng-trim="true"/>
+					<span uib-tooltip="{{appIdInfo}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+					<span class="mandatory" ng-show="repoConfigForm.APP_ID.$touched && repoConfigForm.APP_ID.$error.required">{{"sp.app_id.required" | translate}}</span>
+				</div>
+				<div class="dialog-contol-group">
+					<label>{{"sp.app.secret.label" | translate}}<span class="mandatory"> * </span></label><br/>
+					<a class="btn btn-default" ng-if="!showAppSecret" ng-click="showAppSecretField()">{{"sp.change.label" | translate}}</a>
+					<input ng-if="showAppSecret" data-ng-model="settings.APP_SECRET" id="APP_SECRET" name="APP_SECRET" type="password" data-ng-required="showAppSecret" data-ng-trim="true"></input>
+					<span uib-tooltip="{{appSecretInfo}}" tooltip-placement="bottom"> <i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+					<span class="mandatory" ng-show="repoConfigForm.APP_SECRET.$touched && repoConfigForm.APP_SECRET.$error.required">{{"sp.app_secret.required" | translate}}</span>
+				</div>
+				<div class="dialog-contol-group" ng-if="providerType=='SHAREPOINT_CROSSLAUNCH'">
+					<label>{{"sp.remote.web.url.label" | translate}}<span class="mandatory"> * </span></label><br/>
+	                <input data-ng-model="settings.REMOTE_WEB_URL" id="REMOTE_WEB_URL" name="REMOTE_WEB_URL" type="text" data-ng-required="providerType=='SHAREPOINT_CROSSLAUNCH'" data-ng-pattern="/https?:\/\/(?:www\.|(?!www))(([^\s\.]+\.[^\s]+)|[^\s]+)/i" data-ng-trim="true" class="big-box"></input>
+					<span uib-tooltip="{{'sp.remote_web_url.info' | translate}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+	                <span class="mandatory" ng-show="repoConfigForm.REMOTE_WEB_URL.$touched && repoConfigForm.REMOTE_WEB_URL.$error.required">{{"sp.remote_web_url.required" | translate}}</span>
+	                <span class="mandatory" ng-show="repoConfigForm.REMOTE_WEB_URL.$error.pattern">{{"sp.remote_web_url.notValid" | translate}}</span>
+				</div>
+				<div class="dialog-contol-group">
+					<label>{{"sp.redirect.url.label" | translate}}<span class="mandatory"> * </span></label><br/>
+	                <input id="REDIRECT_URL" name="REDIRECT_URL" data-ng-model="settings.REDIRECT_URL" data-ng-required="true" data-ng-pattern="/https?:\/\/(?:www\.|(?!www))(([^\s\.]+\.[^\s]+)|[^\s]+)/i" data-ng-required="true" data-ng-trim="true" type = "text" class="big-box"></input>
+					<span uib-tooltip="{{appRedirectUrl}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+					<span class="mandatory" ng-show="repoConfigForm.REDIRECT_URL.$touched && repoConfigForm.REDIRECT_URL.$error.required">{{"sp.redirect_url.required" | translate}}</span>
+					<span class="mandatory" ng-show="repoConfigForm.REDIRECT_URL.$error.pattern">{{"sp.redirect_url.notValid" | translate}}</span>
+				</div>
+				<div ng-if="providerType=='SHAREPOINT_CROSSLAUNCH' || providerType=='SHAREPOINT_ONLINE_CROSSLAUNCH'" class="dialog-contol-group">
+					<label>{{"sp.app_display_menu.label" | translate}}<span class="mandatory"> * </span></label><br/>
+					<input type="text" data-ng-model="settings.APP_DISPLAY_MENU" id="APP_DISPLAY_MENU" name="APP_DISPLAY_MENU" data-ng-trim="true" data-ng-required="providerType=='SHAREPOINT_CROSSLAUNCH' || providerType=='SHAREPOINT_ONLINE_CROSSLAUNCH'" class="big-box"/>
+					<span uib-tooltip="{{appDisplayMenu}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+					<span class="mandatory" ng-show="repoConfigForm.APP_DISPLAY_MENU.$touched && repoConfigForm.APP_DISPLAY_MENU.$error.required">{{"sp.app_display_menu.required" | translate}}</span>
+				</div>
+				<div class="dialog-contol-group" ng-if="providerType!='SHAREPOINT_CROSSLAUNCH' && providerType!='SHAREPOINT_ONLINE_CROSSLAUNCH' && providerType!='DROPBOX' && providerType!='ONE_DRIVE' && providerType!='GOOGLE_DRIVE' && providerType!='BOX'">
+					<switch id="ALLOW_PERSONAL_REPO" name="ALLOW_PERSONAL_REPO" data-ng-model="settings.ALLOW_PERSONAL_REPO" data-ng-change="setFormDirty()"></switch>
+					{{"sp.allow_personal_repository.label" | translate}}
+					<span uib-tooltip="{{'allow_personal_repo.info' | translate}}" tooltip-placement="bottom"><i class="glyphicon glyphicon-info-sign rms-glyphicon-info-sign"></i></span>
+				</div>
+				<div class="adjacent-controls dialog-contol-group">
+		            <div ng-if="downloadable==true && repoConfigForm.$pristine" class="padding-right-10px" >
+	                	<a class="btn btn-default" ng-click="downloadCrossLaunchApp(providerType, id)">{{"sp.download.label" | translate}}</a>
+	           		</div>
+		            <div ng-if="downloadable==true && repoConfigForm.$dirty" class="padding-right-10px">
+		                <a class="btn btn-default disabled">{{"sp.download.label" | translate}}</a>
+		            </div>
+					<br/>
+					<div data-ng-if="id !== undefined">
+						<a class="btn btn-default rms-delete-button" ng-click="delete(id)">{{"delete" | translate}}</a>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

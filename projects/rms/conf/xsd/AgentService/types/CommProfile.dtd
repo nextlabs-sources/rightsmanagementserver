@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basictypes SYSTEM "BasicTypes.dtd">
+<!ENTITY % agenttype SYSTEM "AgentType.dtd">
+<!ENTITY % actiontype SYSTEM "ActionType.dtd">
+<!ENTITY % baseprofile SYSTEM "BaseProfile.dtd">
+%basictypes;
+%agenttype;
+%actiontype;
+%baseprofile;
+<!--element and attribute declarations-->
+<!ELEMENT DABSLocation (#PCDATA)>
+<!ELEMENT agentType (#PCDATA)>
+<!ELEMENT heartBeatFrequency (time, timeUnit)>
+<!ELEMENT logLimit (#PCDATA)>
+<!ELEMENT logFrequency (time, timeUnit)>
+<!ELEMENT loggedActivities (action)>
+<!ELEMENT customActivityJournalingSettings (name, loggedActivities)>
+<!ELEMENT passwordHash (#PCDATA)>
+<!ELEMENT currentActivityJournalingSettings (name, loggedActivities)>
+<!ELEMENT commProfileDTO ((id, name, defaultProfile, createdDate, modifiedDate), (DABSLocation, agentType, heartBeatFrequency, logLimit, logFrequency, passwordHash, currentActivityJournalingSettings, customActivityJournalingSettings))>
+<!ELEMENT activityJournalingSettings (name, loggedActivities)>

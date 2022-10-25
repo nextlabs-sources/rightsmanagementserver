@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:import schemaLocation="BasicTypes.xsd"/>
+	
+	<xs:complexType name="BaseProfileDTO" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				Base Element for a Profile DTO.  Specific profile (Agent, User, Communication) will extend
+			</xs:documentation>
+		</xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="defaultProfile" type="xs:boolean" />
+            <xs:element name="createdDate" type="xs:dateTime"/>
+            <xs:element name="modifiedDate" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+</xs:schema>

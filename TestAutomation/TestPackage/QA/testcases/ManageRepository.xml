@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ManageRepository" > <!-- "none" -->  
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+
+<test name="ID 01 RMS_ManageRepository - ODRM-68 1">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SPRMS" /> 
+                	<parameter name="SPURL" value="http://rms-sp2013/sites/RMS" />  
+                	<include 
+                		name="addButNotDeleteBefore" />                 
+				</methods>
+		</classes>
+	</test> 
+	
+	<test name="ID 02 RMS_ManageRepository - ODRM-68 2">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<include 
+                		name="checkHomeButton" />                 
+				</methods>
+		</classes>
+	</test>
+	
+<test name="ID 03 RMS_ManageRepository - ODRM-218">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SPRMS" /> 
+                	<parameter name="SPURL" value="http://rms-sp2013/sites/RMS" />  
+                	<include 
+                		name="deleteSite" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 04 RMS_ManageRepository - ODRM-385">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SRMS" /> 
+                	<parameter name="SPURL" value="httpS://rms-sp2013:443/sites/RMS" />  
+                	<include 
+                		name="addButNotDeleteBefore" />                 
+				</methods>
+		</classes>
+	</test>
+		
+	
+	    <test name="ID 05 RMS_ManageRepository - ODRM-83">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SRMSNew" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013:443/sites/RMS" />  
+                	<parameter name="errMessage" value="This SharePoint repository has already been added."/>
+                	<include 
+                		name="addWrongSPSites" />          
+				</methods>
+		</classes>
+    </test>
+
+	 <test name="ID 06 RMS_ManageRepository - ODRM-212 1">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="rms-sp2013" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013/sites/RMS" />  
+                	<parameter name="errMessage" value="Please add the port number for Secure SharePoint site"/>
+                	<include 
+                		name="addWrongSPSites" />                 
+				</methods>
+		</classes>
+	</test>
+	
+    <test name="ID 07 RMS_ManageRepository - ODRM-212 2">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="" /> 
+                	<parameter name="SPURL" value="http://rms-sp2013/sites/RMS" />  
+                	<parameter name="errMessage" value="Please fill all the mandatory fields"/>
+                	<include 
+                		name="addWrongSPSites" />                 
+				</methods>
+		</classes>
+    </test>
+
+
+    <test name="ID 08 RMS_ManageRepository - ODRM-212 3">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SRMS" /> 
+                	<parameter name="SPURL" value="http://rms-sp2013/sites/RMS" />  
+                	<parameter name="errMessage" value="This Display Name already exists. Please use a different Display Name."/>
+                	<include 
+                		name="addWrongSPSites" />          
+				</methods>
+		</classes>
+    </test>
+	
+    <test name="ID 09 RMS_ManageRepository - ODRM-217">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SPRMSSite" /> 
+                	<parameter name="SPURL" value="http://rms-sp2013/site1" />  
+                	<include 
+                		name="addButNotDeleteBefore" />                 
+				</methods>
+		</classes>
+	</test>
+	
+    <test name="ID 11 RMS_ManageRepository - ODRM-84">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="rms-sp2013;rms-sp13;rrrr" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013:443/sites/RMS;https://rms-sp13:443/RMS/sc;http://wsfs" />  
+                	<include 
+                		name="addMoreSPSites" />                 
+				</methods>
+		</classes>
+	</test>
+
+    <test name="ID 12 RMS_ManageRepository - ODRM-215">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="rms-sp2013;rms-sp13;rrrr" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013:443/sites/RMS;https://rms-sp13:443/RMS/sc;http://wsfs" />  
+                	<parameter name="userName" value="abraham.lincoln" />
+                	<parameter name="password" value="abraham.lincoln"/>
+                	<parameter name="domain" value="qapf1.qalab01.nextlabs.com"/>
+                	<include 
+                		name="normalUserCheckSPList" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 13 RMS_ManageRepository - ODRM-70">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="rms-sp2013;rms-sp13;rrrr" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013:443/sites/RMS;https://rms-sp13:443/RMS/sc;http://wsfs" />  
+                	<parameter name="userName" value="john.tyler" />
+                	<parameter name="password" value="john.tyler"/>
+                	<parameter name="domain" value="qapf1.qalab01.nextlabs.com"/>
+                	<include 
+                		name="normalUserCheckSPList" />                 
+				</methods>
+		</classes>
+	</test>
+	
+    <test name="ID 14 RMS_ManageRepository - ODRM-220">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="rms-sp2013;rms-sp13;rrrr" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013:443/sites/RMS;https://rms-sp13:443/RMS/sc;http://wsfs" />  
+                	<include 
+                		name="deleteMoreSites" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 15 RMS_ManageRepository - ODRM-247">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SRMS1" /> 
+                	<parameter name="SPURL" value="https://rms-sp2013:443/sites/RMS" />  
+                	<include 
+                		name="addSP" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="pre-pare for open file from repository ">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.RepositoryTest" />
+				<methods>
+                	<parameter name="SPName" value="SRMS-sp2013;rms-sp13;rrrr" /> 
+                	<parameter name="SPURL" value="http://rms-sp2013/sites/RMS;https://rms-sp13:443/RMS/sc;http://wsfs" />  
+                	<include 
+                		name="addMoreSPSites" />                 
+				</methods>
+		</classes>
+	</test>
+	
+</suite>
+				

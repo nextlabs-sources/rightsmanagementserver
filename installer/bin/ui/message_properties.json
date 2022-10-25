@@ -1,0 +1,159 @@
+{
+	/* The "Setup" is a placeholder which will be replaced with "Installation" or "Uninstallation" in Utility.rb */
+	/* This is used for global replacement. For page specific placeholders, please use %s */
+	
+	"title": "Rights Management Server Setup",
+	"back_btn": "Back",
+	"next_btn": "Next",
+	"cancel_btn": "Cancel",
+	"cancel_confirm": "Are you sure you want to cancel Rights Management Server Setup?",
+	"finish_btn": "Finish",
+	"skip_btn": "Skip",
+	"browse_nl_btn": "Browse",
+	"common": {
+		"company_name": "NextLabs",
+		"product_name": "Rights Management Server"
+	},
+	"welcome_page": {
+		"welcome_para": "Welcome to the %s Wizard",
+		"copyright_message": "WARNING: THIS PRODUCT IS PROTECTED BY COPYRIGHT LAW AND INTERNATIONAL TREATIES. THIS PROGRAM IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION."
+	},
+	"agreement_page": {
+		"accept_message": "Agree &amp; proceed",
+		"reject_message": "I don't agree"
+	},
+	"install_dir_page": {
+		"heading" : "Installation/Data Directories",
+		"help_note": "Please specify the installation and data directories where Rights Management Server will be installed.",
+		"install_dir_label": "Install Rights Management Server to: ",
+		"data_dir_label": "Save Rights Management Server data to: "
+	},
+	"select_components_page": {
+		"heading" : "Select Components",
+		"help_note": "Please specify the components to be %s.",
+		"rms" : "Rights Management Server",
+		"kms" : "Key Management Server",
+		"error" : "Please choose at least one component to be %s."
+	},
+	"license_page": {
+		"heading": "License File Location",
+		"help_note": "Please specify the license file required for viewing files in Rights Management Server. If you have not obtained this file, you can skip this step for the moment and contact NextLabs to request for a license file."
+	},
+	"rms_ports_page": {
+		"heading": "Web Server Port Numbers",
+		"help_note": "Please specify the port numbers for the web server."
+	},
+	"rmi_eval_port_page": {
+		"heading": "Rights Management Server Port Numbers",
+		"help_note": "Please specify the RMI port number to be used by Rights Management Server for Key Management."
+	},
+	"icenet_server_page": {
+		"heading": "ICENet Server", 
+		"help_note": "You can configure the ICENet Server Address to which Rights Management Server can connect.",
+		"icenet_server_hint": "(e.g., https://my-icenet-server:8443)"
+	},
+	"km_server_page": {
+		"heading": "Key Management Server", 
+		"help_note": "You can configure the Key Management Server Address to which Rights Management Server can connect.",
+		"km_server_hint": "(e.g., https://my-keymanagement-server:8443)"
+	},
+	"ad_config_page":{
+		"heading": "LDAP Configurations",
+		"help_note": "Please specify the LDAP details for logging into Rights Management Server.",
+		"host_name_hint": "(e.g., MyLDAPServer)",
+		"domain_hint": "(e.g., abc.mycompany.com)",
+		"search_base_hint": "(e.g., DC=abc,DC=mycompany,DC=com)",
+		"user_group_hint": "(User Group who can log into RMS)",
+		"admin_hint": "(Administrator User for RMS)"
+	}, 
+	"kms_jceks_page":{
+		"heading": "KeyStore Password", 
+		"help_note": "Please configure a password (minimum 6 characters) for KeyStore in Key Management Server.",
+		"error_not_match": "Passwords do not match.",
+		"error_short_pwd": "Password must be at least 6 characters long."
+	},
+	"ready_to_install_page": {
+		"heading": "Ready to install the program(s)",
+		"help_note": "The wizard is ready to begin installation.",
+		"help_note_2": "Click 'Next' to begin the installation. If you want to review or change any of your installation settings, click 'Back'."
+	},
+	"ready_to_uninstall_page": {
+		"heading": "Ready to uninstall the program(s)",
+		"help_note": "The wizard is ready to begin uninstallation.",
+		"help_note_2": "Click 'Next' to begin the uninstallation.",
+		"delete_data_dir": "Clear data files"
+	},
+	"install_page": {
+		"progress_save_config": "Saving Collected Information ...",
+		"progress_start_chef": "Starting Setup ...",
+		"rollback_finish": "Rights Management Server was successfully rolled back.",
+		"progress_finish": "Setup completed.",
+		"progress_canceled": "Setup cancelled.",
+		"progress_failed": "Setup Failed."	
+	},
+	"finish_page": {
+		"success_body": "The %s of Rights Management Server %s has been successfully completed.",
+		"log_msg": "The %s log can be found at %s.",
+		"aborted_body": "The %s of Rights Management Server %s has been interupted by the user.",
+		"failed_body": "There was an error during the %s of Rights Management Server %s.",
+		"failed_body_uninstall_no_rms": "Setup cannot locate existing Rights Management Server in the system. The uninstallation cannot continue."
+	},
+	"inputs": {
+		"license_file_location": "license file",
+		"installation_dir": "installation directory",
+		"data_dir": "data directory",
+		"rms_ssl_port": "SSL port number",
+		"rms_shutdown_port": "Shutdown port number",
+		"rmi_km_port": "RMI port for Key Management",
+		"icenet_server": "ICENet Server URL",
+		"km_server": "Key Management Server",
+		"ldap_type" :"LDAP Type",
+		"ldap_host_name": "Server Host Name",
+		"ldap_domain": "Domain Name",
+		"ldap_search_base": "Search Base",
+		"ldap_user_group"	: "User Group (optional)",
+		"ldap_admin" : "RMS Administrator",
+		"rms_db_type": "Database Type",
+		"rms_db_host_name": "Server Host Name",
+		"rms_db_port": "Port Number",
+		"rms_db_name": "Database Name / SID",
+		"rms_db_username": "Database Username",
+		"rms_db_password": "Database Password",
+		"rms_db_conn_url": "Database JDBC Url",
+		"kms_db_type": "Database Type",
+		"kms_db_host_name": "Server Host Name",
+		"kms_db_port": "Port Number",
+		"kms_db_name": "Database Name / SID",
+		"kms_db_username": "Database Username",
+		"kms_db_password": "Database Password",
+		"kms_db_conn_url": "Database JDBC Url",
+		"in_built_db_message" : "Note: In-Built database is meant for demo purposes only and strictly not for production use. \nData from In-Built database cannot be migrated to any external database.",
+		"jceks_password": "Enter a password",
+		"jceks_password_retype": "Re-enter the password",
+		"km_keystore_password": "KeyStore Password",
+		"rms_db_reuse_settings": "Reuse these settings for KMS Database Configuration"
+	},
+	"ErrorMsgTemplate": "The %s %s",
+	"validator_errors": {
+		"IP": "is not a valid IP adrress.",
+		"hostname": "is not a valid hostname.",
+		"port": "is not a valid port.",
+		"dir": "is invalid.",
+		"dat_file": "is not a valid .dat file.",
+		"non_empty": "cannot be empty."
+	},
+	"db_config_page":{
+		"heading_rms": "Rights Management Server Database Configuration",
+		"help_note_rms": "Please specify the Database details for Rights Management Server.",
+		"heading_kms": "Key Management Server Database Configuration",
+		"help_note_kms": "Please specify the Database details for Key Management Server.",
+		"test_connnection_btn" : "Test connection",
+		"test_connnection_failed_template" : "Test connection failed. \n\n Detailed Description: \n\n %s",
+		"test_connnection_success" : "Connection successful.",
+		"db_host_name_hint"	: "(e.g., MyDBServer)",
+		"db_name_hint" : "(e.g., Database or Service Name)",
+		"in_built_password_hint": "(for database \"root\" user)",
+		"in_built_diff_password_err": "Password for in-built database cannot be different between RMS and KMS.",
+		"in_built_diff_port_err": "Port number for in-built database cannot be different between RMS and KMS. (Selected %s for RMS)"
+	}
+}

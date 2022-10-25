@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmc:addRepositoryRequest userId="99" APIVersion="1" deviceId="device ID" deviceOS="iOS" deviceType="MOBILE" operationTime="2016-01-19T14:51:28.314+08:00" xmlns:rmc="http://nextlabs.com/rms/rmc">
+    <repository>
+        <repoId>1</repoId>
+        <repoDisplayName>MyOneDrive</repoDisplayName>
+        <repoType>ONE_DRIVE</repoType>
+        <isShared>false</isShared>
+        <account>someAccount</account>
+        <accountId>12345</accountId>
+        <refreshToken>token</refreshToken>
+    </repository>
+</rmc:addRepositoryRequest>

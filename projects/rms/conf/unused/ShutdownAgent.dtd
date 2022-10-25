@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+<!ENTITY % basictypes SYSTEM "types/BasicTypes.dtd">
+<!ENTITY % agentshutdowndata SYSTEM "types/AgentShutdownData.dtd">
+%basicfaults;
+%basictypes;
+%agentshutdowndata;
+<!--element and attribute declarations-->
+<!ELEMENT ShutdownAgent (shutdownAgentRequest | shutdownAgentResponse)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT shutdownData ANY>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ELEMENT shutdownAgentRequest (id, shutdownData)>
+<!ELEMENT shutdownAgentResponse ((fault)?)>

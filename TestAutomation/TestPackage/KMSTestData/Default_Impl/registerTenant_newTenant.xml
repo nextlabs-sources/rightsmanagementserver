@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:registerTenantRequest xmlns:p="http://nextlabs.com/kms" xmlns:types="http://nextlabs.com/kms/types" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nextlabs.com/kms ../../../conf/xsd/kms/registerTenant.xsd ">
+  <tenantId>KMS_TEST_AUTOMATION_TENANT</tenantId>
+  <provider>DEFAULT</provider>
+  <attributes>
+    <name>storepass</name>
+    <value>tJxQM7+V2+Jr2dzMnAONMquQ8+hWI5Qy9zw/hILMabd5CoNFRlKJxrJe1EYkyK4iDRmz+OJCLAmEP+2HgTR/1VraIDxx711bHJ6TdtD9SVtV1BpxwtUmaxk/Q3RK0+1rJ4+qfKIWCB1b58SVmE8nJoC1A4aIrZ/ymknxIhfQhn0=</value>
+  </attributes>
+  <version>1</version>
+</p:registerTenantRequest>

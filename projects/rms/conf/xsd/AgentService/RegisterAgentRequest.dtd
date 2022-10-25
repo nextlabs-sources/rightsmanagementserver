@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT RegisterAgentRequest (RegistrationData)>
+<!ENTITY % agentregistrationdata SYSTEM "types/AgentRegistrationData.dtd">
+%agentregistrationdata;
+<!--element and attribute declarations-->
+<!ELEMENT RegistrationData (host, type, version, osInfo, hardwareDetails, groupInformation, tenantId)>

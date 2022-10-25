@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                      xmlns:interfaces="http://nextlabs.com/destiny/interfaces/log/v5"
+                      targetNamespace="http://nextlabs.com/destiny/bindings/log/v5">
+
+    <wsdl:import 	namespace="http://nextlabs.com/destiny/interfaces/log/v5"
+                     location="LogServiceInterfaces.v5.wsdl"/>
+
+
+    <wsdl:binding name="LogServiceIFBinding" type="interfaces:LogServiceIF">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="logPolicyActivity">
+            <wsdl:input>
+                <soap:body parts="PolicyActivityLogRequest" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logPolicyActivityV2">
+            <wsdl:input>
+                <soap:body parts="PolicyActivityLogV2Request" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logPolicyActivityV3">
+            <wsdl:input>
+                <soap:body parts="PolicyActivityLogV3Request" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logPolicyActivityV5">
+            <wsdl:input>
+                <soap:body parts="PolicyActivityLogV5Request" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logTracking">
+            <wsdl:input>
+                <soap:body parts="TrackingLogRequest" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logTrackingV2">
+            <wsdl:input>
+                <soap:body parts="TrackingLogV2Request" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logTrackingV3">
+            <wsdl:input>
+                <soap:body parts="TrackingLogV3Request" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="logPolicyAssistant">
+            <wsdl:input>
+                <soap:body parts="PolicyAssistantLogRequest" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="response" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceNotReadyFault">
+                <soap:fault name="ServiceNotReadyFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="UnauthorizedCallerFault">
+                <soap:fault name="UnauthorizedCallerFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+</wsdl:definitions>

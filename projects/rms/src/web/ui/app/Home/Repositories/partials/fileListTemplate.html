@@ -1,0 +1,28 @@
+<div class="cc-ps-policy">
+<div>
+	<div class="rms-files">
+		<span data-ng-if="eachFile.isFolder!=true" class="icon" data-ng-class="eachFile.protectedFile==true?'nxl':eachFile.fileType "></span>
+		<i data-ng-if="eachFile.isFolder==true" class="glyphicon glyphicon-folder-close"></i>
+		<a data-ng-click="onClickFile(eachFile)" class="rms-file-item"> {{eachFile.name}} </a>
+	</div>
+	<div>
+		<label class="file-info-label" data-ng-if="showAllServices || searchActivated">{{eachFile.repoName}}</label>
+		<label class="file-info-label" data-ng-if="searchActivated">{{eachFile.path}}</label>
+		<label class="file-info-label" data-ng-if="eachFile.fileSize != null && eachFile.isFolder == false &&!searchActivated">{{eachFile.fileSize | filesize:2}}</label>
+        <label class="file-info-label" data-ng-if="eachFile.fileSize == null && eachFile.isFolder == false && !searchActivated">{{'not-applicable' | translate}}</label>
+		<label class="file-info-label" >
+			<friendly-date data-ng-if="eachFile.lastModifiedTime != null" data-date="{{eachFile.lastModifiedTime}}"
+				data-content-class="friendly-date" data-full-format="d MMM yyyy,hh:mm a"
+				data-short-format="hh:mm a" />
+		</label>
+	</div>
+</div>
+	<div class="rms-file-menu">
+		<span data-ng-show="selectedFileId == eachFile.pathId" data-ng-if ="MenuClickedMode==true" >
+			<a class="fileListOption-info-icon" data-ng-click="onClickInfo(eachFile)" data-ng-if ="eachFile.isFolder!=true"></a>
+			<a class="fileListOption-download-icon"  data-ng-click="onClickDownload(eachFile)" data-ng-if ="eachFile.isFolder!=true"></a>			
+		</span>
+		<a data-ng-mouseover="onClickMenu(eachFile)" data-ng-click="onClickMenu(eachFile)" data-ng-if ="eachFile.isFolder!=true" class="glyphicon glyphicon-option-vertical file-menu-button">
+		</a>
+	</div>
+</div>

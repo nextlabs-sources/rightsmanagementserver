@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--element and attribute declarations-->
+<!ELEMENT CheckUpdates (CheckUpdatesRequest | CheckUpdatesResponse)>
+<!ELEMENT CheckUpdatesRequest (CurrentVersion, LastUpdatedDate)>
+<!ELEMENT CheckUpdatesResponse (NewVersion, CheckSum, DownloadURL)>
+<!ELEMENT CurrentVersion (#PCDATA)>
+<!ELEMENT LastUpdatedDate (#PCDATA)>
+<!ELEMENT NewVersion (#PCDATA)>
+<!ELEMENT CheckSum (#PCDATA)>
+<!ELEMENT DownloadURL (#PCDATA)>

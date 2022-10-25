@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="LoginService" type="LoginServiceType" />
+	
+	<xs:complexType name="LoginRequestType">
+		<xs:sequence>
+			<xs:element name="UserName" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Password" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="Domain" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="LoginResponseType">
+		<xs:sequence>
+			<xs:element name="LoginResult" type="xs:boolean" />
+			<xs:element name="UId" type="xs:string" />
+			<xs:element name="PrincipalName" type="xs:string" />
+			<xs:element name="UserAttributes" type="UserAttributesType" />
+			<xs:element name="Error" type="Error" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="LoginServiceType">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="LoginRequest" type="LoginRequestType" />
+			<xs:element name="LoginResponse" type="LoginResponseType" />
+		</xs:choice>
+		<xs:attribute name="TenantId" type="xs:string" use="required" />
+		<xs:attribute name="AgentId" type="xs:string" use="required" />
+		<xs:attribute name="Version" type="xs:int" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="Error">
+		<xs:sequence>
+			<xs:element name="ErrorCode" type="xs:int"/>
+			<xs:element name="ErrorMessage" type="xs:string"/>
+        </xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="UserAttributesType">
+        <xs:sequence>
+            <xs:element name="Attribute" type="Attributes" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+     <xs:complexType name="Attributes">
+        <xs:attribute name="Name" type="xs:string" use="required"/>
+        <xs:attribute name="Value" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

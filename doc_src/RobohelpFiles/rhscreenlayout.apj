@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhpml majorversion="7" minorversion="13">
+	<ScreenLayouts>
+		<ScreenLayout name="Charcoal_Grey">
+			<ScreenLayoutPages>
+				<ScreenLayoutPage default="1" name="Topic.slp" type="1"/>
+			</ScreenLayoutPages>
+		</ScreenLayout>
+		<ScreenLayout name="Azure_Green">
+			<ScreenLayoutPages>
+				<ScreenLayoutPage default="1" name="Topic.slp" type="1"/>
+			</ScreenLayoutPages>
+		</ScreenLayout>
+	</ScreenLayouts>
+</rhpml>

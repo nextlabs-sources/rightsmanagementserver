@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nextlabs.com/rms/services/agentservice" xmlns:common="http://bluejungle.com/destiny/framework/types" targetNamespace="http://nextlabs.com/rms/services/agentservice" elementFormDefault="qualified">
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/BasicTypes.xsd"/>
+	<xs:import namespace="http://bluejungle.com/destiny/framework/types" schemaLocation="types/BasicFaults.xsd"/>
+	<xs:element name="UnRegisterAgent" type="tns:unregisterAgentType"/>
+	<xs:complexType name="unregisterAgentResponseTypeFault">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="ServiceNotReadyFault" type="common:ServiceNotReadyFault"/>
+			<xs:element name="UnauthorizedCallerFault" type="common:UnauthorizedCallerFault"/>
+			<xs:element name="UnknownEntryFault" type="common:UnknownEntryFault"/>
+			<xs:element name="CommitFault" type="common:CommitFault"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="unregisterAgentRequest">
+		<xs:sequence>
+			<xs:element name="id" type="common:ID" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="unregisterAgentResponse">
+		<xs:sequence>
+			<xs:element name="fault" type="tns:unregisterAgentResponseTypeFault" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<!--TODO: check what is returned for this on success-->
+	</xs:complexType>
+	<xs:complexType name="unregisterAgentType">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="unregisterAgentRequest" type="tns:unregisterAgentRequest"/>
+			<xs:element name="unregisterAgentResponse" type="tns:unregisterAgentResponse"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

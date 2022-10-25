@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:getKeyRequest xmlns:p="http://nextlabs.com/kms" xmlns:types="http://nextlabs.com/kms/types" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nextlabs.com/kms getKey.xsd ">
+  <keyRingName>NL_SHARE_TEST</keyRingName>
+  <keyId>
+    <hash></hash>
+    <timestamp>0</timestamp>
+  </keyId>
+  <tenantId>KMS_TEST_AUTOMATION_TENANT</tenantId>
+  <version>1</version>
+</p:getKeyRequest>

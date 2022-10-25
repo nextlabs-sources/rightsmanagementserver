@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT AckHeartBeatRequest (id, ackHeartBeatData)>
+<!ENTITY % basictypes SYSTEM "types/BasicTypes.dtd">
+<!ENTITY % ackheartbeatdata SYSTEM "types/AckHeartBeatData.dtd">
+%basictypes;
+%ackheartbeatdata;
+<!--element and attribute declarations-->
+<!ELEMENT ackHeartBeatData (profileStatus, policyAssemblyStatus)>

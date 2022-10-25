@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<!-- This defines RMS server and browser in client -->
+  <parameters>
+		<Browser>IE</Browser><!-- support IE, Chrome -->
+		<RMSServer>auto-rms03.qapf1.qalab01.nextlabs.com</RMSServer>
+		<SharePointURL>http://rms-sp2013/sites/rmsautomation</SharePointURL>
+		<PlatForm>win2012</PlatForm><!--support win2012, win2008, linux-->
+		<Port>8443</Port> 
+		<AdminUsr>john.tyler</AdminUsr>
+		<AdminPsd>john.tyler</AdminPsd>
+		<UserDomain>qapf1.qalab01.nextlabs.com</UserDomain>
+    </parameters>
+ </configuration>

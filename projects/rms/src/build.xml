@@ -1,0 +1,512 @@
+<?xml version="1.0" ?>
+<!DOCTYPE project [
+<!ENTITY classpaths SYSTEM "build-scripts/etc/classpath.skel">
+<!ENTITY taskdefs SYSTEM "build-scripts/etc/build-tasks.skel">
+]>
+
+
+<project name="Destiny" default="build-all" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <!-- Notes: nlbuildroot must be defined before build-scripts/etc/build.properties and
+         build-scripts/etc/build_external.properties
+    -->
+    <property name="nlbuildroot" location="${basedir}/.." />
+
+    <property file="${nlbuildroot}/scripts/build.properties" />
+    <property file="${nlbuildroot}/src/build-scripts/etc/build.properties" />
+    <property file="${nlbuildroot}/src/build-scripts/etc/build_external.properties"/>
+
+    <!-- Need to set this while build.xml lived in this directory rather that top directory -->
+    <property name="ivy.dep.file" value="../ivy.xml" />
+	<property name="package_linux_dir" value="${build.root.dir}/package_linux" />
+
+    &classpaths;
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${xlib_jar_dir}/ant-contrib.jar"/>
+        </classpath>
+    </taskdef>
+
+    <!-- FIX ME - Property should be placed in properties file eventually when top level build file moves -->
+    <property name="common.build.script.dir" value="${nlbuildroot}/build_scripts" />
+    <mkdir dir="${common.build.script.dir}" />
+    <import file="${common.build.script.dir}/version_build.xml" />
+    <import file="${common.build.script.dir}/ivy_build.xml" />
+
+    <!-- New build pattern. Paths to be built-->
+    <path id="build-paths">
+        <pathelement path="${src.root.dir}/common/version" />
+        <pathelement path="${src.root.dir}/common/resources" />
+        <pathelement path="${src.root.dir}/common/framework" />
+        <pathelement path="${src.root.dir}/server/base" />
+        <pathelement path="${src.root.dir}/server/framework" />
+        <pathelement path="${src.root.dir}/server/container/base" />
+        <pathelement path="${src.root.dir}/server/security" />
+        <pathelement path="${src.root.dir}/common/domain" />
+        <pathelement path="${src.root.dir}/common/oil" />
+        <pathelement path="${src.root.dir}/client/agent/ipc" />
+        <pathelement path="${src.root.dir}/server/directory" />
+        <pathelement path="${src.root.dir}/common/pf" />
+        <pathelement path="${src.root.dir}/common/dictionary" />
+        <pathelement path="${src.root.dir}/server/dictionary" /> 
+    </path>
+
+    <!-- New build pattern. Build all new build modules-->
+    <target name="new_build">
+        <subant buildpathref="build-paths" verbose="true" inheritrefs="false" inheritall="false">
+            <property name="build.root.dir" value="${build.root.dir}" />
+            <target name="build" />
+            <target name="publish_local" />
+        </subant>	  
+    </target>
+
+    <target name="build-all" 
+            description="Build all components" 
+            depends="create_version_jar, new_build">	    
+        <ant dir="build-scripts/tasks" target="build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="build" inheritRefs="true"/>
+        <antcall target="package" />
+    </target>
+
+    <!-- New build pattern. Clean all new build modules-->
+    <target name="new_clean">
+        <subant buildpathref="build-paths" inheritall="false" inheritrefs="false" verbose="false">
+            <property name="build.root.dir" value="${build.root.dir}" />
+            <target name="clean" />
+        </subant>
+    </target>
+
+    <target name="clean-all" depends="new_clean" description="Cleans the entire project">
+        <ant dir="build-scripts/tasks" target="build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="clean" inheritRefs="true"/>
+    </target>
+
+    <target name="rebuild-all" description="Cleans entire project followed by a full build" depends="clean-all, build-all"/>
+    
+    <target name="rebuild-all-java" description="Cleans entire java build followed by a full build" depends="clean-all-java, build-all"/>
+    <target name="rebuild-integration" description="Cleans entire project and builds for the purposes of integration test" depends="clean-all, build-all">
+        <ant dir="build-scripts/project" target="build-native" inheritRefs="true">
+            <property name="enforcers.dir" value="${enforcers.dir}" />
+        </ant>	
+        <!--		<ant dir="build-scripts/project" target="build-drivers" inheritRefs="true"/> -->
+        
+        <!-- temp patch for the build system, fix bugs 6326,6344 -->
+        <copy 
+            file="${build.root.dir}/platform/win32/release/bin/customAttrSetter.exe"
+            todir="${build.root.dir}/tools/setattribute/" 
+            overwrite = "true"
+            />
+    </target>
+
+    <target name="clean-all-java" depends="new_clean" description="Cleans the entire java build but leaves the C++ projects">
+        <ant dir="build-scripts/tasks" target="build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="clean-java" inheritRefs="true"/>
+    </target>
+
+    <target name="checkStyleAndTest-all" depends="rebuild-all">
+        <ant dir="build-scripts/project" target="check-style" inheritRefs="true"/>		
+        <ant dir="build-scripts/project" target="all-javadocs" inheritRefs="true"/>		
+        <ant dir="build-scripts/project" target="test-all" inheritRefs="true"/>
+    </target>
+    
+    <target name="buildAndTestAll">
+        <ant dir="build-scripts/tasks" target="build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="stop-tomcat-servers" inheritRefs="true"/>			
+        <antcall target="clean-all" inheritRefs="true"/>
+        <antcall target="create_version_jar" inheritRefs="true"/>
+        <antcall target="new_build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="build-native" inheritRefs="true"/>		
+        <!--		<ant dir="build-scripts/project" target="build-drivers" inheritRefs="true"/> -->
+        
+        <!-- temp patch for the build system, fix bugs 6326,6344 -->
+        <!--		<copy 
+            file="${build.root.dir}/platform/win32/release/bin/customAttrSetter.exe"
+            todir="${build.root.dir}/tools/setattribute/" 
+            overwrite = "true"
+            /> -->
+        
+        <antcall target="package" />
+        <ant dir="build-scripts/project" target="build-installers" inheritRefs="true"/>	
+        <!--		<ant dir="build-scripts/project" target="build-dev-edition" inheritRefs="true"/> -->
+        <ant dir="build-scripts/project" target="rebuild-env" inheritRefs="true"/>
+        <!--		<ant dir="build-scripts/project" target="test-integration-run" inheritRefs="true"/>			
+            <ant dir="build-scripts/project" target="rebuild-env" inheritRefs="true"/> -->
+        <antcall target="test-all" inheritRefs="true"/>
+    </target>
+
+    <target name="buildOnly">
+        <ant dir="build-scripts/tasks" target="build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="stop-tomcat-servers" inheritRefs="true"/>			
+        <antcall target="clean-all" inheritRefs="true"/>
+        <antcall target="create_version_jar" inheritRefs="true"/>
+        <antcall target="new_build" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="build" inheritRefs="true"/>
+        <antcall target="package" />
+        <ant dir="build-scripts/project" target="build-installers" inheritRefs="true"/>	
+    </target>
+
+    <target name="buildODRMConsoleOnly">
+        <ant dir="${src.root.dir}/src" target="build" inheritRefs="true"/>
+    </target>
+
+    <target name="set-up-conf-struct">
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/certificates"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/config_setup"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/dpc"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/dpc/config"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/dpc/config/security"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/logs"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/server_lib"/>
+        <mkdir dir="${build.root.dir}/nextlabs/nextlabs/shared_lib"/>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs">
+            <fileset dir="${build.root.dir}/run/server/apps">
+                <include name="dcsf.war"/>
+                <include name="dpc.war"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/config_setup" file="${src.root.dir}/server/container/dpc/conf_setup/server.txt"/>
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/config_setup" file="${src.root.dir}/server/container/dpc/conf_setup/logging.txt"/>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/dpc/">
+            <fileset dir="${src.root.dir}/server/container/dpc/decrypt/">
+                <include name="decrypt.bat"/>
+                <include name="decrypt.sh"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/dpc/config">
+            <fileset dir="${build.root.dir}/config">
+                <include name="commprofile.xml"/>
+                <include name="agentprofile.xml"/>
+                <include name="config.dat"/>
+                <include name="mapping.xml"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/dpc/decryptj">
+            <fileset dir="${build.root.dir}">
+                <include name="agent-controlmanager.jar"/>
+                <include name="agent-tools.jar"/>
+                <include name="client-pf.jar"/>
+                <include name="common-domain.jar"/>
+                <include name="common-domain-types.jar"/>
+                <include name="common-framework.jar"/>
+                <include name="common-framework-types.jar"/>
+                <include name="common-pf.jar"/>
+                <include name="crypt.jar"/>
+                <include name="management-types.jar"/>
+            </fileset>
+            
+            <fileset dir="${xlib_jar_dir}">
+                <include name="axis.jar"/>
+                <include name="castor-0.9.5.4.jar"/>
+                <include name="commons-logging.jar"/>
+                <include name="jaxrpc.jar"/>
+                <include name="xercesImpl.jar"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/dpc/config/security" file="${build.root.dir}/server-security/temp_agent-keystore.jks"/>
+
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/server_lib">
+            <fileset dir="${build.root.dir}/run/server/tomcat/lib"> 
+                <include name="crypt.jar"/>
+                <include name="server-security.jar"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${build.root.dir}/nextlabs/nextlabs/shared_lib">
+            <fileset dir="${build.root.dir}/run/server/tomcat/shared/lib"/>
+            <fileset dir="${xlib_jar_dir}" includes="commons-logging-1.1.1.jar"/>
+        </copy>		
+    </target>
+    
+    <!-- creating jboss pc directory structure -->
+    <target name="set-up-conf-jboss">
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/certificates"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/config_setup"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/deployments"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/tools"/>		
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/configuration"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/configuration/main"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/config"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/config/security"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/decryptj"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/jservice"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/jservice/config"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/jservice/jar"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/jservice/jar/javasdk"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/dpc/logs"/>
+        <mkdir dir="${build.root.dir}/nextlabs/jbosspc/tools/crypt"/>		
+        
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/deployments">
+            <fileset dir="${build.root.dir}/run/server/apps">
+                <include name="dpc.war"/>
+            </fileset>
+        </copy>		
+        
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/tools/crypt">
+			<!-- <fileset dir="${build.root.dir}/tools/crypt">
+				<include name="crypt.jar"/>
+				<include name="mkpassword.bat"/>
+			</fileset>
+			<fileset dir="${build.root.dir}/common-framework">
+				<include name="common-framework.jar"/>
+			</fileset> -->		
+            <fileset dir="${build.root.dir}/tools/jbosscrypt">
+                <include name="crypt.jar"/>
+                <include name="mkpassword.bat"/>
+                <include name="mkpassword.sh"/>
+                <include name="common-framework.jar"/>
+            </fileset>			
+        </copy>			
+
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/config_setup">
+            <!--<fileset dir="${src.root.dir}/server/container/dpc/conf_setup/">
+                <include name="server.txt"/>
+                <include name="logging.txt"/>	
+                </fileset>-->
+            <fileset dir="${src.root.dir}/etc">
+                <include name="jboss-standalone.xml.txt"/>
+            </fileset>			
+        </copy>						
+        
+		<!-- app.properties needs to be copied to destination as dpc.properties -->
+        <copy file="${src.root.dir}/server/container/dpc/etc/app.properties" tofile="${build.root.dir}/nextlabs/jbosspc/dpc/dpc.properties"/>
+        
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/dpc">
+            <fileset dir="${src.root.dir}/server/container/dpc/decrypt/">
+                <include name="decrypt.bat"/>
+                <include name="decrypt.sh"/>
+            </fileset>
+        </copy>			
+
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/dpc/config/security" file="${build.root.dir}/server-security/temp_agent-keystore.jks"/>		
+        
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/dpc/config">
+            <fileset dir="${build.root.dir}/config">
+                <include name="commprofile.xml"/>
+                <include name="agentprofile.xml"/>
+                <include name="config.dat"/>
+                <include name="mapping.xml"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${build.root.dir}/nextlabs/jbosspc/dpc/decryptj">
+            <fileset dir="${build.root.dir}">
+                <include name="agent-controlmanager.jar"/>
+                <include name="agent-tools.jar"/>
+                <include name="client-pf.jar"/>
+                <include name="common-domain.jar"/>
+                <include name="common-domain-types.jar"/>
+                <include name="common-framework.jar"/>
+                <include name="common-framework-types.jar"/>
+                <include name="common-pf.jar"/>
+                <include name="crypt.jar"/>
+                <include name="management-types.jar"/>
+            </fileset>
+            
+            <fileset dir="${xlib_jar_dir}">
+                <include name="axis.jar"/>
+                <include name="castor-0.9.5.4.jar"/>
+                <include name="commons-logging.jar"/>
+                <include name="jaxrpc.jar"/>
+                <include name="xercesImpl.jar"/>
+            </fileset>
+        </copy>		
+        
+    </target>
+    
+    <target name="zipCCtoPolicyControllerJava" depends="set-up-conf-struct, set-up-conf-jboss">
+        <echo message="xlib_fate_build_artifacts_bin_zip_file = ${xlib_fate_build_artifacts_bin_zip_file}"/>
+
+        <zip destfile="${build.root.dir}/PolicyControllerJava-${version_str}-${build_number}.zip">
+            <zipfileset dir="${build.root.dir}/nextlabs"/> 
+            <zipfileset src="${xlib_fate_build_artifacts_bin_zip_file}" includes="bin/java/nlJavaSDK2.jar" fullpath="nextlabs/dpc/jservice/jar/javasdk/nlJavaSDK2.jar"/>
+            <zipfileset src="${xlib_fate_build_artifacts_bin_zip_file}" includes="bin/java/JavaSDKService.properties" fullpath="nextlabs/dpc/jservice/config/JavaSDKService.properties"/>		
+            <zipfileset src="${xlib_fate_build_artifacts_bin_zip_file}" includes="bin/java/JavaSDKService.properties" fullpath="jbosspc/dpc/jservice/config/JavaSDKService.properties"/>
+            <zipfileset src="${xlib_fate_build_artifacts_bin_zip_file}" includes="bin/java/nlJavaSDK2.jar" fullpath="jbosspc/dpc/jservice/jar/javasdk/nlJavaSDK2.jar"/>
+        </zip>
+    </target>	
+    
+	<target name="package-CC-linux64" description="Compiles the 64-bit linux Control Center package">	
+		<delete dir="${package_linux_dir}" />
+		<mkdir dir="${package_linux_dir}"/>
+		
+		<mkdir dir="${package_linux_dir}/Policy_Server"/>
+		<mkdir dir="${package_linux_dir}/Policy_Server/java"/>
+		<mkdir dir="${package_linux_dir}/Policy_Server/tools"/>
+		<mkdir dir="${package_linux_dir}/Policy_Server/server"/>
+		
+		<copy todir="${package_linux_dir}/Policy_Server" failonerror="true">
+			<fileset dir="${src.root.dir}/etc/linux">
+				<include name="*.sh"/>
+				<include name="linux_CC_README.txt"/>
+			</fileset>
+		</copy>
+		
+		<move file="${package_linux_dir}/Policy_Server/linux_CC_README.txt"
+		      tofile="${package_linux_dir}/Policy_Server/README.txt"
+		      overwrite="true"/>
+		
+		<copy todir="${package_linux_dir}/Policy_Server/java" failonerror="true">
+			<fileset dir="${java.linux.jdk64.dir}">
+				<exclude name="src.zip"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${package_linux_dir}/Policy_Server/server" failonerror="true">
+			<fileset dir="${build.root.dir}/run/server">
+				<exclude name="**/conf/server.xml"/>
+				<exclude name="**/conf/logging.properties"/>
+				<exclude name="scripts/**"/>
+			</fileset>
+		</copy>
+		
+		<mkdir dir="${package_linux_dir}/Policy_Server/server/logs"/>
+		<mkdir dir="${package_linux_dir}/Policy_Server/server/logqueue"/>
+		<mkdir dir="${package_linux_dir}/Policy_Server/server/tomcat/logs"/>
+
+		<copy todir="${package_linux_dir}/Policy_Server/server/configuration" failonerror="true">
+			<fileset dir="${build.root.dir}/run/">
+				<include name="*.xml"/>
+				<include name="*.properties"/>
+			</fileset>
+			<fileset dir="${src.root.dir}/server/apps/inquiryCenter/src/etc">
+				<include name="dashboard.xml"/>
+			</fileset>
+		</copy>		
+		
+		<copy todir="${package_linux_dir}/Policy_Server/tools" failonerror="true">
+			<fileset dir="${build.root.dir}/tools">
+				<exclude name="Automation.zip"/>
+				<exclude name="jbosscrypt/**"/>
+				<exclude name="enrollmentPreview/**"/>
+				<exclude name="automation/**"/>
+				<exclude name="appdiscovery/**"/>
+				<exclude name="InstallService/**"/>
+				<exclude name="reporterdata/**"/>
+			</fileset>
+		</copy>
+		
+		<zip destfile="${build.root.dir}/ControlCenter-Linux-${version_str}-${build_number}.zip">
+            <zipfileset dir="${package_linux_dir}"/> 
+        </zip>
+		
+	</target>
+	
+	
+    <target name="installerOnly">
+        <antcall target="package" />
+        <ant dir="build-scripts/project" target="build-installers" inheritRefs="true"/>
+    </target>
+
+    <target name="cc-CI-Build" depends="buildAndTestAll">
+        <fail if="junit.fail" message="One or more unit tests have failed!" />
+    </target>
+
+    <target name="cc-Nightly-Build" depends="buildAndTestAll">
+    </target>
+
+    <target name="cc-test-integration">
+        <ant dir="build-scripts/project" target="test-integration-run" inheritRefs="true"/>
+    </target>		
+    
+    <target name="cc-test-all">
+        <ant dir="build-scripts/project" target="rebuild-env" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="test-all" inheritRefs="true"/>						
+    </target>
+    
+    <!--	<ant dir="build-scripts/project" target="test-integration" inheritRefs="true"/>
+        <ant dir="build-scripts/project" target="generate-test-report" inheritRefs="true"/>			-->
+    
+    <!-- New build pattern. Build all new build modules-->
+    <target name="new_test_all">
+        <!-- The following two tasks must be ran seperately.  Otherwise, the "resolve" task is not run before publish_report which will cause the publish to function incorrectly.  Fix when the "publish" task allows a resolveId attribute -->
+        <subant buildpathref="build-paths" verbose="true">
+            <property name="build.root.dir" value="${build.root.dir}" />
+            <target name="test" />
+        </subant>	  
+        <subant buildpathref="build-paths" verbose="true">
+            <property name="build.root.dir" value="${build.root.dir}" />
+            <target name="publish_report" />
+        </subant>	
+    </target>
+
+    <target name="package_for_targetenv">
+        <copy file="${xlib_bin32_dir}/InstallerCommon32.dll" tofile="${build.root.dir}/platform/win32/installer/release/installercommon.dll" preservelastmodified="true" overwrite="false" />
+        <copy file="${xlib_bin32_dir}/InstallerCommon32.dll" tofile="${build.root.dir}/platform/win32/installer/debug/installercommon.dll" preservelastmodified="true" overwrite="false" />
+        <copy file="${xlib_bin32_dir}/Installer_CA32.dll" tofile="${build.root.dir}/platform/win32/release/bin/Installer_CA.dll" preservelastmodified="true" overwrite="false" />
+
+        <if>
+            <equals arg1="${targetenv}" arg2="win_x86"/>
+            <then>
+        <copy file="${xlib_bin32_dir}/IPCJNI32.dll" tofile="${build.root.dir}/release_${targetenv}/IPCJNI.dll" preservelastmodified="true" overwrite="false" />
+        <copy file="${xlib_bin32_dir}/NetworkUtils32.dll" tofile="${build.root.dir}/release_${targetenv}/NetworkUtils.dll" />
+        <copy file="${xlib_bin32_dir}/ResourcePathDiscovery.exe" todir="${build.root.dir}/release_${targetenv}" />
+            </then>
+            <else>
+                <copy file="${xlib_bin64_dir}/IPCJNI.dll" tofile="${build.root.dir}/release_${targetenv}/IPCJNI.dll" preservelastmodified="true" overwrite="false" />
+                <copy file="${xlib_bin64_dir}/NetworkUtils.dll" tofile="${build.root.dir}/release_${targetenv}/NetworkUtils.dll" />
+                <copy file="${xlib_bin64_dir}/ResourcePathDiscovery.exe" todir="${build.root.dir}/release_${targetenv}" />
+            </else>
+        </if>
+
+        <copy file="${xlib_bin32_dir}/XSLTransformer.exe" todir="${build.root.dir}/platform/win32/installer/release" />
+    </target>
+
+    <target name="package">
+        <ant antfile="tomcat_build.xml" target="setup_tomcat" />
+		<antcall target="package-CC-linux64"/>
+        <copy file="${build.root.dir}/run/server/license/license.dat" todir="${build.root.dir}" />
+
+        <copy file="${build.root.dir}/config/commprofile.template.xml" todir="${build.root.dir}" />
+        <copy file="${build.root.dir}/config/mapping.xml" todir="${build.root.dir}" />
+        <copy file="${build.root.dir}/config/folder.info" todir="${build.root.dir}" />
+        <copy file="${build.root.dir}/config/agentprofile.xml" todir="${build.root.dir}" />
+        <copy file="${build.root.dir}/agent/logging.properties-template" tofile="${build.root.dir}/logging.template.properties" />
+
+        <!-- copy file="${build.root.dir}/platform/win32/installer/release/installercommon.dll" todir="${build.root.dir}" /> 
+             <copy file="${build.root.dir}/jinclude/com_bluejungle_destiny_agent_controlmanager_PDPJni.h" todir="${build.root.dir}" / -->
+
+        <foreach list="${targetenv.list}" 
+                 target="package_for_targetenv" 
+                 param="targetenv" 
+                 delimiter=";" 
+                 inheritall="true" 
+                 inheritrefs="true"/>
+        <antcall target="zipCCtoPolicyControllerJava"/>
+    </target>
+
+    <target name="test-all" depends="new_test_all" description="Runs all unit tests for the system">
+        <antfetch dir="build-scripts/project" target="test-all" inheritRefs="true" return="junit.fail"/>
+    </target>
+    
+
+    <!-- Temporary tasks to publish artifacts locally -->
+    <target name="resolve" 
+            description="Resolve all dependencies" 
+            depends="init_ivy">
+        <ivy:resolve conf="*" resolveId="module_resolve_id" file="../ivy.xml"/>
+    </target>
+
+    <target name="publish_locally" depends="resolve">
+        <ivy:publish artifactspattern="${build.root.dir}/([releasetype]_)([os]_)([arch])/([compiler])[artifact].[ext]"
+                     resolver="local-repository"
+                     overwrite="true"
+                     forcedeliver="true"
+                     publishivy="true"
+                     haltonmissing="true"
+                     pubrevision="100000.${ivy.revision.module_resolve_id}"
+                     /> <!-- The pub revision is large to make sure it is taken.  Tried using "latest-strategies" special meaning words, but this didn't work out.  See comments in "ivysettings.xml" file. -->
+        <!-- Need a way to publish ivy files without having to publish all confs-->
+    </target>
+</project>

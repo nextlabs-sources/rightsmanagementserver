@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmc:getUserProfileRequest APIVersion="1" deviceId="device ID" deviceOS="iOS" deviceType="MOBILE" operationTime="2016-01-19T14:51:28.314+08:00" xmlns:rmc="http://nextlabs.com/rms/rmc">
+    <accountName>RMS Test User 1</accountName>
+    <accountId>1235-abcd</accountId>
+    <authProvider>LDAP</authProvider>
+</rmc:getUserProfileRequest>

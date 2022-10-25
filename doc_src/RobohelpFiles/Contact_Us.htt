@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="topic-comment" content="Contact_Us" />
+<meta name="generator" content="Adobe RoboHelp 2015" />
+<title>Contact_Us</title>
+<link rel="StyleSheet" href="default.css" type="text/css" />
+</head>
+
+<body>
+<?rh-region_start type="body" ?>
+	<h4 style="font-family: 'MS Reference Sans Serif';">Contact Us</h4>
+	<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">For 
+	 troubleshooting any issues related to your RMS software email support 
+	 at support@nextlabs.com.</p>
+	<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+	<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">If 
+	 you have any comments about the accuracy of the documentation or areas 
+	 for improvement please kindly email them to techpubs@nextlabs.com.</p>
+	<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+	<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<?rh-region_end type="body" ?>
+<?rh-region_start type="footer" style="width: 100%; position: relative;" ?>
+	<p><?rh-udv_start name="FooterLine" ?>-----------------------------------------------------<?rh-udv_end ?></p>
+	<p><?rh-udv_start name="CopyrightFooter" ?><br />
+<span style="font-weight: bold;">CONFIDENTIALITY NOTICE</span><br />
+<br />
+THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY 
+ NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.<br />
+<br />
+<?rh-symbol_start name="Copyright" ?>©<?rh-symbol_end ?> 2014 - 2016 NextLabs 
+ Inc. All rights reserved.<br /><?rh-udv_end ?></p>
+	<p><?rh-udv_start name="FooterLine" ?>-----------------------------------------------------<?rh-udv_end ?></p>
+<?rh-region_end type="footer" ?>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmc:getRepositoryDetailsRequest userId="99" APIVersion="2" deviceId="new device ID" deviceOS="iOS" deviceType="MOBILE" operationTime="2016-01-20T17:21:53.981+08:00" xmlns:rmc="http://nextlabs.com/rms/rmc">
+    <fetchSinceGMTTimestamp>2016-01-20T17:21:53.951+08:00</fetchSinceGMTTimestamp>
+</rmc:getRepositoryDetailsRequest>

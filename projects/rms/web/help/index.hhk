@@ -1,0 +1,238 @@
+﻿<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="FrameName" value="bsscright">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Active Directory">
+    <param name="Name" value="Settings">
+    <param name="Local" value="Configuration.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Add">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="URL">
+      <param name="Name" value="Login Page">
+      <param name="Local" value="Login_Page.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Browse">
+    <param name="Name" value="Upload &amp; VIew">
+    <param name="Local" value="Upload_and_View.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Company's">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Contact Us">
+    <param name="Name" value="Contact Us">
+    <param name="Local" value="Contact_Us.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Deployed">
+    <param name="Name" value="Upload &amp; VIew">
+    <param name="Local" value="Upload_and_View.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Policy Controller">
+      <param name="Name" value="Upload &amp; VIew">
+      <param name="Local" value="Upload_and_View.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Document Viewer">
+    <param name="Name" value="Document Viewer">
+    <param name="Local" value="Document_Viewer.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Email">
+    <param name="Name" value="Contact Us">
+    <param name="Local" value="Contact_Us.htm">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Email ID">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="First Name">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Internet Explorer">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="JavaScript">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Last Name">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Manage Repositories">
+    <param name="Name" value="Manage Repositories">
+    <param name="Local" value="Manage_Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Nextlabs">
+    <param name="Name" value="Contact Us">
+    <param name="Local" value="Contact_Us.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="NOTE">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Nxl">
+    <param name="Name" value="Manage Repositories">
+    <param name="Local" value="Manage_Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Nxl file">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Policy Controller">
+    <param name="Name" value="Upload &amp; VIew">
+    <param name="Local" value="Upload_and_View.htm">
+    <param name="Name" value="Settings">
+    <param name="Local" value="Configuration.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Register">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Repositories">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Requesting">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="RMS User Account">
+      <param name="Name" value="Login Page">
+      <param name="Local" value="Login_Page.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Rights Management Server">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+    <param name="Name" value="Settings">
+    <param name="Local" value="Configuration.htm">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="RMS">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+    <param name="Name" value="Upload &amp; VIew">
+    <param name="Local" value="Upload_and_View.htm">
+    <param name="Name" value="Contact Us">
+    <param name="Local" value="Contact_Us.htm">
+    <param name="Name" value="Settings">
+    <param name="Local" value="Configuration.htm">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="RMS User Account">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Requesting">
+      <param name="Name" value="Login Page">
+      <param name="Local" value="Login_Page.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Search">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Settings">
+    <param name="Name" value="Settings">
+    <param name="Local" value="Configuration.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Sign">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Sponsor's Email Address">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Techpubs">
+    <param name="Name" value="Contact Us">
+    <param name="Local" value="Contact_Us.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Trusted Site">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Unencrypted">
+    <param name="Name" value="Repositories">
+    <param name="Local" value="Repositories.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Upload">
+    <param name="Name" value="Upload &amp; VIew">
+    <param name="Local" value="Upload_and_View.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="URL">
+    <param name="Name" value="Login Page">
+    <param name="Local" value="Login_Page.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Using">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Rights Management Server">
+      <param name="Name" value="Repositories">
+      <param name="Local" value="Repositories.htm">
+    </object>
+    </ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="View">
+    <param name="Name" value="Upload &amp; VIew">
+    <param name="Local" value="Upload_and_View.htm">
+  </object>
+</ul>
+</html>

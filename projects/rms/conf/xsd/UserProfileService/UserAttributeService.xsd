@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nextlabs.com/rms/rmc" xmlns:rms-rmc-type="http://nextlabs.com/rms/rmc/types">
+
+	<xs:import schemaLocation="../types/rms-rmc-integration-types.xsd"
+		namespace="http://nextlabs.com/rms/rmc/types" />
+
+	<xs:element name="UserAttributeRequest" >
+		<xs:complexType>
+	        <xs:attribute name="authRequestId" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UserAttributeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="attributes" type="rms-rmc-type:UserAttributesType"/>
+				<xs:element name="status" type="rms-rmc-type:StatusType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

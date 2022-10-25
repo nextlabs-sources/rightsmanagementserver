@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basictypes SYSTEM "types/BasicTypes.dtd">
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+%basictypes;
+%basicfaults;
+<!--element and attribute declarations-->
+<!ELEMENT UnRegisterAgent (unregisterAgentRequest | unregisterAgentResponse)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT UnknownEntryFault ANY>
+<!ELEMENT CommitFault ANY>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault | UnknownEntryFault | CommitFault)>
+<!ELEMENT unregisterAgentRequest (id)>
+<!ELEMENT unregisterAgentResponse ((fault)?)>

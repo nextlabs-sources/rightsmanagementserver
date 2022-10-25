@@ -1,0 +1,12 @@
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:complexType name="AgentProfileStatusData">
+		<xs:sequence>
+			<xs:element name="lastCommittedAgentProfileName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="lastCommittedAgentProfileTimestamp" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="lastCommittedCommProfileName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="lastCommittedCommProfileTimestamp" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

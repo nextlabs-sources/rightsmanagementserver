@@ -1,0 +1,108 @@
+﻿[Target:WebHelp Pro]
+ResultFileName=!SSL!\WebHelp_Pro\Rights_Management_Server_1.0.htm
+SSLayoutType=32
+ServerProjectName=Rights Management Server 1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:WebHelp]
+ResultFileName=!SSL!\WebHelp\index.htm
+SSLayoutType=2
+CreateProjectTime=23:56, October 22, 2015
+CreateProjectUser=astephen
+SupportMas_MPJ=1
+ActionID For Generation=1001
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\index.htm
+ResultStatus=0
+BuildTimeHi=30508052
+BuildTimeLow=-2020654483
+PublishResultStatus=4
+LastPublishTimeHi=30412978
+LastPublishTimeLow=1209414507
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Rights_Management_Server_1.0.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+ActionID For Generation=1013
+Remove Folder with prompt=1
+ViewFileName=!SSL!\Microsoft_HTML_Help\Rights_Management_Server_1.0.chm
+ResultStatus=0
+BuildTimeHi=30356163
+BuildTimeLow=2031201357
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Rights_Management_Server_1.0.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Rights_Management_Server_1.0.doc
+SSLayoutType=7
+ActionID For Generation=3001
+Remove Folder with prompt=1
+ResultStatus=3
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Rights_Management_Server_1.0.xml
+SSLayoutType=8129
+[Target:FlashHelp Pro]
+ResultFileName=!SSL!\FlashHelp_Pro\Rights_Management_Server_1.0.htm
+SSLayoutType=2
+ServerProjectName=Rights Management Server 1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Adobe AIR]
+ResultFileName=!SSL!\Adobe_AIR\Rights_Management_Server_1.0.air
+SSLayoutType=512
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[PreSingleSource]
+Html Help Project=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.hhp
+Table Of Content=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.hhc
+Index=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.hhk
+Topic Index=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\RHTopicKeyword$.hhk
+See Also Index=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.hha
+Browse Sequence=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.brs
+Glossary=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.glo
+Topic Properties=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trs
+Active Folders=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trf
+Baggage Files=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trb
+Skin List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trk
+Active Layout Names=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trl
+Template Files=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trt
+Project TOC List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trtocl
+Project Index List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.tridxl
+Project Glossary List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trglol
+Project CSS List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trcss
+Project Variable Set List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.trvset
+External URL Settings=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\SearchOptions.xml
+Default Topic=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Repositories.htm
+Build Tags0=27364;Online | Print
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=en_US
+Language=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\!Language!\en_US\RoboHHRE.lng
+Stop List=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\!Language!\en_US\Rights Management Server 1.0.stp
+Screen Template File Details=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\Rights Management Server 1.0.sctfdl
+CPSwfToHTML5Map=c:\Users\sdevarbhavi\Documents\rightsmanagementserver\doc_src\RobohelpFiles\__cpSwf2HTML5ZipMap
+[Layout Settings]
+MRULayoutCount=1
+MRULayout0=WebHelp]08/30/15]0
+[Target:Responsive HTML5]
+SSLayoutType=2
+ActionID For Generation=1001
+ResultFileName=C:\Users\sdevarbhavi\Documents\rightsmanagementserver\projects\rms\web\help\index.htm
+Remove Folder with prompt=1
+CreateProjectTime=17:43, October 31, 2017
+CreateProjectUser=sdevarbhavi
+SupportMas_MPJ=1
+ViewFileName=C:\Users\sdevarbhavi\Documents\rightsmanagementserver\projects\rms\web\help\index.htm
+ResultStatus=0
+BuildTimeHi=30626348
+BuildTimeLow=-1294427282
+MindReader Server=

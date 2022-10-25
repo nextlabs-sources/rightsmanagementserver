@@ -1,0 +1,25 @@
+<div class="rms-upload-file">
+	<div id="fileUploading" data-ng-show="isLoading">
+		<div id="pgLoading-image-with-border">
+           <img src="ui/css/img/loading-icon.gif" alt="Loading..." />
+        </div>
+    </div>
+	<div class="header">
+		<Label>{{"upload" | translate}}</Label> <a data-ng-click="ok()">x</a>
+	</div>
+    <div ngf-drop  ng-model="files" class="drop-box" 
+        ngf-drag-over-class="'dragover'" ngf-allow-dir="true">
+		<div ng-show="uploadErr && uploadErr.length > 0" id="error" class="alert alert-danger ng-scope">
+			<span id="errmsg">{{uploadErr}}</span>
+		</div>
+		<label>{{"upload.drag.drop" | translate}},<br>{{"upload.browse.upload" | translate}}<br>
+     	</label>
+     	<center>
+     		<button class="btn btn-default" ngf-select="uploadandview($file, $invalidFiles)" ng-model="file" ngf-multiple="false" style="cursor: pointer;">Browse</button>
+     	</center>
+     	<br>
+     	<br>
+     	<center>{{"upload.temporary.statement" | translate}}</center>
+ 	</div>    
+               
+</div>

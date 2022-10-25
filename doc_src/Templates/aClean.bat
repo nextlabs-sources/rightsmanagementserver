@@ -1,0 +1,2 @@
+del *.backup.*
+del *.log

@@ -1,0 +1,12 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:complexType name="Version">
+	<xs:sequence>
+		<xs:element name="major" type="xs:nonNegativeInteger"/>
+		<xs:element name="minor" type="xs:nonNegativeInteger"/>
+		<xs:element name="maintenance" type="xs:nonNegativeInteger"/>
+		<xs:element name="patch" type="xs:nonNegativeInteger"/>
+        <xs:element name="build" type="xs:nonNegativeInteger"/>
+	</xs:sequence>
+</xs:complexType>
+</xs:schema>

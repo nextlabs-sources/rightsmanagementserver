@@ -1,0 +1,35 @@
+<logService tenantId="N/A" agentId="35675" version="5">
+    <logRequest>
+        <logs>
+            <log uid="173222975626702" timestamp="2015-07-20T10:17:12-07:00" type="Evaluation">
+                <Rights>View,Edit,Print,Access Clipboard,Save As,Decrypt,Capture Screen,Send,Classify</Rights>
+                <User>
+                    <Name>john</Name>
+                    <Sid>s-1-5-21-3113006271-573117139-135485571-1002</Sid>
+                    <Attributes/>
+                </User>
+                <Host>
+                    <Name>ay-w7-2</Name>
+                </Host>
+                <Application>
+                    <Image>\??\c:\program's files\microsoft office\office15\winword.exe</Image>
+                    <Publisher>microsoft corporation</Publisher>
+                </Application>
+                <Resource>
+                    <Path>c:\temp\eleven.docx</Path>
+                    <Tags>
+                        <Tag Name="sensitivity" Value="confidential"/>
+                        <Tag Name="project" Value="pr-02"/>
+                        <Tag Name="jurisdiction" Value="itar"/>
+                        <Tag Name="license" Value="taa-01"/>
+                    </Tags>
+                </Resource>
+                <HitPolicies>
+                    <Policy Id="286" Value="View/Everyone2"/>
+                    <Policy Id="378" Value="ayuen/#4 - (32-bit) Allow View by null on ITAR"/>
+                    <Policy Id="435" Value="ayuen/#99 - Allow all on PR02"/>
+                </HitPolicies>
+            </log>
+        </logs>
+    </logRequest>
+</logService>

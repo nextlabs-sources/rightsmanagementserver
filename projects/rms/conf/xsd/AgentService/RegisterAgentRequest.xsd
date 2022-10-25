@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import schemaLocation="types/AgentRegistrationData.xsd"/>
+	<xs:element name="RegisterAgentRequest" type="registerAgentRequest"/>
+	<xs:complexType name="registerAgentRequest">
+		<xs:sequence>
+			<xs:element name="RegistrationData" type="AgentRegistrationData" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,154 @@
+﻿/*Created with Adobe RoboHelp 9.*/
+BODY {
+	font-family: Arial;
+	background-color: #ffffff;
+}
+H1 {
+	font-weight: bold;
+	font-size: 24.0pt;
+	x-next-class: ;
+	x-next-type: P;
+	font-family: "MS Reference Sans Serif";
+}
+H2 {
+	font-weight: bold;
+	font-size: 18.0pt;
+	x-next-class: ;
+	x-next-type: P;
+	font-family: "MS Reference Sans Serif";
+}
+H3 {
+	font-weight: bold;
+	font-size: 14.0pt;
+	x-next-class: ;
+	x-next-type: P;
+	font-family: "MS Reference Sans Serif";
+}
+H4 {
+	font-weight: bold;
+	font-size: 12.0pt;
+	x-next-class: ;
+	x-next-type: P;
+	font-family: "MS Reference Sans Serif";
+}
+H5 {
+	font-weight: bold;
+	font-size: 10.0pt;
+	x-next-class: ;
+	x-next-type: P;
+	font-family: "MS Reference Sans Serif";
+}
+H6 {
+	font-weight: bold;
+	font-size: 8.0pt;
+	x-next-class: ;
+	x-next-type: P;
+	font-family: "MS Reference Sans Serif";
+}
+p {
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+}
+A.expandspot {
+	color: #008000;
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none;
+}
+SPAN.expandtext {
+	font-style: italic;
+	font-weight: normal;
+	color: #ff0000;
+}
+A.dropspot {
+	cursor: hand;
+	color: #008000;
+	font-style: italic;
+	text-decoration: none;
+}
+A.glossterm {
+	color: #800000;
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none;
+}
+SPAN.glosstext {
+	font-style: italic;
+	font-weight: normal;
+	color: #0000ff;
+}
+OL,
+UL {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+}
+A.breadcrumbs {
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+}
+A:active {
+	color: #00ff00;
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+	text-decoration: underline;
+}
+A:hover {
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+}
+A:link {
+	color: #0000ff;
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+	text-decoration: underline;
+}
+A:visited {
+	color: #ff0000;
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+	text-decoration: underline;
+}
+A.popupspot {
+	font-family: "MS Reference Sans Serif";
+	font-size: 9pt;
+}
+table.AlternateBlueWithHeader {
+	x-border-spacing: 0px;
+	x-row-pat-1: 1;
+	x-row-pat-1-name: t1Row;
+	x-row-pat-count: 2;
+	x-row-pat-2: 1;
+	x-row-pat-2-name: t2Row;
+	border-left-style: Solid;
+	border-left-width: 1px;
+	border-left-color: #4F81BD;
+	border-right-style: Solid;
+	border-right-width: 1px;
+	border-right-color: #4F81BD;
+	x-1st-row: 1;
+	x-1st-row-name: t1st;
+}
+table.AlternateBlueWithHeader td {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+table.AlternateBlueWithHeader tr.t1Row td {
+	border-bottom-style: Solid;
+	border-bottom-width: 1px;
+	border-bottom-color: 4f81bd;
+}
+table.AlternateBlueWithHeader tr.t2Row td {
+	background-color: #D3DFEE;
+	border-bottom-style: Solid;
+	border-bottom-width: 1px;
+	border-bottom-color: 4f81bd;
+}
+table.AlternateBlueWithHeader tr.t1st td {
+	background-color: #4F81BD;
+}

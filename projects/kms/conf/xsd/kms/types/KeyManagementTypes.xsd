@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://nextlabs.com/kms/types"
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:types="http://nextlabs.com/kms/types">
+
+        <xs:complexType name="KeyIdDTO">
+                <xs:sequence>
+                		<xs:element name="id" type="xs:string" />
+                        <xs:element name="hash" type="xs:hexBinary" />
+                        <xs:element name="timestamp" type="xs:long" />
+                </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="KeyDTO">
+                <xs:sequence>
+                        <xs:element name="keyId" type="types:KeyIdDTO" />
+                        <xs:element name="keyValue" type="xs:hexBinary" />
+                        <xs:element name="keyAlgorithm" type="xs:string" />
+                        <xs:element name="keyLength" type="xs:int" />
+                </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="KeysDTO">
+                <xs:sequence>
+                        <xs:element name="keys" type="types:KeyDTO" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+        </xs:complexType>
+
+
+        <xs:complexType name="KeyRingDTO">
+                <xs:sequence>
+                        <xs:element name="name" type="xs:string" />
+                        <xs:element name="keyIds" type="types:KeyIdDTO" minOccurs="0" maxOccurs="unbounded" />
+                        <xs:element name="createdDate" type="xs:long" />
+                        <xs:element name="lastModifiedDate" type="xs:long" />
+                </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="KeyRingWithKeysDTO">
+                <xs:sequence>
+                        <xs:element name="name" type="xs:string" />
+                        <xs:element name="keys" type="types:KeyDTO" minOccurs="0" maxOccurs="unbounded" />
+                        <xs:element name="createdDate" type="xs:long" />
+                        <xs:element name="lastModifiedDate" type="xs:long" />
+                </xs:sequence>
+        </xs:complexType>
+
+        <xs:complexType name="KeyRingsWithKeysDTO">
+                <xs:sequence>
+                        <xs:element name="keyRings" type="types:KeyRingWithKeysDTO" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+        </xs:complexType>
+
+
+        <xs:complexType name="KeyRingNamesDTO">
+                <xs:sequence>
+                        <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+        </xs:complexType>
+
+		<xs:element name="error">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="code" type="xs:int" />
+					<xs:element name="description" type="xs:string" />
+	        	</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+		<xs:complexType name="attribute">
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" minOccurs="1"
+					maxOccurs="1" />
+				<xs:element name="value" type="xs:string" minOccurs="1"
+					maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+
+		<xs:simpleType name="provider">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="DEFAULT" />
+			</xs:restriction>
+		</xs:simpleType>
+</xs:schema>

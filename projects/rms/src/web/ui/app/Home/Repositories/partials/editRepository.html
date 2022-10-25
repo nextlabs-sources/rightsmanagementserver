@@ -1,0 +1,48 @@
+<div>
+	<div id="editRepoLoading" data-ng-show="isLoading">
+		<div id="pgLoading-image">
+			<img src="ui/css/img/loading-icon.gif" alt="Loading..." />
+		</div>
+	</div>
+	<div class="row modal-header" style="width:100%;">
+		<div class="col-xs-6 overflow-hidden rms-break-word" uib-tooltip="{{repository.repoName}}" tooltip-placement="bottom">{{"edit" | translate}}<br/>{{repoNameShortened}}</div>
+		<div class="col-xs-6">
+			<a class="btn btn-default margin-right-10" data-ng-click="cancel()">{{"CANCEL" | translate}}</a>
+			<a class="btn btn-default rms-settings-button-color rms-settings-button" data-ng-disabled="repoEditForm.$pristine || repoEditForm.$invalid" data-ng-click="repoEditForm.$pristine || repoEditForm.$invalid || updateRepository(repository)">{{"SAVE" | translate}}</a> 
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<form name="repoEditForm">
+		<div style="padding-left:10%">
+			<div>
+				<label>{{"managerepo.display.name" | translate}}</label><br/>
+				<input type="text" data-ng-model="repository.repoName" ng-maxlength="40" name="DISPLAY_NAME" data-ng-required="true" data-ng-pattern="/^[\w -]*$/" data-ng-trim="true"/>
+				<span class="mandatory" data-ng-show="repoEditForm.DISPLAY_NAME.$touched && (repoEditForm.DISPLAY_NAME.$error.required || repoEditForm.DISPLAY_NAME.$invalid)">{{"managerepo.disp_name.required" | translate}}</span>
+				<span class="mandatory rms-display" data-ng-show="repoEditForm.DISPLAY_NAME.$error.pattern">{{"managerepo.disp_name.incorrect_format" | translate}}</span>			
+			</div>
+			<br/>
+			<div>
+				<span class="label-grey">{{"managerepo.service.provider" | translate}}</span><br/>
+				<span>{{repository.repoTypeDisplayName}}</span><br/>
+			</div>
+			<br/>
+			<div data-ng-if="$parent.isAdmin && (repository.repoType=='SHAREPOINT_ONLINE' || repository.repoType=='SHAREPOINT_ONPREMISE')">
+				<span class="label-grey">{{"managerrepo.showall.label" | translate}}</span><br/>
+				<switch disabled="true" data-ng-model="repository.isShared"></switch>	
+				<br/>
+				<br/>
+			</div>	
+			<div>
+				<span data-ng-if="repository.repoType!='SHAREPOINT_ONLINE' && repository.repoType!='SHAREPOINT_ONPREMISE'"class="label-grey">{{"managerepo.useraccount" | translate}}</span>
+				<span data-ng-if="repository.repoType=='SHAREPOINT_ONLINE' || repository.repoType=='SHAREPOINT_ONPREMISE'"class="label-grey">{{"managerepo.sites.label" | translate}}</span>
+				<br/>
+				<span>{{repository.accountName}}</span><br/>
+			</div>
+			<br/>
+			<div>
+				<button class="btn btn-default rms-delete-button" data-ng-click="deleteRepository(repository)">{{"delete" | translate}}</button>	
+			</div>
+		</div>
+	</form>
+</div>

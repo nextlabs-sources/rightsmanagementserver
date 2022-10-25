@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                      xmlns:common="http://bluejungle.com/destiny/framework/types"
+                      xmlns:types="http://nextlabs.com/destiny/types/log/v5"
+                      xmlns:tns="http://nextlabs.com/destiny/interfaces/log/v5"
+                      targetNamespace="http://nextlabs.com/destiny/interfaces/log/v5">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://nextlabs.com/destiny/services/log/v5">
+            <xsd:import namespace="http://nextlabs.com/destiny/types/log/v5" schemaLocation="types/LogTypes.v5.xsd"/>
+            <xsd:import namespace="http://bluejungle.com/destiny/framework/types"
+                        schemaLocation="types/BasicFaults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="PolicyActivityLogRequest">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="PolicyActivityV2LogRequest">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="PolicyActivityV3LogRequest">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="PolicyActivityV5LogRequest">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="response">
+        <wsdl:part name="response" type="types:LogStatus"/>
+    </wsdl:message>
+
+    <wsdl:message name="TrackingLogRequest">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="TrackingLogV2Request">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="TrackingLogV3Request">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="PolicyAssistantLogRequest">
+        <wsdl:part name="logs" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="ServiceNotReadyFault">
+        <wsdl:part name="ServiceNotReadyFault" type="common:ServiceNotReadyFault"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnauthorizedCallerFault">
+        <wsdl:part name="UnauthorizedCallerFault" type="common:UnauthorizedCallerFault"/>
+    </wsdl:message>
+
+    <wsdl:portType name="LogServiceIF">
+        <wsdl:operation name="logPolicyActivity">
+            <wsdl:input message="tns:PolicyActivityLogRequest"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logPolicyActivityV2">
+            <wsdl:input message="tns:PolicyActivityV2LogRequest"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logPolicyActivityV3">
+            <wsdl:input message="tns:PolicyActivityV3LogRequest"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logPolicyActivityV5">
+            <wsdl:input message="tns:PolicyActivityV5LogRequest"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logTracking">
+            <wsdl:input message="tns:TrackingLogRequest"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logTrackingV2">
+            <wsdl:input message="tns:TrackingLogV2Request"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logTrackingV3">
+            <wsdl:input message="tns:TrackingLogV3Request"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="logPolicyAssistant">
+            <wsdl:input message="tns:PolicyAssistantLogRequest"/>
+            <wsdl:output message="tns:response"/>
+            <wsdl:fault name="ServiceNotReadyFault" message="tns:ServiceNotReadyFault"/>
+            <wsdl:fault name="UnauthorizedCallerFault" message="tns:UnauthorizedCallerFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Login" > <!-- "none" -->
+
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+	
+	<!-- The user name or password is not right -->
+	<test name="ID 01 RMS_login_logout-ODRM58a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>
+            	<parameter name="susername" value="User1" /> 
+            	<parameter name="spassword" value="Password1" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="The username or password you entered is incorrect."/>   
+				<include name="invalidLoginUser" />
+            </methods>
+         </classes>
+    </test>
+
+<!-- 
+    <test name="ID 02 RMS_login_logout-ODRM291a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="james.polk" /> 
+            	<parameter name="spassword" value="" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="Password is mandatory"/>
+            	<include name="emptyUserNameORPassword" />
+            </methods>
+         </classes>
+    </test>
+
+    <test name="ID 03 RMS_login_logout-ODRM191b">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="" /> 
+            	<parameter name="spassword" value="james.polk" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="Username is mandatory"/>
+            	<include name="emptyUserNameORPassword" />
+            </methods>
+         </classes>
+    </test>
+ -->
+
+ <!-- The domain is not selected -->
+    <test name="ID 04 RMS_login_logout-ODRM39a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="james.polk" /> 
+            	<parameter name="spassword" value="james.polk" />  
+            	<parameter name="sdomain" value=""/>
+            	<parameter name="serrorMessage" value="Please select a domain"/>
+            	<include name="invalidLoginDomain" />
+            </methods>
+         </classes>
+    </test>
+  
+    <test name="ID 05 RMS_login_logout-ODRM282a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="john.tyler" /> 
+            	<parameter name="spassword" value="john.tyler" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<include name="validLoginTest"/>
+            </methods>
+    	</classes>
+    </test>
+       
+    <test name="ID 06 RMS_login_logout-ODRM282b">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="Administrator" /> 
+            	<parameter name="spassword" value="123blue!" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<include name="validLoginTest"/>
+            </methods>
+         </classes>
+    </test>
+
+	<!-- no right to login -->
+    <test name="ID 07 RMS_login_logout-ODRM283a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="jimmy.carter" /> 
+            	<parameter name="spassword" value="jimmy.carter" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="You are not authorized to access Rights Management. Contact the Rights Management Administrator for access."/>
+            	<include name="invalidLoginUser"/>
+            </methods>
+         </classes>
+    </test>
+
+	<!-- The domain in not right -->
+    <test name="ID 08 RMS_login_logout-ODRM38a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="jimmy.carter" /> 
+            	<parameter name="spassword" value="jimmy.carter" />  
+            	<parameter name="sdomain" value="qapf1.qalab02.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="The username or password you entered is incorrect."/>
+            	<include name="invalidLoginUser"/>
+            </methods>
+         </classes>
+    </test>
+
+  <!-- use another AD to login -->
+    <test name="ID 09 RMS_login_logout-ODRM127a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="abraham.lincoln" /> 
+            	<parameter name="spassword" value="abraham.lincoln" />  
+            	<parameter name="sdomain" value="child01.qapf1.qalab01.nextlabs.com"/>
+            	<include name="validLoginTest"/>
+            </methods>
+         </classes>
+    </test>
+    
+    <!-- james.madision is disabled user -->
+    <test name="ID 10 RMS_login_logout-ODRM270a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="james.madision" /> 
+            	<parameter name="spassword" value="james.madision" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="The username or password you entered is incorrect."/>
+            	<include name="invalidLoginUser"/>
+            </methods>
+         </classes>
+    </test>
+    
+    <!-- user is out of group, and group with diable user-->
+    <test name="ID 11 RMS_login_logout-ODRM271a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="james.garfield" /> 
+            	<parameter name="spassword" value="james.garfield" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="You are not authorized to access Rights Management. Contact the Rights Management Administrator for access."/>
+            	<include name="invalidLoginUser"/>
+            </methods>
+         </classes>
+    </test>
+    
+    <test name="ID 12 RMS_login_logout-ODRM272a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="administrator" /> 
+            	<parameter name="spassword" value="123blue!" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<include name="validLoginTest"/>
+            </methods>
+         </classes>
+    </test>
+    
+    <test name="ID 13 RMS_login_logout-ODRM273a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="gerald.ford" /> 
+            	<parameter name="spassword" value="gerald.ford" />  
+            	<parameter name="sdomain" value="qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="You are not authorized to access Rights Management. Contact the Rights Management Administrator for access."/>
+            	<include name="invalidLoginUser"/>
+            </methods>
+         </classes>
+    </test>
+    
+    <test name="ID 14 RMS_login_logout-ODRM367a">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.LoginTestCase" />
+			<methods>        	
+			<parameter name="susername" value="john.tyler" /> 
+            	<parameter name="spassword" value="john.tyler" />  
+            	<parameter name="sdomain" value="child01.qapf1.qalab01.nextlabs.com"/>
+            	<parameter name="serrorMessage" value="You are not authorized to access Rights Management. Contact the Rights Management Administrator for access."/>
+            	<include name="invalidLoginUser"/>
+            </methods>
+         </classes>
+    </test>
+
+</suite>
+				

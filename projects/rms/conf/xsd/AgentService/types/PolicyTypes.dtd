@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--element and attribute declarations-->
+<!ELEMENT userSubjectType (#PCDATA)>
+<!ELEMENT systemId (#PCDATA)>
+<!ELEMENT policyUsers (userSubjectType, systemId)>
+<!ELEMENT userSubjectTypes (#PCDATA)>
+<!ELEMENT agentCapabilities (#PCDATA)>

@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ApplicationSettingTest" > <!-- "none" --> 
+
+	<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+ 
+	<!--<test name="ID 01 RMS_Setting Page - ODRM-351">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="Time" value="2" /> 
+					<parameter name="ErrorMes" value="Your session has expired" />  
+                	<include name="RMS_User_Session_timeout_After_Specific_minutes" />                 
+			</methods>
+		</classes>
+	</test>-->
+	
+	<test name="ID 02 RMS_Setting Page - ODRM-861">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="FileName" value="\\autonas01\Public\RMSAutomationTestData\uploadandview\EAR04.pptx.nxl"/>
+                	<include name="disablePC" />                 
+			</methods>
+		</classes>
+	</test>
+
+   <test name="ID 03 RMS_Setting Page - ODRM-425 1">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Connected to the policy controller."/>
+                	<include name="setPolicyContorller" />                 
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 04 RMS_Setting Page - ODRM-440">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012a.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Rights Management Server could not connect to a Policy Controller with the specified Hostname. Verify that your Policy Controller Hostname is correct."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+ 
+	<test name="ID 05 RMS_Setting Page - ODRM-435">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value=""/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Please fill all the mandatory fields in Policy Controller Settings section"/>
+                	<include name="setPCWithWrongPort" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 06 RMS_Setting Page - ODRM-712">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value=""/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Rights Management Server could not connect to the Key Management Service. Verify that the port number is correct."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+		
+	<test name="ID 07 RMS_Setting Page - ODRM-428">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1099"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Rights Management Server could not connect to the Key Management Service. Verify that the port number is correct."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 08 RMS_Setting Page - ODRM-429">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\nextlabs\RMS\datafiles\certs\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="The KeyStore file does not exist at the specified file path."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 09 RMS_Setting Page - ODRM-436">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value=""/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Please fill all the mandatory fields in Policy Controller Settings section"/>
+                	<include name="setPCWithWrongPort" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 10 RMS_Setting Page - ODRM-430">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123blue!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="The passwords specified for your certificate files (KeyStore or TrustStore or both) are incorrect."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 11 RMS_Setting Page - ODRM-437">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value=""/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Please fill all the mandatory fields in Policy Controller Settings section"/>
+                	<include name="setPCWithWrongPort" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 12 RMS_Setting Page - ODRM-431">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\nextlabs\RMS\datafiles\certs\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="The TrustStore file does not exist at the specified file path."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 13 RMS_Setting Page - ODRM-438">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value=""/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Please fill all the mandatory fields in Policy Controller Settings section"/>
+                	<include name="setPCWithWrongPort" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 14 RMS_Setting Page - ODRM-433">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123blue!"/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="The passwords specified for your certificate files (KeyStore or TrustStore or both) are incorrect."/>
+                	<include name="setWrongPolicyController" />                 
+			</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 15 RMS_Setting Page - ODRM-439">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value=""/>
+					<parameter name="PEPort" value="1099"/>
+					<parameter name="ErrMessage" value="Please fill all the mandatory fields in Policy Controller Settings section"/>
+                	<include name="setPCWithWrongPort" />                 
+			</methods>
+		</classes>
+	</test>
+	
+   <test name="ID 16 RMS_Setting Page - ODRM-425 2">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+					<parameter name="PCHostName" value="pc-2012.qapf1.qalab01.nextlabs.com"/>
+					<parameter name="KMPort" value="1299"/>
+					<parameter name="KeyStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-keystore.jks"/>
+					<parameter name="KeyStorePassowrd" value="123next!"/>
+					<parameter name="TrustStorePath" value="C:\ProgramData\NextLabs\RMS\datafiles\javapc\jservice\jar\KeyManagement\rmskmc-truststore.jks"/>
+					<parameter name="TrustStorePassword" value="123next!"/>
+					<parameter name="PEPort" value=""/>
+					<parameter name="ErrMessage" value="Connected to the policy controller."/>
+                	<include name="setPolicyContorller" />                 
+			</methods>
+		</classes>
+	</test>
+
+	<test name="ID 17 RMS_Email Setting - ODRM-960">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25aa" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="SMTP Port should be a number" />  
+                	<include name="setMailServerWithError" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 18 RMS_Email Setting - ODRM-465">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!a" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="SMTP password and Retype SMTP password is not equal" />  
+                	<include name="setMailServerWithError" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 19 RMS_Email Setting - ODRM-444">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServerWithError" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 20 RMS_Email Setting - ODRM-442">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>	
+
+	<test name="ID 21 RMS_Email Setting - ODRM-449">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 22 RMS_Email Setting - ODRM-450">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 23 RMS_Email Setting - ODRM-451">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 24 RMS_Email Setting - ODRM-453">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 25 RMS_Email Setting - ODRM-454">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="" />   
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Mail Server Settings section." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 26 RMS_Email Setting - ODRM-456">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="SMTPHost" value="smtp.163.com" />
+                	<parameter name="SMTPPort" value="25" />
+                	<parameter name="SMTPUserName" value="nextlabs@163.com" />
+                	<parameter name="SMTPPassord" value="123blue!" />
+                	<parameter name="ReenterSMTPPassord" value="123blue!" />  
+                	<parameter name="EmailSubject" value="Request RMS account" />
+                	<parameter name="RMSAdminEmail" value="James.Madison@qapf1.qalab01.nextlabs.com" />   
+                	<parameter name="errorMes" value="Your settings have been saved successfully." />  
+                	<include name="setMailServer" />                 
+				</methods>
+		</classes>
+	</test>
+
+		<test name="ID 27 RMS_GooleDrive Setting - ODRM-912">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="googleDrive" />
+                	<parameter name="AppSecret" value="25aa" />
+                	<parameter name="RedirectURL" value="nextlabs@163.com" />
+                	<parameter name="errorMes" value="Your settings have been saved successfully." />    
+                	<include name="setGoogleDrive" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 28 RMS_GooleDrive Setting - ODRM-920">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="googleDrive" />
+                	<parameter name="AppSecret" value="" />
+                	<parameter name="RedirectURL" value="nextlabs@163.com" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Google drive settings section." />    
+                	<include name="setErrorGoogleDrive" />                 
+				</methods>
+		</classes>
+	</test>	
+
+		<test name="ID 29 RMS_GooleDrive Setting - ODRM-915">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="" />
+                	<parameter name="AppSecret" value="25aa" />
+                	<parameter name="RedirectURL" value="nextlabs@163.com" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Google drive settings section." />    
+                	<include name="setErrorGoogleDrive" />                 
+				</methods>
+		</classes>
+	</test>
+	
+		<test name="ID 30 RMS_GooleDrive Setting - ODRM-921">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="googleDrive" />
+                	<parameter name="AppSecret" value="25aa" />
+                	<parameter name="RedirectURL" value="" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Google drive settings section." />    
+                	<include name="setErrorGoogleDrive" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 31 RMS_DropBox Setting - ODRM-480">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="dropbox" />
+                	<parameter name="AppSecret" value="25aa" />
+                	<parameter name="RedirectURL" value="nextlabs@163.com" />
+                	<parameter name="errorMes" value="Your settings have been saved successfully." />    
+                	<include name="setDropboxDrive" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 32 RMS_DropBox Setting - ODRM-479">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="dropbox" />
+                	<parameter name="AppSecret" value="25aa" />
+                	<parameter name="RedirectURL" value="" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Dropbox settings section." />    
+                	<include name="setErrorDropboxDrive" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 33 RMS_DropBox Setting - ODRM-478">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="" />
+                	<parameter name="AppSecret" value="25aa" />
+                	<parameter name="RedirectURL" value="nextlabs@163.com" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Dropbox settings section." />    
+                	<include name="setErrorDropboxDrive" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 34 RMS_DropBox Setting - ODRM-961">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="AppKey" value="dropbox" />
+                	<parameter name="AppSecret" value="" />
+                	<parameter name="RedirectURL" value="nextlabs@163.com" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in Dropbox settings section." />    
+                	<include name="setErrorDropboxDrive" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 35 RMS_SharePointOnPremise Setting - ODRM-546">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="25aa" />
+                	<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Your settings have been saved successfully." />    
+                	<include name="setShareppointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 36 RMS_SharePointOnPremise Setting - ODRM-964 1">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="25aa" />
+                	<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!!" />
+                	<parameter name="AppClientSecret" value="123blue!!" />
+                	<parameter name="errorMes" value="Multiple SharePoint apps cannot have the same display name" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 37 RMS_SharePointOnLine Setting - ODRM-963 1">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint Online" />
+                	<parameter name="DisplayName" value="25aa" />
+					<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Multiple SharePoint apps cannot have the same display name" />    
+                	<include name="setShareppointApp" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 38 RMS_SharePointOnPremise Setting - ODRM-962">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="errorMes" value="Do you want to remove the sharepoint application from the Rights Management database?" />    
+                	<include name="deleteSharepointApp" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	
+	<test name="ID 39 RMS_SharePointOnPremise Setting - ODRM-549">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="" />
+                	<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	<test name="ID 40 RMS_SharePointOnPremise Setting - ODRM-565">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="RMS565" />
+                	<parameter name="RemoteAppURL" value="" />
+                	<parameter name="AppClientID" value="12742842834" />
+                	<parameter name="AppClientSecret" value="ajfklaf2313" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 41 RMS_SharePointOnPremise Setting - ODRM-547">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="RMS547" />
+                	<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 42 RMS_SharePointOnPremise Setting - ODRM-548">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="RMS548" />
+                	<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blafkaf" />
+                	<parameter name="AppClientSecret" value="" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>	
+	
+	<test name="ID 43 RMS_SharePointOnLine Setting - ODRM-508">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint Online" />
+                	<parameter name="DisplayName" value="RMS" />
+					<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Your settings have been saved successfully." />    
+                	<include name="setShareppointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 44 RMS_SharePointOnLine Setting - ODRM-963 2">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint Online" />
+                	<parameter name="DisplayName" value="RMS" />
+					<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123next!" />
+                	<parameter name="AppClientSecret" value="123next!" />
+                	<parameter name="errorMes" value="Multiple SharePoint apps cannot have the same display name" />    
+                	<include name="setShareppointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	<test name="ID 45 RMS_SharePointOnPremise Setting - ODRM-964 2">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint On-Premise" />
+                	<parameter name="DisplayName" value="RMS" />
+                	<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!!" />
+                	<parameter name="AppClientSecret" value="123blue!!" />
+                	<parameter name="errorMes" value="Multiple SharePoint apps cannot have the same display name" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+	
+	 <test name="ID 46 RMS_SharePointOnLine Setting - ODRM-519">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint Online" />
+                	<parameter name="DisplayName" value="" />
+					<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	 <test name="ID 47 RMS_SharePointOnLine Setting - ODRM-517">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint Online" />
+                	<parameter name="DisplayName" value="RMS517" />
+					<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="" />
+                	<parameter name="AppClientSecret" value="123blue!" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>
+
+	 <test name="ID 48 RMS_SharePointOnLine Setting - ODRM-518">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="sharepointAppType" value="SharePoint Online" />
+                	<parameter name="DisplayName" value="RMS518" />
+					<parameter name="RemoteAppURL" value="nextlabs@163.com" />
+                	<parameter name="AppClientID" value="123blue!" />
+                	<parameter name="AppClientSecret" value="" />
+                	<parameter name="errorMes" value="Please fill all the mandatory fields in SharePoint App Settings section" />    
+                	<include name="setErrorSharePointApp" />                 
+				</methods>
+		</classes>
+	</test>	
+
+	<test name="ID 49 RMS_SharePointOnLine Setting - ODRM-521">
+    	<classes>
+			<class name="com.test.nextlabs.rms.qa.testAutomation.testcases.SettingTest" />
+				<methods>
+                	<parameter name="errorMes" value="Do you want to remove the sharepoint application from the Rights Management database?" />    
+                	<include name="deleteSharepointApp" />                 
+				</methods>
+		</classes>
+	</test>
+</suite>
+				

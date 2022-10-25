@@ -1,0 +1,14 @@
+set JRE_HOME=<%= @jre_home %>
+set CATALINA_HOME=<%= @tomcat_path %>
+set CATALINA_BASE=<%= @tomcat_path %>
+set CATALINA_TMPDIR=<%= @tomcat_path %>/temp
+set CATALINA_OPTS=-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -Djava.awt.headless=true -Done-jar.jar.path="<%= @embedded_pdp_path %>"
+set RMSDATADIR=<%= @data_dir_path %>
+set RMSINSTALLDIR=<%= @install_dir_path %>
+<%-	if @install_kms || @kms_installed -%>
+set KMSDATADIR=<%= @kms_data_dir_path %>
+set KMSINSTALLDIR=<%= @install_dir_path %>
+<%- end -%>
+
+rem Uncomment the following line to configure minimum and maximum Java heap size
+rem set JAVA_OPTS=-Xms128M -Xmx256M

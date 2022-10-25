@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % agentprofilestatusdata SYSTEM "AgentProfileStatusData.dtd">
+<!ENTITY % agentplugindata SYSTEM "AgentPluginData.dtd">
+<!ENTITY % policytypes SYSTEM "PolicyTypes.dtd">
+<!ENTITY % sharedfoldertypes SYSTEM "SharedFolderTypes.dtd">
+%agentprofilestatusdata;
+%agentplugindata;
+%policytypes;
+%sharedfoldertypes;
+<!--element and attribute declarations-->
+<!ELEMENT KeyRingMetaData (KeyRingName, LastModifiedDate)>
+<!ELEMENT KeyRingName (#PCDATA)>
+<!ELEMENT LastModifiedDate (#PCDATA)>
+<!ELEMENT profileStatus (lastCommittedAgentProfileName, lastCommittedAgentProfileTimestamp, lastCommittedCommProfileName, lastCommittedCommProfileTimestamp)>
+<!ELEMENT policyAssemblyStatus ((policyUsers | userSubjectTypes), agentCapabilities)>
+<!ATTLIST policyAssemblyStatus
+	agentHost CDATA #REQUIRED
+	agentType (DESKTOP | FILE_SERVER | PORTAL | ACTIVE_DIRECTORY) #REQUIRED
+	timestamp CDATA #REQUIRED
+>
+<!ELEMENT keyRingsMetaData (KeyRingMetaData)>
+<!ELEMENT sharedFolderDataCookie (timestamp)>
+<!ELEMENT pluginData (Element)>

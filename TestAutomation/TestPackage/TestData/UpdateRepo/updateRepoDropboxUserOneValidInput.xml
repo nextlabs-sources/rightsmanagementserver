@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmc:updateRepositoryRequest userId="1" APIVersion="1" deviceId="device ID" deviceOS="iOS" deviceType="MOBILE" operationTime="2016-01-19T14:51:28.314+08:00" xmlns:rmc="http://nextlabs.com/rms/rmc">
+    <repository>
+        <repoId>2</repoId>
+        <repoDisplayName>MyNewDropBox</repoDisplayName>
+        <repoType>DROPBOX</repoType>
+        <isShared>false</isShared>
+        <account>someNewAccount</account>
+        <accountId>123abc</accountId>
+        <refreshToken>token</refreshToken>
+    </repository>
+</rmc:updateRepositoryRequest>

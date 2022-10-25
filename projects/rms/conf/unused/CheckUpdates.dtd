@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basictypes SYSTEM "types/BasicTypes.dtd">
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+<!ENTITY % agentheartbeatdata SYSTEM "types/AgentHeartBeatData.dtd">
+<!ENTITY % agentupdates SYSTEM "types/AgentUpdates.dtd">
+%basictypes;
+%basicfaults;
+%agentheartbeatdata;
+%agentupdates;
+<!--element and attribute declarations-->
+<!ELEMENT CheckUpdates (checkUpdatesRequest | checkUpdatesResponse)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT heartbeat (profileStatus?, policyAssemblyStatus?, sharedFolderDataCookie?, pluginData?)>
+<!ELEMENT updates (commProfile?, agentProfile?, policyDeploymentBundle?, serverBusy?, sharedFolderData?, customObligationsData?, pluginData?)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ELEMENT checkUpdatesRequest (id, heartbeat)>
+<!ELEMENT checkUpdatesResponse (updates, (fault)?)>

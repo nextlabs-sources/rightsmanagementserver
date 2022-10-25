@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+<!ENTITY % basictypes SYSTEM "types/BasicTypes.dtd">
+<!ENTITY % agentstartupdata SYSTEM "types/AgentStartupData.dtd">
+%basicfaults;
+%basictypes;
+%agentstartupdata;
+<!--element and attribute declarations-->
+<!ELEMENT StartupAgent (startupAgentRequest | startupAgentResponse)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT startupData (pushPort?)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ELEMENT startupAgentRequest (id, startupData)>
+<!ELEMENT startupAgentResponse ((fault)?)>

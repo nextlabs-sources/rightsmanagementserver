@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--element and attribute declarations-->
+<!ELEMENT Element (#PCDATA)>
+<!ATTLIST Element
+	id CDATA #IMPLIED
+>

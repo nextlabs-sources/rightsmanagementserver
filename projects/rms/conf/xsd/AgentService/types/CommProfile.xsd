@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import schemaLocation="BasicTypes.xsd"/>
+
+	<xs:import schemaLocation="AgentType.xsd"/>
+
+	<xs:import schemaLocation="ActionType.xsd"/>
+
+	<xs:include schemaLocation="BaseProfile.xsd"/>
+
+	<xs:complexType name="CommProfileDTO">
+		<xs:annotation>
+			<xs:documentation> Communication Profile Data Transer Object. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BaseProfileDTO">
+				<xs:sequence>
+					<xs:element name="heartBeatFrequency" type="timeIntervalDTO" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="logLimit" type="xs:unsignedShort" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="logFrequency" type="timeIntervalDTO" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="passwordHash" type="xs:base64Binary" minOccurs="1" maxOccurs="1" />
+					<xs:element name="currentActivityJournalingSettings" type="ActivityJournalingSettingsDTO" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="customActivityJournalingSettings" type="ActivityJournalingSettingsDTO" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ActivityJournalingSettingsDTO">
+		<xs:annotation>
+			<xs:documentation>
+				Journaling settings specifying what actions will lead to log entries
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="loggedActivities" type="ActionTypeDTOList" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ActivityJournalingSettingsDTOList">
+		<xs:annotation>
+			<xs:documentation>A list of ActivityJouranlingSettingsDTO instances</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="activityJournalingSettings" type="ActivityJournalingSettingsDTO" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

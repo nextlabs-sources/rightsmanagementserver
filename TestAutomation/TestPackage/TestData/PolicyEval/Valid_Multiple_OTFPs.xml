@@ -1,0 +1,96 @@
+<!-- Using Multiple OTF policies-->
+<PolicyQueries xmlns="https://www.nextlabs.com/rms/policy/eval">
+	<PolicyQuery id="q1"> <!-- Policy 1 -->
+		<Request>
+			<Subject>
+				<User id="S-1-5-21-2018228179-1005617703-974104760-1200" name="abraham.lincoln">
+					<Attribute name="citizenship">
+						<AttributeValue>id</AttributeValue>
+					</Attribute>
+				</User>
+				<Application name="rms" pid="rmsPID" path="">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Application>
+				<Host ip="2130706433">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Host>
+			</Subject>
+			<Resources>
+				<Resource type="fso" dimension="from" name="AnyName">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Resource>
+			</Resources>
+			<OTFPolicy>
+				<pql>
+					ID 91 STATUS APPROVED POLICY "CHECK"     DESCRIPTION "test"     ATTRIBUTE DOCUMENT_POLICY     FOR TRUE     ON (RIGHT_PRINT OR RIGHT_VIEW OR (RIGHT_PMI OR RIGHT_VIEW_CAD_PMI))     TO TRUE     BY user.GROUP has 0     DO allow     ON allow DO OB_OVERLAY("Text", "$(User) $(Time)", "Transparency", "60", "FontName", "Sitka Text", "FontSize", "36", "TextColor", "Black", "Rotation", "Anticlockwise", "Placement", "Repeat", "Density", "Dense"), log, display( "This is user alert112324324" )     ON deny DO log
+				</pql>
+				<ignoreBuiltInPolicies>true</ignoreBuiltInPolicies>
+			</OTFPolicy>
+			<Environments>
+				<Environment name="environment">
+					<Attribute name="dont-care-acceptable">
+						<AttributeValue>yes</AttributeValue>
+					</Attribute>
+				</Environment>
+			</Environments>
+			<Rights>
+				<Right>RIGHT_VIEW</Right>
+				<Right>RIGHT_PRINT</Right>
+			</Rights>
+		</Request>
+	</PolicyQuery>
+	<PolicyQuery id="q1"> <!-- Policy 2 -->
+		<Request>
+			<Subject>
+				<User id="S-1-5-21-2018228179-1005617703-974104760-1200" name="abraham.lincoln">
+					<Attribute name="citizenship">
+						<AttributeValue>id</AttributeValue>
+					</Attribute>
+				</User>
+				<Application name="rms" pid="rmsPID" path="">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Application>
+				<Host ip="2130706433">
+					<Attribute name="">
+						<AttributeValue></AttributeValue>
+					</Attribute>
+				</Host>
+			</Subject>
+			<Resources>
+				<Resource type="fso" dimension="from" name="äçèêtest.doc.nxl"><!-- Special characters -->
+					<Attribute name="reviewstatus">
+						<AttributeValue>ùûüÿ€’“”«  »–—àâæçéèêëïîôœ</AttributeValue><!-- Special characters -->
+					</Attribute>
+					<Attribute name="currentstatus">
+						<AttributeValue>ùûüÿ€’“”«  »–—àâæçéèêëïîôœ</AttributeValue><!-- Special characters -->
+					</Attribute>
+				</Resource>
+			</Resources>
+			<OTFPolicy>
+				<pql>
+					ID 343 STATUS APPROVED POLICY "OTF_Special_characters"     ATTRIBUTE DOCUMENT_POLICY     FOR resource.fso.name = "**.doc.nxl"     ON RIGHT_VIEW     TO TRUE     BY user.GROUP has 0     WHERE (TRUE AND (TRUE AND resource.fso.reviewstatus = resource.fso.currentstatus))     DO allow     ON deny DO log
+				</pql>
+				<ignoreBuiltInPolicies>true</ignoreBuiltInPolicies>
+			</OTFPolicy>
+			<Environments>
+				<Environment name="environment">
+					<Attribute name="dont-care-acceptable">
+						<AttributeValue>yes</AttributeValue>
+					</Attribute>
+				</Environment>
+			</Environments>
+			<Rights>
+				<Right>RIGHT_VIEW</Right>
+				<Right>RIGHT_PRINT</Right>
+			</Rights>
+		</Request>
+	</PolicyQuery>
+</PolicyQueries>

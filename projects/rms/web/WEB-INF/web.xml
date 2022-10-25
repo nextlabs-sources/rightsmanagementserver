@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <display-name>Secure Collaboration Application</display-name>
+    <description>
+	This is the NextLabs Secure Collaboration application
+    </description>
+
+    <servlet>
+        <servlet-name>RMSServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.servlets.RMSServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RMSServlet</servlet-name>
+        <url-pattern>/RMSViewer/*</url-pattern>
+    </servlet-mapping>
+    
+    <listener>
+		<listener-class>com.nextlabs.rms.servlets.RMSSessionListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.nextlabs.rms.servlets.RMSContextListener</listener-class>
+	</listener>
+	
+	<servlet>
+        <servlet-name>SharePointAuthServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.repository.servlets.SharePointAuthServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SharePointAuthServlet</servlet-name>
+        <url-pattern>/SharePointAuth/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OktaAuthServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.auth.OktaAuthServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OktaAuthServlet</servlet-name>
+        <url-pattern>/OktaAuth/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OAuthManagerServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.repository.servlets.OAuthManagerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OAuthManagerServlet</servlet-name>
+        <url-pattern>/OAuthManager/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SAMLManagerServlet</servlet-name>
+        <servlet-class>com.nextlabs.rms.auth.SAMLManagerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SAMLManagerServlet</servlet-name>
+        <url-pattern>/SAML/*</url-pattern>
+    </servlet-mapping>
+    
+	<filter> 
+		<filter-name>AuthFilter</filter-name> 
+		<filter-class>com.nextlabs.rms.filters.AuthFilter</filter-class> 
+	</filter> 	
+	<filter-mapping> 
+		<filter-name>AuthFilter</filter-name> 
+		<url-pattern>/*</url-pattern> 
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>RMSRestletServlet</servlet-name>
+		<servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+		<init-param>
+			<param-name>org.restlet.application</param-name>
+			<param-value>com.nextlabs.rms.services.application.RMSApplication</param-value>
+		</init-param>
+        <init-param>
+            <param-name>org.restlet.clients</param-name>
+            <param-value>HTTP HTTPS</param-value>
+        </init-param>
+	</servlet>
+    <servlet>
+        <servlet-name>AxisServlet</servlet-name>
+        <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	<servlet-mapping>
+		<servlet-name>RMSRestletServlet</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>/axis/*</url-pattern>
+    </servlet-mapping>
+	
+	<welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/error_404.jsp</location>
+	</error-page>
+	
+	<error-page>
+	    <error-code>403</error-code>
+	    <location>/error_403.jsp</location>
+	</error-page>
+	
+	<error-page>
+	    <error-code>500</error-code>
+	    <location>/error_500.jsp</location>
+	</error-page>
+</web-app>

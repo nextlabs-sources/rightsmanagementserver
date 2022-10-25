@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:complexType name="classificationProfileType">
+		<xs:sequence>
+			<xs:element name="Classify" type="classifyType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="classifyType">
+		<xs:sequence>
+			<xs:element name="TopLevel" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="LabelList" type="labelListType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ExtensionList" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>	
+	</xs:complexType>
+
+	<xs:complexType name="labelListType">
+		<xs:sequence>
+			<xs:element name="Label" type="labelType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>	
+	</xs:complexType>
+	
+	<xs:complexType name="labelType">
+		<xs:sequence>
+			<xs:element name="VALUE" type="valueType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="default-value" type="xs:int" use="required"/>
+		<xs:attribute name="multi-select" type="xs:boolean" use="required"/>
+		<xs:attribute name="mandatory" type="xs:boolean" use="required"/>
+		<xs:attribute name="display-name" type="xs:string" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="id" type="xs:long" use="required"/>		
+	</xs:complexType>
+	
+	<xs:complexType name="valueType">
+		<xs:attribute name="value" type="xs:string" use="required"/>
+		<xs:attribute name="sub-label" type="xs:int" use="optional"/>
+		<xs:attribute name="priority" type="xs:int" use="optional"/>
+	</xs:complexType>
+	
+</xs:schema>

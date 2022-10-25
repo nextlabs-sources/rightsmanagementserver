@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmc:markOfflineResponse xmlns:rmc="http://nextlabs.com/rms/rmc"><cachedFileResultList><cachedFile><repoId>157</repoId><cachedFileId>34</cachedFileId><filePath>path/to/your/file</filePath></cachedFile><cachedFile><repoId>157</repoId><cachedFileId>35</cachedFileId><filePath>path/to/your/file</filePath></cachedFile><cachedFile><repoId>157</repoId><cachedFileId>36</cachedFileId><filePath>path/to/your/file</filePath></cachedFile></cachedFileResultList><status><code>0</code><message>Success</message></status></rmc:markOfflineResponse>

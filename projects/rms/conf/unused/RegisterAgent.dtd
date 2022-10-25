@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % agentregistrationdata SYSTEM "types/AgentRegistrationData.dtd">
+<!ENTITY % agentstartupconfiguration SYSTEM "types/AgentStartupConfiguration.dtd">
+<!ENTITY % basicfaults SYSTEM "types/BasicFaults.dtd">
+%agentregistrationdata;
+%agentstartupconfiguration;
+%basicfaults;
+<!--element and attribute declarations-->
+<!ELEMENT RegisterAgent (registerAgentRequest | registerAgentResponse)>
+<!ELEMENT RegistrationData (host, type, version)>
+<!ELEMENT ServiceNotReadyFault ANY>
+<!ELEMENT UnauthorizedCallerFault ANY>
+<!ELEMENT StartupConfiguration (id, commProfile, agentProfile, registrationId)>
+<!ELEMENT fault (ServiceNotReadyFault | UnauthorizedCallerFault)>
+<!ELEMENT registerAgentRequest (RegistrationData)>
+<!ELEMENT registerAgentResponse (StartupConfiguration, (fault)?)>

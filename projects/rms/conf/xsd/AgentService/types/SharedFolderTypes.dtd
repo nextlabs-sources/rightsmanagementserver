@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--element and attribute declarations-->
+<!ELEMENT aliasList (aliases)>
+<!ELEMENT cookie (timestamp)>
+<!ELEMENT aliases (alias)>
+<!ELEMENT alias ANY>
+<!ATTLIST alias
+	name CDATA #REQUIRED
+>
+<!ELEMENT timestamp (#PCDATA)>

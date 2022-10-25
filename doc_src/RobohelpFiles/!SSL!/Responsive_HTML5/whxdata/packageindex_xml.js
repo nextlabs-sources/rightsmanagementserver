@@ -1,0 +1,1 @@
+gXMLBuffer="<?xml version=\"1.0\" encoding=\"utf-8\"?><cki><ck fm=\"&amp;\" to=\"angl\"/><ck fm=\"anglesbetween2point\" to=\"field\"/><ck fm=\"fil\" to=\"ok\"/><ck fm=\"on\" to=\"subpart\"/><ck fm=\"sufficient\" to=\"zoomout\"/></cki>";

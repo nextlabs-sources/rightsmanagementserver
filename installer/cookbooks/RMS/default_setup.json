@@ -1,0 +1,28 @@
+{
+	"install_dir" : {
+		"windows" : "C:/Program Files/NextLabs/RMS/",
+		"linux" : "/opt/nextlabs/RMS/"
+	},
+	"data_dir" : {
+		"windows" : "C:/ProgramData/NextLabs/RMS/datafiles/",
+		"linux" : "/var/opt/nextlabs/RMS/datafiles"
+	},
+	"tomcat" : {
+		"shutdown_port" : "8005",
+		"ssl_port" : "8443",
+		"km_port": "1099"
+	},
+	"jre" : {
+		"windows" : "dist/external/jre-8u60-windows-x64.tar.gz",
+		"linux" : "dist/external/jre-8u60-linux-x64.tar.gz"
+	},
+	"mysql" : {
+		"windows" : "dist/external/mysql-5.7.11-winx64.zip",	
+		"linux" : "dist/external/mysql-5.7.11-linux-glibc2.5-x86_64.tar.gz",
+		"db_name" : "RMS_DB",
+		"db_type" : "MYSQL",
+		"port" : "3306",
+		"user_name": "root",
+		"password": "password"
+	}
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://incubator.apache.org/ivy/schemas/ivy.xsd"
+			xmlns:e="http://ant.apache.org/ivy/extra">
+    <info organisation="nextlabs"
+          module="Platform"
+		  revision="6.0.0.0"
+		  branch="6.0.0.0"/>
+    <configurations>
+	    <conf name="main" visibility="public" />
+          <conf name="helpdesk" visibility="public" />
+          <conf name="ipcjni" visibility="public" /> 
+		<!-- Currently naming these based on clients.  This MUST change in the future.  Clients should decide this.  Must clean up dependencies first, though -->
+	    <conf name="PolicyController" visibility="public" />
+	    <conf name="PolicyStudio" visibility="public" />
+	    <conf name="EnforcerPlugin" visibility="public" /> <!-- FIX ME - REMOVE this when enforcer build is broken down into pieces. Right now every plugin needs a couple of include files to build-->  
+	</configurations>
+	<publications>
+	  <artifact conf="main" name="ControlCenterServer-setup" type="exe" e:os="win" e:arch="x64" e:releasetype="release"/>
+	  <artifact conf="main" name="ControlCenterServer-setup" type="exe" e:os="win" e:arch="x86" e:releasetype="release"/>
+	  <artifact conf="main" name="license" type="dat"/>
+       <artifact conf="helpdesk" name="server-base" />
+       <artifact conf="helpdesk" name="common-version" />
+       <artifact conf="helpdesk" name="server-shared-applicationusers" />
+       <artifact conf="helpdesk" name="policy-deploy-manager" />
+       <artifact conf="helpdesk" name="profile-manager" />
+       <artifact conf="helpdesk" name="secure-session" />
+       <artifact conf="helpdesk" name="server-datasource" />
+       <artifact conf="helpdesk" name="server-dcsf-test" />
+       <artifact conf="helpdesk" name="server-dcsf" />
+	  <artifact conf="helpdesk" name="server-dictionary" />
+       <artifact conf="helpdesk" name="server-framework" />
+       <artifact conf="helpdesk" name="server-pf" />
+       <artifact conf="helpdesk" name="server-shared-pf" />
+       <artifact conf="helpdesk" name="server-shared-applicationusers" />
+       <artifact conf="helpdesk" name="server-shared-tests" />
+       <artifact conf="helpdesk" name="dms-components" />
+       <artifact conf="helpdesk" name="crypt" />
+       <artifact conf="helpdesk" name="agent-manager" />
+       <artifact conf="helpdesk" name="common-ind" />
+       <artifact conf="helpdesk" name="common-dictionary" />
+       <artifact conf="helpdesk" name="version" />
+	  <artifact conf="PolicyController" name="agent-common" />
+	  <artifact conf="PolicyController" name="agent-controlmanager" />
+	  <artifact conf="PolicyController" name="agentprofile" type="xml" />
+	  <artifact conf="PolicyController" name="commprofile.template" type="xml" />
+	  <artifact conf="PolicyController" name="mapping" type="xml" />
+	  <artifact conf="PolicyController" name="logging.template" type="properties" />
+	  <artifact conf="PolicyController" name="folder" type="info" />
+	  <artifact conf="PolicyController, EnforcerPlugin" name="com_bluejungle_destiny_agent_controlmanager_PDPJni" type="h" />
+	  <artifact conf="PolicyController, EnforcerPlugin" name="com_bluejungle_destiny_agent_ipc_OSWrapper" type="h" />
+	  <artifact conf="PolicyController, PolicyStudio" name="agent-ipc" />
+	  <artifact conf="PolicyController" name="agent-tools" />
+	  <artifact conf="PolicyController" name="agent-types" />
+	  <artifact conf="PolicyStudio" name="app-framework" />
+	  <artifact conf="PolicyController" name="temp_agent-keystore" type="jks" />
+	  <artifact conf="PolicyController, PolicyStudio" name="client-pf" />
+	  <artifact conf="PolicyStudio" name="client-security-config" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-version" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-version-impl" />
+	  <artifact conf="PolicyController, PolicyStudio" name="version-types" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-domain" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-domain-types" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-framework" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-framework-types" />
+	  <artifact conf="PolicyController, PolicyStudio" name="crypt" />
+	  <artifact conf="PolicyController, PolicyStudio" name="installercommon" type="dll" />
+	  <artifact conf="PolicyController" name="common-oil" />
+	  <artifact conf="PolicyController, PolicyStudio" name="common-pf" />
+	  <artifact conf="PolicyController" name="dabs-agent-services" />
+	  <artifact conf="PolicyController" name="dabs-common-services" />
+	  <artifact conf="PolicyController" name="deployment-types" />
+	  <artifact conf="ipcjni" name="IPCJNI" type="dll" e:os="win" e:arch="x86" e:releasetype="release"/>
+	  <artifact conf="ipcjni" name="IPCJNI" type="dll" e:os="win" e:arch="x64" e:releasetype="release"/>
+	  <artifact conf="PolicyController" name="log-types" />
+	  <artifact conf="PolicyController" name="management-types" />
+	  <artifact conf="PolicyStudio" name="NetworkUtils" type="dll" e:os="win" e:arch="x86" e:releasetype="release"/>
+	  <artifact conf="PolicyStudio" name="NetworkUtils" type="dll" e:os="win" e:arch="x64" e:releasetype="release"/>
+	  <artifact conf="PolicyStudio" name="policy-services" />
+	  <artifact conf="PolicyController, PolicyStudio" name="policy-types" />
+	  <artifact conf="PolicyController" name="server-base" />
+	  <artifact conf="PolicyController, PolicyStudio" name="server-shared-services" />
+	  <artifact conf="PolicyController, PolicyStudio" name="server-shared-types" />
+	</publications>
+	<dependencies>
+	  <dependency org="castor" name="castor" rev="0.9.5.4" conf="PolicyController->default" />
+	  <dependency org="jargs" name="jargs" rev="1.0" conf="PolicyController->default" />
+	  <dependency org="antlr" name="antlr" rev="2.7.4" conf="PolicyController,PolicyStudio->default" /> 
+      <dependency org="apache" name="commons-logging" rev="1.0.4" conf="PolicyController,PolicyStudio->default" />
+	  <dependency org="apache" name="commons-cli" rev="1.0" conf="PolicyController,PolicyStudio->default" />
+      <dependency org="jboss" name="hibernate" rev="2.1.6" conf="PolicyController,PolicyStudio->c3p0" />
+	  <dependency org="apache" name="axis" rev="1.4" conf="PolicyController,PolicyStudio->default" />
+      <dependency org="sun" name="javamail" rev="1.4" conf="PolicyController,PolicyStudio->default" />
+      <dependency org="dnsjava" name="dnsjava" rev="2.0.6" conf="PolicyController,PolicyStudio->default" />
+	</dependencies>
+</ivy-module>

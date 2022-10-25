@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="convertFileService" type="convertFileServiceType" />
+	
+	<xs:complexType name="convertFileRequestType">
+		<xs:sequence>
+			<xs:element name="fileName" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="toFormat" type="fileTypeRestriction"   />
+			<xs:element name="isNxl" type="xs:boolean" />
+			<xs:element name="binaryFile" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="checksum" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="convertFileResponseType">
+		<xs:sequence>
+			<xs:element name="fileName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="binaryFile" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="error" type="errorType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="checksum" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="errorType">
+		<xs:sequence>
+			<xs:element name="errorCode" type="xs:int"/>
+			<xs:element name="errorMessage" type="xs:string"/>
+        </xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="convertFileServiceType">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="convertFileRequest" type="convertFileRequestType" />
+			<xs:element name="convertFileResponse" type="convertFileResponseType" />
+		</xs:choice>
+		<xs:attribute name="tenantId" type="xs:string" use="required" />
+		<xs:attribute name="agentId" type="xs:string" use="required" />
+		<xs:attribute name="version" type="xs:int" use="required" />
+	</xs:complexType>
+	
+	<xs:simpleType name="fileTypeRestriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="hsf"/>
+			<xs:enumeration value="scs"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Adobe RoboHelp 2015" />
+<title>ServiceProviders</title>
+<link rel="StyleSheet" href="default.css" type="text/css" />
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+p.WebHelpNavBar { text-align:right; }
+-->
+</style>
+
+<script type="text/javascript" src="template/scripts/rh.min.js"></script>
+<script type="text/javascript" src="template/scripts/common.min.js"></script>
+<script type="text/javascript" src="template/scripts/topic.min.js"></script>
+<script type="text/javascript" src="template/scripts/constants.js"></script>
+<script type="text/javascript" src="template/scripts/utils.js"></script>
+<script type="text/javascript" src="template/scripts/mhutils.js"></script>
+<script type="text/javascript" src="template/scripts/mhlang.js"></script>
+<script type="text/javascript" src="template/scripts/mhver.js"></script>
+<script type="text/javascript" src="template/scripts/settings.js"></script>
+<script type="text/javascript" src="template/scripts/XmlJsReader.js"></script>
+<script type="text/javascript" src="template/scripts/loadparentdata.js"></script>
+<script type="text/javascript" src="template/scripts/loadscreen.js"></script>
+<script type="text/javascript" src="template/scripts/loadprojdata.js"></script>
+<script type="text/javascript" src="template/scripts/mhtopic.js"></script>
+ <link rel="stylesheet" type="text/css" href="template/styles/topic.min.css">
+<script type="text/javascript" >
+gRootRelPath = ".";
+gCommonRootRelPath = ".";
+gTopicId = "0_10";
+</script>
+</head>
+
+<body>
+<script type="text/javascript" src="./ehlpdhtm.js"></script>
+
+
+<h4 style="font-family: 'MS Reference Sans Serif';">Manage Service Providers</h4>
+<p>This page displays three sections:</p>
+<p>&#160;</p>
+<ul style="list-style: disc;">
+	<li><span style="font-weight: bold;">Configured Providers</span> - 
+	 Displays a list of available service providers that are integrated 
+	 with Rights Management Server (RMS). This allows &#160;users to add 
+	 repositories for the given service providers in RMS.</li>
+	<li><span style="font-weight: bold;">Available Providers</span> - Displays 
+	 a list of available service providers that RMS supports. You can configure 
+	 these service providers to integrate with RMS to grant users access 
+	 to the repository from RMS. After the service providers are configured, 
+	 it will move to the <span style="font-weight: bold;">Configured Providers</span> 
+	 <span>section</span>. Currently, RMS supports Google Drive, OneDrive, 
+	 SharePoint Online, SharePoint On Premise, and Dropbox service providers.</li>
+	<li><span style="font-weight: bold;">Cross-Launch Apps</span> - Displays 
+	 a list of service providers that can be integrated with RMS &#160;to 
+	 allow users to view the rights protected or unprotected files directly 
+	 from these service providers. This feature is supported only by SharePoint 
+	 On-Premise and SharePoint Online apps.</li>
+</ul>
+<h5>Dropbox App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Available Providers</span> section, 
+	 hover the mouse pointer over Dropbox.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><span 
+	 style="font-weight: bold;">&#160;</span>Click <span style="font-weight: bold;">Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the Dropbox app settings, enable <span style="font-weight: bold;">Allow 
+	 personal repositories</span> for users to add their personal repositories.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details.<br />
+	<br />
+	<span style="font-weight: bold;">NOTE:</span> &#160;The following settings 
+	 can only be obtained after a Dropbox App has been created for Rights Management Server. For 
+	 more details, refer to the <span style="font-style: italic;">Rights Management Server Administration 
+	 Guide</span>.</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with Dropbox.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>App Secret</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with Dropbox</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Redirect URL</p></td>
+			<td><p>&#160;</p>
+			<p>The URL to access the Rights Management Server 
+			 portal</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span>.</p></li>
+</ol>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<h5>Google Drive App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Available Providers</span> section, 
+	 hover the mouse pointer over Google Drive.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details.<br />
+	<span style="font-weight: bold;">NOTE:</span> &#160;The following settings 
+	 can only be obtained after a Google Drive app has been created for 
+	 Rights Management Server. 
+	 For more details, refer to the <span style="font-style: italic;">Rights Management Server Administration 
+	 Guide</span>.</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with Google Drive.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>App Secret</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with Google Drive.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Redirect URL</p></td>
+			<td><p>&#160;</p>
+			<p>The URL to access the Rights Management Server 
+			 portal</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span>.</p></li>
+</ol>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<h5>OneDrive App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Available Providers</span>, hover 
+	 the mouse pointer over OneDrive.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details.<br />
+	<span style="font-weight: bold;">NOTE:</span> &#160;The following settings 
+	 can only be obtained after a OneDrive app has been created for Rights Management Server. For 
+	 more details, refer to the <span style="font-style: italic;">Rights Management Server Administration 
+	 Guide</span>.</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with OneDrive.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>App Secret</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with OneDrive.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Redirect URL</p></td>
+			<td><p>&#160;</p>
+			<p>The URL to access the Rights Management Server 
+			 portal.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span>.</p></li>
+</ol>
+<h5>SharePoint App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Available Providers</span>, hover 
+	 the mouse pointer over SharePoint.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enable 
+	 SharePoint to allow users access to the SharePoint repository.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enable 
+	 <span style="font-weight: bold;">Allow personal repositories</span> 
+	 to allow users to add their own personal repository. If it is not 
+	 enabled, the repository will be shared by all users.<br />
+	<span style="font-weight: bold;">NOTE</span>: If the <span style="font-weight: bold;">Allow 
+	 personal repositories</span> option is enabled, only the administrators 
+	 will have the option to share the repository with other users from 
+	 the <span style="font-weight: bold;">Manage Repositories</span> menu.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span>.</p></li>
+</ol>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<h5>Box App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Available Providers</span>, hover 
+	 the mouse pointer over Box.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click<span 
+	 style="font-weight: bold;"> Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details.<br />
+	<span style="font-weight: bold;">NOTE:</span> &#160;The following settings 
+	 can only be obtained after a Box app has been created for Rights Management Server. For 
+	 more details, refer to the <span style="font-style: italic;">Rights Management Server Administration 
+	 Guide</span>.</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with Box.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>App Secret</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with Box.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Redirect URL</p></td>
+			<td><p>&#160;</p>
+			<p>The URL to access the Rights Management Server 
+			 portal.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span>.</p></li>
+</ol>
+<p>&#160;</p>
+<h5>SharePoint Online App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Available Providers</span>, move 
+	 the cursor over SharePoint Online.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enable 
+	 SharePoint Online to allow users access to the SharePoint repository.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details.<br />
+	<span style="font-weight: bold;">NOTE:</span> &#160;The following settings 
+	 can only be obtained after a SharePoint Online app has been created 
+	 for Rights Management Server. 
+	 For more details, refer to the <span style="font-style: italic;">Rights Management Server Administration 
+	 Guide</span>.</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with OneDrive.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row">
+			<td><p>App Secret</p></td>
+			<td><p>&#160;</p>
+			<p>This value is used by Rights Management Server 
+			 to establish a secure communication channel with OneDrive.</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row">
+			<td><p>Redirect URL</p></td>
+			<td><p>&#160;</p>
+			<p>The URL to access the Rights Management Server 
+			 portal.</p>
+			<p>&#160;</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enable 
+	 <span style="font-weight: bold;">Allow personal repositories</span> 
+	 to allow users to add their own personal repository. If this option 
+	 is not enabled, the repository will be shared by all users.<br />
+	Note: If the <span style="font-weight: bold;">Allow personal repositories</span> 
+	 option is enabled, only the administrators will have the option to 
+	 share the repository with other users from the <span style="font-weight: bold;">Manage 
+	 Repositories</span> menu.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span>.</p></li>
+</ol>
+<h5>SharePoint Cross-Launch App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Cross-Launch Apps</span>, hover 
+	 the mouse pointer over SharePoint Cross-Launch.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details:</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st" style="height: 18px;">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row" style="height: 67px;">
+			<td><p>App Name</p></td>
+			<td><p>&#160;</p>
+			<p>App name for the SharePoint App you want to configure.</p>
+			<p>&#160;</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row" style="height: 67px;">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This is the value generated by SharePoint when you registered 
+			 your SharePoint Application. For more details, see Registering 
+			 your SharePoint Application in the Rights Management Server 
+			 Administrator Guide.</p></td>
+		</tr>
+		<tr class="t2Row" style="height: 51px;">
+			<td><p>App Secret</p></td>
+			<td><p>This is the value generated by SharePoint when you registered 
+			 your SharePoint Application. For more details, see Registering 
+			 your SharePoint Online Application in the Rights Management Server 
+			 Administrator Guide.</p></td>
+		</tr>
+		<tr class="t1Row" style="height: 243px;">
+			<td><p>Remote Web Application URL<br />
+			</p></td>
+			<td><p>&#160;</p>
+			<p>This is the URL of your SharePoint On-Premise web application 
+			 that you have deployed on your IIS. You must append the following 
+			 to it:</p>
+			<p>&#160;</p>
+			<p>/Pages/Default.aspx</p>
+			<p>&#160;</p>
+			<p>For example if your SharePoint Site App URL is:</p>
+			<p>https://myserver:4444</p>
+			<p>then you must type it as:</p>
+			<p>https://myserver:4444/Pages/Default.aspx</p>
+			<p><span style="font-weight: bold;">NOTE:</span> If you have 
+			 not changed the default port number (443)for your server then 
+			 you don’t need to specify the port number in the URL. Therefore, 
+			 the above URL would be listed</p>
+			<p>as: https://myserver/Pages/Default.aspx</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t2Row" style="height: 19px;">
+			<td><p>Redirect URL</p></td>
+			<td><p>The URL of the server hosting Rights Management application.</p></td>
+		</tr>
+		<tr class="t1Row" style="height: 5px;">
+			<td><p>App Menu Display Text</p></td>
+			<td><p>The menu name displayed in the SharePoint app for viewing 
+			 a file using Rights Management</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE</span><span>.</span></p></li>
+</ol>
+<p>&#160;</p>
+<h5>SharePoint Online Cross-Launch App Settings</h5>
+<ol style="list-style: decimal;">
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">In 
+	 the <span style="font-weight: bold;">Cross-Launch Apps</span>, hover 
+	 the mouse pointer over SharePoint Online.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click<span 
+	 style="font-weight: bold;"> Configure</span>.</p></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Enter 
+	 the following details:</p>
+	<table class="AlternateBlueWithHeader" cellspacing="0px" width="100%">
+		<col style="width: 50%;" />
+		<col style="width: 50%;" />
+		<tr class="t1st" style="height: 18px;">
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Field</span></td>
+			<td><span style="font-size: 9pt; font-family: 'MS Reference Sans Serif'; 
+						 font-weight: bold;">Description</span></td>
+		</tr>
+		<tr class="t2Row" style="height: 67px;">
+			<td><p>App Name</p></td>
+			<td><p>&#160;</p>
+			<p>App name for the SharePoint Online app you want to configure.</p>
+			<p>&#160;</p>
+			<p>&#160;</p></td>
+		</tr>
+		<tr class="t1Row" style="height: 67px;">
+			<td><p>App Key</p></td>
+			<td><p>&#160;</p>
+			<p>This is the value generated by SharePoint Online when you 
+			 registered your SharePoint Online &#160;application. For more 
+			 details, see Registering your SharePoint Online Application 
+			 in the Rights Management Server 
+			 Administrator Guide.</p></td>
+		</tr>
+		<tr class="t2Row" style="height: 51px;">
+			<td><p>App Secret</p></td>
+			<td><p>This is the value generated by SharePoint Online when 
+			 you registered your SharePoint Online application. For more 
+			 details, see Registering your SharePoint Online Application 
+			 in the Rights Management Server 
+			 Administrator Guide.</p></td>
+		</tr>
+		<tr class="t1Row" style="height: 19px;">
+			<td><p>Redirect URL</p></td>
+			<td><p>The URL of the server hosting Rights Management application.</p></td>
+		</tr>
+		<tr class="t2Row" style="height: 5px;">
+			<td><p>App Menu Display Text</p></td>
+			<td><p>A unique menu name displayed in the SharePoint app for 
+			 viewing a file using Rights Management.</p></td>
+		</tr>
+	</table></li>
+	<li style="font-size: 9pt; font-family: 'MS Reference Sans Serif';"><p 
+		 style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">Click 
+	 <span style="font-weight: bold;">SAVE.</span></p></li>
+</ol>
+<p>&#160;</p>
+<p style="font-size: 9pt; font-family: 'MS Reference Sans Serif';">&#160;</p>
+<div style="width: 100%; position: relative;" id="footer">
+	<p>-----------------------------------------------------</p>
+	<p><br />
+<span style="font-weight: bold;">CONFIDENTIALITY NOTICE</span><br />
+<br />
+THIS DOCUMENT IS CONFIDENTIAL AND PROPRIETARY TO NEXTLABS, INC. AND MAY 
+ NOT BE REPRODUCED, PUBLISHED OR DISCLOSED TO OTHERS WITHOUT COMPANY AUTHORIZATION.<br />
+<br />
+© 2014 - 2017 NextLabs 
+ Inc. All rights reserved.<br />
+</p>
+	<p>-----------------------------------------------------</p>
+</div>
+</body>
+</html>
